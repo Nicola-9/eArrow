@@ -26,16 +26,16 @@
                     <li><a href="#" class="menu-item">Accessori Arciere</a></li>
                     <li><a href="#" class="menu-item">Frecce e Componenti</a></li>
                     <li><a href="#" class="menu-item">Paglioni e Bersagli</a></li>
-                    <li><a href="#" id="search"><i class="fa fa-search"></i></a></li>
+                    <li><a href="#" id="search" class="search-icon"><i class="fa fa-search"></i></a></li>
                     <li><a href="#" id="user-account" class="menu-item"><i class="fa fa-user"></i></a></li>
-                    <li><a href="#"><i class="fa fa-shopping-basket"></i></a></li>
+                    <li><a href="#" id="shopping-cart" class="menu-item"><i class="fa fa-shopping-basket"></i></a></li>
                 </ul>
                 <div class="search-form">
                     <form>
                         <input type="text" name="" placeholder="eArrow.it">
                     </form>
                 </div>
-              <a class="close"><i class="fa fa-times"></i></a>
+                <a class="close"><i class="fa fa-times"></i></a>
             </div>
         </nav>
         <script src="https://code.jquery.com/jquery-3.4.1.js"   integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="   

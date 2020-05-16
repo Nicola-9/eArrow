@@ -53,56 +53,61 @@ menu ul li a.img{
 }
 
 .menu ul li:nth-child(0) a.menu-item.hide-item{
-    transition-delay: 0.6s;
+    transition-delay: 0.8s;
 }
 
 .menu ul li:nth-child(1) a.menu-item.hide-item{
-    transition-delay: 0.6s;
+    transition-delay: 0.7s;
 }
 .menu ul li:nth-child(2) a.menu-item.hide-item{
-    transition-delay: 0.5s;
+    transition-delay: 0.6s;
 }
 .menu ul li:nth-child(3) a.menu-item.hide-item{
-    transition-delay: 0.4s;
+    transition-delay: 0.5s;
 }
 .menu ul li:nth-child(4) a.menu-item.hide-item{
-    transition-delay: 0.3s;
+    transition-delay: 0.4s;
 }
 
 .menu ul li:nth-child(5) a.menu-item.hide-item{
-    transition-delay: 0.2s;
-}
-
-.menu ul li:nth-child(6) a.menu-item.hide-item{
-    transition-delay: 0.1s;
-}
-
-.menu ul li:nth-child(6) a.menu-item{
-    transition-delay: 0s;
-}
-
-.menu ul li:nth-child(5) a.menu-item{
-    transition-delay: 0.1s;
-}
-
-.menu ul li:nth-child(4) a.menu-item{
-    transition-delay: 0.2s;
-}
-
-.menu ul li:nth-child(3) a.menu-item{
     transition-delay: 0.3s;
 }
 
-.menu ul li:nth-child(2) a.menu-item{
+.menu ul li:nth-child(6) a.menu-item.hide-item{
+    transition-delay: 0.2s;
+}
+
+.menu ul li:nth-child(7) a.menu-item.hide-item{
+    transition-delay: 0.1s;
+}
+
+.menu ul li:nth-child(0) a.menu-item.hide-item{
+    transition-delay: 0.8s;
+}
+
+.menu ul li:nth-child(1) a.menu-item.hide-item{
+    transition-delay: 0.7s;
+}
+.menu ul li:nth-child(2) a.menu-item.hide-item{
+    transition-delay: 0.6s;
+}
+.menu ul li:nth-child(3) a.menu-item.hide-item{
+    transition-delay: 0.5s;
+}
+.menu ul li:nth-child(4) a.menu-item.hide-item{
     transition-delay: 0.4s;
 }
 
-.menu ul li:nth-child(1) a.menu-item{
-    transition-delay: 0.5s;
+.menu ul li:nth-child(5) a.menu-item.hide-item{
+    transition-delay: 0.3s;
 }
 
-.menu ul li:nth-child(0) a.menuitem{
-    transition-delay: 0.6s;
+.menu ul li:nth-child(6) a.menu-item.hide-item{
+    transition-delay: 0.2s;
+}
+
+.menu ul li:nth-child(7) a.menu-item.hide-item{
+    transition-delay: 0.1s;
 }
 
 .search-form{
@@ -119,9 +124,10 @@ menu ul li a.img{
 .search-form.active{
     opacity: 1;
     visibility: visible;
-    transition-delay: 0.5s;
+    transition-delay: 0.6s;
     transform: translateX(-50%);
 }
+
 .search-form input{
     width: 100%;
     height: 44px;
@@ -146,7 +152,7 @@ menu ul li a.img{
 
 .close{
     position: absolute;
-    right: 0;
+    right: 19%;
     top: 0;
     height: 44px;
     background: #2f2f2f;
@@ -162,6 +168,8 @@ menu ul li a.img{
 .close.active{
     opacity: 1;
     visibility: visible;
+	transition-delay: 0.6s;
+	trasition-duration: 0.1s;
 }
 
 nav .header-clearfix .header-mobile{
@@ -181,7 +189,7 @@ nav .header-clearfix .header-mobile span{
 @media (max-width: 998px){
 	nav .header-clearfix .header-mobile{
 		display: block;
-	}qqqqq
+	}
 }
 
 @media (max-width: 767px){
