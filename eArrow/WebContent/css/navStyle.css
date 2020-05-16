@@ -173,19 +173,47 @@ nav .header-clearfix .header-mobile{
 nav .header-clearfix .header-mobile span{
 	display: block;
 	height: 1px;
-	width: 20px;
+	width: 25px;
 	background: #d1d1d1;
-	margin-bottom: 5px;
+	margin-bottom: 3px;
+	margin-top: 3px;
+}
+
+nav .header-clearfix .header-mobile{
+	display: none;
+	float: left;
+	padding: 15px;
 }
 
 @media (max-width: 998px){
+	.menu{
+    position: relative;
+    margin: 0 auto;
+    width: 88%;
+    overflow: hidden;
+}
 	nav .header-clearfix .header-mobile{
 		display: block;
-	}qqqqq
+	}
+	.menu ul li a.menu-item{
+    display: none;
+	}
+	.menu ul li a#search{
+    display: none;
+	}
+	.menu ul li a#user-account{
+    display: block;
+	}
+	.menu ul li#logo{
+	  margin-left: auto;
+	  margin-right: auto;
+	}
+	.menu ul li#user-icon{
+	  margin-right: 5%;
+	}
+	
 }
 
 @media (max-width: 767px){
-	.menu-mobile{
-		display: block;
-	}
+
 }

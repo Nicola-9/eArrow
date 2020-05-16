@@ -20,15 +20,15 @@
         
             <div class="menu">
                 <ul>
-                    <li><a href="navbar." class="img"><img src = '..//image/eArrow.png' width="50" height="50"></a></li>
+                    <li id="logo"><a href="navbar." class="img"><img src = '..//image/eArrow.png' width="50" height="50"></a></li>
                     <li><a href="#" class="menu-item">Archi</a></li>
                     <li><a href="#" class="menu-item">Accessori Arco</a></li>
                     <li><a href="#" class="menu-item">Accessori Arciere</a></li>
                     <li><a href="#" class="menu-item">Frecce e Componenti</a></li>
                     <li><a href="#" class="menu-item">Paglioni e Bersagli</a></li>
                     <li><a href="#" id="search"><i class="fa fa-search"></i></a></li>
-                    <li><a href="#" id="user-account" class="menu-item"><i class="fa fa-user"></i></a></li>
-                    <li><a href="#"><i class="fa fa-shopping-basket"></i></a></li>
+                    <li id="user-icon"><a href="#" id="user-account" class="menu-item"><i class="fa fa-user"></i></a></li>
+                    <li id="shopping-icon"><a href="#"><i class="fa fa-shopping-basket"></i></a></li>
                 </ul>
                 <div class="search-form">
                     <form>
