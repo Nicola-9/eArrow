@@ -40,11 +40,12 @@ body{
 
 .footer-line{
 	    
+    margin-top: 25px;
     border-width:1px 0px 1px 0px;
     border-style: solid;
     border-color: #2f2f2f;
     padding-top: 10px;
-	padding-bottom: 10px; 
+    padding-bottom: 10px; 
 }
 
 .footer-celebration{
