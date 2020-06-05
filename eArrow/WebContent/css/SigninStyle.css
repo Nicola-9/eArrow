@@ -1,0 +1,89 @@
+@charset "ISO-8859-1";
+@import url('https://fonts.googleapis.com/css?family=Numans');
+
+html,body{
+background-image: url('..//image/testImage.jpg');
+background-size: cover;
+background-repeat: no-repeat;
+height: 100%;
+font-family: 'Numans', sans-serif;
+}
+
+.container{
+height: 100%;
+align-content: center;
+}
+
+.card{
+height: auto;
+margin-top: auto;
+margin-bottom: auto;
+width: 400px;
+background-color: rgba(0,0,0,0.5) !important;
+}
+
+.card-header h3{
+color: white;
+}
+
+.card-body h5{
+color: white;
+}
+
+input:focus{
+outline: 0 0 0 0  !important;
+box-shadow: 0 0 0 0 !important;
+
+}
+
+.Signin_btn{
+color: black;
+background-color: #FFC312;
+width: 100px;
+}
+
+.Signin_btn:hover{
+color: black;
+background-color: white;
+}
+
+.input-group{
+	margin-bottom: 25px;
+}
+
+.subm{
+	margin-top: 15%;
+}
+
+.form-group{
+	height: auto;
+}
+
+.links{
+color: white;
+}
+
+.links a{
+margin-left: 4px;
+}
+
+.icon span{
+font-size: 60px;
+margin-left: 10px;
+color: #FFC312;
+}
+
+.icon span:hover{
+color: white;
+cursor: pointer;
+}
+
+.card-header h3{
+color: white;
+}
+
+.icon{
+position: absolute;
+right: 0px;
+top: -49px;
+}
