@@ -8,13 +8,48 @@
 		 <link rel="stylesheet" type="text/css" href="..//css/footerStyle.css">
     	<meta name ="viewport" content="width=device-width, initial-scale=1.0">
     	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    	
+    	<style>
+			.fa {
+			  width: 18%;
+			  font-size: 25px;
+			  text-align: center;
+			  text-decoration: none;
+			  margin: 5px 2px;
+			  border-radius: 10%;
+		   	  padding: 20px;
+			}
+			
+			.fa:hover {
+			    opacity: 0.7;
+			}
+			
+			.fa-facebook {
+			  background: #3B5998;
+			  color: white;
+			}
+			
+			.fa-twitter {
+			  background: #55ACEE;
+			  color: white;
+			}
+			
+			.fa-linkedin {
+			  background: #007bb5;
+			  color: white;
+			}
+			
+			.fa-instagram {
+			  background: #125688;
+			  color: white;
+			}
+		</style>
 	</head>
 	
 	<body>
 		<!-- footer -->
 		<footer>
 		<div class="footer">
-		
 		
 			<div class="footer-line">
 			<div class="footer-content">
@@ -30,9 +65,9 @@
 					</p>
 					
 					<a href="#" class="fa fa-facebook"></a>
-					<a href="#" class="fa fa-instagram"></a>
+					<a href="#" class="fa fa-twitter"></a>
 					<a href="#" class="fa fa-linkedin"></a>
-					<a href="#" class="fa fa-twitter"></a>	
+					<a href="#" class="fa fa-instagram"></a>	
 				</div>
 				
 				<div id="contacts">
