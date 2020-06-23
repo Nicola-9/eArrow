@@ -108,8 +108,9 @@ div.img-product{
 	.cate-none{
 	display:none;
 	}
+}
 	
-	@media (max-width: 535px){
+	@media (max-width: 517px){
 	.single-product{
     grid-template-columns: auto;
 	}

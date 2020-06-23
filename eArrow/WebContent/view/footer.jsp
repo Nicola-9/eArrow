@@ -8,42 +8,6 @@
 		 <link rel="stylesheet" type="text/css" href="..//css/footerStyle.css">
     	<meta name ="viewport" content="width=device-width, initial-scale=1.0">
     	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    	
-    	<style>
-			.fa {
-			  width: 18%;
-			  font-size: 25px;
-			  text-align: center;
-			  text-decoration: none;
-			  margin: 5px 2px;
-			  border-radius: 10%;
-		   	  padding: 20px;
-			}
-			
-			.fa:hover {
-			    opacity: 0.7;
-			}
-			
-			.fa-facebook {
-			  background: #3B5998;
-			  color: white;
-			}
-			
-			.fa-twitter {
-			  background: #55ACEE;
-			  color: white;
-			}
-			
-			.fa-linkedin {
-			  background: #007bb5;
-			  color: white;
-			}
-			
-			.fa-instagram {
-			  background: #125688;
-			  color: white;
-			}
-		</style>
 	</head>
 	
 	<body>
@@ -58,10 +22,10 @@
 					<label for="exampleFormControlInput1"><dt>Per conoscerci meglio</dt></label>
 					
 					<p>
-					Il sito eArrow è un sito di E-Commerce bla bla bla bla bla
-					bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla
-					bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla
-					bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla
+					Il sito eArrow è un sito di E-Commerce, specializzato nella vendita 
+					di prodotti legati al mondo dell'arceria. Su questo sito potrai trovare 
+					tutti i prodotti più richiesti, sia che tu voglia entrare in questo meraviglioso mondo, 
+					sia che tu voglia acquistare attrezzatura di livello professionale e ad uso agonistico.
 					</p>
 					
 					<a href="#" class="fa fa-facebook"></a>
@@ -87,7 +51,7 @@
 					<form>
 					  <div class="form-group">
 					    <label for="exampleFormControlInput1"><dt>Bisogno di aiuto?</dt></label>
-					    <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="nome@esempio.com">
+					    <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="nome@email.com">
 					  </div>
 				
 					  <div class="form-group">

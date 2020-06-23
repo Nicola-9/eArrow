@@ -12,51 +12,7 @@
     
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
-    
-<script>
-window.onresize = function resize()
-{
-	var body = $(".body-mar").css("width");
-	body = parseInt(body);
-	
-	var x = $(".img-product").css("width");
-	var w =  parseInt(x);
-
-	$(".img-product").css("height" , x);
-	
-	if(body >= 873){
-		$(".single-product").css("grid-template-columns", "17% auto 17%"); 
-		$(".img-product").css("max-width", "200px");
-	}
-	else if(body < 873){
-		$(".single-product").css("grid-template-columns", "22% auto 22%"); 
-		$(".img-product").css("max-width", "169px");
-	}
-	
-	if(body >= 718 && body < 873){
-		$(".single-product").css("grid-gap", "1%");
-	}
-	else if(body < 718){
-		$(".single-product").css("grid-gap", "3%");
-	}
-	
-	if(body >= 676 && body < 718){
-		$(".single-product").css("grid-template-columns", "22% auto 22%"); 
-	}
-	else if(body < 676){
-		$(".single-product").css("grid-template-columns", "27% auto"); 
-		$(".img-product").css("max-width", "169px"); 
-	}
-	if(body >= 482 && body < 676){
-		$(".single-product").css("grid-template-columns", "27% auto"); 
-	}
-	else if(body < 482){
-		$(".single-product").css("grid-template-columns", "auto"); 
-	}
-}
-</script>
-    
-    
+    <script src="..//javascript/img_resize_productList.js"></script>
 </head>
 	<body>
 	<div class="body-mar">
@@ -265,5 +221,10 @@ window.onresize = function resize()
 		</div>
 		
 	</div>
+	
+	<!-- Script per far diventare le immagini responsive -->
+	<script>window.onload = function(){resize();}</script>
+	<script>window.onresize = function(){resize();}</script>
+	
 	</body>
 </html>
