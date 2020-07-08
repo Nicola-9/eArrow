@@ -17,9 +17,9 @@
 	
 	<body>
 	
-		<div class="navbar">
+		
 			<jsp:include page="Navbar.jsp"/>
-		</div>
+	
 		
 		
 	</body>
