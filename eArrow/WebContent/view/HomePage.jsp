@@ -8,24 +8,20 @@
 	
 		<title>eArrow</title>
 		
-		<link rel="stylesheet" href="..//css/NavStyleTest.css">
+		<link rel="stylesheet" href="..//css/NavStyle.css">
 		
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 		
-		<link rel="stylesheet" href="https://unpkg.com/swiper/css/swiper.min.css">
-		<link rel="stylesheet" href="..//css/3DSliderStyle.css">
 		<link rel="stylesheet" href="..//css/HomePageStyle.css">
 	</head>
 	
 	<body>
 	
 		<div class="navbar">
-			<jsp:include page="NavbarTest.jsp"/>
+			<jsp:include page="Navbar.jsp"/>
 		</div>
 		
-		<div class="slider">
-			<jsp:include page="3DSlider.jsp"/>
-		</div>
 		
 	</body>
+
 </html>
