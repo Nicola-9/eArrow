@@ -1,0 +1,36 @@
+@charset "UTF-8";
+
+body{
+	background-color: #f8f9fa;	
+}
+
+.image{
+	height: 200px;
+	min-height: 30%;
+}
+
+.card-body{
+	margin: 1% 10%;
+	padding: 1%;
+	border: 1px solid #d1d1d1;
+	border-radius: 5px;
+	background-color: #fff;
+}
+
+#imageContainer{
+	text-align: center;
+	display: block;
+}
+
+.form-group{
+	width: 55%;
+	text-align: center;
+}
+
+.order{
+	text-align: center;
+}
+
+a.small.link{
+	margin-top: -50%;
+}
