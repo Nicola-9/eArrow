@@ -78,6 +78,10 @@ div.img-product{
 .btn-primary{
 	min-width: 154px;
 }
+
+.input-group{
+	width: 75%;
+}
 	
 	
 @media (max-width: 998px){
