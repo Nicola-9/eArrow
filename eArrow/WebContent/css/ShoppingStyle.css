@@ -1,20 +1,41 @@
 @charset "ISO-8859-1";
 
-body{
-    font-family: 'Source Sans Pro', sans-serif;
+
+.body-mar{
     margin-left: 5%;
     margin-right: 5%;
+    padding: 0;
+    font-family: 'Source Sans Pro', sans-serif;
 }
 
+#product-specific{
+	display: grid;
+	grid-template-columns: auto auto;
+  	grid-gap: 0;
+    overflow: none;
+    height: auto;
+}
+
+.text-left{
+	width: 100%;
+	height: 100%;
+	text-align: left;	
+}
+
+.text-right{
+	width: 100%;
+	height: 100%;
+	text-align: right;
+}
 .single-product{
 	display: grid;
-    grid-template-columns: 17% auto 17%;
+    grid-template-columns: 17% 15% auto 15%;
   	grid-gap: 1%;
     overflow: none;
     height: auto;
 }
 
-.product-line{
+.product-line, #product-specific{
     border-width:0px 0px 1px 0px;
     border-style: solid;
     border-color: #2f2f2f;
@@ -41,45 +62,85 @@ div.img-product{
 }
 
 .info-product{
-	text-align:left;
-	padding: 15px;;
+	margin-top: auto;
+  	margin-bottom: auto;
+	text-align: left;
+	padding: 15px;
+}
+
+.quantity-product{
+  	margin-top: auto;
+  	margin-bottom: auto;
+  	text-align:center;
+}
+
+.form-control{
+	width: 85px;
+	margin-left: auto;
+  	margin-right: auto;
+}
+
+.btn-secondary{
+	margin-top: 25px;
+	margin-left: auto;
+  	margin-right: auto;
+}
+
+.form-group{
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .price{
-	text-align:left;
+	text-align: right;
 }
 .form-group{
 	width: 15%;
 }
 
-@media (max-width: 998px){
+@media (max-width: 960px){
+	.info-product .desc{
+	display: none;
+	}
+}
+	
+	@media (max-width: 787px){
 	.single-product{
-    grid-template-columns: auto auto;
+    grid-template-columns: 35% auto;
 	}
-	.price{
-	display: grid;
-	grid-template-columns: auto auto;
-	width: 100%;
-	grid-area: 2 / 1 / 3 / 3;
+	
+	.info-product{
+	grid-row: 1 / 2;
+	grid-column: 1 / 2;
+	margin-left: 0;
+  	margin-right: auto;
+  	padding: 0;
+	width: 169px;
+	text-align:center;
 	}
-	.carrello{
-	grid-area: 1 / 2 / 2 / 3;
+	
+	.info-element{
+	margin: auto;
 	}
-	.carrello{
-	grid-area: 1 / 1 / 2 / 2;
+	
+	.cate-none, .info{
+	display: none;
 	}
 	
 	.img-product{
-	width: 100%;
-    height: auto;
-    max-width: 200px;
+	grid-row: 2 / 3;
+	grid-column: 1 / 2;
 	}
-	.info-product{
-	overflow: hidden;
-	max-height: 200px;
+	
+	.quantity-product{
+	grid-row: 2 / 3;
+	grid-column: 2 / 3;
 	}
- }
- 
 }
 
+/*Valutare come fare (se rendere tutto molto più piccolo in stile amazon)*/
+
+@media (max-width: 455px){
+	
 }
+	
