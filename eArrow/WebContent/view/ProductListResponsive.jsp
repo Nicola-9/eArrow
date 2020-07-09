@@ -21,7 +21,7 @@
 	<div class="card-body">
 		<div class="row">
 			<aside class="col-md-3" id="imageContainer">
-				<a href="#" class="img-wrap img-fluid"><img class="image" src="..//image/riser-test.jpg"></a>
+				<a href="#" class="img-wrap"><img class="image" src="..//image/riser-test.jpg"></a>
 			</aside>
 			<!-- col.// -->
 			<article class="col-md-6">
@@ -55,7 +55,7 @@
 				<p class="buttonAdd">
 					<a href="#" class="btn btn-primary">Aggiungi al carrello</a> 
 				</p>
-				<br> <a href="#" class="small link">
+				<br> <a href="#" class="small">
 					Scopri di più ></a>
 			</aside>
 			<!-- col.// -->

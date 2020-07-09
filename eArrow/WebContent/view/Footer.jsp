@@ -2,7 +2,7 @@
 
 <!-- footer -->
 <footer>
-	<div class="footer"> 
+	<div class="footer">
 
 		<div class="footer-line">
 			<div class="footer-content">

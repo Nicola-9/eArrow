@@ -6,7 +6,6 @@ body{
 
 .image{
 	height: 200px;
-	min-height: 30%;
 }
 
 .card-body{
@@ -29,8 +28,4 @@ body{
 
 .order{
 	text-align: center;
-}
-
-a.small.link{
-	margin-top: -50%;
 }
