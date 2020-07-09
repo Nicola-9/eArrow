@@ -65,27 +65,14 @@
 						Colori Anodizzati molto belli e resistenti. L'unico colore verniciato è il Bianco. 
 						Attacco flettenti Standard ILF.</p>
 				</div>
-						<div class="buy-product">
-							<p class="price">
-								<strong>25 $</strong>
-							</p>
-							<div class="input-group input-group-sm mb-3">
-								<div class="input-group-prepend">
-									<span class="input-group-text" id="inputGroup-sizing-sm">$</span>
-								</div>
-								<input type="text" class="form-control"
-									aria-label="Amount (to the nearest dollar)" aria-describedby="inputGroup-sizing-sm">
-								<div class="input-group-append">
-									<span class="input-group-text" id="inputGroup-sizing-sm">.00</span>
-								</div>
-							</div>
-							<button type="button" class="btn btn-primary carrello">Aggiungi
-								al carrello</button>
-							<button type="button" class="btn btn-link info">scopri
-								di più ></button>
-						</div>
-
-					</div>
+				
+				<div class="buy-product">
+					<p class="price"><strong>25 $</strong></p>
+					<button type="button" class="btn btn-primary carrello">Aggiungi al carrello</button>
+					<button type="button" class="btn btn-link info">scopri di più ></button>
+				</div>
+				
+				</div>
 				
 			</div>
 			</div>
