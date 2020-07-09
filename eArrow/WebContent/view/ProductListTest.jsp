@@ -51,23 +51,20 @@
 		    <div class="product-line">
 			<div class="single-product">
 			
-				<div class="img-product img-thumbnail">
-					<img src="..//image/riser-test.jpg" class="img-size" alt="non funzione">
+				<div class="img-product">
+					<img src="..//image/testImage.jpg" class="img-size" alt="non funzione">
 				</div>
 				
 				<div class="spec-product">
 				
 				<div class="info-product">
-					<p class="info-element-nome"><strong>KINETIC RISER A1 FORGED STYLIZED 2020</strong></p>
-					<p class="info-element-categoria">Riser</p>
-					<p class="desc">Riser Kinetic A1 Forged Stylized, lunghezza 25'', 
-						peso 1290 grammi con produzione da alluminio forgiato e fresatura di ottima qualità. 
-						Colori Anodizzati molto belli e resistenti. L'unico colore verniciato è il Bianco. 
-						Attacco flettenti Standard ILF.</p>
+					<p class="info-element">nome prodotto</p>
+					<p class="info-element info-none">nome categoria</p>
+					<p class="desc">breve descrizione</p>
+					<p class="info-element info-none">prezzo:</p>
 				</div>
 				
 				<div class="buy-product">
-					<p class="price"><strong>25 $</strong></p>
 					<button type="button" class="btn btn-primary carrello">Aggiungi al carrello</button>
 					<button type="button" class="btn btn-link info">scopri di più ></button>
 				</div>

@@ -1,65 +1,65 @@
 
         
 		<header>
-			<div class="earrow-container">
+			<div class="container">
 				
-				<nav class="earrow-nav">
-					<ul class="nav-earrow-list nav-earrow-list-mobile">
+				<nav class="nav">
+					<ul class="nav-list nav-list-mobile">
 						
-						<li class="nav-earrow-item">
+						<li class="nav-item">
 						
-							<div class="mobile-earrow-menu">
+							<div class="mobile-menu">
 								<span class="line line-top"></span>
 								<span class="line line-bottom"></span>
 							</div>
 						
 						</li>
 						
-						<li class="nav-earrow-item">
-							<a href="Homepage.jsp" class="nav-earrow-link nav-link-earrow"></a>
+						<li class="nav-item">
+							<a href="Homepage.jsp" class="nav-link nav-link-apple"></a>
 						</li>
 						
-						<li class="nav-earrow-item">
-							<a href="#" class="nav-earrow-link nav-earrow-link-bag"></a>
+						<li class="nav-item">
+							<a href="#" class="nav-link nav-link-bag"></a>
 						</li>
 					</ul>
 					
-					<ul class="nav-earrow-list nav-earrow-list-larger">
+					<ul class="nav-list nav-list-larger">
 						
-						<li class="nav-earrow-item nav-earrow-item-hidden">
-							<a href="Homepage.jsp" class="nav-earrow-link nav-link-earrow"></a>
+						<li class="nav-item nav-item-hidden">
+							<a href="Homepage.jsp" class="nav-link nav-link-apple"></a>
 						</li>
 						
-						<li class="nav-earrow-item">
-							<a href="Homepage.jsp" class="nav-earrow-link">Archi</a>
+						<li class="nav-item">
+							<a href="Homepage.jsp" class="nav-link">Archi</a>
 						</li>
 
-						<li class="nav-earrow-item">
-							<a href="Homepage.jsp" class="nav-earrow-link">Accessori Arco</a>
+						<li class="nav-item">
+							<a href="Homepage.jsp" class="nav-link">Accessori Arco</a>
 						</li>
 						
-						<li class="nav-earrow-item">
-							<a href="Homepage.jsp" class="nav-earrow-link">Accessori Arciere</a>
+						<li class="nav-item">
+							<a href="Homepage.jsp" class="nav-link">Accessori Arciere</a>
 						</li>
 						
-						<li class="nav-earrow-item">
-							<a href="Homepage.jsp" class="nav-earrow-link">Frecce e Componenti</a>
+						<li class="nav-item">
+							<a href="Homepage.jsp" class="nav-link">Frecce e Componenti</a>
 						</li>
 						
-						<li class="nav-earrow-item">
-							<a href="Homepage.jsp" class="nav-earrow-link">Paglioni e Bersagli</a>
+						<li class="nav-item">
+							<a href="Homepage.jsp" class="nav-link">Paglioni e Bersagli</a>
 						</li>
 						
-						<li class="nav-earrow-item search-item">
-							<a href="#" class="nav-earrow-link nav-earrow-link-search" id="search"></a>
+						<li class="nav-item search-item">
+							<a href="#" class="nav-link nav-link-search" id="search"></a>
 						</li>
 						
-						<li class="nav-earrow-item">
-							<a href="#" class="nav-earrow-link nav-earrow-link-account"></a>
+						<li class="nav-item">
+							<a href="#" class="nav-link nav-link-account"></a>
 						</li>
 						
-						<li class="nav-earrow-item nav-earrow-item-hidden">
-							<a href="#" class="nav-earrow-link nav-earrow-link-bag"></a>
+						<li class="nav-item nav-item-hidden">
+							<a href="#" class="nav-link nav-link-bag"></a>
 						</li>
 					</ul>
 					
@@ -83,13 +83,13 @@
 		
 			var searchView = function(){
                 $('#search').click(function(){
-                    $('.nav-earrow-link').addClass('hide-item');
+                    $('.nav-link').addClass('hide-item');
                     $('.search-form').addClass('active');
                     $('.close').addClass('active');
                 });
                 
                 $('.close').click(function(){
-                    $('.nav-earrow-link').removeClass('hide-item');
+                    $('.nav-link').removeClass('hide-item');
                     $('.search-form').removeClass('active');
                     $('.close').removeClass('active'); 
                 });
@@ -122,7 +122,7 @@
             		if($(window).innerWidth() > 998){
             			$('#search').show();
             			
-            			$('.search-form').removeClass('mobile').appendTo('.earrow-nav');
+            			$('.search-form').removeClass('mobile').appendTo('.nav');
             			searchView();
             		}
             	});
