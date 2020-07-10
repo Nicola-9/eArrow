@@ -11,7 +11,7 @@
 		<!-- Bootstrap CSS -->	
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 		
-		<link rel="stylesheet" href="..//css/NavStyle.css">
+		<link rel="stylesheet" href="..//css/NavbareArrowStyle.css">
 		
 		<link rel="stylesheet" href="..//css/HomePageStyle.css">
 		
@@ -22,12 +22,12 @@
 	
 	<body>
 		
-		<jsp:include page="Navbar.jsp"/>
+		<jsp:include page="NavbareArrow.jsp"/>
 		
 		<jsp:include page="Body.jsp"/>
 		
 		<div class="eArrow-footer">
-			<jsp:include page="footer.jsp"/>
+			<jsp:include page="Footer.jsp"/>
 		</div>
 		
 		<!-- Bootstrap Script -->	
