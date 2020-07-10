@@ -5,19 +5,33 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>Prodotti</title>
-		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-		
-		<link rel="stylesheet" type="text/css" href="..//css/ProductListResponsive.css">
 		
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		
-		<link rel="stylesheet"href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">		
+		
+		<link rel="stylesheet" type="text/css" href="..//css/footerStyle.css">
+		<link rel="stylesheet" type="text/css" href="..//css/ProductListResponsive.css">
+		<link rel="stylesheet" type="text/css" href="..//css/NavbareArrowStyle.css">	
+		
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 
 	<body>
+	
+	<jsp:include page="NavbareArrow.jsp"/>
+	
+	<div class="content"> 
+	
+	<div class="ordinamento">
+			<label class="titleSelect">Ordina per: &nbsp&nbsp&nbsp</label>
+			<select class="custom-select">
+  				<option selected>Nome</option>
+  				<option value="1">Prezzo crescente</option>
+  				<option value="2">Prezzo decrescente</option>
+			</select>
+	</div>
+
 	<div class="card-body">
 		<div class="row">
 			<aside class="col-md-3" id="imageContainer">
@@ -35,7 +49,7 @@
 					</small>
 				</div>
 				<!-- rating-wrap.// -->
-				<p>
+				<p class="description">
 					Riser Kinetic A1 Forged Stylized, lunghezza 25'', 
 					peso 1290 grammi con produzione da alluminio forgiato e fresatura di ottima qualità. 
 					Colori Anodizzati molto belli e resistenti. L'unico colore verniciato è il Bianco. 
@@ -62,5 +76,16 @@
 		</div>
 		<!-- row.// -->
 	</div>
+	
+	</div>
+	
+	<div class="eArrow-footer">
+		<jsp:include page="Footer.jsp"/>
+	</div>
+	
+	<!-- Bootstrap Script -->	
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>	
 </body>
 </html>
