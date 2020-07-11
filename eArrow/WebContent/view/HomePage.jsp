@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+<%@page import="java.util.ArrayList, model.bean.*, model.dao.*"%>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -11,11 +13,11 @@
 		<!-- Bootstrap CSS -->	
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 		
-		<link rel="stylesheet" href="..//css/NavbareArrowStyle.css">
+		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/NavbareArrowStyle.css">
 		
-		<link rel="stylesheet" href="..//css/HomePageStyle.css">
+		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/HomePageStyle.css">
 		
-		<link rel="stylesheet" href="..//css/footerStyle.css">
+		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/footerStyle.css">
 		
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	</head>
@@ -23,10 +25,49 @@
 	<body>
 		
 		<jsp:include page="NavbareArrow.jsp"/>
+
+	<div id="carouselExampleIndicators" class="carousel slide h-100"
+		data-ride="carousel">
+		<ol class="carousel-indicators">
+			<li data-target="#carouselExampleIndicators" data-slide-to="0"
+				class="active"></li>
+			<li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+			<li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+		</ol>
+		<div class="carousel-inner">
 		
-		<jsp:include page="Body.jsp"/>
-		
-		<div class="eArrow-footer">
+		<% 
+			Object evidenzaObj = request.getAttribute("evidenzaList");
+			ArrayList<String> evidenza = (ArrayList<String>) evidenzaObj;
+			
+			for(String e : evidenza){
+				
+				System.out.println(e);
+		%>
+			<div class="carousel-item h-100 active">
+				<img class="d-block w-100 h-100" src="${pageContext.request.contextPath}<%=e%>" alt="Offerta">
+				<div class="carousel-caption d-none d-md-block">
+					<h5></h5>
+					<p>...</p>
+				</div>
+			</div>
+			
+		<%
+			}
+		%>
+		</div>
+		<a class="carousel-control-prev" href="#carouselExampleIndicators"
+			role="button" data-slide="prev"> <span
+			class="carousel-control-prev-icon" aria-hidden="true"></span> <span
+			class="sr-only">Previous</span>
+		</a> <a class="carousel-control-next" href="#carouselExampleIndicators"
+			role="button" data-slide="next"> <span
+			class="carousel-control-next-icon" aria-hidden="true"></span> <span
+			class="sr-only">Next</span>
+		</a>
+	</div>
+
+	<div class="eArrow-footer">
 			<jsp:include page="Footer.jsp"/>
 		</div>
 		
