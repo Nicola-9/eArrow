@@ -23,7 +23,7 @@
 			<ul class="nav-earrow-list nav-earrow-list-larger">
 
 				<li class="nav-earrow-item nav-earrow-item-hidden"><a
-					href="${pageContext.request.contextPath}/view/HomePage.jsp" class="nav-earrow-link nav-link-earrow"></a></li>
+					href="${pageContext.request.contextPath}/HomePageServlet" class="nav-earrow-link nav-link-earrow"></a></li>
 
 				<li class="nav-earrow-item"><a href="${pageContext.request.contextPath}/ProductsListServlet?category=Archi"
 					class="nav-earrow-link">Archi</a></li>

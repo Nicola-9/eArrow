@@ -40,19 +40,8 @@ public class HomePageServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		List<EvidenzaBean> evidenza = EvidenzaDAO.doRetrieveAll();
-		List<String> uriEvidenza = new ArrayList<String>();
 		
-		for(EvidenzaBean e : evidenza) {
-			String uri = ImmagineDAO.doRetrieveImageByProductCode(e.getCodiceProdotto()).getUri();
-			System.out.println(e.getCodiceProdotto());
-			
-			if(uri.contains("offerte")) {
-				uriEvidenza.add(uri);
-				System.out.println(uri);
-			}
-		}
-		
-		request.setAttribute("evidenzaList", uriEvidenza);
+		request.setAttribute("evidenzaList", evidenza);
 		
 		request.getRequestDispatcher("view/HomePage.jsp").forward(request, response);
 	}
