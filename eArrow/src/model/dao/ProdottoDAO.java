@@ -18,7 +18,8 @@ public class ProdottoDAO {
 		ResultSet rs;
 		ProdottoBean prodotto;
 		
-		String productSQL = "SELECT p.nome, p.categoria, p.prezzo, p.descrizione FROM"
+		String productSQL = "SELECT p.nome, p.categoria, p.tipologia, p.prezzo, p.disponibilità,"
+							+ "p.quantità, p.descrizione FROM"
 							+ " prodotto AS p WHERE p.categoria = ?";
 		
 		try(Connection connection = ConnessioneDB.getConnection()){
@@ -33,7 +34,16 @@ public class ProdottoDAO {
 				
 				prodotto.setNome(rs.getString("nome"));
 				prodotto.setCategoria(rs.getString("categoria"));
+				prodotto.setTipologia(rs.getString("tipologia"));
 				prodotto.setPrezzo(rs.getDouble("prezzo"));
+				
+				if(rs.getInt("disponibilità") == 1) {
+					prodotto.setDisponibilità(true);
+				} else {
+					prodotto.setDisponibilità(false);
+				}
+				
+				prodotto.setQuantità(rs.getInt("quantità"));
 				prodotto.setDescrizione(rs.getString("descrizione"));
 				
 				products.add(prodotto);
