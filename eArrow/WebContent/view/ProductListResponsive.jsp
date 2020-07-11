@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
  
-<%@page import="java.util.ArrayList, model.bean.*, model.dao.*, java.text.DecimalFormat"%>
+<%@page import="java.util.ArrayList, model.bean.*, model.dao.*"%>
 
 <!DOCTYPE html>
 <html>
@@ -10,12 +10,8 @@
 		
 		<%  Object categoryObj = request.getAttribute("category");
 			String category = (String) categoryObj;
-			
-			if(category.toLowerCase().equals("archi")){
 		%>
-			<title>Archi</title>
-		
-		<%} %>
+			<title>eArrow - <%=category %></title>
 		
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		
@@ -32,33 +28,76 @@
 	
 	<jsp:include page="NavbareArrow.jsp"/>
 	
-	<div class="content"> 
+	<div class="content">
 	
-	<div class="ordinamento">
-			<label class="titleSelect">Ordina per: &nbsp&nbsp&nbsp</label>
-			<select class="custom-select">
-  				<option selected>Nome</option>
-  				<option value="1">Prezzo crescente</option>
-  				<option value="2">Prezzo decrescente</option>
-			</select>
-	</div>
+	<%
+		Object ordinamentoObj = request.getAttribute("ordinamento");
+		String ordinamento = (String) ordinamentoObj;
+	%>
+	
 
-	<%	
+		<form class="orderForm" action="./ProductsListServlet">
+			<input type="hidden" name="category" value="<%=category%>">
+			<div class="ordinamento">
+				<label class="titleSelect">Ordina per: &nbsp&nbsp&nbsp</label> 
+				<select	class="custom-select" name="ordinamento" onchange="this.form.submit()">
+				
+				<%
+					if( ordinamento != null ) {
+						if( ordinamento.equals("nome") ) {
+				%>
+					<option value="nome" selected>Nome</option>
+					<option value="prezzoC">Prezzo crescente</option>
+					<option value="prezzoD">Prezzo decrescente</option>
+					
+				<%
+						} else
+							if(ordinamento.equals("prezzoC")){
+				%>
+					<option value="nome">Nome</option>
+					<option value="prezzoC" selected>Prezzo crescente</option>
+					<option value="prezzoD">Prezzo decrescente</option>
+				<%
+						} else
+							if(ordinamento.equals("prezzoD")){
+				%>
+					<option value="nome">Nome</option>
+					<option value="prezzoC">Prezzo crescente</option>
+					<option value="prezzoD" selected>Prezzo decrescente</option>
+				<%
+							}
+					} else{
+				%>
+					<option value="nome" selected>Nome</option>
+					<option value="prezzoC">Prezzo crescente</option>
+					<option value="prezzoD">Prezzo decrescente</option>
+				<% 
+					}
+				%>
+				</select>
+			</div>
+		</form>
+
+		<%	
 		ArrayList<ProdottoBean> products = (ArrayList<ProdottoBean>) request.getAttribute("prodottiList");
 		
 		for(ProdottoBean p : products){
-			
-			DecimalFormat twoDec = new DecimalFormat("#.###");
-			
-			double price = Double.valueOf(twoDec.format(p.getPrezzo()));
-			System.out.println(price);
+			double price = p.getPrezzo();
 			
 			String priceD = String.format("%.2f", price);
+			
+			System.out.println(p.getCodice());
+			
+			ImmagineBean image = ImmagineDAO.doRetrieveImageByProductCode(p.getCodice());
+			
+			String uriImage = image.getUri();
+			
+			System.out.println(uriImage);
 	%>
 	<div class="card-body">
 		<div class="row">
 			<aside class="col-md-3" id="imageContainer">
-				<a href="#" class="img-wrap img-fluid"><img class="image" src="..//image/riser-test.jpg"></a>
+				<a href="#" class="img-wrap img-fluid"><img class="image" src="${pageContext.request.contextPath}<%=uriImage%>"></a>
 			</aside>
 			<!-- col.// -->
 			<article class="col-md-6">
