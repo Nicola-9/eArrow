@@ -39,12 +39,12 @@ public class ProdottoDAO {
 				prodotto.setPrezzo(rs.getDouble("prezzo"));
 				
 				if(rs.getInt("disponibilità") == 1) {
-					prodotto.setDisponibilità(true);
+					prodotto.setDisponibilita(true);
 				} else {
-					prodotto.setDisponibilità(false);
+					prodotto.setDisponibilita(false);
 				}
 				
-				prodotto.setQuantità(rs.getInt("quantità"));
+				prodotto.setQuantita(rs.getInt("quantità"));
 				prodotto.setDescrizione(rs.getString("descrizione"));
 				
 				products.add(prodotto);
@@ -85,12 +85,12 @@ public class ProdottoDAO {
 				prodotto.setPrezzo(rs.getDouble("prezzo"));
 				
 				if(rs.getInt("disponibilità") == 1) {
-					prodotto.setDisponibilità(true);
+					prodotto.setDisponibilita(true);
 				} else {
-					prodotto.setDisponibilità(false);
+					prodotto.setDisponibilita(false);
 				}
 				
-				prodotto.setQuantità(rs.getInt("quantità"));
+				prodotto.setQuantita(rs.getInt("quantità"));
 				prodotto.setDescrizione(rs.getString("descrizione"));
 				
 				products.add(prodotto);

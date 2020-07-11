@@ -121,7 +121,9 @@
 				</div>
 				<!-- info-price-detail // -->
 
-				<% if(p.isDisponibilità()){ %>
+				<%
+					if(p.isDisponibilita()){
+				%>
 				
 					<p class="small text-success">Disponibile</p>
 					
@@ -132,7 +134,7 @@
 				<% } %>
 				
 				<p class="buttonAdd">
-					<p class="quantity">Quantità: <%=p.getQuantità() %></p>
+					<p class="quantity">Quantità: <%=p.getQuantita()%></p>
 					<a href="#" class="btn btn-primary">Aggiungi al carrello</a> 
 				</p>
 				<a href="#" class="small link">
