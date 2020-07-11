@@ -20,6 +20,7 @@ body{
 
 .image{
 	height: 150px;
+	max-width: 250px;
 	min-height: 30%;
 	transition: transform .1s;
 }

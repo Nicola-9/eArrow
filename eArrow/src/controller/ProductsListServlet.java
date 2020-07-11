@@ -34,16 +34,223 @@ public class ProductsListServlet extends HttpServlet{
 	
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String category = request.getParameter("category");
+		String ordinamento = request.getParameter("ordinamento");
+		List<ProdottoBean> products = new ArrayList<ProdottoBean>();
 		
-		if(category.toLowerCase().equals("archi")) {
-			List<ProdottoBean> products = new ArrayList<ProdottoBean>();
+		if (ordinamento != null) {
 			
-			products = ProdottoDAO.doRetrievebyCategory("Riser");
+			if (ordinamento.equals("nome")) {
+
+				switch (category.toLowerCase()) {
+					case "archi":
+						products = this.retrieveProductsList("archi", ProdottoDAO.ORDINA_NOME);
+	
+						request.setAttribute("prodottiList", products);
+						request.setAttribute("category", "Archi");
+	
+						request.getRequestDispatcher("view/ProductListResponsive.jsp").forward(request, response);
+						break;
+	
+					case "accessoriarco":
+						products = this.retrieveProductsList("accessori-arco", ProdottoDAO.ORDINA_NOME);
+	
+						request.setAttribute("prodottiList", products);
+						request.setAttribute("category", "Accessori Arco");
+	
+						request.getRequestDispatcher("view/ProductListResponsive.jsp").forward(request, response);
+						break;
+	
+					case "accessoriarciere":
+						products = this.retrieveProductsList("accessori-arciere", ProdottoDAO.ORDINA_NOME);
+	
+						request.setAttribute("prodottiList", products);
+						request.setAttribute("category", "Accessori Arciere");
+	
+						request.getRequestDispatcher("view/ProductListResponsive.jsp").forward(request, response);
+						break;
+	
+					case "frecce":
+						products = this.retrieveProductsList("frecce", ProdottoDAO.ORDINA_NOME);
+	
+						request.setAttribute("prodottiList", products);
+						request.setAttribute("category", "Frecce e Componenti");
+	
+						request.getRequestDispatcher("view/ProductListResponsive.jsp").forward(request, response);
+						break;
+	
+					case "paglioni":
+						products = this.retrieveProductsList("paglioni", ProdottoDAO.ORDINA_NOME);
+	
+						request.setAttribute("prodottiList", products);
+						request.setAttribute("category", "Paglioni e Bersagli");
+	
+						request.getRequestDispatcher("view/ProductListResponsive.jsp").forward(request, response);
+						break;
+				} 
+			} else
+				if(ordinamento.equals("prezzoC")) {
+
+					switch (category.toLowerCase()) {
+						case "archi":
+							products = this.retrieveProductsList("archi", ProdottoDAO.ORDINA_PREZZOC);
+		
+							request.setAttribute("prodottiList", products);
+							request.setAttribute("category", "Archi");
+		
+							request.getRequestDispatcher("view/ProductListResponsive.jsp").forward(request, response);
+							break;
+		
+						case "accessoriarco":
+							products = this.retrieveProductsList("accessori-arco", ProdottoDAO.ORDINA_PREZZOC);
+		
+							request.setAttribute("prodottiList", products);
+							request.setAttribute("category", "Accessori Arco");
+		
+							request.getRequestDispatcher("view/ProductListResponsive.jsp").forward(request, response);
+							break;
+		
+						case "accessoriarciere":
+							products = this.retrieveProductsList("accessori-arciere", ProdottoDAO.ORDINA_PREZZOC);
+		
+							request.setAttribute("prodottiList", products);
+							request.setAttribute("category", "Accessori Arciere");
+		
+							request.getRequestDispatcher("view/ProductListResponsive.jsp").forward(request, response);
+							break;
+		
+						case "frecce":
+							products = this.retrieveProductsList("frecce", ProdottoDAO.ORDINA_PREZZOC);
+		
+							request.setAttribute("prodottiList", products);
+							request.setAttribute("category", "Frecce e Componenti");
+		
+							request.getRequestDispatcher("view/ProductListResponsive.jsp").forward(request, response);
+							break;
+		
+						case "paglioni":
+							products = this.retrieveProductsList("paglioni", ProdottoDAO.ORDINA_PREZZOC);
+		
+							request.setAttribute("prodottiList", products);
+							request.setAttribute("category", "Paglioni e Bersagli");
+		
+							request.getRequestDispatcher("view/ProductListResponsive.jsp").forward(request, response);
+							break;
+					} 
+				} else
+					if(ordinamento.equals("prezzoD")) {
+
+						switch (category.toLowerCase()) {
+							case "archi":
+								products = this.retrieveProductsList("archi", ProdottoDAO.ORDINA_PREZZOD);
 			
-			request.setAttribute("prodottiList", products);
-			request.setAttribute("category", "Archi");
+								request.setAttribute("prodottiList", products);
+								request.setAttribute("category", "Archi");
 			
-			request.getRequestDispatcher("view/ProductListResponsive.jsp").forward(request, response);;
+								request.getRequestDispatcher("view/ProductListResponsive.jsp").forward(request, response);
+								break;
+			
+							case "accessoriarco":
+								products = this.retrieveProductsList("accessori-arco", ProdottoDAO.ORDINA_PREZZOD);
+			
+								request.setAttribute("prodottiList", products);
+								request.setAttribute("category", "Accessori Arco");
+			
+								request.getRequestDispatcher("view/ProductListResponsive.jsp").forward(request, response);
+								break;
+			
+							case "accessoriarciere":
+								products = this.retrieveProductsList("accessori-arciere", ProdottoDAO.ORDINA_PREZZOD);
+			
+								request.setAttribute("prodottiList", products);
+								request.setAttribute("category", "Accessori Arciere");
+			
+								request.getRequestDispatcher("view/ProductListResponsive.jsp").forward(request, response);
+								break;
+			
+							case "frecce":
+								products = this.retrieveProductsList("frecce", ProdottoDAO.ORDINA_PREZZOD);
+			
+								request.setAttribute("prodottiList", products);
+								request.setAttribute("category", "Frecce e Componenti");
+			
+								request.getRequestDispatcher("view/ProductListResponsive.jsp").forward(request, response);
+								break;
+			
+							case "paglioni":
+								products = this.retrieveProductsList("paglioni", ProdottoDAO.ORDINA_PREZZOD);
+			
+								request.setAttribute("prodottiList", products);
+								request.setAttribute("category", "Paglioni e Bersagli");
+			
+								request.getRequestDispatcher("view/ProductListResponsive.jsp").forward(request, response);
+								break;
+						} 
+					}
+		} else {
+			switch (category.toLowerCase()) {
+				case "archi":
+					products = this.retrieveProductsList("archi", ProdottoDAO.ORDINA_NOME);
+	
+					request.setAttribute("prodottiList", products);
+					request.setAttribute("category", "Archi");
+	
+					request.getRequestDispatcher("view/ProductListResponsive.jsp").forward(request, response);
+					break;
+	
+				case "accessoriarco":
+					products = this.retrieveProductsList("accessori-arco", ProdottoDAO.ORDINA_NOME);
+	
+					request.setAttribute("prodottiList", products);
+					request.setAttribute("category", "Accessori Arco");
+	
+					request.getRequestDispatcher("view/ProductListResponsive.jsp").forward(request, response);
+					break;
+	
+				case "accessoriarciere":
+					products = this.retrieveProductsList("accessori-arciere", ProdottoDAO.ORDINA_NOME);
+	
+					request.setAttribute("prodottiList", products);
+					request.setAttribute("category", "Accessori Arciere");
+	
+					request.getRequestDispatcher("view/ProductListResponsive.jsp").forward(request, response);
+					break;
+	
+				case "frecce":
+					products = this.retrieveProductsList("frecce", ProdottoDAO.ORDINA_NOME);
+	
+					request.setAttribute("prodottiList", products);
+					request.setAttribute("category", "Frecce e Componenti");
+	
+					request.getRequestDispatcher("view/ProductListResponsive.jsp").forward(request, response);
+					break;
+	
+				case "paglioni":
+					products = this.retrieveProductsList("paglioni", ProdottoDAO.ORDINA_NOME);
+	
+					request.setAttribute("prodottiList", products);
+					request.setAttribute("category", "Paglioni e Bersagli");
+	
+					request.getRequestDispatcher("view/ProductListResponsive.jsp").forward(request, response);
+					break;
+			} 
 		}
+	}
+	
+	private List<ProdottoBean> retrieveProductsList(String category, int ordinamento){
+		List<ProdottoBean> products = new ArrayList<ProdottoBean>();
+		
+		switch(ordinamento) {
+			case ProdottoDAO.ORDINA_NOME:
+				products = ProdottoDAO.doRetrievebyCategoryOrdered(category, ProdottoDAO.ORDINA_NOME);
+				break;
+			case ProdottoDAO.ORDINA_PREZZOC:
+				products = ProdottoDAO.doRetrievebyCategoryOrdered(category, ProdottoDAO.ORDINA_PREZZOC);
+				break;
+			case ProdottoDAO.ORDINA_PREZZOD:
+				products = ProdottoDAO.doRetrievebyCategoryOrdered(category, ProdottoDAO.ORDINA_PREZZOD);
+				break;
+		}
+		
+		return products;
 	}
 }
