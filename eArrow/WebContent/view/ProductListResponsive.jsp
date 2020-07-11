@@ -86,13 +86,11 @@
 			
 			String priceD = String.format("%.2f", price);
 			
-			System.out.println(p.getCodice());
-			
 			ImmagineBean image = ImmagineDAO.doRetrieveImageByProductCode(p.getCodice());
 			
 			String uriImage = image.getUri();
 			
-			System.out.println(uriImage);
+			String categoria = p.getCategoria().substring(0, 1).toUpperCase() + p.getCategoria().substring(1);
 	%>
 	<div class="card-body">
 		<div class="row">
@@ -107,7 +105,7 @@
 				
 				<div class="rating-wrap mb-3">
 					<small class="label-rating text-success category"> 
-						<%=p.getCategoria() %> - <%=p.getTipologia() %>
+						<%=categoria %> - <%=p.getTipologia() %>
 					</small>
 				</div>
 				<!-- rating-wrap.// -->
@@ -123,7 +121,9 @@
 				</div>
 				<!-- info-price-detail // -->
 
-				<% if(p.isDisponibilità()){ %>
+				<%
+					if(p.isDisponibilita()){
+				%>
 				
 					<p class="small text-success">Disponibile</p>
 					
@@ -134,7 +134,7 @@
 				<% } %>
 				
 				<p class="buttonAdd">
-					<p class="quantity">Quantità: <%=p.getQuantità() %></p>
+					<p class="quantity">Quantità: <%=p.getQuantita()%></p>
 					<a href="#" class="btn btn-primary">Aggiungi al carrello</a> 
 				</p>
 				<a href="#" class="small link">
@@ -146,11 +146,11 @@
 		<!-- row.// -->
 	</div>
 	
-	</div>
-	
 	<% 	
 		}	
 	%>
+	
+	</div>
 	
 	<div class="eArrow-footer">
 		<jsp:include page="Footer.jsp"/>
