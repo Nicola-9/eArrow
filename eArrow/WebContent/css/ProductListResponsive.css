@@ -14,13 +14,14 @@ html{
 
 body{
 	margin-top: 5%;
-	height: 100vh;
 	background-color: #f8f9fa;	
+	display: flex;
+	flex-direction: column;
 }
 
 .image{
 	height: 150px;
-	max-width: 250px;
+	max-width: 100%;
 	min-height: 30%;
 	transition: transform .1s;
 }
@@ -103,12 +104,14 @@ a.small.link{
 }
 
 .content{
-	height: 100vh;
+	min-height: 100vh;
 }
 
 .eArrowFooter{
 	margin-bottom: 0;
-	display: block;
+	bottom: 0;
+	position: relative;
+	flex: 0;
 }
 
 @media (max-width: 998px){

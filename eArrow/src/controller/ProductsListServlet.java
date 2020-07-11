@@ -40,6 +40,8 @@ public class ProductsListServlet extends HttpServlet{
 		if (ordinamento != null) {
 			
 			if (ordinamento.equals("nome")) {
+				String ordin = "nome";
+				Object ordering = (Object) ordin;
 
 				switch (category.toLowerCase()) {
 					case "archi":
@@ -47,6 +49,7 @@ public class ProductsListServlet extends HttpServlet{
 	
 						request.setAttribute("prodottiList", products);
 						request.setAttribute("category", "Archi");
+						request.setAttribute("ordinamento", ordering);
 	
 						request.getRequestDispatcher("view/ProductListResponsive.jsp").forward(request, response);
 						break;
@@ -56,6 +59,7 @@ public class ProductsListServlet extends HttpServlet{
 	
 						request.setAttribute("prodottiList", products);
 						request.setAttribute("category", "Accessori Arco");
+						request.setAttribute("ordinamento", ordering);
 	
 						request.getRequestDispatcher("view/ProductListResponsive.jsp").forward(request, response);
 						break;
@@ -65,6 +69,7 @@ public class ProductsListServlet extends HttpServlet{
 	
 						request.setAttribute("prodottiList", products);
 						request.setAttribute("category", "Accessori Arciere");
+						request.setAttribute("ordinamento", ordering);
 	
 						request.getRequestDispatcher("view/ProductListResponsive.jsp").forward(request, response);
 						break;
@@ -74,6 +79,7 @@ public class ProductsListServlet extends HttpServlet{
 	
 						request.setAttribute("prodottiList", products);
 						request.setAttribute("category", "Frecce e Componenti");
+						request.setAttribute("ordinamento", ordering);
 	
 						request.getRequestDispatcher("view/ProductListResponsive.jsp").forward(request, response);
 						break;
@@ -83,12 +89,16 @@ public class ProductsListServlet extends HttpServlet{
 	
 						request.setAttribute("prodottiList", products);
 						request.setAttribute("category", "Paglioni e Bersagli");
+						request.setAttribute("ordinamento", ordering);
 	
 						request.getRequestDispatcher("view/ProductListResponsive.jsp").forward(request, response);
 						break;
 				} 
 			} else
 				if(ordinamento.equals("prezzoC")) {
+					
+					String ordin = "prezzoC";
+					Object ordering = (Object) ordin;
 
 					switch (category.toLowerCase()) {
 						case "archi":
@@ -96,6 +106,7 @@ public class ProductsListServlet extends HttpServlet{
 		
 							request.setAttribute("prodottiList", products);
 							request.setAttribute("category", "Archi");
+							request.setAttribute("ordinamento", ordering);
 		
 							request.getRequestDispatcher("view/ProductListResponsive.jsp").forward(request, response);
 							break;
@@ -105,6 +116,7 @@ public class ProductsListServlet extends HttpServlet{
 		
 							request.setAttribute("prodottiList", products);
 							request.setAttribute("category", "Accessori Arco");
+							request.setAttribute("ordinamento", ordering);
 		
 							request.getRequestDispatcher("view/ProductListResponsive.jsp").forward(request, response);
 							break;
@@ -114,6 +126,7 @@ public class ProductsListServlet extends HttpServlet{
 		
 							request.setAttribute("prodottiList", products);
 							request.setAttribute("category", "Accessori Arciere");
+							request.setAttribute("ordinamento", ordering);
 		
 							request.getRequestDispatcher("view/ProductListResponsive.jsp").forward(request, response);
 							break;
@@ -123,6 +136,7 @@ public class ProductsListServlet extends HttpServlet{
 		
 							request.setAttribute("prodottiList", products);
 							request.setAttribute("category", "Frecce e Componenti");
+							request.setAttribute("ordinamento", ordering);
 		
 							request.getRequestDispatcher("view/ProductListResponsive.jsp").forward(request, response);
 							break;
@@ -132,12 +146,16 @@ public class ProductsListServlet extends HttpServlet{
 		
 							request.setAttribute("prodottiList", products);
 							request.setAttribute("category", "Paglioni e Bersagli");
+							request.setAttribute("ordinamento", ordering);
 		
 							request.getRequestDispatcher("view/ProductListResponsive.jsp").forward(request, response);
 							break;
 					} 
 				} else
 					if(ordinamento.equals("prezzoD")) {
+						
+						String ordin = "prezzoD";
+						Object ordering = (Object) ordin;
 
 						switch (category.toLowerCase()) {
 							case "archi":
@@ -145,6 +163,7 @@ public class ProductsListServlet extends HttpServlet{
 			
 								request.setAttribute("prodottiList", products);
 								request.setAttribute("category", "Archi");
+								request.setAttribute("ordinamento", ordering);
 			
 								request.getRequestDispatcher("view/ProductListResponsive.jsp").forward(request, response);
 								break;
@@ -154,6 +173,7 @@ public class ProductsListServlet extends HttpServlet{
 			
 								request.setAttribute("prodottiList", products);
 								request.setAttribute("category", "Accessori Arco");
+								request.setAttribute("ordinamento", ordering);
 			
 								request.getRequestDispatcher("view/ProductListResponsive.jsp").forward(request, response);
 								break;
@@ -163,6 +183,7 @@ public class ProductsListServlet extends HttpServlet{
 			
 								request.setAttribute("prodottiList", products);
 								request.setAttribute("category", "Accessori Arciere");
+								request.setAttribute("ordinamento", ordering);
 			
 								request.getRequestDispatcher("view/ProductListResponsive.jsp").forward(request, response);
 								break;
@@ -172,6 +193,7 @@ public class ProductsListServlet extends HttpServlet{
 			
 								request.setAttribute("prodottiList", products);
 								request.setAttribute("category", "Frecce e Componenti");
+								request.setAttribute("ordinamento", ordering);
 			
 								request.getRequestDispatcher("view/ProductListResponsive.jsp").forward(request, response);
 								break;
@@ -181,6 +203,7 @@ public class ProductsListServlet extends HttpServlet{
 			
 								request.setAttribute("prodottiList", products);
 								request.setAttribute("category", "Paglioni e Bersagli");
+								request.setAttribute("ordinamento", ordering);
 			
 								request.getRequestDispatcher("view/ProductListResponsive.jsp").forward(request, response);
 								break;
