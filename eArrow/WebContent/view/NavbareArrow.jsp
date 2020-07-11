@@ -23,21 +23,21 @@
 			<ul class="nav-earrow-list nav-earrow-list-larger">
 
 				<li class="nav-earrow-item nav-earrow-item-hidden"><a
-					href="Homepage.jsp" class="nav-earrow-link nav-link-earrow"></a></li>
+					href="${pageContext.request.contextPath}/view/HomePage.jsp" class="nav-earrow-link nav-link-earrow"></a></li>
 
 				<li class="nav-earrow-item"><a href="../ProductsListServlet?category=Archi"
 					class="nav-earrow-link">Archi</a></li>
 
-				<li class="nav-earrow-item"><a href="Homepage.jsp"
+				<li class="nav-earrow-item"><a href="../ProductsListServlet?category=AccessoriArco"
 					class="nav-earrow-link">Accessori Arco</a></li>
 
-				<li class="nav-earrow-item"><a href="Homepage.jsp"
+				<li class="nav-earrow-item"><a href="../ProductsListServlet?category=AccessoriArciere"
 					class="nav-earrow-link">Accessori Arciere</a></li>
 
-				<li class="nav-earrow-item"><a href="Homepage.jsp"
+				<li class="nav-earrow-item"><a href="../ProductsListServlet?category=Frecce"
 					class="nav-earrow-link">Frecce e Componenti</a></li>
 
-				<li class="nav-earrow-item"><a href="Homepage.jsp"
+				<li class="nav-earrow-item"><a href="../ProductsListServlet?category=Paglioni"
 					class="nav-earrow-link">Paglioni e Bersagli</a></li>
 
 				<li class="nav-earrow-item search-item"><a href="#"
@@ -64,7 +64,7 @@
 	</div>
 </header>
 
-<script src='..//javascript/NavbarJS.js'></script>
+<script src='${pageContext.request.contextPath}/javascript/NavbarJS.js'></script>
 
 <script type="text/javascript">
 		
