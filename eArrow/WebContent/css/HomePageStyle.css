@@ -1,5 +1,27 @@
 @charset "UTF-8";
 
-.slider{
-	margin-top: 5.8rem;
+*,
+*::before,
+*::after{
+	
+	margin: 0;
+	padding: 0;
+}
+
+html{
+	font-size: 10px;
+	font-family: 'SF Pro Display', sans-serif;
+}
+
+body{
+	min-height: 100vh;
+}
+
+.carousel{
+	margin-top: 5rem;
+	height: 100vh;
+}
+
+.carousel-inner{
+	height: calc(100vh - 5rem);
 }
