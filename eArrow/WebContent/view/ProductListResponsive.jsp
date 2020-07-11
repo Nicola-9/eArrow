@@ -68,7 +68,7 @@
 				
 				<div class="rating-wrap mb-3">
 					<small class="label-rating text-success category"> 
-						<%=p.getCategoria() %>
+						<%=p.getCategoria() %> - <%=p.getTipologia() %>
 					</small>
 				</div>
 				<!-- rating-wrap.// -->
@@ -84,13 +84,23 @@
 				</div>
 				<!-- info-price-detail // -->
 
-				<p class="small text-success">Free shipping</p>
-				<br>
+				<% if(p.isDisponibilità()){ %>
+				
+					<p class="small text-success">Disponibile</p>
+					
+				<% } else { %>
+				
+					<p class="small text-danger">Non disponibile</p>
+					
+				<% } %>
+				
 				<p class="buttonAdd">
+					<p class="quantity">Quantità: <%=p.getQuantità() %></p>
 					<a href="#" class="btn btn-primary">Aggiungi al carrello</a> 
 				</p>
-				<br> <a href="#" class="small link">
-					Scopri di più ></a>
+				<a href="#" class="small link">
+					Scopri di più >
+				</a>
 			</aside>
 			<!-- col.// -->
 		</div>
