@@ -25,7 +25,7 @@
 				<li class="nav-earrow-item nav-earrow-item-hidden"><a
 					href="Homepage.jsp" class="nav-earrow-link nav-link-earrow"></a></li>
 
-				<li class="nav-earrow-item"><a href="ProductListResponsive.jsp"
+				<li class="nav-earrow-item"><a href="../ProductsListServlet?category=Archi"
 					class="nav-earrow-link">Archi</a></li>
 
 				<li class="nav-earrow-item"><a href="Homepage.jsp"

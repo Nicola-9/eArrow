@@ -61,7 +61,7 @@
 		<div class="footer-celebration">
 			<p>© 2020 Design by Labanca Nicola & Bruno Biagio</p>
 			<p id="logo">
-				<img src='..//image/eArrow.png' width="50" height="50">
+				<img src='${pageContext.request.contextPath}/image/eArrow.png' width="50" height="50">
 			</p>
 		</div>
 

@@ -1,18 +1,29 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+ 
+<%@page import="java.util.ArrayList, model.bean.*, model.dao.*, java.text.DecimalFormat"%>
+
 <!DOCTYPE html>
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title>Prodotti</title>
+		
+		<%  Object categoryObj = request.getAttribute("category");
+			String category = (String) categoryObj;
+			
+			if(category.toLowerCase().equals("archi")){
+		%>
+			<title>Archi</title>
+		
+		<%} %>
 		
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">		
 		
-		<link rel="stylesheet" type="text/css" href="..//css/footerStyle.css">
-		<link rel="stylesheet" type="text/css" href="..//css/ProductListResponsive.css">
-		<link rel="stylesheet" type="text/css" href="..//css/NavbareArrowStyle.css">	
+		<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/footerStyle.css">
+		<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/ProductListResponsive.css">
+		<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/NavbareArrowStyle.css">	
 		
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
@@ -32,6 +43,18 @@
 			</select>
 	</div>
 
+	<%	
+		ArrayList<ProdottoBean> products = (ArrayList<ProdottoBean>) request.getAttribute("prodottiList");
+		
+		for(ProdottoBean p : products){
+			
+			DecimalFormat twoDec = new DecimalFormat("#.###");
+			
+			double price = Double.valueOf(twoDec.format(p.getPrezzo()));
+			System.out.println(price);
+			
+			String priceD = String.format("%.2f", price);
+	%>
 	<div class="card-body">
 		<div class="row">
 			<aside class="col-md-3" id="imageContainer">
@@ -40,27 +63,24 @@
 			<!-- col.// -->
 			<article class="col-md-6">
 				<a href="#" class="title mt-2 h5">
-					KINETIC RISER A1 FORGED STYLIZED 2020
+					<%=p.getNome() %>
 				</a>
 				
 				<div class="rating-wrap mb-3">
 					<small class="label-rating text-success category"> 
-						Riser
+						<%=p.getCategoria() %>
 					</small>
 				</div>
 				<!-- rating-wrap.// -->
 				<p class="description">
-					Riser Kinetic A1 Forged Stylized, lunghezza 25'', 
-					peso 1290 grammi con produzione da alluminio forgiato e fresatura di ottima qualità. 
-					Colori Anodizzati molto belli e resistenti. L'unico colore verniciato è il Bianco. 
-					Attacco flettenti Standard ILF.
+					<%=p.getDescrizione() %>
 				</p>
 
 			</article>
 			<!-- col.// -->
 			<aside class="col-md-3 order">
 				<div class="price-wrap mt-2">
-					<span class="price h5"> $56 </span>
+					<span class="price h5">€ <%=priceD %> </span>
 				</div>
 				<!-- info-price-detail // -->
 
@@ -78,6 +98,10 @@
 	</div>
 	
 	</div>
+	
+	<% 	
+		}	
+	%>
 	
 	<div class="eArrow-footer">
 		<jsp:include page="Footer.jsp"/>
