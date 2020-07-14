@@ -12,15 +12,20 @@
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 
 	<!--Custom styles-->
-	<link rel="stylesheet" type="text/css" href="..//css/SigninStyle.css">
+	<link rel="stylesheet" type="text/css" href="..//css/SignUpStyle.css">
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/css/footerStyle.css">
+	<link rel="stylesheet" type="text/css" href="..//css/NavbareArrowStyle.css">
 </head>
 
 <body>
-<div class="container">
+
+<jsp:include page="NavbareArrow.jsp" />
+
+<div class="content">
 	<div class="d-flex justify-content-center h-100">
 		<div class="card">
 			<div class="card-header">
-				<h3>Crea account</h3>
+				<h3>Registrazione</h3>
 				<div class="d-flex justify-content-end icon">
 					<span><i class="fab"><img src = '..//image/eArrow.png' width="70" height="70"></i></span>
 					
@@ -28,30 +33,43 @@
 			</div>
 			<div class="card-body">
 				<form>
-					
-					<h5>Il tuo nome</h5>
 				
 					<div class="input-group form-group">
-						<input type="text" class="form-control" placeholder="username">
+						<input type="text" class="form-control name" placeholder="Nome">
+						<input type="text" class="form-control surname" placeholder="Cognome">
+					</div>
+				
+					<div class="input-group form-group">
+						<input type="text" class="form-control" placeholder="e-mail">
+					</div>
+				
+					<div class="input-group form-group">
+						<input type="text" class="form-control" placeholder="Numero di telefono">
 					</div>
 					
-					<h5>E-mail</h5>
 					<div class="input-group form-group">
-						<input type="text" class="form-control" placeholder="E-mail">
+						<input type="text" class="form-control" placeholder="Indirizzo">
 					</div>
 					
-					<h5>Password</h5>
 					<div class="input-group form-group">
-						<input type="password" class="form-control" placeholder="password">
+						<input type="password" class="form-control" placeholder="Password">
+					</div>
+					
+					<div class="input-group form-group">
+						<input type="password" class="form-control" placeholder="Conferma Password">
 					</div>
 					
 					<div class="form-group subm">
-						<input type="submit" value="Crea il tuo account" class="btn btn-block Signin_btn">
+						<input type="submit" value="Registrati ora" class="btn btn-block Signin_btn">
 					</div>
 				</form>
 			</div>
 		</div>
 	</div>
 </div>
+
+<div class="eArrow-footer">
+			<jsp:include page="Footer.jsp"/>
+	</div>
 </body>
 </html>

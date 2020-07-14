@@ -19,7 +19,7 @@ body{
 }
 
 .content{
-	background-image: url('..//image/sfondo-login.jpg');
+	background-image: url('..//image/sfondo-signup.jpg');
 	background-size: cover;
 	background-repeat: no-repeat;
 	margin-top: 5rem;
@@ -29,7 +29,7 @@ body{
 }
 
 .card {
-	height: 370px;
+	height: auto;
 	margin-top: auto;
 	margin-bottom: auto;
 	width: 400px;
@@ -41,28 +41,9 @@ body{
 	font-size: 2.5rem;
 }
 
-.card-body{
-	font-size: 1.25rem;
-	margin-top: 10%;
-}
-
-.input-goup{
-	font-size: 1.5rem;
-}
-
-.form-control{
-	height: 100%;
-	font-size: 1.5rem;
-	padding: 2% 1%;
-}
-
-.input-group-prepend span {
-	width: 45px;
-	font-size: 1.5rem;
-	justify-content: center;
-	background-color: #8A9597;
+.card-body h5 {
 	color: white;
-	border: 0 !important;
+	font-size: 1.5rem;
 }
 
 input:focus {
@@ -70,41 +51,47 @@ input:focus {
 	box-shadow: 0 0 0 0 !important;
 }
 
-.btn{
-	font-size: 1.7rem;
+.Signin_btn {
+	color: white;
+	width: 100px;
 	background-color: #8A9597;
+	font-size: 1.7rem;
 }
 
-div.card-footer{
+.Signin_btn:hover {
+	color: white;
+	background-color: #828282;
+}
+
+.input-group {
+	margin-bottom: 5%;
 	font-size: 1.5rem;
 }
 
-.remember {
-	color: white;
+.form-control{
+	height: 100%;
+	font-size: 1.5rem;
+	padding: 2% 2%;
 }
-
-.remember input {
-	width: 20px;
-	height: 20px;
-	margin-left: 15px;
-	margin-right: 5px;
-}
-
-.login-form{
-	margin-top: 5%;
-	text-align: center;
-}
-
-.login_btn {
-	color: white;
-	background-color: #8A9597;
+.name {
+	margin-right: 3%;
+	border-top-right-radius: .25rem !important;
+	border-bottom-right-radius: .25rem !important;
 	width: 50%;
-	text-align: center;
 }
 
-.login_btn:hover {
-	color: white;
-	background-color: #828282;
+.surname {
+	border-top-left-radius: .25rem !important;
+	border-bottom-left-radius: .25rem !important;
+	width: 50%;
+}
+
+.subm {
+	margin-top: 7%;
+}
+
+.form-group {
+	height: auto;
 }
 
 .links {
