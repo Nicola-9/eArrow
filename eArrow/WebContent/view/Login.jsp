@@ -12,9 +12,11 @@
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 
 	<!--Custom styles-->
-	<link rel="stylesheet" type="text/css" href="..//css/LoginStyle.css">
+	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/LoginStyle.css">
 	<link rel="stylesheet" href="${pageContext.request.contextPath}/css/footerStyle.css">
-	<link rel="stylesheet" type="text/css" href="..//css/NavbareArrowStyle.css">
+	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/NavbareArrowStyle.css">
+	
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 
 <body>
@@ -59,7 +61,8 @@
 				</div>
 				<div class="card-footer">
 					<div class="d-flex justify-content-center links">
-						Non hai un account?<a href="#">Registrati</a>
+						Non hai un account?
+						<a class="registration-link" href="${pageContext.request.contextPath}/view/SignUp.jsp">Registrati</a>
 					</div>
 					<!--  
 					<div class="d-flex justify-content-center">

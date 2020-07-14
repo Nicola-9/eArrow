@@ -142,3 +142,8 @@ div.card-footer{
 	position: relative;
 	flex: 0;
 }
+
+a.registration-link{
+	margin-left: 3%;
+	text-decoration: none;
+}

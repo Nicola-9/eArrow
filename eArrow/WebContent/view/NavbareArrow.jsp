@@ -43,11 +43,12 @@
 				<li class="nav-earrow-item search-item"><a href="#"
 					class="nav-earrow-link nav-earrow-link-search" id="search"></a></li>
 
-				<li class="nav-earrow-item"><a href="#"
+				<li class="nav-earrow-item"><a href="${pageContext.request.contextPath}/view/Login.jsp"
 					class="nav-earrow-link nav-earrow-link-account"></a></li>
 
-				<li class="nav-earrow-item nav-earrow-item-hidden"><a href="#"
-					class="nav-earrow-link nav-earrow-link-bag"></a></li>
+				<li class="nav-earrow-item nav-earrow-item-hidden">
+					<a href="${pageContext.request.contextPath}/view/ShoppingBag.jsp" class="nav-earrow-link nav-earrow-link-bag"></a>
+				</li>
 			</ul>
 
 			<div class="search-form">

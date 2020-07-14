@@ -12,9 +12,11 @@
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 
 	<!--Custom styles-->
-	<link rel="stylesheet" type="text/css" href="..//css/SignUpStyle.css">
+	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/SignUpStyle.css">
 	<link rel="stylesheet" href="${pageContext.request.contextPath}/css/footerStyle.css">
-	<link rel="stylesheet" type="text/css" href="..//css/NavbareArrowStyle.css">
+	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/NavbareArrowStyle.css">
+	
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 
 <body>
@@ -40,7 +42,7 @@
 					</div>
 				
 					<div class="input-group form-group">
-						<input type="text" class="form-control" placeholder="e-mail">
+						<input type="text" class="form-control" placeholder="Indirizzo e-mail">
 					</div>
 				
 					<div class="input-group form-group">

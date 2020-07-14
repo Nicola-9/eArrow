@@ -60,8 +60,8 @@
 								</td>
 								<td class="price">
 									<div class="price-wrap">
-										<var class="price">$1156.00</var>
-										<small class="text-muted"> $315.20 each </small>
+										<var class="price"><strong>€ 1156.00</strong></var>
+										<small class="text-muted"> € 315.20 each </small>
 									</div> <!-- price-wrap .// -->
 								</td>
 								<td class="text-right d-none d-md-block"> 
