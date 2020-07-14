@@ -19,7 +19,7 @@
 	</div>
 		
 	<div class="slider">
-		<jsp:include page="ProductList.jsp"/>	
+	
 	</div>
 
 </body>
