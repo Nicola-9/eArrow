@@ -1,0 +1,192 @@
+@charset "UTF-8";
+
+*,
+*::before,
+*::after{
+	margin: 0;
+	padding: 0;
+}
+
+html{
+	font-size: 10px;
+	font-family: 'SF Pro Display', sans-serif;
+}
+
+body{
+	margin-top: 5%;
+	background-color: #f8f9fa;	
+	display: flex;
+	flex-direction: column;
+}
+
+.card{
+	font-size: 1.5rem;
+}
+
+a.title{
+	font-size: 1.7rem;
+}
+
+a.title:hover{
+	text-decoration: none;
+}
+
+.custom-select{
+	margin-left: 1%;
+	font-size: 1.5rem;
+	width: 100%;
+	height: 100%;
+	display: table-cell;
+	vertical-align: middle;
+}
+
+.dlist-align{
+	display: flex;
+}
+
+.dlist-align dt {
+    width: 120px;
+    word-wrap: break-word;
+    font-weight: normal;
+}
+
+.dlist-align dd {
+    -webkit-box-flex: 1;
+    -ms-flex-positive: 1;
+    flex-grow: 1;
+}
+
+.row{
+	margin: 0 9%;
+}
+
+.btn-light{
+	background-color: #EFEFEF;
+	border: 1px solid #d1d1d1;
+}
+
+.image{
+	height: 80px;
+	max-width: 100%;
+	min-height: 30%;
+	margin-left: 3%;
+	transition: transform .1s;
+}
+
+td.product{
+	width: 35%;
+}
+
+.info{
+	padding-left: 7%;
+}
+
+.image:hover{
+	transform: scale(1.1);
+	cursor: pointer;
+}
+
+.itemside {
+    position: relative;
+    display: flex;
+    width: 80%;
+}
+
+td.price, th.price{
+	padding-left: 5%;
+}
+
+.custom-select{
+	width: 70%;
+}
+
+.removeButton{
+	font-size: 1.5rem;
+	margin-right: 15%;
+}
+
+.itemside .aside {
+    position: relative;
+    -ms-flex-negative: 0;
+    flex-shrink: 0;
+}
+
+.table-shopping-cart .price-wrap {
+    line-height: 1.2;
+}
+.price-wrap {
+    letter-spacing: -0.7px;
+}
+
+div.card{
+	position: relative;
+	display: flex;
+}
+
+.acquistaForm{
+	font-size: 1.5rem;
+}
+
+.btn{
+	font-size: 1.5rem;
+}
+
+.eArrowFooter{
+	margin-bottom: 0;
+	bottom: 0;
+	position: relative;
+	flex: 0;
+}
+
+.content{
+	min-height: 100vh;
+}
+
+@media (max-width: 663px){
+	.image{
+		visibility: 0;
+		display: none;
+	}
+}
+
+@media (max-width: 767px){
+	td.price{
+		padding-right: 10%;
+	}
+}
+
+@media (max-width: 529px){
+	td.price{
+		padding-right: 5%;
+	}
+}
+
+@media (max-width: 991px){
+	.acquistaForm{
+		margin-top: 1%;
+	}
+}
+
+@media (max-width: 1012px){
+	body{
+		margin-top: 7%;
+	}
+}
+
+@media (max-width: 757px){
+	body{
+		margin-top: 9%;
+	}
+}
+
+@media (max-width: 605px){
+	body{
+		margin-top: 11%;
+	}
+}
+
+@media (max-width: 477px){
+	body{
+		margin-top: 13%;
+	}
+}

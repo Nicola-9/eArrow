@@ -23,9 +23,13 @@ public class ImmagineDAO {
 			
 			rs = ps.executeQuery();
 			
-			rs.next();
-			
-			image.setUri(rs.getString("uri"));
+			while(rs.next()) {
+				String uri = rs.getString("uri");
+				
+				if(!uri.contains("offerte")) {
+					image.setUri(uri);
+				}
+			}
 			
 		} catch(SQLException e) {
 			e.printStackTrace();
