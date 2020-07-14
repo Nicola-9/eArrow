@@ -6,10 +6,10 @@ public class ComposizioneOrdineBean {
 		
 	}
 	
-	public ComposizioneOrdineBean(int idOrdine, int codiceProdotto, int quantit√†) {
+	public ComposizioneOrdineBean(int idOrdine, int codiceProdotto, int quantit‡) {
 		this.idOrdine = idOrdine;
 		this.codiceProdotto = codiceProdotto;
-		this.quantit√† = quantit√†;
+		this.quantit‡ = quantit‡;
 	}
 	
 	public int getIdOrdine() {
@@ -28,15 +28,15 @@ public class ComposizioneOrdineBean {
 		this.codiceProdotto = codiceProdotto;
 	}
 
-	public int getQuantit√†() {
-		return quantit√†;
+	public int getQuantit‡() {
+		return quantit‡;
 	}
 
-	public void setQuantit√†(int quantit√†) {
-		this.quantit√† = quantit√†;
+	public void setQuantit‡(int quantit‡) {
+		this.quantit‡ = quantit‡;
 	}
 
 	private int idOrdine;
 	private int codiceProdotto;
-	private int quantit√†;
+	private int quantit‡;
 }
