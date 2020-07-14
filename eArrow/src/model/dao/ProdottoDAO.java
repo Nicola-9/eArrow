@@ -103,6 +103,32 @@ public class ProdottoDAO {
 		return products;
 	}
 	
+	public static ProdottoBean doRetrievebyKey(int codice){
+		ProdottoBean product = new ProdottoBean();
+		PreparedStatement ps;
+		ResultSet rs;
+		
+		String productSQL = "SELECT p.nome, p.descrizione FROM prodotto AS p WHERE p.codice = ?";
+		
+		try(Connection connection = ConnessioneDB.getConnection()){
+			
+			ps = connection.prepareStatement(productSQL);
+			ps.setInt(1, codice);
+			
+			rs = ps.executeQuery();
+			
+			rs.next();
+			
+			product.setNome(rs.getString("nome"));
+			product.setDescrizione(rs.getString("descrizione"));
+			
+		} catch(SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return product;
+	}
+	
 	public static final int ORDINA_NOME = 0;
 	public static final int ORDINA_PREZZOC = 1;
 	public static final int ORDINA_PREZZOD = 2;

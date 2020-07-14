@@ -25,3 +25,11 @@ body{
 .carousel-inner{
 	height: calc(100vh - 5rem);
 }
+
+h5.productName{
+	font-size: 2.5rem;
+}
+
+p.productDescription{
+	font-size: 1.5rem;
+}
