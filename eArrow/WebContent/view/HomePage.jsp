@@ -60,7 +60,7 @@
 			
 			for(EvidenzaBean e : evidenza){
 				
-				String uriImage = ImmagineDAO.doRetrieveOfferImageByProductCode(e.getCodiceProdotto()).getUri();
+				String uriImage = ImmagineDAO.doRetrieveImageByProductCode(e.getCodiceProdotto()).getUri();
 				
 				String name = ProdottoDAO.doRetrievebyKey(e.getCodiceProdotto()).getNome();
 				String descrizione = ProdottoDAO.doRetrievebyKey(e.getCodiceProdotto()).getDescrizione();
@@ -112,7 +112,7 @@
 	</div>
 
 	<div class="eArrow-footer">
-			<jsp:include page="Footer.jsp"/>
+			<jsp:include page="footer.jsp"/>
 	</div>
 		
 		<!-- Bootstrap Script -->	

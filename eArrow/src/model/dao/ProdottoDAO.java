@@ -18,8 +18,8 @@ public class ProdottoDAO {
 		ResultSet rs;
 		ProdottoBean prodotto;
 		
-		String productSQL = "SELECT p.nome, p.categoria, p.tipologia, p.prezzo, p.disponibilità,"
-							+ "p.quantità, p.descrizione FROM"
+		String productSQL = "SELECT p.nome, p.categoria, p.tipologia, p.prezzo, p.disponibilitÃ ,"
+							+ "p.quantitÃ , p.descrizione FROM"
 							+ " prodotto AS p WHERE p.categoria = ?";
 		
 		try(Connection connection = ConnessioneDB.getConnection()){
@@ -38,13 +38,13 @@ public class ProdottoDAO {
 				prodotto.setTipologia(rs.getString("tipologia"));
 				prodotto.setPrezzo(rs.getDouble("prezzo"));
 				
-				if(rs.getInt("disponibilità") == 1) {
+				if(rs.getInt("disponibilitÃ ") == 1) {
 					prodotto.setDisponibilita(true);
 				} else {
 					prodotto.setDisponibilita(false);
 				}
 				
-				prodotto.setQuantita(rs.getInt("quantità"));
+				prodotto.setQuantita(rs.getInt("quantitÃ "));
 				prodotto.setDescrizione(rs.getString("descrizione"));
 				
 				products.add(prodotto);
@@ -63,8 +63,8 @@ public class ProdottoDAO {
 		ResultSet rs;
 		ProdottoBean prodotto;
 		
-		String productSQL = "SELECT p.codice, p.nome, p.categoria, p.tipologia, p.prezzo, p.disponibilità,"
-							+ "p.quantità, p.descrizione FROM"
+		String productSQL = "SELECT p.codice, p.nome, p.categoria, p.tipologia, p.prezzo, p.disponibilitÃ ,"
+							+ "p.quantitÃ , p.descrizione FROM"
 							+ " prodotto AS p WHERE p.categoria = ?"
 							+ ORDINAMENTI[ordinamento];
 		
@@ -84,13 +84,13 @@ public class ProdottoDAO {
 				prodotto.setTipologia(rs.getString("tipologia"));
 				prodotto.setPrezzo(rs.getDouble("prezzo"));
 				
-				if(rs.getInt("disponibilità") == 1) {
+				if(rs.getInt("disponibilitÃ ") == 1) {
 					prodotto.setDisponibilita(true);
 				} else {
 					prodotto.setDisponibilita(false);
 				}
 				
-				prodotto.setQuantita(rs.getInt("quantità"));
+				prodotto.setQuantita(rs.getInt("quantitÃ "));
 				prodotto.setDescrizione(rs.getString("descrizione"));
 				
 				products.add(prodotto);
@@ -128,6 +128,53 @@ public class ProdottoDAO {
 		
 		return product;
 	}
+	
+	public static ProdottoBean doRetrievebyCodeOrdered(int code){
+		//ProdottoBean products = new ProdottoBean();
+		PreparedStatement ps;
+		ResultSet rs;
+		ProdottoBean prodotto = new ProdottoBean();
+		
+		String productSQL = "SELECT p.codice, p.nome, p.categoria, p.tipologia, p.prezzo, p.disponibilit�,"
+							+ "p.quantit�, p.descrizione FROM"
+							+ " prodotto AS p WHERE p.codice = ?";
+		
+		try(Connection connection = ConnessioneDB.getConnection()){
+			
+			ps = connection.prepareStatement(productSQL);
+			ps.setInt(1, code);
+			
+			rs = ps.executeQuery();
+			
+			rs.next();
+			
+				prodotto = new ProdottoBean();
+				
+				prodotto.setCodice(rs.getInt("codice"));
+				prodotto.setNome(rs.getString("nome"));
+				prodotto.setCategoria(rs.getString("categoria"));
+				prodotto.setTipologia(rs.getString("tipologia"));
+				prodotto.setPrezzo(rs.getDouble("prezzo"));
+				
+				if(rs.getInt("disponibilit�") == 1) {
+					prodotto.setDisponibilita(true);
+				} else {
+					prodotto.setDisponibilita(false);
+				}
+				
+				prodotto.setQuantita(rs.getInt("quantit�"));
+				prodotto.setDescrizione(rs.getString("descrizione"));
+				
+				//products.add(prodotto);
+			
+			
+		} catch(SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return prodotto;
+	}
+	
 	
 	public static final int ORDINA_NOME = 0;
 	public static final int ORDINA_PREZZOC = 1;
