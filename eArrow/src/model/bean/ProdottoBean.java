@@ -7,14 +7,14 @@ public class ProdottoBean {
 	}
 
 	public ProdottoBean(int codice, String nome, String categoria, String tipologia, double prezzo,
-			boolean disponibilit√†, int quantit√†, String descrizione) {
+			boolean disponibilit‡, int quantit‡, String descrizione) {
 		this.codice = codice;
 		this.nome = nome;
 		this.categoria = categoria;
 		this.tipologia = tipologia;
 		this.prezzo = prezzo;
-		this.disponibilita = disponibilit√†;
-		this.quantita = quantit√†;
+		this.disponibilita = disponibilit‡;
+		this.quantita = quantit‡;
 		this.descrizione = descrizione;
 	}
 	
@@ -62,16 +62,16 @@ public class ProdottoBean {
 		return disponibilita;
 	}
 
-	public void setDisponibilita(boolean disponibilit√†) {
-		this.disponibilita = disponibilit√†;
+	public void setDisponibilita(boolean disponibilit‡) {
+		this.disponibilita = disponibilit‡;
 	}
 
 	public int getQuantita() {
 		return quantita;
 	}
 
-	public void setQuantita(int quantit√†) {
-		this.quantita = quantit√†;
+	public void setQuantita(int quantit‡) {
+		this.quantita = quantit‡;
 	}
 
 	public String getDescrizione() {
