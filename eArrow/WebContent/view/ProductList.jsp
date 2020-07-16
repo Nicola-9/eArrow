@@ -137,7 +137,7 @@
 					<p class="quantity">Quantità: <%=p.getQuantita()%></p>
 					<a href="#" class="btn btn-primary">Aggiungi al carrello</a> 
 				</p>
-				<a href="#" class="small link">
+				<a href="${pageContext.request.contextPath}/ProductDetailServlet?codice=<%=p.getCodice()%>" class="small link">
 					Scopri di più >
 				</a>
 			</aside>

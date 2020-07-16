@@ -72,6 +72,16 @@ public class UtenteBean {
 		this.indirizzo = indirizzo;
 	}
 
+	
+	
+	@Override
+	public String toString() {
+		return "UtenteBean [id=" + id + ", nome=" + nome + ", cognome=" + cognome + ", email=" + email + ", password="
+				+ password + ", telefono=" + telefono + ", indirizzo=" + indirizzo + "]";
+	}
+
+
+
 	private int id;
 	private String nome;
 	private String cognome;
