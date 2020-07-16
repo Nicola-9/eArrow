@@ -9,7 +9,6 @@ import javax.servlet.http.HttpSession;
 
 import model.bean.ProdottoBean;
 import model.bean.UtenteBean;
-import model.dao.UtenteDao;
 
 /*
  * classe per la gestione della sessione
@@ -77,7 +76,7 @@ public class SessionArrow {
 		
 		// Aggiunta del carrello alla sessione
 		
-		//verifica se già contiene prodotti
+		//verifica se giï¿½ contiene prodotti
 		if(session.getAttribute("carrello") != null) {
 			Carrello c = (Carrello) session.getAttribute("carrello");
 			
@@ -106,7 +105,7 @@ public class SessionArrow {
 	
 	public Carrello getProductCarrelloSession() {
 		
-		//verifica se già contiene prodotti
+		//verifica se giï¿½ contiene prodotti
 		if(session.getAttribute("carrello") != null) {
 			return (Carrello) session.getAttribute("carrello");
 		}

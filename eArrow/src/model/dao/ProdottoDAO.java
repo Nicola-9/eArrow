@@ -18,8 +18,8 @@ public class ProdottoDAO {
 		ResultSet rs;
 		ProdottoBean prodotto;
 		
-		String productSQL = "SELECT p.nome, p.categoria, p.tipologia, p.prezzo, p.disponibilitÃ ,"
-							+ "p.quantitÃ , p.descrizione FROM"
+		String productSQL = "SELECT p.nome, p.categoria, p.tipologia, p.prezzo, p.disponibilita ,"
+							+ "p.quantita , p.descrizione FROM"
 							+ " prodotto AS p WHERE p.categoria = ?";
 		
 		try(Connection connection = ConnessioneDB.getConnection()){
@@ -63,8 +63,8 @@ public class ProdottoDAO {
 		ResultSet rs;
 		ProdottoBean prodotto;
 		
-		String productSQL = "SELECT p.codice, p.nome, p.categoria, p.tipologia, p.prezzo, p.disponibilitÃ ,"
-							+ "p.quantitÃ , p.descrizione FROM"
+		String productSQL = "SELECT p.codice, p.nome, p.categoria, p.tipologia, p.prezzo, p.disponibilita ,"
+							+ "p.quantita, p.descrizione FROM"
 							+ " prodotto AS p WHERE p.categoria = ?"
 							+ ORDINAMENTI[ordinamento];
 		
@@ -135,8 +135,8 @@ public class ProdottoDAO {
 		ResultSet rs;
 		ProdottoBean prodotto = new ProdottoBean();
 		
-		String productSQL = "SELECT p.codice, p.nome, p.categoria, p.tipologia, p.prezzo, p.disponibilit�,"
-							+ "p.quantit�, p.descrizione FROM"
+		String productSQL = "SELECT p.codice, p.nome, p.categoria, p.tipologia, p.prezzo, p.disponibilita,"
+							+ "p.quantita, p.descrizione FROM"
 							+ " prodotto AS p WHERE p.codice = ?";
 		
 		try(Connection connection = ConnessioneDB.getConnection()){

@@ -64,8 +64,14 @@ input:focus {
 }
 
 .input-group {
-	margin-bottom: 5%;
+	margin-bottom: 0%;
 	font-size: 1.5rem;
+}
+
+.error{
+	margin-bottom: 1%;
+	font-size: 1.3rem;
+	visibility: hidden;
 }
 
 .form-control{
@@ -78,16 +84,18 @@ input:focus {
 	border-top-right-radius: .25rem !important;
 	border-bottom-right-radius: .25rem !important;
 	width: 50%;
+	text-transform: capitalize;
 }
 
 .surname {
 	border-top-left-radius: .25rem !important;
 	border-bottom-left-radius: .25rem !important;
 	width: 50%;
+	text-transform: capitalize;
 }
 
 .subm {
-	margin-top: 7%;
+	margin-top: 5%;
 }
 
 .form-group {

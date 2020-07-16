@@ -116,7 +116,7 @@
 	</div>
 	
 	<div class="eArrow-footer">
-		<jsp:include page="footer.jsp"/>
+		<jsp:include page="Footer.jsp"/>
 	</div>
 	
 	<!-- Bootstrap Script -->	
