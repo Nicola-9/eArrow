@@ -63,7 +63,7 @@ public class ProdottoDAO {
 		ResultSet rs;
 		ProdottoBean prodotto;
 		
-		String productSQL = "SELECT p.codice, p.nome, p.categoria, p.tipologia, p.prezzo, p.disponibilita ,"
+		String productSQL = "SELECT p.codice, p.nome, p.categoria, p.tipologia, p.prezzo, p.disponibilita,"
 							+ "p.quantita, p.descrizione FROM"
 							+ " prodotto AS p WHERE p.categoria = ?"
 							+ ORDINAMENTI[ordinamento];
@@ -84,13 +84,13 @@ public class ProdottoDAO {
 				prodotto.setTipologia(rs.getString("tipologia"));
 				prodotto.setPrezzo(rs.getDouble("prezzo"));
 				
-				if(rs.getInt("disponibilità") == 1) {
+				if(rs.getInt("disponibilita") == 1) {
 					prodotto.setDisponibilita(true);
 				} else {
 					prodotto.setDisponibilita(false);
 				}
 				
-				prodotto.setQuantita(rs.getInt("quantità"));
+				prodotto.setQuantita(rs.getInt("quantita"));
 				prodotto.setDescrizione(rs.getString("descrizione"));
 				
 				products.add(prodotto);
