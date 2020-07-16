@@ -18,9 +18,9 @@ public class SessionArrow {
 	
 	private static HttpSession session;
 	private static HttpServletRequest request;
-	HttpServletResponse response;
-	static String id;
-	ArrayList<String> prodotti;
+	private static HttpServletResponse response;
+	private static String id;
+	private static ArrayList<String> prodotti;
 	
 	
 	public SessionArrow() {
@@ -36,7 +36,7 @@ public class SessionArrow {
 	 * metodo per la gestione del login
 	 */
 	
-	public static boolean loginSession() {
+	public boolean loginSession() {
 		session = request.getSession(false);
 		
 		if(session == null) {
@@ -52,8 +52,8 @@ public class SessionArrow {
 		}
 	}
 	
-	//metodo che ritorna il nome dell'utente
-	public static boolean setSessionUserName(UtenteBean user) {
+	//metodo setta il nome dell'utente
+	public boolean setSessionUserName(UtenteBean user) {
 		session = request.getSession(false);
 		
 		if(session != null) {
@@ -66,6 +66,36 @@ public class SessionArrow {
 			return true;
 		}
 	}
+	
+	/*
+	 * metodo che ritorna il JSESSIONID
+	 */
+		public static String getSessionId() {
+			
+				return (String) session.getId();
+				
+		}
+	
+	
+	/*
+	 * metodo che ritorna il nome dell'utente
+	 */
+		public static String getSessionUserName() {
+			if(session.getAttribute("user") == null) {
+				return null;
+			}else {
+				return (String) session.getAttribute("user");
+			}
+		}
+		
+		/*
+		 * metodo che setta il nome dell'utente
+		 */
+			public static void setSessionUserName(String s) {
+				
+				session.setAttribute("user", s);
+					
+			}
 	
 	
 	/*
@@ -112,5 +142,15 @@ public class SessionArrow {
 		else {
 			return null;
 		}
+	}
+	
+	
+	/*
+	 * URL-Rewriting
+	 */
+	
+	public String rewriting(String url) {
+		String rew = response.encodeURL(url);
+		return rew;
 	}
 }

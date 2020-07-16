@@ -132,6 +132,58 @@
 	
 		</div> 
 		
+		
+		<hr class="divider">
+		
+		
+		<!-- prodotti consigliati -->
+		
+		<div class="card card-body">
+	<div class="row">
+		<div class="row-product-c">
+			<figure class="itemside mb-2">
+				<div class="aside"><img src="image/riser-test.jpg" class="border img-sm"></div>
+				<figcaption class="info align-self-center">
+					<a href="#" class="title">Camera GoPro 4</a>
+					<strong class="price2">$241.99</strong>
+				</figcaption>
+			</figure>
+		</div> <!-- col.// -->
+
+		<div class="row-product-c">
+			<figure class="itemside mb-2">
+				<div class="aside"><img src="image/smart_blue.jpg" class="border img-sm"></div>
+				<figcaption class="info align-self-center">
+					<a href="#" class="title">Headset logitec</a>
+					<strong class="price2">$45.50</strong>
+				</figcaption>
+			</figure>
+		</div> <!-- col.// -->
+
+		<div class="row-product-c">
+			<figure class="itemside mb-2">
+				<div class="aside"><img src="image/riser-test.jpg" class="border img-sm"></div>
+				<figcaption class="info align-self-center">
+					<a href="#" class="title">Some product name</a>
+					<strong class="price2">$54.99</strong>
+				</figcaption>
+			</figure>
+		</div> <!-- col.// -->
+
+		<div class="row-product-c" id ="consiglio-4">
+			<figure class="itemside mb-2">
+				<div class="aside"><img src="image/smart_blue.jpg" class="border img-sm"></div>
+				<figcaption class="info align-self-center">
+					<a href="#" class="title">Name of item goes here </a>
+					<strong class="price2">$241.99</strong>
+				</figcaption>
+			</figure>
+		</div> <!-- col.// -->
+	</div> <!-- row.// -->
+</div>
+		
+		<hr class="divider">
+		
 		<div class="eArrow-footer">
 			<jsp:include page="footer.jsp"/>
 		</div>
