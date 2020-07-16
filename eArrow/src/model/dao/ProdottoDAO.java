@@ -38,13 +38,13 @@ public class ProdottoDAO {
 				prodotto.setTipologia(rs.getString("tipologia"));
 				prodotto.setPrezzo(rs.getDouble("prezzo"));
 				
-				if(rs.getInt("disponibilitÃ ") == 1) {
+				if(rs.getInt("disponibilità") == 1) {
 					prodotto.setDisponibilita(true);
 				} else {
 					prodotto.setDisponibilita(false);
 				}
 				
-				prodotto.setQuantita(rs.getInt("quantitÃ "));
+				prodotto.setQuantita(rs.getInt("quantità"));
 				prodotto.setDescrizione(rs.getString("descrizione"));
 				
 				products.add(prodotto);
@@ -84,13 +84,13 @@ public class ProdottoDAO {
 				prodotto.setTipologia(rs.getString("tipologia"));
 				prodotto.setPrezzo(rs.getDouble("prezzo"));
 				
-				if(rs.getInt("disponibilitÃ ") == 1) {
+				if(rs.getInt("disponibilità") == 1) {
 					prodotto.setDisponibilita(true);
 				} else {
 					prodotto.setDisponibilita(false);
 				}
 				
-				prodotto.setQuantita(rs.getInt("quantitÃ "));
+				prodotto.setQuantita(rs.getInt("quantità"));
 				prodotto.setDescrizione(rs.getString("descrizione"));
 				
 				products.add(prodotto);
@@ -156,13 +156,13 @@ public class ProdottoDAO {
 				prodotto.setTipologia(rs.getString("tipologia"));
 				prodotto.setPrezzo(rs.getDouble("prezzo"));
 				
-				if(rs.getInt("disponibilit�") == 1) {
+				if(rs.getInt("disponibilità") == 1) {
 					prodotto.setDisponibilita(true);
 				} else {
 					prodotto.setDisponibilita(false);
 				}
 				
-				prodotto.setQuantita(rs.getInt("quantit�"));
+				prodotto.setQuantita(rs.getInt("quantità"));
 				prodotto.setDescrizione(rs.getString("descrizione"));
 				
 				//products.add(prodotto);

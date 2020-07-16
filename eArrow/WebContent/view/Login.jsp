@@ -40,7 +40,7 @@
 							<div class="input-group-prepend">
 								<span class="input-group-text"><i class="fas fa-user"></i></span>
 							</div>
-							<input type="text" class="form-control" placeholder="username" id="Email">
+							<input type="text" class="form-control" placeholder="username" name="Email">
 
 						</div>
 						<div class="input-group form-group">
@@ -48,7 +48,7 @@
 								<span class="input-group-text"><i class="fas fa-key"></i></span>
 							</div>
 							<input type="password" class="form-control"
-								placeholder="password" id="password">
+								placeholder="password" name="Password">
 						</div>
 						<div class="row align-items-center remember">
 							<input type="checkbox">Ricordami
@@ -76,5 +76,54 @@
 	<div class="eArrow-footer">
 			<jsp:include page="Footer.jsp"/>
 	</div>
+	
+	
+	
+	<!-- Avviso  -->
+	
+	<div id="id01" class="alert alert-c" role="alert">
+
+		<h3 id="erroreLogin"></h3>
+		
+	</div>
+	
+	
+	<script>
+		// Get the modal
+		var modal = document.getElementById('id01');
+
+		// When the user clicks anywhere outside of the modal, close it
+		window.onclick = function(event) {
+			if (event.target == modal) {
+				modal.style.display = "none";
+			}
+		}
+		
+		//$("#erroreLogin").fadeTo(4000, 500)
+		function alertInsuccesso(input){
+			$("#erroreLogin").text(input);
+			$("#erroreLogin").slideUp(500, function(){
+			    $("#id01").slideUp(500);
+			});
+			
+		}
+		
+		
+		$( document ).ready(function() {
+		   
+		
+		<% if(request.getAttribute("emailErrata")!=null) { %>
+		alertInsuccesso("E-mail errata!");
+		<% } %>
+		
+		
+		<% if(request.getAttribute("passwordErrata")!=null) { %>
+		alertInsuccesso("Password errata!");
+		<% } %>
+		});
+	</script>
+	
+	
+	
 </body>
 </html>
