@@ -63,11 +63,15 @@
 					<% }
 					else{%>
 				<div class="img-small-wrap" style="display: flex">
-				<% }%>
-	 				<div  class="item-small"><a href="#"> <img class="image" src="${pageContext.request.contextPath}/image/productImage/hoyt-gran-prix.jpg"> </a> </div>
-	 				<div  class="item-small"><a href="#"> <img class="image" src="${pageContext.request.contextPath}/image/productImage/smartriser-nero.jpg"> </a> </div>
-	 				<div  class="item-small"><a href="#"> <img class="image" src="${pageContext.request.contextPath}/image/productImage/smartriser-nero.jpg"> </a> </div>
-	 				<div  class="item-small"><a href="#"> <img class="image" src="${pageContext.request.contextPath}/image/productImage/smartriser-nero.jpg"> </a> </div>
+				<% }
+					String s;
+				for(int n = 0; n < 4; n++){
+					s = imgs.get(n).getUri();
+				%>
+				
+	 				<div  class="item-small"><a href="#"> <img class="image" src="${pageContext.request.contextPath}<%=s%>"> </a> </div>
+	 				
+	 				<%} %>
 				</div>
 			</aside>
 			
