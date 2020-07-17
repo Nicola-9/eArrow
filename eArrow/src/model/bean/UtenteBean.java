@@ -6,7 +6,7 @@ public class UtenteBean {
 		
 	}
 	
-	public UtenteBean(int id, String nome, String cognome, String email, String password, String telefono, String indirizzo) {
+	public UtenteBean(int id, String nome, String cognome, String email, String password, String telefono, int indirizzo) {
 		this.id = id;
 		this.nome = nome;
 		this.cognome = cognome;
@@ -64,11 +64,11 @@ public class UtenteBean {
 		this.telefono = telefono;
 	}
 	
-	public String getIndirizzo() {
+	public int getIndirizzo() {
 		return indirizzo;
 	}
 	
-	public void setIndirizzo(String indirizzo) {
+	public void setIndirizzo(int indirizzo) {
 		this.indirizzo = indirizzo;
 	}
 
@@ -88,5 +88,5 @@ public class UtenteBean {
 	private String email;
 	private String password;
 	private String telefono;
-	private String indirizzo;
+	private int indirizzo;
 }

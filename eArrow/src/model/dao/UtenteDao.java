@@ -31,7 +31,7 @@ public class UtenteDao {
 				user.setId(rs.getInt("id"));
 				user.setNome(rs.getString("nome"));
 				user.setCognome(rs.getString("cognome"));
-				user.setIndirizzo(rs.getString("idIndirizzo"));
+				user.setIndirizzo(rs.getInt("idIndirizzo"));
 				user.setEmail(rs.getString("email"));
 				user.setPassword(rs.getString("pass"));
 				user.setTelefono(rs.getString("telefono"));
@@ -66,7 +66,7 @@ public class UtenteDao {
 				user.setId(rs.getInt("id"));
 				user.setNome(rs.getString("nome"));
 				user.setCognome(rs.getString("cognome"));
-				user.setIndirizzo(rs.getString("idIndirizzo"));
+				user.setIndirizzo(rs.getInt("idIndirizzo"));
 				user.setEmail(rs.getString("email"));
 				user.setPassword(rs.getString("pass"));
 				user.setTelefono(rs.getString("telefono"));
@@ -118,6 +118,40 @@ public class UtenteDao {
 		}
 		
 		return registerOk;
+	}
+	
+	public static UtenteBean doRetrievebyUserId(int id){
+		UtenteBean user = new UtenteBean();
+		PreparedStatement ps;
+		ResultSet rs;
+		
+		String userSQL = "SELECT * FROM utente AS u WHERE u.id = ?";
+		
+		try(Connection connection = ConnessioneDB.getConnection()){
+			
+			ps = connection.prepareStatement(userSQL);
+			ps.setInt(1, id);
+			
+			rs = ps.executeQuery();
+			
+			if(rs.next()) {
+				user.setId(rs.getInt("id"));
+				user.setNome(rs.getString("nome"));
+				user.setCognome(rs.getString("cognome"));
+				user.setIndirizzo(rs.getInt("idIndirizzo"));
+				user.setEmail(rs.getString("email"));
+				user.setPassword(rs.getString("pass"));
+				user.setTelefono(rs.getString("telefono"));
+			}
+			else {
+				return null;
+			}
+			
+		} catch(SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return user;
 	}
 	
 }
