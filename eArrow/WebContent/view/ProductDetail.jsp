@@ -199,7 +199,7 @@
 		<hr class="divider">
 		
 		<div class="eArrow-footer">
-			<jsp:include page="footer.jsp"/>
+			<jsp:include page="Footer.jsp"/>
 		</div>
 	</body>
 	
