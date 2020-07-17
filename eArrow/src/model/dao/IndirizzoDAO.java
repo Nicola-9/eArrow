@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import model.ConnessioneDB;
 import model.bean.IndirizzoBean;
+import model.bean.UtenteBean;
 
 public class IndirizzoDAO {
 	
@@ -78,5 +79,38 @@ public class IndirizzoDAO {
 		}
 		
 		return id;
+	}
+	
+	public static IndirizzoBean doRetrievebyId(int id){
+		IndirizzoBean address = new IndirizzoBean();
+		PreparedStatement ps;
+		ResultSet rs;
+		
+		String userSQL = "SELECT * FROM indirizzo AS i WHERE i.id = ?";
+		
+		try(Connection connection = ConnessioneDB.getConnection()){
+			
+			ps = connection.prepareStatement(userSQL);
+			ps.setInt(1, id);
+			
+			rs = ps.executeQuery();
+			
+			if(rs.next()) {
+				address.setId(rs.getInt("id"));
+				address.setCitta(rs.getString("citta"));
+				address.setVia(rs.getString("via"));
+				address.setCap(rs.getString("cap"));
+				address.setCivico(rs.getString("civico"));
+				address.setTipologia(rs.getString("tipologia"));
+			}
+			else {
+				return null;
+			}
+			
+		} catch(SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return address;
 	}
 }

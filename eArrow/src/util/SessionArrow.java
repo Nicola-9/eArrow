@@ -67,6 +67,31 @@ public class SessionArrow {
 		}
 	}
 	
+	//metodo setta l'id dell'utente
+	public boolean setSessionUserId(UtenteBean user) {
+		session = request.getSession(false);
+		
+		if(session != null) {
+			session.setAttribute("userId", user.getId());
+			
+			return false;
+		}
+		else {
+			//sessione scaduta o inesistente
+			return true;
+		}
+	}
+	
+	public static String getSessionUserId() {
+		session = request.getSession(false);
+		
+		if(session.getAttribute("userId") == null) {
+			return null;
+		}else {
+			return (String) session.getAttribute("userId");
+		}
+	}
+	
 	/*
 	 * metodo che ritorna il JSESSIONID
 	 */
@@ -81,6 +106,12 @@ public class SessionArrow {
 	 * metodo che ritorna il nome dell'utente
 	 */
 		public static String getSessionUserName() {
+			session = request.getSession(false);
+			
+			if(session == null) {
+				return null;
+			}
+			
 			if(session.getAttribute("user") == null) {
 				return null;
 			}else {
