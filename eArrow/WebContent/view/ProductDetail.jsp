@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-<%@page import="model.bean.*, model.dao.*"%>
+<%@page import="model.bean.*, model.dao.*, java.util.ArrayList"%>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -53,11 +53,25 @@
 	   				<a href="#"><img class="image" src="${pageContext.request.contextPath}<%=uriImage%>"></a>
 				</div>
 				
-				<div class="img-small-wrap">
-	 				<a href="#" class="item-small"> <img class="image" src="${pageContext.request.contextPath}/image/productImage/hoyt-gran-prix.jpg"></a>
-	 				<a href="#" class="item-small"> <img class="image" src="${pageContext.request.contextPath}/image/productImage/smartriser-nero.jpg"></a>
-	 				<a href="#" class="item-small"> <img class="image" src="${pageContext.request.contextPath}/image/productImage/smartriser-nero.jpg"></a>
-	 				<a href="#" class="item-small"> <img class="image" src="${pageContext.request.contextPath}/image/productImage/smartriser-nero.jpg"></a>
+				<%
+					ArrayList<ImmagineBean> imgs = new ArrayList<ImmagineBean>();
+					imgs = (ArrayList<ImmagineBean>) ImmagineDAO.doRetrieveImagesByCode(prodotto.getCodice());
+					%>
+					
+					<% if(imgs == null){%>
+						<div class="img-small-wrap" style="display: none">
+					<% }
+					else{%>
+				<div class="img-small-wrap" style="display: flex">
+				<% }
+					String s;
+				for(int n = 0; n < 4; n++){
+					s = imgs.get(n).getUri();
+				%>
+				
+	 				<div  class="item-small"><a href="#"> <img class="image" src="${pageContext.request.contextPath}<%=s%>"> </a> </div>
+	 				
+	 				<%} %>
 				</div>
 			</aside>
 			
@@ -140,52 +154,52 @@
 		
 		<div class="card card-body">
 	<div class="row">
+	
+	<%
+	ArrayList<ProdottoBean> prodottiConsigliati = new ArrayList<ProdottoBean>();
+	prodottiConsigliati = (ArrayList<ProdottoBean>) ProdottoDAO.doRetrievebyRecommendedProducts(prodotto.getCategoria());
+	
+	int j =  0;
+	int cod = 0;
+	
+	for(int i = 1; i < 5; i++){ 
+		
+		cod = prodottiConsigliati.get(j).getCodice();
+		
+		if(cod == prodotto.getCodice()){
+			j++;
+			if(i == prodottiConsigliati.size()){
+				break;
+			}
+			else{
+			cod = prodottiConsigliati.get(j).getCodice();
+			}
+		}
+		
+		ImmagineBean imgCons = ImmagineDAO.doRetrieveImageByProductCode(cod);
+	%>
 		<div class="row-product-c">
 			<figure class="itemside mb-2">
-				<div class="aside"><img src="image/riser-test.jpg" class="border img-sm"></div>
+				<div class="aside"><a href="#"></a><img src="${pageContext.request.contextPath}<%=imgCons.getUri()%>" class="border img-sm"></a></div>
 				<figcaption class="info align-self-center">
-					<a href="#" class="title">Camera GoPro 4</a>
-					<strong class="price2">$241.99</strong>
+					<a href="#" class="title"><%=prodottiConsigliati.get(i).getNome()%></a>
+					<strong class="price2"><%=prodottiConsigliati.get(i).getPrezzo()%></strong>
 				</figcaption>
 			</figure>
-		</div> <!-- col.// -->
-
-		<div class="row-product-c">
-			<figure class="itemside mb-2">
-				<div class="aside"><img src="image/smart_blue.jpg" class="border img-sm"></div>
-				<figcaption class="info align-self-center">
-					<a href="#" class="title">Headset logitec</a>
-					<strong class="price2">$45.50</strong>
-				</figcaption>
-			</figure>
-		</div> <!-- col.// -->
-
-		<div class="row-product-c">
-			<figure class="itemside mb-2">
-				<div class="aside"><img src="image/riser-test.jpg" class="border img-sm"></div>
-				<figcaption class="info align-self-center">
-					<a href="#" class="title">Some product name</a>
-					<strong class="price2">$54.99</strong>
-				</figcaption>
-			</figure>
-		</div> <!-- col.// -->
-
-		<div class="row-product-c" id ="consiglio-4">
-			<figure class="itemside mb-2">
-				<div class="aside"><img src="image/smart_blue.jpg" class="border img-sm"></div>
-				<figcaption class="info align-self-center">
-					<a href="#" class="title">Name of item goes here </a>
-					<strong class="price2">$241.99</strong>
-				</figcaption>
-			</figure>
-		</div> <!-- col.// -->
+		</div> 
+		<%
+		j++;
+	
+	}%>
+		
+		
 	</div> <!-- row.// -->
 </div>
 		
 		<hr class="divider">
 		
 		<div class="eArrow-footer">
-			<jsp:include page="Footer.jsp"/>
+			<jsp:include page="footer.jsp"/>
 		</div>
 	</body>
 	

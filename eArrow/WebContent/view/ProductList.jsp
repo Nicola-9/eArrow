@@ -153,7 +153,7 @@
 	</div>
 	
 	<div class="eArrow-footer">
-		<jsp:include page="Footer.jsp"/>
+		<jsp:include page="footer.jsp"/>
 	</div>
 	
 	<!-- Bootstrap Script -->	
