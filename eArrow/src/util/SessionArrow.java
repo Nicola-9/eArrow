@@ -36,7 +36,7 @@ public class SessionArrow {
 	 * metodo per la gestione del login
 	 */
 	
-	public boolean loginSession() {
+	public boolean isSession() {
 		session = request.getSession(false);
 		
 		if(session == null) {
@@ -50,6 +50,17 @@ public class SessionArrow {
 			id = session.getId();
 			return true;
 		}
+	}
+	
+	public boolean logout() {
+		session = request.getSession(false);
+		
+		if(session != null) {
+			session.invalidate();
+			return true;
+		}
+		else
+			return false;
 	}
 	
 	//metodo setta il nome dell'utente

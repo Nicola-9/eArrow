@@ -176,6 +176,52 @@ public class ProdottoDAO {
 	}
 	
 	
+	public static ArrayList<ProdottoBean> doRetrievebyRecommendedProducts(String category){
+		ArrayList<ProdottoBean> products = new ArrayList<ProdottoBean>();
+		PreparedStatement ps;
+		ResultSet rs;
+		ProdottoBean prodotto;
+		
+		String productSQL = "SELECT p.codice, p.nome, p.categoria, p.tipologia, p.prezzo, p.disponibilita,"
+							+ "p.quantita, p.descrizione FROM"
+							+ " prodotto AS p WHERE p.categoria = ?";
+		
+		try(Connection connection = ConnessioneDB.getConnection()){
+			
+			ps = connection.prepareStatement(productSQL);
+			ps.setString(1, category);
+			
+			rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				prodotto = new ProdottoBean();
+				
+				prodotto.setCodice(rs.getInt("codice"));
+				prodotto.setNome(rs.getString("nome"));
+				prodotto.setCategoria(rs.getString("categoria"));
+				prodotto.setTipologia(rs.getString("tipologia"));
+				prodotto.setPrezzo(rs.getDouble("prezzo"));
+				
+				if(rs.getInt("disponibilita") == 1) {
+					prodotto.setDisponibilita(true);
+				} else {
+					prodotto.setDisponibilita(false);
+				}
+				
+				prodotto.setQuantita(rs.getInt("quantita"));
+				prodotto.setDescrizione(rs.getString("descrizione"));
+				
+				products.add(prodotto);
+			}
+			
+		} catch(SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return products;
+	}
+	
+	
 	public static final int ORDINA_NOME = 0;
 	public static final int ORDINA_PREZZOC = 1;
 	public static final int ORDINA_PREZZOD = 2;
