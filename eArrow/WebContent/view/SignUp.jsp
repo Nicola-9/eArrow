@@ -96,7 +96,7 @@
 		</div>
 		
 		<div class="eArrow-footer">
-			<jsp:include page="Footer.jsp"/>
+			<jsp:include page="footer.jsp"/>
 		</div>
 		
 		<script src='${pageContext.request.contextPath}/javascript/SignUpCheck.js'></script>

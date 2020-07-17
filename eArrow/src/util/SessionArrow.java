@@ -36,7 +36,7 @@ public class SessionArrow {
 	 * metodo per la gestione del login
 	 */
 	
-	public boolean loginSession() {
+	public boolean isSession() {
 		session = request.getSession(false);
 		
 		if(session == null) {
@@ -52,8 +52,19 @@ public class SessionArrow {
 		}
 	}
 	
+	public boolean logout() {
+		session = request.getSession(false);
+		
+		if(session != null) {
+			session.invalidate();
+			return true;
+		}
+		else
+			return false;
+	}
+	
 	//metodo setta il nome dell'utente
-	public boolean setSessionUserName(UtenteBean user) {
+	public boolean setSessionUser(UtenteBean user) {
 		session = request.getSession(false);
 		
 		if(session != null) {
@@ -91,6 +102,21 @@ public class SessionArrow {
 			return (String) session.getAttribute("userId");
 		}
 	}
+
+  
+	//metodo setta il nome dell'utente
+		public UtenteBean getSessionUser() {
+			session = request.getSession(false);
+			
+			if(session != null) {
+				
+				return (UtenteBean) session.getAttribute("user");
+			}
+			else {
+				//sessione scaduta o inesistente
+				return null;
+			}
+		}
 	
 	/*
 	 * metodo che ritorna il JSESSIONID
@@ -103,28 +129,22 @@ public class SessionArrow {
 	
 	
 	/*
-	 * metodo che ritorna il nome dell'utente
+	 * metodo che ritorna il ruolo, quidi o utente o Amministratore
 	 */
-		public static String getSessionUserName() {
-			session = request.getSession(false);
-			
-			if(session == null) {
-				return null;
-			}
-			
-			if(session.getAttribute("user") == null) {
+		public static String getSessionRole() {
+			if(session.getAttribute("role") == null) {
 				return null;
 			}else {
-				return (String) session.getAttribute("user");
+				return (String) session.getAttribute("role");
 			}
 		}
 		
 		/*
-		 * metodo che setta il nome dell'utente
+		 * metodo che ritorna il ruolo, quidi o utente o Amministratore
 		 */
-			public static void setSessionUserName(String s) {
+			public static void setSessionRole(String s) {
 				
-				session.setAttribute("user", s);
+				session.setAttribute("role", s);
 					
 			}
 	
