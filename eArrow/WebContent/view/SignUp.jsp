@@ -34,7 +34,7 @@
 						</div>
 					</div>
 					<div class="card-body">
-						<form id="registrationForm">
+						<form id="registrationForm" method="POST" action="${pageContext.request.contextPath}/SignUpServlet">
 						
 							<div class="input-group form-group">
 								<input name="name" type="text" class="form-control name" id="name" placeholder="Nome">
@@ -62,7 +62,7 @@
 							</div>
 							
 							<div class="input-group form-group">
-								<input name="address" type="text" class="form-control" id="address" placeholder="Indirizzo">
+								<input name="address" type="text" class="form-control" id="address" placeholder="Indirizzo - Città, via, civico, cap">
 							</div>
 							
 							<div class="error">

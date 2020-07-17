@@ -82,5 +82,42 @@ public class UtenteDao {
 		return user;
 	}
 	
+	public static boolean registerUser(int idIndirizzo, String name, String surname, String email, String password, String tel) {
+		boolean registerOk = false;
+		PreparedStatement ps;
+		
+		String insertSQL = "INSERT INTO utente(idIndirizzo, nome, cognome, email, pass, telefono)"
+				+ " VALUES(?, ?, ?, ?, ?, ?)";
+		
+		try {
+			Connection connection = null;
+			
+			try {
+				connection = ConnessioneDB.getConnection();
+				
+				ps = connection.prepareStatement(insertSQL);
+				ps.setInt(1, idIndirizzo);
+				ps.setString(2, name);
+				ps.setString(3, surname);
+				ps.setString(4, email);
+				ps.setString(5, password);
+				ps.setString(6, tel);
+				
+				int righe = ps.executeUpdate();
+				
+				connection.commit();
+				
+				if(righe > 0)
+					registerOk = true;
+				
+			}finally {
+				ConnessioneDB.releaseConnection(connection);
+			}
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return registerOk;
+	}
 	
 }

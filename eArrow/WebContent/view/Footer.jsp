@@ -1,4 +1,5 @@
-
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 <!-- footer -->
@@ -14,10 +15,10 @@
 					</label>
 
 					<p>
-						eArrow è un sito web e-commerce di arcieria.
-						eArrow possiede in magazzino i prodotti dei più grandi marchi e punta ad essere il tuo 
+						eArrow Ã¨ un sito web e-commerce di arcieria.
+						eArrow possiede in magazzino i prodotti dei piÃ¹ grandi marchi e punta ad essere il tuo 
 						negozio di fiducia.
-						Questo e-commerce è stato sviluppato mediante un progetto universitario relativo all'esame 
+						Questo e-commerce Ã¨ stato sviluppato mediante un progetto universitario relativo all'esame 
 						di Tecnologie Software per il Web.
 					</p>
 					
@@ -60,7 +61,7 @@
 
 
 		<div class="footer-celebration">
-			<p>© 2020 Design by Labanca Nicola & Bruno Biagio</p>
+			<p>Â© 2020 Design by Labanca Nicola & Bruno Biagio</p>
 			<p id="logo">
 				<img src='${pageContext.request.contextPath}/image/eArrow.png' width="50" height="50">
 			</p>
