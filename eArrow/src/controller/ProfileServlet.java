@@ -1,32 +1,29 @@
-
 package controller;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import model.bean.EvidenzaBean;
-import model.dao.EvidenzaDAO;
-import model.dao.ImmagineDAO;
+import model.bean.IndirizzoBean;
+import model.bean.UtenteBean;
+import model.dao.IndirizzoDAO;
+import model.dao.UtenteDao;
 import util.SessionArrow;
 
 /**
- * Servlet implementation class HomePageServlet
+ * Servlet implementation class ProfileServlet
  */
-@WebServlet("/HomePageServlet")
-public class HomePageServlet extends HttpServlet {
+@WebServlet("/ProfileServlet")
+public class ProfileServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public HomePageServlet() {
+    public ProfileServlet() {
         super();
     }
 
@@ -42,16 +39,32 @@ public class HomePageServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		SessionArrow sessione = new SessionArrow(request, response);
+		UtenteBean userBean = new UtenteBean();
 		
-		List<EvidenzaBean> evidenza = EvidenzaDAO.doRetrieveAll();
+		Boolean update = (Boolean) request.getAttribute("update");
 		
-		String user = sessione.getSessionUserName();
+		if(!update) {
+			String user = sessione.getSessionUserId();
 		
-		request.setAttribute("session", user);
+			if(user != null) {
+				int userId = Integer.parseInt(user);
+				
+				userBean = UtenteDao.doRetrievebyUserId(userId);
+				
+				if(userBean != null) {
+					request.setAttribute("userProfile", userBean);
+				}
+				
+				IndirizzoBean address = IndirizzoDAO.doRetrievebyId(userBean.getIndirizzo());
+				
+				if(address != null ) {
+					request.setAttribute("userAddress", address);
+				}
+				
+				request.getRequestDispatcher("view/Profile.jsp").forward(request, response);
+			}
+		}
 		
-		request.setAttribute("evidenzaList", evidenza);
-		
-		request.getRequestDispatcher("view/HomePage.jsp").forward(request, response);
 	}
 
 }
