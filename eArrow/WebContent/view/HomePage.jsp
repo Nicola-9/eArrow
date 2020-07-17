@@ -60,7 +60,7 @@
 			
 			for(EvidenzaBean e : evidenza){
 				
-				String uriImage = ImmagineDAO.doRetrieveImageByProductCode(e.getCodiceProdotto()).getUri();
+				String uriImage = ImmagineDAO.doRetrieveImageDiscountByProductCode(e.getCodiceProdotto()).getUri();
 				
 				String name = ProdottoDAO.doRetrievebyKey(e.getCodiceProdotto()).getNome();
 				String descrizione = ProdottoDAO.doRetrievebyKey(e.getCodiceProdotto()).getDescrizione();

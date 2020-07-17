@@ -46,7 +46,7 @@ public class LoginServlet extends HttpServlet {
 protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		SessionArrow sessione = new SessionArrow(request, response);
-					//Controllo se l utente è già loggato e lo rimando alla pagina corretta
+					//Controllo se l utente ï¿½ giï¿½ loggato e lo rimando alla pagina corretta
 					if(request.getAttribute("user")!=null) {
 						
 						email = request.getParameter("Email");
