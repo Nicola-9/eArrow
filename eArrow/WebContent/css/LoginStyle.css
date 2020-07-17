@@ -1,0 +1,169 @@
+@charset "ISO-8859-1";
+@import url('https://fonts.googleapis.com/css?family=Numans');
+
+*,
+*::before,
+*::after{
+	
+	margin: 0;
+	padding: 0;
+}
+
+html{
+	font-size: 10px;
+	font-family: 'SF Pro Display', sans-serif;
+}
+
+body{
+	max-height: 100vh;
+}
+
+.content{
+	background-image: url('..//image/sfondo-login.jpg');
+	background-size: cover;
+	background-repeat: no-repeat;
+	margin-top: 5rem;
+	height: calc(100vh - 5rem);
+	align-content: center;
+	position: relative;
+}
+
+.card {
+	height: 370px;
+	margin-top: auto;
+	margin-bottom: auto;
+	width: 400px;
+	background-color: rgba(0, 0, 0, 0.5) !important;
+}
+
+.card-header h3 {
+	color: white;
+	font-size: 2.5rem;
+}
+
+.card-body{
+	font-size: 1.25rem;
+	margin-top: 10%;
+}
+
+.input-goup{
+	font-size: 1.5rem;
+}
+
+.form-control{
+	height: 100%;
+	font-size: 1.5rem;
+	padding: 2% 1%;
+}
+
+.input-group-prepend span {
+	width: 45px;
+	font-size: 1.5rem;
+	justify-content: center;
+	background-color: #8A9597;
+	color: white;
+	border: 0 !important;
+}
+
+input:focus {
+	outline: 0 0 0 0 !important;
+	box-shadow: 0 0 0 0 !important;
+}
+
+.btn{
+	font-size: 1.7rem;
+	background-color: #8A9597;
+}
+
+div.card-footer{
+	font-size: 1.5rem;
+}
+
+.remember {
+	color: white;
+}
+
+.remember input {
+	width: 20px;
+	height: 20px;
+	margin-left: 15px;
+	margin-right: 5px;
+}
+
+.login-form{
+	margin-top: 5%;
+	text-align: center;
+}
+
+.login_btn {
+	color: white;
+	background-color: #8A9597;
+	width: 50%;
+	text-align: center;
+}
+
+.login_btn:hover {
+	color: white;
+	background-color: #828282;
+}
+
+.links {
+	color: white;
+}
+
+.links a {
+	margin-left: 4px;
+}
+
+.icon span {
+	font-size: 60px;
+	margin-left: 10px;
+	color: #FFC312;
+}
+
+.icon span:hover {
+	color: white;
+	cursor: pointer;
+}
+
+.card-header h3 {
+	color: white;
+}
+
+.icon {
+	position: absolute;
+	right: 0px;
+	top: -49px;
+}
+
+.eArrowFooter{
+	margin-bottom: 0;
+	bottom: 0;
+	position: relative;
+	flex: 0;
+}
+
+a.registration-link{
+	margin-left: 3%;
+	text-decoration: none;
+}
+
+
+.alert {
+    position: relative;
+    padding: 0.75rem 1.25rem;
+    margin-top: 0;
+    border: 1px solid transparent;
+    border-radius: 0.37rem;
+}
+
+.alert-c {
+    color: #2c2c2c;
+    background-color: rgba(0, 0, 0, 0.5) !important;
+    border-color: #cfcfcf;
+}
+
+.alert h3 {
+	color: white;
+	font-size: 2.5rem;
+}

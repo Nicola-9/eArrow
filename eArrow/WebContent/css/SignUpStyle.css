@@ -1,0 +1,139 @@
+@charset "ISO-8859-1";
+@import url('https://fonts.googleapis.com/css?family=Numans');
+
+*,
+*::before,
+*::after{
+	
+	margin: 0;
+	padding: 0;
+}
+
+html{
+	font-size: 10px;
+	font-family: 'SF Pro Display', sans-serif;
+}
+
+body{
+	max-height: 100vh;
+}
+
+.content{
+	background-image: url('..//image/sfondo-signup.jpg');
+	background-size: cover;
+	background-repeat: no-repeat;
+	margin-top: 5rem;
+	height: calc(100vh - 5rem);
+	align-content: center;
+	position: relative;
+}
+
+.card {
+	height: auto;
+	margin-top: auto;
+	margin-bottom: auto;
+	width: 400px;
+	background-color: rgba(0, 0, 0, 0.5) !important;
+}
+
+.card-header h3 {
+	color: white;
+	font-size: 2.5rem;
+}
+
+.card-body h5 {
+	color: white;
+	font-size: 1.5rem;
+}
+
+input:focus {
+	outline: 0 0 0 0 !important;
+	box-shadow: 0 0 0 0 !important;
+}
+
+.Signin_btn {
+	color: white;
+	width: 100px;
+	background-color: #8A9597;
+	font-size: 1.7rem;
+}
+
+.Signin_btn:hover {
+	color: white;
+	background-color: #828282;
+}
+
+.input-group {
+	margin-bottom: 0%;
+	font-size: 1.5rem;
+}
+
+.error{
+	margin-bottom: 1%;
+	font-size: 1.3rem;
+	visibility: hidden;
+}
+
+.form-control{
+	height: 100%;
+	font-size: 1.5rem;
+	padding: 2% 2%;
+}
+.name {
+	margin-right: 3%;
+	border-top-right-radius: .25rem !important;
+	border-bottom-right-radius: .25rem !important;
+	width: 50%;
+	text-transform: capitalize;
+}
+
+.surname {
+	border-top-left-radius: .25rem !important;
+	border-bottom-left-radius: .25rem !important;
+	width: 50%;
+	text-transform: capitalize;
+}
+
+.subm {
+	margin-top: 5%;
+}
+
+.form-group {
+	height: auto;
+}
+
+.links {
+	color: white;
+}
+
+.links a {
+	margin-left: 4px;
+}
+
+.icon span {
+	font-size: 60px;
+	margin-left: 10px;
+	color: #FFC312;
+}
+
+.icon span:hover {
+	color: white;
+	cursor: pointer;
+}
+
+.card-header h3 {
+	color: white;
+}
+
+.icon {
+	position: absolute;
+	right: 0px;
+	top: -49px;
+}
+
+.eArrowFooter{
+	margin-bottom: 0;
+	bottom: 0;
+	position: relative;
+	flex: 0;
+}
