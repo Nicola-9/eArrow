@@ -58,6 +58,10 @@ body{
 	color: white;
 }
 
+.save-btn{
+	display: none;
+}
+
 .fa{
 	padding: 0;
 	padding-right: 2.5rem;
