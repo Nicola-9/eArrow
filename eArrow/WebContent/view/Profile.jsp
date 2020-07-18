@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+<%@page import="java.util.ArrayList, model.bean.*, model.dao.*"%>
+
 <!DOCTYPE html>
 <html>
 	<head>
@@ -22,6 +25,19 @@
 	<body>
 	
 		<jsp:include page="NavbareArrow.jsp"/>
+		
+		<%
+			Object userObj = request.getAttribute("userProfile");
+			Object userAddressObj = request.getAttribute("userAddress");
+			
+			UtenteBean user = null;
+			IndirizzoBean address = null;
+			
+			if(userObj != null && userAddressObj != null){
+				user = (UtenteBean) userObj;
+				address = (IndirizzoBean) userAddressObj;
+			
+		%>
 	
 		<div class="content">
 			<h5 class="doc-title-sm">IL TUO PROFILO</h5>
@@ -36,12 +52,12 @@
 						<div class="form-row">
 							<div class="col form-group">
 								<label>Nome</label> <input type="text" class="form-control"
-									value="John">
+									value="<%=user.getNome()%>">
 							</div>
 							<!-- form-group end.// -->
 							<div class="col form-group">
 								<label>Cognome</label> <input type="text" class="form-control"
-									value="Surname">
+									value="<%=user.getCognome()%>">
 							</div>
 							<!-- form-group end.// -->
 						</div>
@@ -50,12 +66,12 @@
 						<div class="form-row email-row">
 							<div class="col form-group">
 								<label>Email</label> <input type="email" class="form-control"
-									value="boh@gmail.com">
+									value="<%=user.getEmail()%>">
 							</div>
 							
 							<div class="col form-group">
 								<label>Telefono</label> <input type="text" class="form-control"
-									value="3914599336">
+									value="<%=user.getTelefono()%>">
 							</div>
 							<!-- form-group end.// -->
 						</div>
@@ -73,12 +89,12 @@
 						<div class="form-row">
 							<div class="col form-group">
 								<label>Città</label> <input type="text" class="form-control"
-									value="Trecchina">
+									value="<%=address.getCitta()%>">
 							</div>
 							<!-- form-group end.// -->
 							<div class="col form-group">
 								<label>Via</label> <input type="text" class="form-control"
-									value="Maurino">
+									value="<%=address.getVia()%>">
 							</div>
 							<!-- form-group end.// -->
 						</div>
@@ -86,12 +102,12 @@
 						<div class="form-row">
 							<div class="col form-group">
 								<label>Civico</label> <input type="text" class="form-control"
-									value="43/A">
+									value="<%=address.getCivico()%>">
 							</div>
 							<!-- form-group end.// -->
 							<div class="col form-group">
 								<label>CAP</label> <input type="text" class="form-control"
-									value="85049">
+									value="<%=address.getCap()%>">
 							</div>
 							<!-- form-group end.// -->
 						</div>
@@ -99,11 +115,10 @@
 						<div class="form-row">
 							<div class="col form-group">
 								<label>Tipologia indirizzo</label> <input type="text" class="form-control typeAddress"
-									value="Fatturazione e Spedizione">
+									value="<%=address.getTipologia()%>">
 							</div>
 							<!-- form-group end.// -->
-						</div>
-						
+						</div>		
 		
 						<button class="btn btn-primary btn-block save-btn">Salva le modifiche</button>
 					</form>
@@ -113,6 +128,11 @@
 			<!-- card .// -->
 		</div>
 		
+		<%
+			}
+		%>
+			
+			
 		<div class="eArrow-footer">
 			<jsp:include page="Footer.jsp"/>
 		</div>

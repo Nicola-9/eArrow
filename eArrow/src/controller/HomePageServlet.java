@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import model.bean.EvidenzaBean;
+import model.bean.UtenteBean;
 import model.dao.EvidenzaDAO;
 import model.dao.ImmagineDAO;
 import util.SessionArrow;
@@ -45,9 +46,10 @@ public class HomePageServlet extends HttpServlet {
 		
 		List<EvidenzaBean> evidenza = EvidenzaDAO.doRetrieveAll();
 		
-		String user = sessione.getSessionUserName();
+		UtenteBean user = sessione.getSessionUser();
 		
 		request.setAttribute("session", user);
+		request.setAttribute("update", false);
 		
 		request.setAttribute("evidenzaList", evidenza);
 		

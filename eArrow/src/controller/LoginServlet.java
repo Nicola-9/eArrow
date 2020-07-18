@@ -94,6 +94,8 @@ protected void doPost(HttpServletRequest request, HttpServletResponse response) 
 						
 						passwordformat = PasswordSha256.getEncodedpassword(password);
 						UtenteBean utente = UtenteDao.doRetrievebyEmailAndPassword(email, passwordformat);
+						
+						System.out.println(utente);
 			
 						if (utente == null) {
 							
@@ -113,8 +115,8 @@ protected void doPost(HttpServletRequest request, HttpServletResponse response) 
 								
 							}
 							
-							sessione.setSessionUserName(UtenteDao.doRetrievebyEmailAndPassword(email, password));
-							request.getRequestDispatcher("/view/HomePage.jsp").forward(request, response);
+							sessione.setSessionUser(UtenteDao.doRetrievebyEmailAndPassword(email, passwordformat));
+							request.getRequestDispatcher("/HomePageServlet").forward(request, response);
 							
 						}
 					
