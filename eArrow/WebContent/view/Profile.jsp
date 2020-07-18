@@ -43,84 +43,141 @@
 			<h5 class="doc-title-sm">IL TUO PROFILO</h5>
 			<div class="card">
 				<div class="card-body">
-					<form>
-					
+					<form id="ajaxForm" action="${pageContext.request.contextPath}/ProfileAJAX?userNew">
+						<input type="hidden" class="idUser" name="idUser" value="<%=user.getId()%>">
+						<input type="hidden" class="idAddress" name="idAddress" value="<%=user.getIndirizzo()%>">
+						
 						<div class="intestation">
 							<h5 class="headerInformation d-inline-block">INFORMAZIONI PERSONALI</h5>
 							<button type="button" class="btn btn-primary modify-btn"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>Modifica</button>
 						</div>
-						<div class="form-row">
+						<div class="form-row nameSurnameRow">
 							<div class="col form-group">
-								<label>Nome</label> <input type="text" class="form-control"
+								<label>Nome</label> <input type="text" class="form-control name"
 									value="<%=user.getNome()%>">
 							</div>
 							<!-- form-group end.// -->
 							<div class="col form-group">
-								<label>Cognome</label> <input type="text" class="form-control"
+								<label>Cognome</label> <input type="text" class="form-control surname"
 									value="<%=user.getCognome()%>">
 							</div>
 							<!-- form-group end.// -->
 						</div>
 						<!-- form-row.// -->
+						<div class="errRow errRowNameSurname">
+							<span class="error errNameHide">
+									<small id="errorName" class="form-text text-danger">We'll never share your email..</small>
+							</span>
+							<span class="error error-second errSurnameHide">
+									<small id="errorSurname" class="form-text text-danger">We'll never share your email..</small>
+							</span>
+						</div>
 		
-						<div class="form-row email-row">
+						<div class="form-row emailTelRow">
 							<div class="col form-group">
-								<label>Email</label> <input type="email" class="form-control"
+								<label>Email</label> <input type="email" class="form-control email"
 									value="<%=user.getEmail()%>">
 							</div>
 							
 							<div class="col form-group">
-								<label>Telefono</label> <input type="text" class="form-control"
+								<label>Telefono</label> <input type="text" class="form-control tel"
 									value="<%=user.getTelefono()%>">
 							</div>
 							<!-- form-group end.// -->
 						</div>
 						
-						<div class="form-row tel-row">
+						<div class="errRow errRowEmailTel">
+							<span class="error errEmailHide">
+									<small id="errorEmail" class="form-text text-danger">We'll never share your email..</small>
+							</span>
+							<span class="error error-second errTelHide">
+									<small id="errorTel" class="form-text text-danger">We'll never share your email..</small>
+							</span>
+						</div>
+						
+						<div class="form-row passConfPassRow">
 							<div class="col form-group">
-								<label>Password</label> <input type="password" class="form-control pass"
+								<label>Modifica Password</label> <input type="password" class="form-control pass"
+									value="Prova">
+							</div>
+							<!-- form-group end.// -->
+							<div class="col form-group">
+								<label>Conferma Modifica Password</label> <input type="confirmPass" class="form-control confirmPass"
 									value="Prova">
 							</div>
 							<!-- form-group end.// -->
 						</div>
 						
+						<div class="errRow errRowPassConfirmPass">
+							<span class="error errPassHide">
+									<small id="errorPass" class="form-text text-danger">We'll never share your email..</small>
+							</span>
+							<span class="error error-second errConfPassHide">
+									<small id="errorConfirmPass" class="form-text text-danger">We'll never share your email..</small>
+							</span>
+						</div>
+						
 						<h5 class="headerInformation addressHeader">INDIRIZZO</h5>
 						
-						<div class="form-row">
+						<div class="form-row cittaViaRow">
 							<div class="col form-group">
-								<label>Città</label> <input type="text" class="form-control"
+								<label>Città</label> <input type="text" class="form-control citta"
 									value="<%=address.getCitta()%>">
 							</div>
 							<!-- form-group end.// -->
 							<div class="col form-group">
-								<label>Via</label> <input type="text" class="form-control"
+								<label>Via</label> <input type="text" class="form-control via"
 									value="<%=address.getVia()%>">
 							</div>
 							<!-- form-group end.// -->
 						</div>
 						
-						<div class="form-row">
+						<div class="errRow errRowCityVia">
+							<span class="error errCityHide">
+									<small id="errorCity" class="form-text text-danger">We'll never share your email..</small>
+							</span>
+							<span class="error error-second errViaHide">
+									<small id="errorVia" class="form-text text-danger">We'll never share your email..</small>
+							</span>
+						</div>
+						
+						<div class="form-row civicoCapRow">
 							<div class="col form-group">
-								<label>Civico</label> <input type="text" class="form-control"
+								<label>Civico</label> <input type="text" class="form-control civico"
 									value="<%=address.getCivico()%>">
 							</div>
 							<!-- form-group end.// -->
 							<div class="col form-group">
-								<label>CAP</label> <input type="text" class="form-control"
+								<label>CAP</label> <input type="text" class="form-control cap"
 									value="<%=address.getCap()%>">
 							</div>
 							<!-- form-group end.// -->
 						</div>
 						
-						<div class="form-row">
+						<div class="errRow errRowCivicoCap">
+							<span class="error errCivicoHide">
+									<small id="errorCivico" class="form-text text-danger">We'll never share your email..</small>
+							</span>
+							<span class="error error-second errCapHide">
+									<small id="errorCap" class="form-text text-danger">We'll never share your email..</small>
+							</span>
+						</div>
+						
+						<div class="form-row tipologiaRow">
 							<div class="col form-group">
-								<label>Tipologia indirizzo</label> <input type="text" class="form-control typeAddress"
+								<label>Tipologia indirizzo</label> <input type="text" name="tipologia" class="form-control typeAddress"
 									value="<%=address.getTipologia()%>">
 							</div>
 							<!-- form-group end.// -->
+						</div>
+						
+						<div class="errRow errRowTipologia">
+							<span class="error">
+									<small id="errorTipologia" class="form-text text-danger">We'll never share your email..</small>
+							</span>
 						</div>		
 		
-						<button class="btn btn-primary btn-block save-btn">Salva le modifiche</button>
+						<button type ="submit" class="btn btn-primary btn-block save-btn">Salva le modifiche</button>
 					</form>
 				</div>
 				<!-- card-body.// -->
