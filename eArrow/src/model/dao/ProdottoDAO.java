@@ -222,6 +222,34 @@ public class ProdottoDAO {
 	}
 	
 	
+	public static List<String> doRetrievebySubstring(String sub){
+		List<String> productsName = new ArrayList<String>();
+		PreparedStatement ps;
+		ResultSet rs;
+		ProdottoBean prodotto;
+		
+		sub = '%' + sub + '%';
+		
+		String productSQL = "SELECT p.nome FROM prodotto AS p WHERE p.nome like ?;";
+		
+		try(Connection connection = ConnessioneDB.getConnection()){
+			
+			ps = connection.prepareStatement(productSQL);
+			ps.setString(1, sub);
+			rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				productsName.add(rs.getString("nome"));
+			}
+			
+		} catch(SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return productsName;
+	}
+	
+	
 	public static final int ORDINA_NOME = 0;
 	public static final int ORDINA_PREZZOC = 1;
 	public static final int ORDINA_PREZZOD = 2;

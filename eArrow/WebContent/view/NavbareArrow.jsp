@@ -78,7 +78,10 @@
 			<div class="search-form">
 				<form class="inputSearch">
 					<input class="inputSearchInput" type="text" name=""
-						placeholder="eArrow.it">
+						placeholder="eArrow.it" list="dbSearch">
+						<datalist id="dbSearch">
+						  
+						</datalist>
 				</form>
 			</div>
 
@@ -89,10 +92,13 @@
 	</div>
 </header>
 
-<script src='${pageContext.request.contextPath}/javascript/NavbarJS.js'></script>
 
-<script type="text/javascript">
-		
+<script src='${pageContext.request.contextPath}/javascript/NavbarJS.js'></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js" type="text/javascript"></script> 
+
+
+	<script type="text/javascript">	
+	
 			var searchView = function(){
                 $('#search').click(function(){
                     $('.nav-earrow-link').addClass('hide-item');
@@ -139,4 +145,61 @@
             		}
             	});
             });
+            
+            function removeElement(elementId) {
+                var element = document.getElementById(elementId);
+                if(element != null){
+                element.parentNode.removeChild(element);
+                }
+            }
+            
+            
+            $(document).ready(function(){
+            	$('.inputSearchInput').on("change paste keyup", function() {
+            		var input = $(".inputSearchInput").val();
+            		console.log("input utente = " + input);
+            		
+            		
+            		//rimuove gli elementi all'interno del datalist avente id: dbSearch
+					var elem = "nameE"
+					
+					var container = document.getElementById("dbSearch");
+					var elements = container.getElementsByClassName(elem);
+
+					while (elements[0]) {
+					    elements[0].parentNode.removeChild(elements[0]);
+					}
+					
+			
+
+            		$.ajax({
+    					type : "POST",
+    					url : "SuggestionListServlet",
+    					data : {"inputJ" : input,},
+    					dataType : "json",
+    					async : true,
+    					success : function(response) {
+
+    						//immette gli elementi all'interno del datalist avente id: dbSearch
+    						var booleanRisposta = response[0];
+    						
+    						if(booleanRisposta == true){
+    							var array = response[1];
+    							var i = 0;
+    							while(i < array.length){
+    								var str = array[i];
+									$( "#dbSearch" ).append( "<option value="+str+" class="+elem+">" );
+    								console.log("input utente = " + array[i]);
+    								i++;
+    							}	
+    						} else{
+    							
+    						}
+    					},
+
+    				});
+            	});
+
+            });
+
         </script>
