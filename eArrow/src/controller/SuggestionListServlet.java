@@ -1,9 +1,7 @@
-
 package controller;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -11,24 +9,24 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import model.bean.EvidenzaBean;
-import model.bean.UtenteBean;
-import model.dao.EvidenzaDAO;
-import model.dao.ImmagineDAO;
-import util.SessionArrow;
+import model.dao.ProdottoDAO;
+
+import org.json.JSONArray;
+
 
 /**
- * Servlet implementation class HomePageServlet
+ * Servlet implementation class SuggestionListServlet
  */
-@WebServlet("/HomePageServlet")
-public class HomePageServlet extends HttpServlet {
+@WebServlet("/SuggestionListServlet")
+public class SuggestionListServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public HomePageServlet() {
+    public SuggestionListServlet() {
         super();
+        // TODO Auto-generated constructor stub
     }
 
 	/**
@@ -42,15 +40,27 @@ public class HomePageServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		SessionArrow sessione = new SessionArrow(request, response);
+		String input = request.getParameter("inputJ");
 		
-		List<EvidenzaBean> evidenza = EvidenzaDAO.doRetrieveAll();
+		ArrayList<String> paroleOutput = new ArrayList<String>();
+		
+		paroleOutput = (ArrayList<String>) ProdottoDAO.doRetrievebySubstring(input);
+		
+		response.setContentType("application/json");
+		JSONArray array = new JSONArray();
 
-		String user = sessione.getSessionRole();
-    
-		request.setAttribute("evidenzaList", evidenza);
+		if(!paroleOutput.isEmpty()) {
+			
+			array.put(true);
+			array.put(paroleOutput);
+			
+		}else
+			array.put(false);
 		
-		request.getRequestDispatcher("view/HomePage.jsp").forward(request, response);
+		response.encodeURL(((HttpServletRequest)request).getRequestURL().toString());
+
+		response.getWriter().append(array.toString());
+		
 	}
 
 }

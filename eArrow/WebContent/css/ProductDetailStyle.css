@@ -64,7 +64,6 @@ body{
 .img-small-wrap {
     text-align: center;
     margin-bottom: 20px;
-    display: flex;
     margin-left: 20%;
     margin-right: 20%;
 }
@@ -80,7 +79,7 @@ body{
     margin: auto;
 }
 
-.img-small-wrap .item-small img {
+.img-small-wrap .item-small a img {
     max-width: 100%;
     max-height: 100%;
     object-fit: cover;
@@ -88,6 +87,11 @@ body{
     cursor: -webkit-zoom-in;
     cursor: zoom-in;
     vertical-align: middle;
+}
+
+.item-small{
+	display: block;
+	margin: auto;
 }
 
 .main-class{
@@ -245,6 +249,7 @@ hr.divider {
     max-width: 25%;
     margin: auto;
     overflow: hidden;
+    padding-left: 5%;
 }
 
 .itemside {
@@ -268,6 +273,10 @@ figure {
 .img-sm{
 	width: 75px;
     height: 75px;
+}
+
+.img-sm:hover{
+	transform: scale(1.1);
 }
 
 .itemside .info {

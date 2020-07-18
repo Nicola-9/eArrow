@@ -1,0 +1,132 @@
+@charset "UTF-8";
+
+*,
+*::before,
+*::after{
+	margin: 0;
+	padding: 0;
+}
+
+html{
+	font-size: 10px;
+	font-family: 'SF Pro Display', sans-serif;
+}
+
+body{
+	margin-top: 5%;
+	background-color: #f8f9fa;	
+	display: flex;
+	flex-direction: column;
+}
+
+.content{
+	min-height: 100vh;
+	margin-left: 10%;
+	margin-right: 10%;
+}
+
+.doc-title-sm {
+	margin-left: 1%;
+	margin-bottom: 1%;
+	font-size: 1.5rem;
+	font-weight: 500;
+	color: #adb5bd;
+	text-transform: uppercase;
+}
+
+.card{
+	font-size: 1.5rem;
+}
+
+.headerInformation{
+	font-size: 1.25rem;
+	font-weight: 500;
+	color: #adb5bd;
+	text-transform: uppercase;
+	margin-bottom: 1.25%;
+	margin-top: .5%;
+}
+
+.addressHeader{
+	margin-top: 2%;
+}
+
+.modify-btn{
+	float: right;
+	margin-top: 0 !important;
+	text-align: center;
+	color: white;
+}
+
+.save-btn{
+	display: none;
+}
+
+.fa{
+	padding: 0;
+	padding-right: 2.5rem;
+	color: white;
+}
+
+.fa:hover{
+	opacity: 1;
+}
+
+.errNameHide,
+.errSurnameHide,
+.errEmailHide,
+.errTelHide,
+.errPassHide,
+.errConfPassHide,
+.errCityHide,
+.errViaHide,
+.errCivicoHide,
+.errCapHide{
+	width: 50%;
+	display: inline-block;
+	visibility: hidden;
+}
+
+.error-second{
+	width: 49.5%;
+}
+
+.errRowNameSurname,
+.errRowEmailTel,
+.errRowPassConfirmPass,
+.errRowCityVia,
+.errRowCivicoCap,
+.errRowTipologia{
+	margin-bottom: .5%;
+	display: none;
+}
+
+.nameSurnameRow,
+.emailTelRow,
+.passConfPassRow,
+.cittaViaRow,
+.civicoCapRow,
+.tipologiaRow{
+	margin-bottom: 1.5%;
+}
+
+.form-control{
+	font-size: 1.5rem;
+	height: 65%;
+}
+
+.btn{
+	margin-top: 3%;
+	font-size: 1.5rem;
+}
+
+.btn-block{
+	padding: .5%;
+}
+
+.eArrowFooter{
+	margin-bottom: 0;
+	bottom: 0;
+	position: relative;
+	flex: 0;
+}

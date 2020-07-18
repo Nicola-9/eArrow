@@ -1,33 +1,29 @@
-
 package controller;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import model.bean.EvidenzaBean;
+import model.bean.IndirizzoBean;
 import model.bean.UtenteBean;
-import model.dao.EvidenzaDAO;
-import model.dao.ImmagineDAO;
+import model.dao.IndirizzoDAO;
+import model.dao.UtenteDao;
 import util.SessionArrow;
 
 /**
- * Servlet implementation class HomePageServlet
+ * Servlet implementation class ProfileServlet
  */
-@WebServlet("/HomePageServlet")
-public class HomePageServlet extends HttpServlet {
+@WebServlet("/ProfileServlet")
+public class ProfileServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public HomePageServlet() {
+    public ProfileServlet() {
         super();
     }
 
@@ -44,13 +40,19 @@ public class HomePageServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		SessionArrow sessione = new SessionArrow(request, response);
 		
-		List<EvidenzaBean> evidenza = EvidenzaDAO.doRetrieveAll();
-
-		String user = sessione.getSessionRole();
-    
-		request.setAttribute("evidenzaList", evidenza);
+		UtenteBean user = sessione.getSessionUser();
 		
-		request.getRequestDispatcher("view/HomePage.jsp").forward(request, response);
+		if(user != null) {
+			request.setAttribute("userProfile", user);
+				
+			IndirizzoBean address = IndirizzoDAO.doRetrievebyId(user.getIndirizzo());
+				
+			if(address != null ) {
+				request.setAttribute("userAddress", address);
+			}
+				
+			request.getRequestDispatcher("view/Profile.jsp").forward(request, response);
+		}
 	}
 
 }
