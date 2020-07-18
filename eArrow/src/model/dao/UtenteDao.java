@@ -154,4 +154,38 @@ public class UtenteDao {
 		return user;
 	}
 	
+	
+	public static boolean updateUserById(UtenteBean userNew){
+		PreparedStatement ps;
+		
+		String userSQL = "UPDATE utente SET nome = ?, cognome = ?, email = ?, pass = ?, telefono = ? WHERE id = ?";
+		
+		try{
+			Connection connessione=null;
+			try {
+				connessione = ConnessioneDB.getConnection();
+				
+				ps = connessione.prepareStatement(userSQL);
+				
+				ps.setString(1, userNew.getNome());
+				ps.setString(2, userNew.getCognome());
+				ps.setString(3, userNew.getEmail());
+				ps.setString(4, userNew.getPassword());
+				ps.setString(5, userNew.getTelefono());
+				ps.setInt(6, userNew.getId());
+				
+				ps.executeUpdate();
+				connessione.commit();
+				
+				return true;
+			}
+			finally {
+				ConnessioneDB.releaseConnection(connessione);	
+			}
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return false;
+	}
 }

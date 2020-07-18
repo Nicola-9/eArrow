@@ -17,7 +17,7 @@
 
 				</li>
 
-				<li class="nav-earrow-item"><a href="Homepage.jsp"
+				<li class="nav-earrow-item"><a href="${pageContext.request.contextPath}/HomePageServlet"
 					class="nav-earrow-link nav-link-earrow"></a></li>
 
 				<li class="nav-earrow-item"><a href="#"
