@@ -63,20 +63,6 @@ public class SessionArrow {
 			return false;
 	}
 	
-	//metodo setta il nome dell'utente
-	public boolean setSessionUser(UtenteBean user) {
-		session = request.getSession(false);
-		
-		if(session != null) {
-			session.setAttribute("user", user);
-			
-			return false;
-		}
-		else {
-			//sessione scaduta o inesistente
-			return true;
-		}
-	}
 	
 	//metodo setta l'id dell'utente
 	public boolean setSessionUserId(UtenteBean user) {
@@ -84,21 +70,6 @@ public class SessionArrow {
 		
 		if(session != null) {
 			session.setAttribute("userId", user.getId());
-			
-			return false;
-		}
-		else {
-			//sessione scaduta o inesistente
-			return true;
-		}
-	}
-	
-	//metodo setta l'id dell'utente
-	public boolean setSessionUserName(UtenteBean user) {
-		session = request.getSession(false);
-		
-		if(session != null) {
-			session.setAttribute("user", user.getNome());
 			
 			return false;
 		}
@@ -117,6 +88,34 @@ public class SessionArrow {
 			return (String) session.getAttribute("userId");
 		}
 	}
+	
+	//metodo setta l'id dell'utente
+	public boolean setSessionUserName(UtenteBean user) {
+		session = request.getSession(false);
+		
+		if(session != null) {
+			session.setAttribute("userName", user.getNome());
+			
+			return false;
+		}
+		else {
+			//sessione scaduta o inesistente
+			return true;
+		}
+	}
+	
+	//metodo setta il nome dell'utente
+			public String getSessionUserName() {
+				session = request.getSession(false);
+				
+				if(session != null) {
+					return (String) session.getAttribute("userName");
+				}
+				else {
+					//sessione scaduta o inesistente
+					return null;
+				}
+			}
 
   
 	//metodo setta il nome dell'utente
@@ -134,17 +133,20 @@ public class SessionArrow {
 		}
 		
 		//metodo setta il nome dell'utente
-		public String getSessionUserName() {
+		public boolean setSessionUser(UtenteBean user) {
 			session = request.getSession(false);
 			
 			if(session != null) {
-				return (String) session.getAttribute("user");
+				session.setAttribute("user", user);
+				
+				return false;
 			}
 			else {
 				//sessione scaduta o inesistente
-				return null;
+				return true;
 			}
 		}
+		
 	
 	/*
 	 * metodo che ritorna il JSESSIONID
@@ -160,10 +162,16 @@ public class SessionArrow {
 	 * metodo che ritorna il ruolo, quidi o utente o Amministratore
 	 */
 		public static String getSessionRole() {
-			if(session.getAttribute("role") == null) {
+			session = request.getSession(false);
+			if(session == null) {
 				return null;
-			}else {
-				return (String) session.getAttribute("role");
+			}
+			else {
+				if(session.getAttribute("role") != null) {
+					return (String) session.getAttribute("role");
+				}else {
+					return null;
+				}
 			}
 		}
 		
@@ -171,7 +179,7 @@ public class SessionArrow {
 		 * metodo che ritorna il ruolo, quidi o utente o Amministratore
 		 */
 			public static void setSessionRole(String s) {
-				
+				session = request.getSession(false);
 				session.setAttribute("role", s);
 					
 			}

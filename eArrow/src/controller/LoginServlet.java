@@ -46,12 +46,17 @@ public class LoginServlet extends HttpServlet {
 protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		SessionArrow sessione = new SessionArrow(request, response);
+		
+		
+			UtenteBean utenteSessione = sessione.getSessionUser();
+		
 					//Controllo se l utente � gi� loggato e lo rimando alla pagina corretta
-					if(request.getAttribute("user")!=null) {
+					if(utenteSessione != null) {
 						
-						email = request.getParameter("Email");
-						password = request.getParameter("Password");
-						String ruolo = (String) sessione.getSessionUserName();
+						email = utenteSessione.getEmail();
+						password = utenteSessione.getPassword();
+						
+						String ruolo = (String) sessione.getSessionRole();
 						
 						if (ruolo.equalsIgnoreCase("utente")) {
 							
@@ -103,7 +108,7 @@ protected void doPost(HttpServletRequest request, HttpServletResponse response) 
 
 							if (passwordformat.equals(utente.getPassword())) {
 								
-								sessione.setSessionUserName(utente);
+								sessione.setSessionUser(utente);
 							}
 							
 							else {
@@ -113,7 +118,7 @@ protected void doPost(HttpServletRequest request, HttpServletResponse response) 
 								
 							}
 							
-							sessione.setSessionUserName(UtenteDao.doRetrievebyEmailAndPassword(email, password));
+							sessione.setSessionUser(UtenteDao.doRetrievebyEmailAndPassword(email, password));
 							request.getRequestDispatcher("/view/HomePage.jsp").forward(request, response);
 							
 						}
