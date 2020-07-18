@@ -39,8 +39,6 @@ document.addEventListener('DOMContentLoaded', () => {
 		inp.disabled = true;
 	});
 				
-	saveBtn.style.display = "none";
-				
 	modifyBtn.addEventListener('click', () => {
 		inputField.forEach((inp) => {
 			inp.disabled = false;
@@ -51,7 +49,7 @@ document.addEventListener('DOMContentLoaded', () => {
 					
 		modifyBtn.disabled = true;
 					
-		saveBtn.style.removeProperty('display');
+		saveBtn.style.display = 'block';
 		
 		passField.type = "text";
 	});

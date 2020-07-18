@@ -45,8 +45,6 @@ public class HomePageServlet extends HttpServlet {
 		SessionArrow sessione = new SessionArrow(request, response);
 		
 		List<EvidenzaBean> evidenza = EvidenzaDAO.doRetrieveAll();
-		
-		request.setAttribute("user", sessione.getSessionUser());
 
 		String user = sessione.getSessionRole();
     

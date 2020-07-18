@@ -48,7 +48,7 @@
 					class="nav-earrow-link nav-earrow-link-search" id="search"></a></li>
 
 				<% 
-					UtenteBean user = (UtenteBean) request.getAttribute("user"); 
+					UtenteBean user = (UtenteBean) request.getSession().getAttribute("user"); 
 					
 					System.out.println(user);
 					
