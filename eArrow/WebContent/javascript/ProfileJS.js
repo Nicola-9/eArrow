@@ -1,8 +1,12 @@
 /**
  * 
  */
+const saveBtn = document.querySelector('.save-btn');
+const modifyBtn = document.querySelector('.modify-btn');
+const inputField = document.querySelectorAll('input');
 
 let valid = false;
+let modifiedPassword = false;
 let jsonToSend;
 let nameField;
 let surnameField
@@ -29,9 +33,6 @@ capField = document.querySelector('input.cap');
 formUrl = document.querySelector('#ajaxForm');
 
 document.addEventListener('DOMContentLoaded', () => {
-	const modifyBtn = document.querySelector('.modify-btn');
-	const saveBtn = document.querySelector('.save-btn');
-	const inputField = document.querySelectorAll('input');
 	const passField = document.querySelector('.pass');
 		
 	inputField.forEach((inp) => {
@@ -72,19 +73,37 @@ const update = () => {
 		let id = document.querySelector('.idUser').value;
 		let idAddress = document.querySelector('.idAddress').value;
 		
-		jsonToSend = {
-			id: id,
-			idAddress: idAddress,
-			name: nameField.value,
-			surname: surnameField.value,
-			email: emailField.value,
-			tel: numTelField.value,
-			password: passwordField.value,
-			city: cityField.value,
-			via: viaField.value,
-			civico: civicoField.value,
-			cap: capField.value
-		};
+		if(modifiedPassword){
+			jsonToSend = {
+					modifiedPass: true,
+					id: id,
+					idAddress: idAddress,
+					name: nameField.value,
+					surname: surnameField.value,
+					email: emailField.value,
+					tel: numTelField.value,
+					password: passwordField.value,
+					city: cityField.value,
+					via: viaField.value,
+					civico: civicoField.value,
+					cap: capField.value
+				};
+		} else{
+			jsonToSend = {
+					modifiedPass: false,
+					id: id,
+					idAddress: idAddress,
+					name: nameField.value,
+					surname: surnameField.value,
+					email: emailField.value,
+					tel: numTelField.value,
+					city: cityField.value,
+					via: viaField.value,
+					civico: civicoField.value,
+					cap: capField.value
+				};
+		}
+		
 		
 		var ajaxCall = new XMLHttpRequest();
 		
@@ -93,20 +112,40 @@ const update = () => {
 			if (ajaxCall.readyState == XMLHttpRequest.DONE) {
 				
 				if (ajaxCall.status == 200) {
-					let result = ajaxCall.responseText;
+					let result = JSON.parse(ajaxCall.response);
 					
 					if(result[0]){
 						let respObj = result[1];
-					
-						nameField.value = respObj.name;
-						surnameField.value = respObj.surname;
-						emailField.value = respObj.email;
-						numTelField.value = respObj.tel;
-						passwordField.value = respObj.password;
-						cityField.value = respObj.city;
-						viaField.value = respObj.via;
-						civicoField.value = respObj.civico;
-						capField.value = respObj.cap;
+						
+						if(respObj.modifiedPass){
+							nameField.value = respObj.name;
+							surnameField.value = respObj.surname;
+							emailField.value = respObj.email;
+							numTelField.value = respObj.tel;
+							passwordField.value = respObj.password;
+							cityField.value = respObj.city;
+							viaField.value = respObj.via;
+							civicoField.value = respObj.civico;
+							capField.value = respObj.cap;
+						} else{
+							nameField.value = respObj.name;
+							surnameField.value = respObj.surname;
+							emailField.value = respObj.email;
+							numTelField.value = respObj.tel;
+							cityField.value = respObj.city;
+							viaField.value = respObj.via;
+							civicoField.value = respObj.civico;
+							capField.value = respObj.cap;
+						}
+						
+						
+						inputField.forEach((inp) => {
+							inp.disabled = true;
+						});
+						
+						saveBtn.style.display = "none";
+						
+						modifyBtn.disabled = false;
 					}
 		        }else 
 		        	if (ajaxCall.status == 400) {
@@ -165,23 +204,7 @@ const validateForm = () => {
 					document.querySelector('.errTelHide').style.visibility = 'visible';
 					document.querySelector('.emailTelRow').style.marginBottom = "0";
 				} else
-					if(passwordField.value == null || !passwordRegex.test(passwordField.value)){
-						passwordField.style.border = '1px solid #FF0000';
-						document.querySelector('#errorPass').innerHTML = "Campo password deve contenere minimo 7 simboli alfabetici"
-																		+ " ed un numero";
-						document.querySelector('.errRowPassConfirmPass').style.display = 'block';
-						document.querySelector('.errPassHide').style.visibility = 'visible';
-						document.querySelector('.passConfPassRow').style.marginBottom = "0";
-					} else
-						if(confirmPassField.value == null || !(passwordField.value == confirmPassField.value)){
-							confirmPassField.style.border = '1px solid #FF0000';
-							document.querySelector('#errorConfirmPass').innerHTML = "Campo conferma password e password"
-																					+ " non corrispondono";
-							document.querySelector('.errRowPassConfirmPass').style.display = 'block';
-							document.querySelector('.errConfPassHide').style.visibility = 'visible';
-							document.querySelector('.passConfPassRow').style.marginBottom = "0";
-						} else
-							if(cityField.value == null || !cityRouteRegex.test(cityField.value)){
+					 if(cityField.value == null || !cityRouteRegex.test(cityField.value)){
 								cityField.style.border = '1px solid #FF0000';
 								document.querySelector('#errorCity').innerHTML = "Campo città non valido";
 								document.querySelector('.errRowCityVia').style.display = 'block';
@@ -209,7 +232,30 @@ const validateForm = () => {
 											document.querySelector('.errCapHide').style.visibility = 'visible';
 											document.querySelector('.civicoCapRow').style.marginBottom = "0";
 										} else{
-											valid = true;
+											
+											if(passwordField.value != null && passwordField.value.length != 0){
+												if(!passwordRegex.test(passwordField.value)){
+													passwordField.style.border = '1px solid #FF0000';
+													document.querySelector('#errorPass').innerHTML = "Campo password deve contenere minimo 7 simboli alfabetici"
+																									+ " ed un numero";
+													document.querySelector('.errRowPassConfirmPass').style.display = 'block';
+													document.querySelector('.errPassHide').style.visibility = 'visible';
+													document.querySelector('.passConfPassRow').style.marginBottom = "0";
+												} else
+													if(confirmPassField.value == null || !(passwordField.value == confirmPassField.value)){
+														confirmPassField.style.border = '1px solid #FF0000';
+														document.querySelector('#errorConfirmPass').innerHTML = "Campo conferma password e password"
+																												+ " non corrispondono";
+														document.querySelector('.errRowPassConfirmPass').style.display = 'block';
+														document.querySelector('.errConfPassHide').style.visibility = 'visible';
+														document.querySelector('.passConfPassRow').style.marginBottom = "0";
+													} else{
+														valid = true;
+														modifiedPassword = true;
+													}
+											} else{
+												valid = true;
+											}
 										}
 	
 	if(!valid){

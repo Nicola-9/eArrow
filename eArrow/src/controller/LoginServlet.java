@@ -105,7 +105,7 @@ protected void doPost(HttpServletRequest request, HttpServletResponse response) 
 
 							if (passwordformat.equals(utente.getPassword())) {
 								
-								sessione.setSessionUserName(utente);
+								sessione.setSessionUser(utente);
 							}
 							
 							else {
