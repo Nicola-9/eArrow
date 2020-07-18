@@ -66,7 +66,9 @@ public class ProfileAJAX extends HttpServlet {
 			userNew.setCognome(userNewJson.getString("surname"));
 			userNew.setEmail(userNewJson.getString("email"));
 			userNew.setTelefono(userNewJson.getString("tel"));
-			userNew.setPassword(userNewJson.getString("password"));
+			
+			if(userNewJson.getBoolean("modifiedPass"))
+				userNew.setPassword(userNewJson.getString("password"));
 			
 			addressNew.setId(userNewJson.getInt("idAddress"));
 			addressNew.setCitta(userNewJson.getString("city"));
@@ -78,7 +80,14 @@ public class ProfileAJAX extends HttpServlet {
 			e.printStackTrace();
 		}
 		
-		boolean updateUser = UtenteDao.updateUserById(userNew);
+		boolean updateUser = false;
+		
+		try {
+			updateUser = UtenteDao.updateUserById(userNew, userNewJson.getBoolean("modifiedPass"));
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		boolean updateAddress = IndirizzoDAO.updateAddressById(addressNew);
 		
 		response.setContentType("application/json");
