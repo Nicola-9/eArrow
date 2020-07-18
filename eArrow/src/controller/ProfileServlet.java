@@ -39,32 +39,20 @@ public class ProfileServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		SessionArrow sessione = new SessionArrow(request, response);
-		UtenteBean userBean = new UtenteBean();
 		
-		Boolean update = (Boolean) request.getAttribute("update");
+		UtenteBean user = sessione.getSessionUser();
 		
-		if(!update) {
-			String user = sessione.getSessionUserId();
-		
-			if(user != null) {
-				int userId = Integer.parseInt(user);
+		if(user != null) {
+			request.setAttribute("userProfile", user);
 				
-				userBean = UtenteDao.doRetrievebyUserId(userId);
+			IndirizzoBean address = IndirizzoDAO.doRetrievebyId(user.getIndirizzo());
 				
-				if(userBean != null) {
-					request.setAttribute("userProfile", userBean);
-				}
-				
-				IndirizzoBean address = IndirizzoDAO.doRetrievebyId(userBean.getIndirizzo());
-				
-				if(address != null ) {
-					request.setAttribute("userAddress", address);
-				}
-				
-				request.getRequestDispatcher("view/Profile.jsp").forward(request, response);
+			if(address != null ) {
+				request.setAttribute("userAddress", address);
 			}
+				
+			request.getRequestDispatcher("view/Profile.jsp").forward(request, response);
 		}
-		
 	}
 
 }

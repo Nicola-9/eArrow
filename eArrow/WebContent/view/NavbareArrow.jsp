@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
  
-<%@page import="util.*"%>
+<%@page import="util.*, model.bean.*"%>
 
 <header>
 	<div class="earrow-container">
@@ -48,7 +48,9 @@
 					class="nav-earrow-link nav-earrow-link-search" id="search"></a></li>
 
 				<% 
-					String user = (String) request.getAttribute("session"); 
+					UtenteBean user = (UtenteBean) request.getAttribute("session"); 
+					
+					System.out.println(user);
 					
 					if(user == null){
 				%>
@@ -58,9 +60,10 @@
 					
 				<% 
 					} else {
+						request.setAttribute("update", false);
 				%>
 				
-				<li class="nav-earrow-item"><a href="${pageContext.request.contextPath}/view/Profile.jsp"
+				<li class="nav-earrow-item"><a href="${pageContext.request.contextPath}/ProfileServlet"
 					class="nav-earrow-link nav-earrow-link-account"></a></li>
 					
 				<% 
