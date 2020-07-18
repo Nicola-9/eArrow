@@ -43,7 +43,7 @@ body{
 	font-weight: 500;
 	color: #adb5bd;
 	text-transform: uppercase;
-	margin-bottom: 1.5%;
+	margin-bottom: 1.25%;
 	margin-top: .5%;
 }
 
@@ -68,13 +68,47 @@ body{
 	opacity: 1;
 }
 
+.errNameHide,
+.errSurnameHide,
+.errEmailHide,
+.errTelHide,
+.errPassHide,
+.errConfPassHide,
+.errCityHide,
+.errViaHide,
+.errCivicoHide,
+.errCapHide{
+	width: 50%;
+	display: inline-block;
+	visibility: hidden;
+}
+
+.error-second{
+	width: 49.5%;
+}
+
+.errRowNameSurname,
+.errRowEmailTel,
+.errRowPassConfirmPass,
+.errRowCityVia,
+.errRowCivicoCap,
+.errRowTipologia{
+	margin-bottom: .5%;
+	display: none;
+}
+
+.nameSurnameRow,
+.emailTelRow,
+.passConfPassRow,
+.cittaViaRow,
+.civicoCapRow,
+.tipologiaRow{
+	margin-bottom: 1.5%;
+}
+
 .form-control{
 	font-size: 1.5rem;
 	height: 65%;
-}
-
-.form-row{
-	margin-bottom: 1%;
 }
 
 .btn{

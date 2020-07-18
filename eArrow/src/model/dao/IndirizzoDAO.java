@@ -113,4 +113,37 @@ public class IndirizzoDAO {
 		
 		return address;
 	}
+	
+	public static boolean updateAddressById(IndirizzoBean addressNew){
+		PreparedStatement ps;
+		
+		String userSQL = "UPDATE indirizzo SET citta = ?, via = ?, civico = ?, cap = ? WHERE id = ?";
+		
+		try{
+			Connection connessione=null;
+			try {
+				connessione = ConnessioneDB.getConnection();
+				
+				ps = connessione.prepareStatement(userSQL);
+				
+				ps.setString(1, addressNew.getCitta());
+				ps.setString(2, addressNew.getVia());
+				ps.setString(3, addressNew.getCivico());
+				ps.setString(4, addressNew.getCap());
+				ps.setInt(5, addressNew.getId());
+				
+				ps.executeUpdate();
+				connessione.commit();
+				
+				return true;
+			}
+			finally {
+				ConnessioneDB.releaseConnection(connessione);	
+			}
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return false;
+	}
 }
