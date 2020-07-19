@@ -6,12 +6,13 @@ let valid = false;
 const validateForm = () => {
 	let emailField;
 	let passwordField;
+	let loginForm;
 
 	
 	
 	emailField = document.querySelector('#Email');
 	passwordField = document.querySelector('#Password');
-	
+	loginForm = document.querySelector('#logForm');
 	
 	
 	let emailRegex = /(^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$)/;
@@ -56,5 +57,5 @@ const validateForm = () => {
 document.addEventListener('DOMContentLoaded', () => {
 	event.preventDefault();
 	
-	registrationForm.onsubmit = validateForm;
+	loginForm.onsubmit = validateForm;
 });

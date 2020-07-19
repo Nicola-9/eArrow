@@ -1,14 +1,4 @@
 @charset "ISO-8859-1";
-@import url('https://fonts.googleapis.com/css?family=Numans');
-
-*,
-*::before,
-*::after{
-	
-	margin: 0;
-	padding: 0;
-}
-
 html{
 	font-size: 10px;
 	font-family: 'SF Pro Display', sans-serif;
@@ -68,26 +58,6 @@ body{
 input:focus {
 	outline: 0 0 0 0 !important;
 	box-shadow: 0 0 0 0 !important;
-}
-
-#errorLog{
-	text-align: center;
-	display: none;
-	height: 60px;
-	margin: auto;
-	margin-bottom: 10%;
-	width: 373px;
-	background-color: rgba(192, 77, 77, 0.1) !important;
-	border-radius: 0.37rem;
-	border: 1px solid #FF0000;
-}
-
-#textError{
-	text-align: center;
-	font-size: 1.5rem;
-	color: white;
-	position: relative; 
-	top: +30%;
 }
 
 div.card-footer{
@@ -152,40 +122,10 @@ div.card-footer{
 	top: -49px;
 }
 
-.eArrowFooter{
-	margin-bottom: 0;
-	bottom: 0;
-	position: relative;
-	flex: 0;
+.input-group-append {
+    margin-left: -1px;
 }
 
-a.registration-link{
-	margin-left: 3%;
-	text-decoration: none;
-}
-
-
-.alert {
-    position: relative;
-    padding: 0.75rem 1.25rem;
-    margin-top: 0;
-    border: 1px solid transparent;
-    border-radius: 0.37rem;
-}
-
-.alert-c {
-    color: #2c2c2c;
-    background-color: rgba(0, 0, 0, 0.5) !important;
-    border-color: #cfcfcf;
-}
-
-.alert h3 {
-	color: white;
-	font-size: 2.5rem;
-}
-
-.error{
-	margin-bottom: 1%;
-	font-size: 1.3rem;
-	visibility: hidden;
+.fab {
+    font-family: "Font Awesome 5 Brands";
 }
