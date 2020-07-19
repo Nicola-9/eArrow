@@ -84,18 +84,6 @@ public class SessionArrow {
 		}else {
 			return (String) session.getAttribute("userId");
 
-	// metodo setta l'id dell'utente
-	public boolean setSessionUserId(UtenteBean user) {
-		session = request.getSession(false);
-
-		if (session != null) {
-			session.setAttribute("userId", user.getId());
-
-			return false;
-		} else {
-			// sessione scaduta o inesistente
-			return true;
->>>>>>> develop
 		}
 	}
 
@@ -141,6 +129,7 @@ public class SessionArrow {
 			// sessione scaduta o inesistente
 			return null;
 		}
+	}
 
 		
 		//metodo setta il nome dell'utente

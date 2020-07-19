@@ -58,6 +58,10 @@ body{
 	color: white;
 }
 
+.save-btn{
+	display: none;
+}
+
 .fa{
 	padding: 0;
 	padding-right: 2.5rem;
@@ -125,4 +129,68 @@ body{
 	bottom: 0;
 	position: relative;
 	flex: 0;
+}
+
+@media (max-width: 1250px){
+	.intestation{
+		margin-bottom: .5%;
+	}
+	
+	body{
+		margin-top: 7%;
+	}
+}
+
+@media (max-width: 910px){
+	.intestation{
+		margin-bottom: 1%;
+	}
+}
+
+@media (max-width: 717px){
+	.intestation{
+		margin-bottom: 1.5%;
+	}
+}
+
+@media (max-width: 591px){
+	.intestation{
+		margin-bottom: 2%;
+	}
+}
+
+@media (max-width: 507px){
+	.intestation{
+		margin-bottom: 3%;
+	}
+}
+
+@media (max-width: 975px){
+	body{
+		margin-top: 9%;
+	}
+}
+
+@media (max-width: 760px){
+	body{
+		margin-top: 11%;
+	}
+}
+
+@media (max-width: 626px){
+	body{
+		margin-top: 13%;
+	}
+}
+
+@media (max-width: 519px){
+	body{
+		margin-top: 15%;
+	}
+}
+
+@media (max-width: 450px){
+	body{
+		margin-top: 17%;
+	}
 }

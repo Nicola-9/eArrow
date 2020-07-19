@@ -97,13 +97,13 @@
 						
 						<div class="form-row passConfPassRow">
 							<div class="col form-group">
-								<label>Modifica Password</label> <input type="password" class="form-control pass"
-									value="Prova">
+								<label class="modifyPassLab">Modifica Password</label> <input type="password" class="form-control pass"
+									value="">
 							</div>
 							<!-- form-group end.// -->
 							<div class="col form-group">
 								<label>Conferma Modifica Password</label> <input type="confirmPass" class="form-control confirmPass"
-									value="Prova">
+									value="">
 							</div>
 							<!-- form-group end.// -->
 						</div>

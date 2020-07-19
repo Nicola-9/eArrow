@@ -45,14 +45,9 @@ public class HomePageServlet extends HttpServlet {
 		SessionArrow sessione = new SessionArrow(request, response);
 		
 		List<EvidenzaBean> evidenza = EvidenzaDAO.doRetrieveAll();
-		
 
 		String user = sessione.getSessionRole();
-
-		
-		request.setAttribute("session", user);
-		request.setAttribute("update", false);
-		
+    
 		request.setAttribute("evidenzaList", evidenza);
 		
 		request.getRequestDispatcher("view/HomePage.jsp").forward(request, response);

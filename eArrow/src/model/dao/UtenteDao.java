@@ -1,5 +1,6 @@
 package model.dao;
 
+import java.security.NoSuchAlgorithmException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -10,6 +11,7 @@ import java.util.List;
 import model.ConnessioneDB;
 import model.bean.ProdottoBean;
 import model.bean.UtenteBean;
+import util.PasswordSha256;
 
 public class UtenteDao {
 	
@@ -155,10 +157,14 @@ public class UtenteDao {
 	}
 	
 	
-	public static boolean updateUserById(UtenteBean userNew){
+	public static boolean updateUserById(UtenteBean userNew, boolean updatePass){
 		PreparedStatement ps;
+		String userSQL = "";
 		
-		String userSQL = "UPDATE utente SET nome = ?, cognome = ?, email = ?, pass = ?, telefono = ? WHERE id = ?";
+		if(updatePass)
+			userSQL = "UPDATE utente SET nome = ?, cognome = ?, email = ?, pass = ?, telefono = ? WHERE id = ?";
+		else
+			userSQL = "UPDATE utente SET nome = ?, cognome = ?, email = ?, telefono = ? WHERE id = ?";
 		
 		try{
 			Connection connessione=null;
@@ -167,12 +173,29 @@ public class UtenteDao {
 				
 				ps = connessione.prepareStatement(userSQL);
 				
-				ps.setString(1, userNew.getNome());
-				ps.setString(2, userNew.getCognome());
-				ps.setString(3, userNew.getEmail());
-				ps.setString(4, userNew.getPassword());
-				ps.setString(5, userNew.getTelefono());
-				ps.setInt(6, userNew.getId());
+				if(updatePass) {
+					ps.setString(1, userNew.getNome());
+					ps.setString(2, userNew.getCognome());
+					ps.setString(3, userNew.getEmail());
+					
+					String password = "";
+					
+					try {
+						password = PasswordSha256.getEncodedpassword(userNew.getPassword());
+					} catch (NoSuchAlgorithmException e) {
+						e.printStackTrace();
+					}
+					
+					ps.setString(4, password);
+					ps.setString(5, userNew.getTelefono());
+					ps.setInt(6, userNew.getId());
+				} else {
+					ps.setString(1, userNew.getNome());
+					ps.setString(2, userNew.getCognome());
+					ps.setString(3, userNew.getEmail());
+					ps.setString(4, userNew.getTelefono());
+					ps.setInt(5, userNew.getId());
+				}
 				
 				ps.executeUpdate();
 				connessione.commit();
