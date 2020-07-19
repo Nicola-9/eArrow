@@ -29,7 +29,7 @@
 				<div class="card-header">
 					<h3>Accedi</h3>
 					<div class="d-flex justify-content-end icon">
-						<span><i class="fab"><img src='..//image/eArrow.png'
+						<span><i class="fab"><img src='${pageContext.request.contextPath}/image/eArrow.png'
 								width="70" height="70"></i></span>
 
 					</div>
