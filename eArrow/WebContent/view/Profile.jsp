@@ -102,7 +102,7 @@
 							</div>
 							<!-- form-group end.// -->
 							<div class="col form-group">
-								<label>Conferma Modifica Password</label> <input type="confirmPass" class="form-control confirmPass"
+								<label>Conferma Password</label> <input type="confirmPass" class="form-control confirmPass"
 									value="">
 							</div>
 							<!-- form-group end.// -->
