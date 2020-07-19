@@ -68,7 +68,7 @@
 							<div class="dropdown-divider"></div>
 							<div class="dropdown-item">
 								<p class="title-drop">Non ancora registrato?</p>
-								<a class="btn btn-primary btn-drop btn-drop-signUp" href="${pageContext.request.contextPath}/SignUpServlet">Registrati ora</a> 
+								<a class="btn btn-primary btn-drop btn-drop-signUp" href="${pageContext.request.contextPath}/SignUpServlet?launch=true">Registrati ora</a> 
 							</div> 
 						</div>
 					</div>
