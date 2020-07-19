@@ -70,6 +70,24 @@ input:focus {
 	box-shadow: 0 0 0 0 !important;
 }
 
+#errorLog{
+	display: none;
+	height: 60px;
+	margin: auto;
+	margin-bottom: 10%;
+	width: 373px;
+	background-color: rgba(255, 0, 0, 0.3) !important;
+	border-radius: 0.37rem;
+}
+
+#textError{
+	margin-top: auto;
+	margin-bottom: auto;
+	text-align: center;
+	font-size: 1.5rem;
+	color: white;
+}
+
 div.card-footer{
 	font-size: 1.5rem;
 }

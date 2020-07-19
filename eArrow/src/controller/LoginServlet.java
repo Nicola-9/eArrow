@@ -71,7 +71,7 @@ protected void doPost(HttpServletRequest request, HttpServletResponse response) 
 				else {		
 					email = request.getParameter("Email");
 					password = request.getParameter("Password");
-					if (email == null || email.equals("")) {		
+					if (email == null || email.equals("")) {	
 						request.setAttribute("emailErrata", true);
 						url = response.encodeURL("/view/Login.jsp");
 						request.getRequestDispatcher(url).forward(request, response);
@@ -89,8 +89,9 @@ protected void doPost(HttpServletRequest request, HttpServletResponse response) 
 						UtenteBean utente = UtenteDao.doRetrievebyEmailAndPassword(email, passwordformat);	
 						System.out.println(utente);
 						if (utente == null) {
-							
-							//pagina di errore
+							request.setAttribute("utenteNonDb", true);
+							url = response.encodeURL("/view/Login.jsp");
+							request.getRequestDispatcher(url).forward(request, response);
 							
 						} else {
 							if (passwordformat.equals(utente.getPassword())) {								
@@ -103,7 +104,9 @@ protected void doPost(HttpServletRequest request, HttpServletResponse response) 
 								request.getRequestDispatcher(url).forward(request, response);
 								
 							}
+						
 							sessione.setSessionUser(UtenteDao.doRetrievebyEmailAndPassword(email, passwordformat));
+							SessionArrow.setSessionRole("utente");
 							url = response.encodeURL("/HomePageServlet");
 							request.getRequestDispatcher(url).forward(request, response);
 							

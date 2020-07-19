@@ -58,20 +58,20 @@
 					imgs = (ArrayList<ImmagineBean>) ImmagineDAO.doRetrieveImagesByCode(prodotto.getCodice());
 					%>
 					
-					<% if(imgs == null){%>
+					<% if(imgs.size() == 1 || imgs == null){%>
 						<div class="img-small-wrap" style="display: none">
 					<% }
 					else{%>
 				<div class="img-small-wrap" style="display: flex">
-				<% }
-					String s;
-				for(int n = 0; n < 4; n++){
-					s = imgs.get(n).getUri();
+				<% 
+					
+				for(int n = 0; n < 3; n++){
+					System.out.println(imgs.toString());
 				%>
 				
-	 				<div  class="item-small"><a href="#"> <img class="image" src="${pageContext.request.contextPath}<%=s%>"> </a> </div>
+	 				<div  class="item-small"><a href="#"> <img class="image" src="${pageContext.request.contextPath}<%=imgs.get(n).getUri()%>"> </a> </div>
 	 				
-	 				<%} %>
+	 				<%}} %>
 				</div>
 			</aside>
 			
