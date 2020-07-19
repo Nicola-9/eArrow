@@ -97,6 +97,7 @@ public class SessionArrow {
 			return false;
 		} else {
 			// sessione scaduta o inesistente
+			session = request.getSession(true);
 			return true;
 		}
 	}
