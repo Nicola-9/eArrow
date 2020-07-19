@@ -55,8 +55,25 @@
 					if(user == null){
 				%>
 				
-				<li class="nav-earrow-item"><a href="${pageContext.request.contextPath}/view/Login.jsp"
-					class="nav-earrow-link nav-earrow-link-account"></a></li>
+				<li class="nav-earrow-item">
+					<div class="dropdown">
+						<a href="${pageContext.request.contextPath}/view/Login.jsp"
+							class="nav-earrow-link nav-earrow-link-account dropdown" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></a>
+					
+						<div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+							<div class="arrow-up"></div>
+							<div class="dropdown-item">
+								<p class="title-drop">Già registrato?</p>
+								<a class="btn btn-primary btn-drop btn-drop-signIn" href="#">Accedi</a> 
+							</div> 
+							<div class="dropdown-divider"></div>
+							<div class="dropdown-item">
+								<p class="title-drop">Non ancora registrato?</p>
+								<a class="btn btn-primary btn-drop btn-drop-signUp" href="#">Registrati ora</a> 
+							</div> 
+						</div>
+					</div>
+				</li>
 					
 				<% 
 					} else {
@@ -149,7 +166,7 @@
             function removeElement(elementId) {
                 var element = document.getElementById(elementId);
                 if(element != null){
-                element.parentNode.removeChild(element);
+                	element.parentNode.removeChild(element);
                 }
             }
             
@@ -188,7 +205,7 @@
     							var i = 0;
     							while(i < array.length){
     								var str = array[i];
-									$( "#dbSearch" ).append( "<option value="+str+" class="+elem+">" );
+									$( "#dbSearch" ).append('<option value="' + str + '"' + 'class="' + elem + '">');
     								console.log("input utente = " + array[i]);
     								i++;
     							}	
