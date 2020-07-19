@@ -8,8 +8,29 @@
 	<head>
 		<meta charset="UTF-8">
 		
-		<%  Object categoryObj = request.getAttribute("category");
+		<%  
+			Object categoryObj = request.getAttribute("category");
 			String category = (String) categoryObj;
+			
+			String categoryParam = "";
+			
+			switch(category){
+				case "Archi":
+					categoryParam = "Archi";
+					break;
+				case "Frecce e Componenti":
+					categoryParam = "Frecce";
+					break;
+				case "Accessori Arco":
+					categoryParam = "accessori-arco";
+					break;
+				case "Accessori Arciere":
+					categoryParam = "accessori-arciere";
+					break;
+				case "Paglioni e Bersagli":
+					categoryParam = "paglioni";
+					break;
+			}
 		%>
 			<title>eArrow - <%=category %></title>
 		
@@ -37,7 +58,7 @@
 	
 
 		<form class="orderForm" action="./ProductsListServlet">
-			<input type="hidden" name="category" value="<%=category%>">
+			<input type="hidden" name="category" value="<%=categoryParam%>">
 			<div class="ordinamento">
 				<label class="titleSelect">Ordina per: &nbsp&nbsp&nbsp</label> 
 				<select	class="custom-select" name="ordinamento" onchange="this.form.submit()">

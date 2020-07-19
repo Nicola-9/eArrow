@@ -30,6 +30,10 @@ body{
 	transform: scale(1.1);
 }
 
+a.title{
+	text-decoration: none;
+}
+
 .card-body{
 	position: relative;
 	margin-top: 1%;
