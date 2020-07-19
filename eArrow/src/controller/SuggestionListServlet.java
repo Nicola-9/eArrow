@@ -57,7 +57,7 @@ public class SuggestionListServlet extends HttpServlet {
 		}else
 			array.put(false);
 		
-		response.encodeURL(((HttpServletRequest)request).getRequestURL().toString());
+		//response.encodeURL(((HttpServletRequest)request).getRequestURL().toString());
 
 		response.getWriter().append(array.toString());
 		

@@ -45,85 +45,67 @@ public class LoginServlet extends HttpServlet {
 	
 protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		SessionArrow sessione = new SessionArrow(request, response);
-		
-		
+			SessionArrow sessione = new SessionArrow(request, response);
 			UtenteBean utenteSessione = sessione.getSessionUser();
-		
+			boolean logJsp = Boolean.parseBoolean(request.getParameter("launch"));
+			
+			if(logJsp == true) {
+				url = response.encodeURL("/view/Login.jsp");
+				request.getRequestDispatcher(url).forward(request, response);
+			}
 					//Controllo se l utente � gi� loggato e lo rimando alla pagina corretta
-					if(utenteSessione != null) {
-						
+			else if(utenteSessione != null) {
 						email = utenteSessione.getEmail();
 						password = utenteSessione.getPassword();
 						
 						String ruolo = (String) sessione.getSessionRole();
-						
 						if (ruolo.equalsIgnoreCase("utente")) {
-							
-							request.getRequestDispatcher("/controller/HomePageServlet").forward(request, response);
-							return;
-							
-						} else {
-							
+							url = response.encodeURL("/HomePageServlet");
+							request.getRequestDispatcher(url).forward(request, response);
+							return;	
+						} else {			
 							response.sendRedirect("----PAGINA AMMINISTRATORE----");
-							return;
-							
+							return;	
 						}
 					}
-					
-				
-				else {
-					
+				else {		
 					email = request.getParameter("Email");
 					password = request.getParameter("Password");
-					
-					if (email == null || email.equals("")) {
-						
+					if (email == null || email.equals("")) {		
 						request.setAttribute("emailErrata", true);
-						request.getRequestDispatcher("/view/Login.jsp").forward(request, response);
-						
+						url = response.encodeURL("/view/Login.jsp");
+						request.getRequestDispatcher(url).forward(request, response);
 					}
 					else if(password == null || email.equals("")) {
 						
 						request.setAttribute("passwordErrata", true);
-						request.getRequestDispatcher("/view/Login.jsp").forward(request, response);
-						
+						url = response.encodeURL("/view/Login.jsp");
+						request.getRequestDispatcher(url).forward(request, response);
 					}
-					
-					
-					else {
-						
-						String passwordformat;
-						
-					try {
-						
+					else {					
+						String passwordformat;					
+					try {				
 						passwordformat = PasswordSha256.getEncodedpassword(password);
-						UtenteBean utente = UtenteDao.doRetrievebyEmailAndPassword(email, passwordformat);
-						
+						UtenteBean utente = UtenteDao.doRetrievebyEmailAndPassword(email, passwordformat);	
 						System.out.println(utente);
-			
 						if (utente == null) {
 							
 							//pagina di errore
 							
 						} else {
-
-							if (passwordformat.equals(utente.getPassword())) {
-								
+							if (passwordformat.equals(utente.getPassword())) {								
 								sessione.setSessionUser(utente);
-							}
-							
+							}					
 							else {
 								
 								request.setAttribute("passwordErrata", true);
-								request.getRequestDispatcher("/view/Login.jsp").forward(request, response);
+								url = response.encodeURL("/view/Login.jsp");
+								request.getRequestDispatcher(url).forward(request, response);
 								
 							}
-							
-
 							sessione.setSessionUser(UtenteDao.doRetrievebyEmailAndPassword(email, passwordformat));
-							request.getRequestDispatcher("/HomePageServlet").forward(request, response);
-
+							url = response.encodeURL("/HomePageServlet");
+							request.getRequestDispatcher(url).forward(request, response);
 							
 						}
 					
