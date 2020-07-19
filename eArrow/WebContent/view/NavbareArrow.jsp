@@ -92,7 +92,7 @@
 							</div> 
 							<div class="dropdown-divider"></div>
 							<div class="dropdown-item">
-								<a class="btn btn-drop btn-drop-logout" href="#">Logout</a> 
+								<a class="btn btn-drop btn-drop-logout" href="${pageContext.request.contextPath}/LogoutServlet">Logout</a> 
 							</div> 
 						</div>
 					</div>	
