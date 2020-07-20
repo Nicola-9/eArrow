@@ -32,6 +32,24 @@
 			
 			String categoria = prodotto.getCategoria();
 			
+			switch(categoria){
+				case "archi":
+					categoria = "Archi";
+					break;
+				case "frecce":
+					categoria = "Frecce e Componenti";
+					break;
+				case "accessori-arco":
+					categoria = "Accessori Arco";
+					break;
+				case "accessori-arciere":
+					categoria = "Accessori Arciere";
+					break;
+				case "paglioni":
+					categoria = "Paglioni e Bersagli";
+					break;
+			}
+			
 			String tipologia = prodotto.getTipologia();
 			
 			boolean disponibile = prodotto.isDisponibilita();
@@ -40,9 +58,13 @@
 			
 			double prezzo = prodotto.getPrezzo();
 			
-			String prezzoS = Double.toString(prezzo);
+			String prezzoS = String.format("%.2f", prezzo);
 		%>
 
+		<div class="content">
+		
+		<h5 class="doc-title-sm">DETTAGLI</h5>
+		
 		<div class="card-body">
 		
 		<!-- immagini prodotto, zona sinistra -->
@@ -56,7 +78,14 @@
 				<%
 					ArrayList<ImmagineBean> imgs = new ArrayList<ImmagineBean>();
 					imgs = (ArrayList<ImmagineBean>) ImmagineDAO.doRetrieveImagesByCode(prodotto.getCodice());
-					%>
+					
+					int upLimit = 0;
+					
+					if(imgs.size() > 3)
+						upLimit = 3;
+					else
+						upLimit = imgs.size();
+				%>
 					
 					<% if(imgs.size() == 1 || imgs == null){%>
 						<div class="img-small-wrap" style="display: none">
@@ -65,7 +94,7 @@
 				<div class="img-small-wrap" style="display: flex">
 				<% 
 					
-				for(int n = 0; n < 3; n++){
+				for(int n = 0; n < upLimit; n++){
 					System.out.println(imgs.toString());
 				%>
 				
@@ -86,57 +115,52 @@
 			<div class="content-body vertical-center">
 			
 				<div class="title2">
-					<h1 class="title mar"><%=nome%></h1>
+					<div class="titleHeader">
+						<h1 class="title mar"><%=nome%></h1>
+						
+						<%
+							if(prodotto.isDisponibilita()){
+						%>
+							<small class="label-rating text-success disponibility">Disponibile</small>
+						<%	} else{ %>
+							<small class="label-rating text-danger disponibility">Non disponibile</small>
+						<%	} %>
+					</div>
+					<small class="label-rating category"> 
+						<%=categoria %> - <%=tipologia %>
+					</small>
 				</div>
 				
-				<p class="mar"><%=descrizione%></p>
+				<p class="mar description"><%=descrizione%></p>
 				
 				
 				<div class="centro">
+					<div class="priceInfo">
+						<span>Prezzo:&nbsp&nbsp&nbsp</span><span class="price h5">&#8364 <%=prezzoS %></span>
+					</div>
 				
-			
-				<div class="sinistra">
-					<p><%=categoria%></p>
-					<p class ="space"><%=tipologia%></p>
-					<p class ="space">Quantità: <%=quantita%></p>
-				</div>
-				
-				<div class="destra">
-				
-				<span class="price h4">€ <%=prezzoS%></span> 
-				
-				<%
-					if(prodotto.isDisponibilita()){
-				%>
-				
-					<p class="small text-success">Disponibile</p>
-					
-				<% } else { %>
-				
-					<p class="small text-danger">Non disponibile</p>
-					
-				<% } %>
-				
-				<div class="selez-quant">
-				
-					<p>Seleziona quantità</p>
-					
-					<select class="form-control form-width" id="sel1">
-	        				<option>1</option>
-	        				<option>2</option>
-	        				<option>3</option>
-	        				<option>4</option>
-	      				</select>
-				
-				</div>
-</div>
+					<div class="quantity">
+						<label class="titleSelect">Quantit&#224: &nbsp&nbsp&nbsp</label> 
+						<select	class="custom-select" name="quantita" onchange="this.form.submit()">
+						
+						<%
+							for(int i = 1; i < quantita; i++){
+						%>
+							<option value="<%=i %>"><%=i %></option>
+							
+						<%
+							}
+						%>
+						
+						</select>
+					</div>
 
-</div>
+				</div>
 
 
 			<div class="line-below mar">
 		
-	  		<span class="line-but"><a href="#" class="btn btn-primary">Aggiungi al carrello</a></span>
+	  			<button type ="submit" class="btn btn-primary addCart-btn">Aggiungi al Carrello</button>
 	  		
 			</div> 
 		</div>
@@ -152,51 +176,61 @@
 		
 		<!-- prodotti consigliati -->
 		
-		<div class="card card-body">
+	<h5 class="doc-title-sm">Prodotti consigliati</h5>
+	
+	<div class="card card-body">
+		
 	<div class="row">
 	
 	<%
 	ArrayList<ProdottoBean> prodottiConsigliati = new ArrayList<ProdottoBean>();
 	prodottiConsigliati = (ArrayList<ProdottoBean>) ProdottoDAO.doRetrievebyRecommendedProducts(prodotto.getCategoria());
 	
-	int j =  0;
-	int cod = 0;
+	int limit =  0;
 	
-	for(int i = 1; i < 5; i++){ 
+	for(int i=0; i < prodottiConsigliati.size(); i++){
+		if(prodottiConsigliati.get(i).getNome().equals(nome))
+			prodottiConsigliati.remove(i);
+	}
+	
+	if(prodottiConsigliati.size() > 4){
+		limit = 4;
+	} else{
+		limit = prodottiConsigliati.size();
+	}
+	
+	for(int i = 0; i < limit; i++){ 
 		
-		cod = prodottiConsigliati.get(j).getCodice();
-		
-		if(cod == prodotto.getCodice()){
-			j++;
-			if(i == prodottiConsigliati.size()){
-				break;
-			}
-			else{
-			cod = prodottiConsigliati.get(j).getCodice();
-			}
-		}
-		
-		ImmagineBean imgCons = ImmagineDAO.doRetrieveImageByProductCode(cod);
+		ImmagineBean imgCons = ImmagineDAO.doRetrieveImageByProductCode(prodottiConsigliati.get(i).getCodice());
 	%>
 		<div class="row-product-c">
 			<figure class="itemside mb-2">
-				<div class="aside"><a href="#"></a><img src="${pageContext.request.contextPath}<%=imgCons.getUri()%>" class="border img-sm"></a></div>
+				<div class="aside" id="container-image-reccomended">
+					<a href="#">
+						<img src="${pageContext.request.contextPath}<%=imgCons.getUri()%>" class="img-sm img-responsive">
+					</a>
+				</div>
 				<figcaption class="info align-self-center">
 					<a href="#" class="title"><%=prodottiConsigliati.get(i).getNome()%></a>
-					<strong class="price2"><%=prodottiConsigliati.get(i).getPrezzo()%></strong>
+					
+					<%
+						String price = String.format("%.2f", prodottiConsigliati.get(i).getPrezzo());
+					%>
+					<strong class="price2"><%=price%></strong>
 				</figcaption>
 			</figure>
 		</div> 
-		<%
-		j++;
-	
-	}%>
+	<%
+	}
+	%>
 		
 		
 	</div> <!-- row.// -->
 </div>
 		
 		<hr class="divider">
+		
+		</div>
 		
 		<div class="eArrow-footer">
 			<jsp:include page="Footer.jsp"/>
