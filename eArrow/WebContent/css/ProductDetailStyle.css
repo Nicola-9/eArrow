@@ -19,11 +19,25 @@ body{
 	flex-direction: column;
 }
 
+.doc-title-sm {
+	margin-left: 1%;
+	margin-bottom: 1%;
+	font-size: 1.5rem;
+	font-weight: 500;
+	color: #adb5bd;
+	text-transform: uppercase;
+}
+
+.content{
+	min-height: 100vh;
+	margin-right: 10%;
+	margin-left: 10%;
+}
+
 .card-body{
 	position: relative;
 	margin-top: 1%;
-	margin-right: 10%;
-	margin-left: 10%;
+	
 	padding: 1%;
 	border: 1px solid #d1d1d1;
 	border-radius: 5px;
@@ -157,15 +171,11 @@ a.btn.btn-primary{
 	margin-left: 0%;
 }
 
-
-
 .price{
 	margin-left: 0%;
 	margin-right: 0%;
 	font-size: 2rem;	
 }
-
-
 
 .line-below{
 	text-align: center;
@@ -179,12 +189,28 @@ a.btn.btn-primary{
 	max-width: 146px;
 }
 
-h1{
-	font-family: Trebuchet MS, sans-serif, L, sans-serif;
-}
-
 .mar{
     margin-bottom: 2%;
+}
+
+.title{
+	margin-bottom: 0%;
+	width: 80%;
+	display: inline-block;
+}
+
+.disponibility{
+	display: inline;
+	position: relative;
+	float: right;
+}
+
+.category{
+	color: #7b7b7b;
+}
+
+.title2{
+	margin-bottom: 3%;
 }
 
 .selez-quant{
@@ -195,10 +221,17 @@ h1{
 	transform: scale(1.1);
 }
 
-.centro{
-	display: grid;
-	grid-template-columns: auto auto;
-	margin-left: 7%;
+.description{
+	margin-bottom: 7%;
+}
+
+.custom-select{
+	width: 10%;
+	height: 30%;
+}
+
+.priceInfo{
+	margin-bottom: 3%;
 }
 
 .destra{
@@ -211,7 +244,14 @@ hr.divider {
     border-color: transparent;
 }
 
+.btn-primary{
+	margin-top: 9%;
+}
 
+.addCart-btn{
+	width: 70% !important;
+	font-size: 1.5rem;
+}
 
 
 .card {
@@ -271,8 +311,7 @@ figure {
 }
 
 .img-sm{
-	width: 75px;
-    height: 75px;
+    height: 150px;
 }
 
 .img-sm:hover{
@@ -338,6 +377,10 @@ a {
 	margin: 2%;
 }
 
+#container-image-reccomended{
+	width: 50% !important;
+}
+
 .row-product-c{
     position: relative;
     padding-right: 2%;
@@ -345,7 +388,6 @@ a {
     margin: auto;
     max-width: 100%;
     width: 100%;
-}
 }
 
 @media (max-width: 768px){
