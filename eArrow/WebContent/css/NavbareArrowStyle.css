@@ -41,27 +41,28 @@ header{
 }
 
 .btn-drop{
-	font-size: 1.25rem;
+	font-size: 1.25rem !important;
 	width: 100%;
+	margin-top: 0 !important;
 }
 
 .title-drop{
-	font-size: 1.25rem;
+	font-size: 1.25rem !important;
 	margin-bottom: .5rem !important;
 }
 
 .title-drop-signedin{
-	font-size: 1.5rem;
+	font-size: 1.5rem !important;
 }
 
 .btn-drop-logout{
-	background-color: #8A9597;
-	color: #FFF;
+	background-color: #8A9597 !important;
+	color: #FFF !important; 
 }
 
 .btn-drop-logout:hover{
-	background-color: #858585;
-	color: #FFF;
+	background-color: #858585 !important;
+	color: #FFF !important;
 }
 
 .dropdown-item{
@@ -69,7 +70,7 @@ header{
 }
 
 .dropdown-item:hover{
-	background-color: #0000;
+	background-color: #0000 !important;
 }
 
 .arrow-up {

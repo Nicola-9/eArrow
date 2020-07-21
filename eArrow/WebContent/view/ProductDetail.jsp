@@ -135,20 +135,38 @@
 				
 				
 				<div class="centro">
+						
 					<div class="priceInfo">
 						<span>Prezzo:&nbsp&nbsp&nbsp</span><span class="price h5">&#8364 <%=prezzoS %></span>
 					</div>
+					
+					<%
+							if(prodotto.isDisponibilita()){
+						%>
+							<div class="disponibilityCenter">
+								<span class="disponibilityCenter">Disponibilit&#224:&nbsp&nbsp&nbsp</span>
+								<small class="label-rating text-success disponibilityCenter">Disponibile</small>
+							</div>
+						<%	} else{ %>
+							<small class="label-rating text-danger disponibilityCenter">Non disponibile</small>
+						<%	} %>
 				
 					<div class="quantity">
 						<label class="titleSelect">Quantit&#224: &nbsp&nbsp&nbsp</label> 
-						<select	class="custom-select" name="quantita" onchange="this.form.submit()">
+						<select	class="custom-select quantitySelect" name="quantita">
 						
 						<%
 							for(int i = 1; i < quantita; i++){
+						
+								if(i == 1){
 						%>
-							<option value="<%=i %>"><%=i %></option>
-							
+									<option value="<%=i %>" selected><%=i %></option>
 						<%
+								} else{
+						%>
+									<option value="<%=i %>"><%=i %></option>
+						<%
+								}
 							}
 						%>
 						
@@ -159,9 +177,15 @@
 
 
 			<div class="line-below mar">
-		
-	  			<button type ="submit" class="btn btn-primary addCart-btn">Aggiungi al Carrello</button>
-	  		
+				
+						<%
+							if(prodotto.isDisponibilita()){
+						%>
+							<button type ="submit" class="btn btn-primary addCart-btn">Aggiungi al Carrello</button>
+							
+						<%	} else{ %>
+							<button type ="submit" class="btn btn-primary addCart-btn" disabled>Aggiungi al Carrello</button>
+						<%	} %>
 			</div> 
 		</div>
 		</main> 
@@ -191,6 +215,8 @@
 	for(int i=0; i < prodottiConsigliati.size(); i++){
 		if(prodottiConsigliati.get(i).getNome().equals(nome))
 			prodottiConsigliati.remove(i);
+		if(prodottiConsigliati.get(i).getNome().equals("Smartriser Nero"))
+			prodottiConsigliati.remove(i);
 	}
 	
 	if(prodottiConsigliati.size() > 4){
@@ -207,11 +233,11 @@
 			<figure class="itemside mb-2">
 				<div class="aside" id="container-image-reccomended">
 					<a href="#">
-						<img src="${pageContext.request.contextPath}<%=imgCons.getUri()%>" class="img-sm img-responsive">
+						<img src="${pageContext.request.contextPath}<%=imgCons.getUri()%>" class="img-sm img-responsive img-rec">
 					</a>
 				</div>
 				<figcaption class="info align-self-center">
-					<a href="#" class="title"><%=prodottiConsigliati.get(i).getNome()%></a>
+					<a href="#" class="title mt-2"><%=prodottiConsigliati.get(i).getNome()%></a>
 					
 					<%
 						String price = String.format("%.2f", prodottiConsigliati.get(i).getPrezzo());
@@ -235,6 +261,14 @@
 		<div class="eArrow-footer">
 			<jsp:include page="Footer.jsp"/>
 		</div>
+		
+		<script src='${pageContext.request.contextPath}/javascript/ProductDetailJS.js'></script>
+		
+		<!-- Bootstrap Script -->	
+		<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>	
+		
 	</body>
 	
 </html>

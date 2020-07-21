@@ -217,6 +217,25 @@ public class SessionArrow {
 			session.setAttribute("carrello", c);
 		}
 	}
+	
+	public void setProduct(ProdottoBean prodottoDaAggiugere) {
+
+		// Aggiunta del carrello alla sessione
+
+		// verifica se gi� contiene prodotti
+		if (session.getAttribute("carrello") != null) {
+			Carrello c = (Carrello) session.getAttribute("carrello");
+
+			ArrayList<ProdottoBean> prodotti = c.getListaProdotti();
+
+			if(!prodotti.contains(prodottoDaAggiugere)) {
+				prodotti.add(prodottoDaAggiugere);
+			}
+			
+
+			session.setAttribute("carrello", c);
+		}
+	}
 
 	/*
 	 * metodo per ottenere i prodotti nella sessione
