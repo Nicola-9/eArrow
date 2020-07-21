@@ -56,9 +56,11 @@ public class AddToShoppingBagServlet extends HttpServlet {
 				}	
 			}
 			
-			if(!inCart)
+			if(!inCart) {
 				cart.addProdotto(product);
+			}
 			
+			request.setAttribute("product", product);
 			request.getSession().setAttribute("carrello", cart);
 			
 			request.getRequestDispatcher("/ShoppingBagServlet").forward(request, response);
@@ -70,6 +72,7 @@ public class AddToShoppingBagServlet extends HttpServlet {
 			cartNew.addProdotto(product);
 			
 			request.getSession().setAttribute("carrello", cartNew);
+			request.setAttribute("product", product);
 			
 			request.getRequestDispatcher("/ShoppingBagServlet").forward(request, response);
 		}
