@@ -40,6 +40,22 @@ a.title:hover{
 	vertical-align: middle;
 }
 
+.price{
+	margin-right: .5%;
+}
+
+div.price-wrap{
+	width: 100%;
+}
+
+div.aside{
+	width: 25%;
+	height: 80px;
+	display: grid;
+	justify-content: center;
+	align-items: center;
+}
+
 .dlist-align{
 	display: flex;
 }

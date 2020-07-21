@@ -39,41 +39,39 @@ public class AddToShoppingBagServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		Object updateObj = request.getParameter("update");
-		String updateString = (String) updateObj;
-		SessionArrow session = new SessionArrow(request, response);
-		boolean update = false;
+		String codicePString = (String) request.getParameter("codiceProdotto");
+		int codiceProdotto = Integer.parseInt(codicePString);
 		
-		if(updateObj != null) {
-			update = Boolean.parseBoolean(updateString);
-		}
+		Carrello cart = (Carrello) request.getSession().getAttribute("carrello");
 		
-		if(update) {
-			Carrello cart = (Carrello) request.getSession().getAttribute("carrello");
-			String codeP = (String) request.getParameter("codiceProdotto");
-			int codice = Integer.parseInt(codeP);
+		if(cart != null) {
+			ProdottoBean product = ProdottoDAO.doRetrievebyCodeOrdered(codiceProdotto);
+			ArrayList<ProdottoBean> cartInSession = cart.getListaProdotti();
+			boolean inCart = false;
 			
-			if(cart != null) {
-				ProdottoBean product = ProdottoDAO.doRetrievebyKey(codice);
-				
-				session.setProduct(product);
-				
-				System.out.println(session.getProductCarrelloSession());
-				
-			} else {
-				ProdottoBean product = ProdottoDAO.doRetrievebyKey(codice);
-				ArrayList<ProdottoBean> prod = new ArrayList<ProdottoBean>();
-				prod.add(product);
-				
-				session.setCarrelloSession(prod);
-				
-				Carrello c = (Carrello) request.getSession().getAttribute("carrello");
-				
-				request.getSession().setAttribute("carrello", c);
-				
-				System.out.println(c.getListaProdotti().get(0).getNome());
+			for(ProdottoBean p : cartInSession) {
+				if(p.getNome().equals(product.getNome())) {
+					inCart = true;
+					break;
+				}	
 			}
+			
+			if(!inCart)
+				cart.addProdotto(product);
+			
+			request.getSession().setAttribute("carrello", cart);
+			
+			request.getRequestDispatcher("/ShoppingBagServlet").forward(request, response);
+		} else {
+			ProdottoBean product = ProdottoDAO.doRetrievebyCodeOrdered(codiceProdotto);
+			
+			Carrello cartNew = new Carrello();
+			
+			cartNew.addProdotto(product);
+			
+			request.getSession().setAttribute("carrello", cartNew);
+			
+			request.getRequestDispatcher("/ShoppingBagServlet").forward(request, response);
 		}
 	}
-
 }

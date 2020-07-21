@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+<%@page import="java.util.ArrayList, model.bean.*, model.dao.*"%>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -17,6 +19,13 @@
 	
 	<jsp:include page="NavbareArrow.jsp"/>
 	
+	<%
+		
+		ArrayList<ProdottoBean> products = (ArrayList<ProdottoBean>) request.getAttribute("productsCart");
+	
+		if(products != null){
+	%>
+	
 	<div class="content">
 	<div class="row">
 		<aside class="col-lg-9">
@@ -33,40 +42,85 @@
 							</tr>
 						</thead>
 						<tbody>
+						
+						<%
+							for(ProdottoBean p : products){
+								
+								ImmagineBean image = ImmagineDAO.doRetrieveImageByProductCode(p.getCodice());
+								
+								String categoria = p.getCategoria();
+								
+								switch(categoria){
+									case "archi":
+										categoria = "Archi";
+										break;
+									case "frecce":
+										categoria = "Frecce e Componenti";
+										break;
+									case "accessori-arco":
+										categoria = "Accessori Arco";
+										break;
+									case "accessori-arciere":
+										categoria = "Accessori Arciere";
+										break;
+									case "paglioni":
+										categoria = "Paglioni e Bersagli";
+										break;
+								}
+								
+								double prezzo = p.getPrezzo();
+								
+								String prezzoS = String.format("%.2f", prezzo);
+						%>
 							<tr>
 								<td class="product">
 									<figure class="itemside align-items-center">
 										<div class="aside">
-											<img src="${pageContext.request.contextPath}/image/productImage/kinetic-a1.jpg"
+											<img src="${pageContext.request.contextPath}<%=image.getUri() %>"
 												class="img-sm image">
 										</div>
 										<figcaption class="info">
-											<a href="#" class="title mt-2 h5">Riser Kinetic A1</a>
+											<a href="#" class="title mt-2 h5"><%=p.getNome() %></a>
 											<p class="text-muted small">
-												Archi<br>Riser
+												<%=categoria %><br><%=p.getTipologia() %>
 											</p>
 										</figcaption>
 									</figure>
 								</td>
 								<td class="quantity">
 									<div class="form-group">
-										<select class="custom-select">
-											<option>1</option>
-											<option>2</option>
-											<option>3</option>
-											<option>4</option>
+										<select class="custom-select">		
+								<%
+										for(int i = 1; i <= p.getQuantita(); i++){
+											
+											if(i == 1){
+								%>
+											<option value="<%=i %>" selected><%=i %></option>
+								<%
+											} else{
+								%>
+											<option value="<%=i %>"><%=i %></option>
+								<%
+											}
+										}
+								%>
 										</select>
 									</div>
 								</td>
 								<td class="price">
 									<div class="price-wrap">
-										<var class="price"><strong>€ 1156.00</strong></var>
-										<small class="text-muted"> € 315.20 each </small>
+										<var class="price"><strong>€ <%=prezzoS %></strong></var>
+										<small class="text-muted"> € <%=prezzoS %> </small>
 									</div> <!-- price-wrap .// -->
 								</td>
 								<td class="text-right d-none d-md-block"> 
 									<a href="" class="btn btn-light removeButton">Rimuovi</a></td>
 							</tr>
+							
+						<%
+							}
+		}
+						%>
 						</tbody>
 					</table>
 
@@ -99,7 +153,7 @@
 					</dl>
 					<hr>
 					<p class="text-center mb-3">
-						<img src="..//image/pagamenti.png"
+						<img src="${pageContext.request.contextPath}/image/pagamenti.png"
 							height="26">
 					</p>
 					<a href="#" class="btn btn-primary btn-block"> Acquista ora </a> <a
