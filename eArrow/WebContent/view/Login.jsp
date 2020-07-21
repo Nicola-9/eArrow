@@ -61,7 +61,7 @@
 						</div>
 						
 						<div class="error">
-							<small id="errorPass" class="form-text text-danger">We'll never share your email..</small>
+							<small id="errorPass" class="form-text text-danger">We'll never share your password..</small>
 						</div>
 						
 						<div class="row align-items-center remember">
@@ -121,6 +121,7 @@
 	</script>
 	
 	<script src="${pageContext.request.contextPath}/javascript/LoginCheck.js"></script>
+
 	<!-- Bootstrap Script -->
 		<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
