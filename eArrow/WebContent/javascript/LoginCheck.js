@@ -2,19 +2,18 @@
  * Module for check fields of Login form
  */
 let valid = false;
+let emailField;
+let passwordField;
+let loginForm;
+
+
+emailField = document.querySelector('#Email');
+passwordField = document.querySelector('#Password');
+loginForm = document.querySelector('#logForm');
+
 
 const validateForm = () => {
-	let emailField;
-	let passwordField;
-	let loginForm;
-
-	
-	
-	emailField = document.querySelector('#Email');
-	passwordField = document.querySelector('#Password');
-	loginForm = document.querySelector('#logForm');
-	
-	
+		
 	let emailRegex = /(^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$)/;
 	let passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
 	
@@ -56,6 +55,5 @@ const validateForm = () => {
 
 document.addEventListener('DOMContentLoaded', () => {
 	event.preventDefault();
-	
 	loginForm.onsubmit = validateForm;
 });

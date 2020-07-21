@@ -36,6 +36,17 @@ public class CartaDiCreditoBean {
 		this.circuito = circuito;
 	}
 
+	
+	
+	
+	@Override
+	public String toString() {
+		return "CartaDiCreditoBean [codicePAN=" + codicePAN + ", idUtente=" + idUtente + ", circuito=" + circuito + "]";
+	}
+
+
+
+
 	private String codicePAN;
 	private int idUtente;
 	private String circuito;
