@@ -9,11 +9,13 @@ public class Carrello {
 	ArrayList<ProdottoBean> listaProdotti;
 	String sessioID;
 	
-	public Carrello() {}
+	public Carrello() {
+		listaProdotti = new ArrayList<ProdottoBean>();
+	}
 	
 	public Carrello(ArrayList<ProdottoBean> prodotti) {
 		listaProdotti = prodotti;
-		}
+	}
 	
 	public Carrello(ArrayList<ProdottoBean> prodotti, String id) {
 		listaProdotti = prodotti;
@@ -24,11 +26,11 @@ public class Carrello {
 		this.listaProdotti.add(p);
 	}
 	
-	public void DelateProdotto(ProdottoBean p) {
+	public void deleteProdotto(ProdottoBean p) {
 		this.listaProdotti.remove(p);
 	}
 	
-	public boolean ContainsProdotto(ProdottoBean p) {
+	public boolean containsProdotto(ProdottoBean p) {
 		if(this.listaProdotti.contains(p))
 			return true;
 		else

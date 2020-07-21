@@ -156,7 +156,7 @@
 						<select	class="custom-select quantitySelect" name="quantita">
 						
 						<%
-							for(int i = 1; i < quantita; i++){
+							for(int i = 1; i <= quantita; i++){
 						
 								if(i == 1){
 						%>
