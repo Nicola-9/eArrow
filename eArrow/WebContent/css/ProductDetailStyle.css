@@ -475,3 +475,9 @@ a {
 		width: 15%;
 	}
 }
+
+@media (max-width: 1128px){
+	.image{
+		max-width: 350px;
+	}
+}

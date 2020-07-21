@@ -155,8 +155,8 @@
 				<% } %>
 				
 				<p class="buttonAdd">
-					<p class="quantity">Quantità: <%=p.getQuantita()%></p>
-					<a href="#" class="btn btn-primary">Aggiungi al carrello</a> 
+					<p class="quantity">In stock: <%=p.getQuantita()%></p>
+					<a href="${pageContext.request.contextPath}/AddToShoppingBagServlet?update=true&codiceProdotto=<%=p.getCodice()%>" class="btn btn-primary">Aggiungi al carrello</a> 
 				</p>
 				<a href="${pageContext.request.contextPath}/ProductDetailServlet?codice=<%=p.getCodice()%>" class="small link">
 					Scopri di più >

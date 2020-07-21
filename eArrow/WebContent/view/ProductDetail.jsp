@@ -177,9 +177,15 @@
 
 
 			<div class="line-below mar">
-		
-	  			<button type ="submit" class="btn btn-primary addCart-btn">Aggiungi al Carrello</button>
-	  		
+				
+						<%
+							if(prodotto.isDisponibilita()){
+						%>
+							<button type ="submit" class="btn btn-primary addCart-btn">Aggiungi al Carrello</button>
+							
+						<%	} else{ %>
+							<button type ="submit" class="btn btn-primary addCart-btn" disabled>Aggiungi al Carrello</button>
+						<%	} %>
 			</div> 
 		</div>
 		</main> 
