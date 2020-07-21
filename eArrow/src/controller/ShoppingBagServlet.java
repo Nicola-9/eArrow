@@ -8,9 +8,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
 import model.bean.ProdottoBean;
-import util.Carrello;
+import util.ShoppingCart;
 
 /**
  * Servlet implementation class ShoppingBagServlet
@@ -38,7 +37,7 @@ public class ShoppingBagServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		Carrello cart = (Carrello) request.getSession().getAttribute("carrello");
+		ShoppingCart cart = (ShoppingCart) request.getSession().getAttribute("carrello");
 		
 		String quantityString = (String) request.getParameter("quantity");
 		int quantity = Integer.parseInt(quantityString);
@@ -48,11 +47,7 @@ public class ShoppingBagServlet extends HttpServlet {
 		if(cart != null && product != null) {
 			ArrayList<ProdottoBean> products = new ArrayList<ProdottoBean>();
 			
-			for(int i=0; i < cart.getListaProdotti().size(); i++) {
-				products.add(cart.getListaProdotti().get(i));
-			}
-			
-			request.setAttribute("productsCart", products);
+			request.setAttribute("productsCart", cart);
 			request.setAttribute("quantity", quantity);
 			request.setAttribute("product", product);
 			

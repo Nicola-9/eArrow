@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     
-<%@page import="java.util.ArrayList, model.bean.*, model.dao.*"%>
+<%@page import="java.util.*, model.bean.*, model.dao.*, util.*"%>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -20,8 +20,8 @@
 	<jsp:include page="NavbareArrow.jsp"/>
 	
 	<%
-		
- 		ArrayList<ProdottoBean> products = (ArrayList<ProdottoBean>) request.getAttribute("productsCart");
+		ShoppingCart productsS = (ShoppingCart) request.getAttribute("productsCart");
+ 		HashMap<ProdottoBean, Integer> products = productsS.getProductsList();
 		ProdottoBean product = (ProdottoBean) request.getAttribute("product");
 		int quantity = (int) request.getAttribute("quantity");
 		
@@ -48,7 +48,7 @@
 						<tbody>
 						
 						<%
-							for(ProdottoBean p : products){
+							for(ProdottoBean p : products.keySet()){
 								
 								ImmagineBean image = ImmagineDAO.doRetrieveImageByProductCode(p.getCodice());
 								
@@ -101,7 +101,7 @@
 								<%
 										for(int i = 1; i <= p.getQuantita(); i++){
 											
-											if(i == 1){
+											if(i == products.get(p)){
 								%>
 											<option value="<%=i %>" selected><%=i %></option>
 								<%
