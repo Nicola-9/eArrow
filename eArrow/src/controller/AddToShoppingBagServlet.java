@@ -2,17 +2,16 @@ package controller;
 
 import java.io.IOException;
 import java.util.ArrayList;
-
+import java.util.HashMap;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
 import model.bean.ProdottoBean;
 import model.dao.ProdottoDAO;
-import util.Carrello;
 import util.SessionArrow;
+import util.ShoppingCart;
 
 /**
  * Servlet implementation class ShoppingBagServlet
@@ -42,34 +41,42 @@ public class AddToShoppingBagServlet extends HttpServlet {
 		String codicePString = (String) request.getParameter("codiceProdotto");
 		int codiceProdotto = Integer.parseInt(codicePString);
 		
-		Carrello cart = (Carrello) request.getSession().getAttribute("carrello");
+		String quantityString = (String) request.getParameter("quantity");
+		int quantity = Integer.parseInt(quantityString);
+		
+		ShoppingCart cart = (ShoppingCart) request.getSession().getAttribute("carrello");
 		
 		if(cart != null) {
 			ProdottoBean product = ProdottoDAO.doRetrievebyCodeOrdered(codiceProdotto);
-			ArrayList<ProdottoBean> cartInSession = cart.getListaProdotti();
+			HashMap<ProdottoBean, Integer> cartInSession = cart.getProductsList();
 			boolean inCart = false;
 			
-			for(ProdottoBean p : cartInSession) {
-				if(p.getNome().equals(product.getNome())) {
+			
+			for(ProdottoBean p : cartInSession.keySet()) {
+				if((p.getCodice() == product.getCodice())) {
 					inCart = true;
+					
 					break;
-				}	
+				}
 			}
 			
 			if(!inCart) {
-				cart.addProdotto(product);
+				if(quantityString != null)
+					cart.addProduct(product, quantity);
+				else
+					cart.addProduct(product, 1);
 			}
-			
-			request.setAttribute("product", product);
+				
 			request.getSession().setAttribute("carrello", cart);
+			request.setAttribute("product", product);
 			
 			request.getRequestDispatcher("/ShoppingBagServlet").forward(request, response);
 		} else {
 			ProdottoBean product = ProdottoDAO.doRetrievebyCodeOrdered(codiceProdotto);
 			
-			Carrello cartNew = new Carrello();
+			ShoppingCart cartNew = new ShoppingCart();
 			
-			cartNew.addProdotto(product);
+			cartNew.addProduct(product, 1);
 			
 			request.getSession().setAttribute("carrello", cartNew);
 			request.setAttribute("product", product);
