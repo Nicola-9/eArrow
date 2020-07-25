@@ -65,6 +65,16 @@ public class OrdineBean {
 		this.tipologia = tipologia;
 	}
 	
+	
+	
+	@Override
+	public String toString() {
+		return "OrdineBean [id=" + id + ", idUtente=" + idUtente + ", idPagamento=" + idPagamento + ", data=" + data
+				+ ", stato=" + stato + ", tipologia=" + tipologia + "]";
+	}
+
+
+
 	private int id;
 	private int idUtente;
 	private int idPagamento;
