@@ -22,8 +22,6 @@
 	<%
 		ShoppingCart productsS = (ShoppingCart) request.getSession().getAttribute("carrello");
  		HashMap<ProdottoBean, Integer> products = productsS.getProductsList();
-		ProdottoBean product = (ProdottoBean) request.getAttribute("product");
-		int quantity = (int) request.getAttribute("quantity");
 		
 		double totalPrice = 0;
 	
@@ -131,7 +129,7 @@
 									</div> <!-- price-wrap .// -->
 								</td>
 								<td class="text-right d-none d-md-block"> 
-									<a href="" class="btn btn-light removeButton">Rimuovi</a></td>
+									<a href="${pageContext.request.contextPath}/RemoveFromShoppingCartServlet?codiceProdotto=<%=p.getCodice() %>" class="btn btn-light removeButton">Rimuovi</a></td>
 							</tr>
 						<%
 							}
