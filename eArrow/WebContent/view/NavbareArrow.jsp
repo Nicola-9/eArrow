@@ -103,7 +103,7 @@
 				%>
 
 				<li class="nav-earrow-item nav-earrow-item-hidden">
-					<a href="${pageContext.request.contextPath}/view/ShoppingBag.jsp" class="nav-earrow-link nav-earrow-link-bag"></a>
+					<a href="${pageContext.request.contextPath}/ShoppingBagServlet" class="nav-earrow-link nav-earrow-link-bag"></a>
 				</li>
 			</ul>
 
@@ -146,8 +146,13 @@
             };
             
             $(document).ready(function(){
+            	var user = <%=user%>;
+            	
             	if($(window).innerWidth() > 998){
                    searchView();
+                   
+                   $('.dropdown').prop("disabled", false);
+   				   $('a.nav-earrow-link-account').attr("href", "#");
             	} else
             		if($(window).innerWidth() <= 998){
 						$('#search').unbind("click");
@@ -156,6 +161,17 @@
             			
             			$('.search-form input').addClass('mobile');
             			$('.search-form').addClass('mobile').appendTo('.search-item');
+            			
+            			
+            			if(user != null){
+            				$('.dropdown').prop("disabled", true);
+            				$('a.nav-earrow-link-account').attr("href", "http://localhost:8080/eArrow/ProfileServlet");
+            			
+            			} else{
+            				console.log("It's null");
+            				$('.dropdown').prop("disabled", true);
+            				$('a.nav-earrow-link-account').attr("href", "http://localhost:8080/eArrow/LoginServlet?launch=true");	
+            			}
             		}
             	
             	$(window).resize(function(){
@@ -167,6 +183,17 @@
             			
             			$('.search-form input').addClass('mobile');
             			$('.search-form').addClass('mobile').appendTo('.search-item');
+            	
+            			
+            			if(user != null){
+            				$('a.nav-earrow-link-account').attr("href", "http://localhost:8080/eArrow/ProfileServlet");
+            				$('.dropdown').prop("disabled", true);
+            			
+            			} else{
+            				console.log("It's null");
+            				$('a.nav-earrow-link-account').attr("href", "http://localhost:8080/eArrow/LoginServlet?launch=true");
+            				$('.dropdown').prop("disabled", true);	
+            			}
             		}
             		
             		if($(window).innerWidth() > 998){
@@ -174,6 +201,9 @@
             			
             			$('.search-form').removeClass('mobile').appendTo('.earrow-nav');
             			searchView();
+            			
+            			$('a.nav-earrow-link-account').attr("href", "#");
+            			$('.dropdown').prop("disabled", false);
             		}
             	});
             });

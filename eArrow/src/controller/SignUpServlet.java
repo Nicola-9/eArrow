@@ -13,6 +13,8 @@ import model.bean.IndirizzoBean;
 import model.dao.IndirizzoDAO;
 import model.dao.UtenteDao;
 import util.PasswordSha256;
+import util.SessionArrow;
+import util.ShoppingCart;
 
 /**
  * Servlet implementation class SignUpServlet
@@ -81,6 +83,15 @@ public class SignUpServlet extends HttpServlet {
 			}
 			
 			UtenteDao.registerUser(idIndirizzo, name, surname, email, password, numTel);
+			
+			ShoppingCart cart = (ShoppingCart) request.getSession().getAttribute("carrello");
+			
+			SessionArrow sessione = new SessionArrow(request, response);
+			sessione.setSessionUser(UtenteDao.doRetrievebyEmailAndPassword(email, password));
+			SessionArrow.setSessionRole("utente");
+			
+			if(cart != null)
+				request.getSession().setAttribute("carrello", cart);
 			
 			request.getRequestDispatcher("/HomePageServlet").forward(request, response);
 		}
