@@ -13,6 +13,10 @@ let prezzo = priceElem.textContent;
 prezzo = prezzo.substr(prezzo.indexOf(" ") + 1);
 
 let price = parseFloat(prezzo.replace(',', '.'));
+
+let addToShoppingButton = document.querySelector('.addCart-btn');
+
+let productCode = document.querySelector('.hidden-code').value;
 	
 document.addEventListener('DOMContentLoaded', () =>{
 	let productImage = document.querySelector('.image');
@@ -21,6 +25,9 @@ document.addEventListener('DOMContentLoaded', () =>{
 	
 	window.onresize = adjustReccomended;
 
+	addToShoppingButton.addEventListener('click', () =>{
+		document.location.href = './AddToShoppingBagServlet?codiceProdotto=' + productCode + "&quantity=" + quantitySelect.options[quantitySelect.selectedIndex].value;;
+	});
 });
 
 const adjustReccomended = () =>{

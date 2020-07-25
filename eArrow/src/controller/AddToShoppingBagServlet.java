@@ -38,7 +38,7 @@ public class AddToShoppingBagServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String codicePString = (String) request.getParameter("codiceProdotto");
+		String codicePString = request.getParameter("codiceProdotto");
 		int codiceProdotto = Integer.parseInt(codicePString);
 		
 		String quantityString = (String) request.getParameter("quantity");
@@ -64,13 +64,18 @@ public class AddToShoppingBagServlet extends HttpServlet {
 				if(quantityString != null)
 					cart.addProduct(product, quantity);
 				else
-					cart.addProduct(product, 1);
+					cart.addProduct(product, quantity);
+			} else{
+				cart.setProduct(product, quantity);
 			}
 				
 			request.getSession().setAttribute("carrello", cart);
+			
+			request.setAttribute("quantity", quantity);
 			request.setAttribute("product", product);
 			
-			request.getRequestDispatcher("/ShoppingBagServlet").forward(request, response);
+			request.getRequestDispatcher("view/ShoppingBag.jsp").forward(request, response);
+			
 		} else {
 			ProdottoBean product = ProdottoDAO.doRetrievebyCodeOrdered(codiceProdotto);
 			
@@ -79,9 +84,11 @@ public class AddToShoppingBagServlet extends HttpServlet {
 			cartNew.addProduct(product, quantity);
 			
 			request.getSession().setAttribute("carrello", cartNew);
+			
+			request.setAttribute("quantity", quantity);
 			request.setAttribute("product", product);
 			
-			request.getRequestDispatcher("/ShoppingBagServlet").forward(request, response);
+			request.getRequestDispatcher("view/ShoppingBag.jsp").forward(request, response);
 		}
 	}
 }

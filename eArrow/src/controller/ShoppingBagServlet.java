@@ -47,11 +47,7 @@ public class ShoppingBagServlet extends HttpServlet {
 		if(cart != null && product != null) {
 			ArrayList<ProdottoBean> products = new ArrayList<ProdottoBean>();
 			
-			request.setAttribute("productsCart", cart);
-			request.setAttribute("quantity", quantity);
-			request.setAttribute("product", product);
 			
-			request.getRequestDispatcher("view/ShoppingBag.jsp").forward(request, response);
 		}
 	}
 

@@ -19,6 +19,14 @@ public class ShoppingCart {
 		this.productsList.put(p, quantity);
 	}
 	
+	public void setProduct(ProdottoBean p, int quantity) {
+		for(HashMap.Entry<ProdottoBean, Integer> prod : this.productsList.entrySet()) {
+			if(prod.getKey().getCodice() == p.getCodice()) {
+				prod.setValue(quantity);
+			}
+		}
+	}
+	
 	public void deleteProduct(ProdottoBean p) {
 		this.productsList.remove(p);
 	}
