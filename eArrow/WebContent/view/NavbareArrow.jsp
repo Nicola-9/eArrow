@@ -108,8 +108,8 @@
 			</ul>
 
 			<div class="search-form">
-				<form class="inputSearch">
-					<input class="inputSearchInput" type="text" name=""
+				<form class="inputSearch" action="./SearchServlet" onsubmit="this.form.submit()">
+					<input class="inputSearchInput" type="text" name="suggestion"
 						placeholder="eArrow.it" list="dbSearch">
 						<datalist id="dbSearch">
 						  
