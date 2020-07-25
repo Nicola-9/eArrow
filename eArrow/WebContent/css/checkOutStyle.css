@@ -200,3 +200,10 @@ div.card-footer{
 	margin-left: auto; 
 	margin-bottom: 10%;
 }
+
+.eArrowFooter{
+	margin-bottom: 0;
+	bottom: 0;
+	position: relative;
+	flex: 0;
+}
