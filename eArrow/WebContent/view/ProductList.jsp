@@ -156,7 +156,7 @@
 				
 				<p class="buttonAdd">
 					<p class="quantity">In stock: <%=p.getQuantita()%></p>
-					<a href="${pageContext.request.contextPath}/AddToShoppingBagServlet?codiceProdotto=<%=p.getCodice()%>&quantity=3" class="btn btn-primary">Aggiungi al carrello</a> 
+					<a href="${pageContext.request.contextPath}/AddToShoppingBagServlet?codiceProdotto=<%=p.getCodice()%>&quantity=1" class="btn btn-primary">Aggiungi al carrello</a> 
 				</p>
 				<a href="${pageContext.request.contextPath}/ProductDetailServlet?codice=<%=p.getCodice()%>" class="small link">
 					Scopri di più >
