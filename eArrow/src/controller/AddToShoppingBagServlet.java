@@ -76,7 +76,7 @@ public class AddToShoppingBagServlet extends HttpServlet {
 			
 			ShoppingCart cartNew = new ShoppingCart();
 			
-			cartNew.addProduct(product, 1);
+			cartNew.addProduct(product, quantity);
 			
 			request.getSession().setAttribute("carrello", cartNew);
 			request.setAttribute("product", product);
