@@ -249,6 +249,51 @@ public class ProdottoDAO {
 		return productsName;
 	}
 	
+	public static List<ProdottoBean> doRetrievebySubstringObject(String sub){
+		List<ProdottoBean> productsName = new ArrayList<ProdottoBean>();
+		PreparedStatement ps;
+		ResultSet rs;
+		ProdottoBean prodotto;
+		
+		sub = '%' + sub + '%';
+		
+		String productSQL = "SELECT p.codice, p.nome, p.categoria, p.tipologia, p.prezzo, p.disponibilita, "
+							+ "p.quantita, p.descrizione FROM prodotto AS p WHERE p.nome like ?;";
+		
+		try(Connection connection = ConnessioneDB.getConnection()){
+			
+			ps = connection.prepareStatement(productSQL);
+			ps.setString(1, sub);
+			rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				ProdottoBean suggestedProd = new ProdottoBean();
+				
+				suggestedProd.setCodice(rs.getInt("codice"));
+				suggestedProd.setNome(rs.getString("nome"));
+				suggestedProd.setCategoria(rs.getString("categoria"));
+				suggestedProd.setTipologia(rs.getString("tipologia"));
+				suggestedProd.setPrezzo(rs.getDouble("prezzo"));
+				
+				if(rs.getInt("disponibilita") == 1) {
+					suggestedProd.setDisponibilita(true);
+				} else {
+					suggestedProd.setDisponibilita(false);
+				}
+				
+				suggestedProd.setQuantita(rs.getInt("quantita"));
+				suggestedProd.setDescrizione(rs.getString("descrizione"));
+				
+				productsName.add(suggestedProd);
+			}
+			
+		} catch(SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return productsName;
+	}
+	
 	
 	public static final int ORDINA_NOME = 0;
 	public static final int ORDINA_PREZZOC = 1;
