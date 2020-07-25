@@ -181,6 +181,7 @@
 						<%
 							if(prodotto.isDisponibilita()){
 						%>
+							<input type="hidden" class="hidden-code" name="codiceProdotto" value="<%=prodotto.getCodice() %>">
 							<button type ="submit" class="btn btn-primary addCart-btn">Aggiungi al Carrello</button>
 							
 						<%	} else{ %>
