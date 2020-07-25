@@ -116,11 +116,11 @@
 	<div class="card-body">
 		<div class="row">
 			<aside class="col-md-3" id="imageContainer">
-				<a href="#" class="img-wrap img-fluid"><img class="image" src="${pageContext.request.contextPath}<%=uriImage%>"></a>
+				<a href="${pageContext.request.contextPath}/ProductDetailServlet?codice=<%=p.getCodice()%>" class="img-wrap img-fluid"><img class="image" src="${pageContext.request.contextPath}<%=uriImage%>"></a>
 			</aside>
 			<!-- col.// -->
 			<article class="col-md-6">
-				<a href="#" class="title mt-2 h5">
+				<a href="${pageContext.request.contextPath}/ProductDetailServlet?codice=<%=p.getCodice()%>" class="title mt-2 h5">
 					<%=p.getNome() %>
 				</a>
 				
@@ -155,8 +155,8 @@
 				<% } %>
 				
 				<p class="buttonAdd">
-					<p class="quantity">Quantità: <%=p.getQuantita()%></p>
-					<a href="#" class="btn btn-primary">Aggiungi al carrello</a> 
+					<p class="quantity">In stock: <%=p.getQuantita()%></p>
+					<a href="${pageContext.request.contextPath}/AddToShoppingBagServlet?codiceProdotto=<%=p.getCodice()%>&quantity=3" class="btn btn-primary">Aggiungi al carrello</a> 
 				</p>
 				<a href="${pageContext.request.contextPath}/ProductDetailServlet?codice=<%=p.getCodice()%>" class="small link">
 					Scopri di più >

@@ -27,6 +27,11 @@ a.title{
 	font-size: 1.7rem;
 }
 
+.priceField{
+	font-weight: bold;
+	display: block;
+}
+
 a.title:hover{
 	text-decoration: none;
 }
@@ -38,6 +43,22 @@ a.title:hover{
 	height: 100%;
 	display: table-cell;
 	vertical-align: middle;
+}
+
+.price{
+	margin-right: .5%;
+}
+
+div.price-wrap{
+	width: 105%;
+}
+
+div.aside{
+	width: 25%;
+	height: 80px;
+	display: grid;
+	justify-content: center;
+	align-items: center;
 }
 
 .dlist-align{

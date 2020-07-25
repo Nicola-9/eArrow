@@ -186,47 +186,17 @@ public class SessionArrow {
 				session.setAttribute("role", s);
 					
 			}
-	
-	
 
-	/*
-	 * metodo per l'aggiunta dei prodotti nella sessione
-	 */
-
-	public void setCarrelloSession(ArrayList<ProdottoBean> prodottiDaAggiugere) {
-
-		// Aggiunta del carrello alla sessione
-
-		// verifica se gi� contiene prodotti
-		if (session.getAttribute("carrello") != null) {
-			Carrello c = (Carrello) session.getAttribute("carrello");
-
-			ArrayList<ProdottoBean> prodotti = c.getListaProdotti();
-
-			for (int i = 0; i < prodotti.size(); i++) {
-				for (int j = 0; j < prodottiDaAggiugere.size(); j++) {
-					if (prodotti.contains(prodottiDaAggiugere.get(j)) != true) {
-						prodotti.add(prodottiDaAggiugere.get(j));
-					}
-				}
-			}
-
-			session.setAttribute("carrello", c);
-		} else {
-			Carrello c = new Carrello(prodottiDaAggiugere, session.getId());
-			session.setAttribute("carrello", c);
-		}
-	}
 
 	/*
 	 * metodo per ottenere i prodotti nella sessione
 	 */
 
-	public Carrello getProductCarrelloSession() {
+	public ShoppingCart getProductCarrelloSession() {
 
 		// verifica se gi� contiene prodotti
 		if (session.getAttribute("carrello") != null) {
-			return (Carrello) session.getAttribute("carrello");
+			return (ShoppingCart) session.getAttribute("carrello");
 		} else {
 			return null;
 		}
