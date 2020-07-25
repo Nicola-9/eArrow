@@ -24,6 +24,7 @@ import model.dao.CartaDiCreditoDAO;
 import model.dao.ComposizioneOrdineDAO;
 import model.dao.OrdinaDAO;
 import model.dao.PagamentoDAO;
+import model.dao.StoricoOrdiniDAO;
 import util.SessionArrow;
 import util.ShoppingCart;
 
@@ -144,7 +145,9 @@ public class CheckOutServlet extends HttpServlet {
 	 			ComposizioneOrdineDAO.addProductOrder(idOrdine, p.getCodice(), products.get(p));
 	 		}
 
-	 		System.out.println(ComposizioneOrdineDAO.doRetrievebyUserOrderId(idOrdine).toString());
+	 		System.out.println("va va va"+ComposizioneOrdineDAO.doRetrievebyUserOrderId(idOrdine).toString());
+	 		
+	 		StoricoOrdiniDAO.addProduct(idOrdine);
 		}
 		}
 	}

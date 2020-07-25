@@ -74,8 +74,6 @@ public static boolean addProductOrder(int idOrd, int codice, int quant){
 			ps.setInt(2, codice);
 			ps.setInt(3, quant);
 			
-			rs = ps.executeQuery();
-			
 			if(ps.executeUpdate() > 0) 
 				aggiunta = true;
 			else
@@ -99,7 +97,7 @@ public static ArrayList<OrdineBean> doRetrievebyUserOrderId(int id){
 	PreparedStatement ps;
 	ResultSet rs;
 	
-	String cartaSQL = "SELECT * FROM earrow.composizione_ordine AS o WHERE o.idOrdine = ?;";
+	String cartaSQL = "SELECT * FROM earrow.ordine AS o WHERE o.id = ?;";
 	
 	try(Connection connection = ConnessioneDB.getConnection()){
 		
