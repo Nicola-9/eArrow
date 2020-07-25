@@ -55,23 +55,55 @@
 					if(user == null){
 				%>
 				
-				<li class="nav-earrow-item"><a href="${pageContext.request.contextPath}/view/Login.jsp"
-					class="nav-earrow-link nav-earrow-link-account"></a></li>
+				<li class="nav-earrow-item">
+					<div class="dropdown">
+						<a href="#" class="nav-earrow-link nav-earrow-link-account dropdown" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></a>
+					
+						<div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+							<div class="arrow-up"></div>
+							<div class="dropdown-item">
+								<p class="title-drop">Già registrato?</p>
+								<a class="btn btn-primary btn-drop btn-drop-signIn" href="${pageContext.request.contextPath}/LoginServlet?launch=true">Accedi</a> 
+							</div> 
+							<div class="dropdown-divider"></div>
+							<div class="dropdown-item">
+								<p class="title-drop">Non ancora registrato?</p>
+								<a class="btn btn-primary btn-drop btn-drop-signUp" href="${pageContext.request.contextPath}/SignUpServlet?launch=true">Registrati ora</a> 
+							</div> 
+						</div>
+					</div>
+				</li>
 					
 				<% 
 					} else {
 						request.setAttribute("update", false);
 				%>
 				
-				<li class="nav-earrow-item"><a href="${pageContext.request.contextPath}/ProfileServlet"
-					class="nav-earrow-link nav-earrow-link-account"></a></li>
+				<li class="nav-earrow-item">
+					<div class="dropdown">
+						<a href="#"
+							class="nav-earrow-link nav-earrow-link-account dropdown" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></a>
+						
+						<div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+							<div class="arrow-up"></div>
+							<div class="dropdown-item">
+								<p class="title-drop title-drop-signedin">Ciao, <%=user.getNome() %></p>
+								<a class="btn btn-primary btn-drop btn-drop-visualizeProfile" href="${pageContext.request.contextPath}/ProfileServlet">Visualizza profilo</a> 
+							</div> 
+							<div class="dropdown-divider"></div>
+							<div class="dropdown-item">
+								<a class="btn btn-drop btn-drop-logout" href="${pageContext.request.contextPath}/LogoutServlet">Logout</a> 
+							</div> 
+						</div>
+					</div>	
+				</li>
 					
 				<% 
 					}
 				%>
 
 				<li class="nav-earrow-item nav-earrow-item-hidden">
-					<a href="${pageContext.request.contextPath}/view/ShoppingBag.jsp" class="nav-earrow-link nav-earrow-link-bag"></a>
+					<a href="${pageContext.request.contextPath}/ShoppingBagServlet" class="nav-earrow-link nav-earrow-link-bag"></a>
 				</li>
 			</ul>
 
@@ -114,8 +146,13 @@
             };
             
             $(document).ready(function(){
+            	var user = <%=user%>;
+            	
             	if($(window).innerWidth() > 998){
                    searchView();
+                   
+                   $('.dropdown').prop("disabled", false);
+   				   $('a.nav-earrow-link-account').attr("href", "#");
             	} else
             		if($(window).innerWidth() <= 998){
 						$('#search').unbind("click");
@@ -124,6 +161,17 @@
             			
             			$('.search-form input').addClass('mobile');
             			$('.search-form').addClass('mobile').appendTo('.search-item');
+            			
+            			
+            			if(user != null){
+            				$('.dropdown').prop("disabled", true);
+            				$('a.nav-earrow-link-account').attr("href", "http://localhost:8080/eArrow/ProfileServlet");
+            			
+            			} else{
+            				console.log("It's null");
+            				$('.dropdown').prop("disabled", true);
+            				$('a.nav-earrow-link-account').attr("href", "http://localhost:8080/eArrow/LoginServlet?launch=true");	
+            			}
             		}
             	
             	$(window).resize(function(){
@@ -135,6 +183,17 @@
             			
             			$('.search-form input').addClass('mobile');
             			$('.search-form').addClass('mobile').appendTo('.search-item');
+            	
+            			
+            			if(user != null){
+            				$('a.nav-earrow-link-account').attr("href", "http://localhost:8080/eArrow/ProfileServlet");
+            				$('.dropdown').prop("disabled", true);
+            			
+            			} else{
+            				console.log("It's null");
+            				$('a.nav-earrow-link-account').attr("href", "http://localhost:8080/eArrow/LoginServlet?launch=true");
+            				$('.dropdown').prop("disabled", true);	
+            			}
             		}
             		
             		if($(window).innerWidth() > 998){
@@ -142,6 +201,9 @@
             			
             			$('.search-form').removeClass('mobile').appendTo('.earrow-nav');
             			searchView();
+            			
+            			$('a.nav-earrow-link-account').attr("href", "#");
+            			$('.dropdown').prop("disabled", false);
             		}
             	});
             });
@@ -149,7 +211,7 @@
             function removeElement(elementId) {
                 var element = document.getElementById(elementId);
                 if(element != null){
-                element.parentNode.removeChild(element);
+                	element.parentNode.removeChild(element);
                 }
             }
             
@@ -188,7 +250,7 @@
     							var i = 0;
     							while(i < array.length){
     								var str = array[i];
-									$( "#dbSearch" ).append( "<option value="+str+" class="+elem+">" );
+									$( "#dbSearch" ).append('<option value="' + str + '"' + 'class="' + elem + '">');
     								console.log("input utente = " + array[i]);
     								i++;
     							}	

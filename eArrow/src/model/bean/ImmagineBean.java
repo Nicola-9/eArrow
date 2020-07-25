@@ -26,6 +26,15 @@ public class ImmagineBean {
 	public void setCodiceProdotto(int codiceProdotto) {
 		this.codiceProdotto = codiceProdotto;
 	}
+	
+	
+
+	@Override
+	public String toString() {
+		return "ImmagineBean [uri=" + uri + ", codiceProdotto=" + codiceProdotto + "]";
+	}
+
+
 
 	private String uri;
 	private int codiceProdotto;

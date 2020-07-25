@@ -79,6 +79,7 @@ input:focus {
 	font-size: 1.5rem;
 	padding: 2% 2%;
 }
+
 .name {
 	margin-right: 3%;
 	border-top-right-radius: .25rem !important;
@@ -92,6 +93,51 @@ input:focus {
 	border-bottom-left-radius: .25rem !important;
 	width: 50%;
 	text-transform: capitalize;
+}
+
+.city {
+	margin-right: 3%;
+	border-top-right-radius: .25rem !important;
+	border-bottom-right-radius: .25rem !important;
+	width: 50%;
+	text-transform: capitalize;
+}
+
+.via {
+	border-top-left-radius: .25rem !important;
+	border-bottom-left-radius: .25rem !important;
+	width: 50%;
+	text-transform: capitalize;
+}
+
+.civico {
+	margin-right: 3%;
+	border-top-right-radius: .25rem !important;
+	border-bottom-right-radius: .25rem !important;
+	width: 50%;
+	text-transform: capitalize;
+}
+
+.cap {
+	border-top-left-radius: .25rem !important;
+	border-bottom-left-radius: .25rem !important;
+	width: 50%;
+	text-transform: capitalize;
+}
+
+.errCityHide,
+.errViaHide,
+.errCivicoHide,
+.errCapHide{
+	width: 50%;
+	display: inline-block;
+	font-size: 1.3rem;
+	visibility: hidden;
+	margin-bottom: 1%;
+}
+
+.error-second{
+	width: 45.5%;
 }
 
 .subm {

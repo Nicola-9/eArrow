@@ -29,45 +29,58 @@
 				<div class="card-header">
 					<h3>Accedi</h3>
 					<div class="d-flex justify-content-end icon">
-						<span><i class="fab"><img src='..//image/eArrow.png'
-								width="70" height="70"></i></span>
-
+						<span><i class="fab"><img src='${pageContext.request.contextPath}/image/eArrow.png' width="70" height="70"></i></span>
 					</div>
 				</div>
+				
 				<div class="card-body">
-					<form action="${pageContext.request.contextPath}/LoginServlet" method="POST">
+				
+					<div id="errorLog">
+						<p id="textError"></p>
+					</div>
+				
+					<form id="logForm" action="${pageContext.request.contextPath}/LoginServlet" method="POST">
 						<div class="input-group form-group">
 							<div class="input-group-prepend">
 								<span class="input-group-text"><i class="fas fa-user"></i></span>
 							</div>
-							<input type="text" class="form-control" placeholder="username" name="Email">
-
+							
+							<input type="text" class="form-control" placeholder="username" id="Email" name="Email">
 						</div>
+						
+						<div class="error">
+							<small id="errorEmail" class="form-text text-danger">We'll never share your email..</small>
+						</div>
+						
 						<div class="input-group form-group">
 							<div class="input-group-prepend">
 								<span class="input-group-text"><i class="fas fa-key"></i></span>
 							</div>
-							<input type="password" class="form-control"
-								placeholder="password" name="Password">
+							
+							<input type="password" class="form-control" placeholder="password" id="Password" name="Password">
 						</div>
+						
+						<div class="error">
+							<small id="errorPass" class="form-text text-danger">We'll never share your password..</small>
+						</div>
+						
 						<div class="row align-items-center remember">
 							<input type="checkbox">Ricordami
 						</div>
+						
 						<div class="form-group login-form">
-							<input type="submit" value="Login"
-								class="btn  login_btn">
+							<input type="submit" value="Login" class="btn login_btn">
 						</div>
+						
 					</form>
 				</div>
+				
 				<div class="card-footer">
 					<div class="d-flex justify-content-center links">
 						Non hai un account?
 						<a class="registration-link" href="${pageContext.request.contextPath}/view/SignUp.jsp">Registrati</a>
 					</div>
-					<!--  
-					<div class="d-flex justify-content-center">
-						<a href="#">Hai dimenticato la password?</a>
-					</div> -->
+				
 				</div>
 			</div>
 		</div>
@@ -77,36 +90,16 @@
 			<jsp:include page="Footer.jsp"/>
 	</div>
 	
-	
-	
-	<!-- Avviso  -->
-	
-	<div id="id01" class="alert alert-c" role="alert">
-
-		<h3 id="erroreLogin"></h3>
-		
-	</div>
-	
-	
 	<script>
-		// Get the modal
-		var modal = document.getElementById('id01');
-
-		// When the user clicks anywhere outside of the modal, close it
-		window.onclick = function(event) {
-			if (event.target == modal) {
-				modal.style.display = "none";
-			}
-		}
 		
-		//$("#erroreLogin").fadeTo(4000, 500)
 		function alertInsuccesso(input){
-			$("#erroreLogin").text(input);
-			$("#erroreLogin").slideUp(500, function(){
-			    $("#id01").slideUp(500);
-			});
+			$("#textError").text(input);
+			//$(".card").animate({height: "470px"}, 400 );
+			$(".card-body").css("margin-top", "5%");
+			$("#errorLog").css("margin-top", "5%");
+			$("#errorLog").slideDown();
+			}
 			
-		}
 		
 		
 		$( document ).ready(function() {
@@ -120,10 +113,18 @@
 		<% if(request.getAttribute("passwordErrata")!=null) { %>
 		alertInsuccesso("Password errata!");
 		<% } %>
+		
+		<% if(request.getAttribute("utenteNonDb")!=null) { %>
+		alertInsuccesso("Utente non registrato!");
+		<% } %>
 		});
 	</script>
 	
-	
-	
+	<script src="${pageContext.request.contextPath}/javascript/LoginCheck.js"></script>
+
+	<!-- Bootstrap Script -->
+		<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>	
 </body>
 </html>

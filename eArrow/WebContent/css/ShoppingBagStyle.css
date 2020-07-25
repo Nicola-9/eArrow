@@ -27,6 +27,28 @@ a.title{
 	font-size: 1.7rem;
 }
 
+.priceField{
+	font-weight: bold;
+	display: block;
+}
+
+.titleAndImage{
+	margin-top: 50%;
+	margin-bottom: 50%;
+}
+
+.empty-cart{
+	display: grid;
+	align-items: center;
+	justify-content: center;
+  	text-align: center;
+}
+
+p.empty-cart-title{
+	font-size: 2.5rem;
+	color: #a2a2a2;
+}
+
 a.title:hover{
 	text-decoration: none;
 }
@@ -38,6 +60,22 @@ a.title:hover{
 	height: 100%;
 	display: table-cell;
 	vertical-align: middle;
+}
+
+.price{
+	margin-right: .5%;
+}
+
+div.price-wrap{
+	width: 105%;
+}
+
+div.aside{
+	width: 25%;
+	height: 80px;
+	display: grid;
+	justify-content: center;
+	align-items: center;
 }
 
 .dlist-align{

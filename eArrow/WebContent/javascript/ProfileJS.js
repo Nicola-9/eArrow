@@ -144,6 +144,9 @@ const update = () => {
 						saveBtn.style.display = "none";
 						
 						modifyBtn.disabled = false;
+						
+						window.scrollTo(0, 0);
+						
 					}
 		        }else 
 		        	if (ajaxCall.status == 400) {

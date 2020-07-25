@@ -8,8 +8,29 @@
 	<head>
 		<meta charset="UTF-8">
 		
-		<%  Object categoryObj = request.getAttribute("category");
+		<%  
+			Object categoryObj = request.getAttribute("category");
 			String category = (String) categoryObj;
+			
+			String categoryParam = "";
+			
+			switch(category){
+				case "Archi":
+					categoryParam = "Archi";
+					break;
+				case "Frecce e Componenti":
+					categoryParam = "Frecce";
+					break;
+				case "Accessori Arco":
+					categoryParam = "accessori-arco";
+					break;
+				case "Accessori Arciere":
+					categoryParam = "accessori-arciere";
+					break;
+				case "Paglioni e Bersagli":
+					categoryParam = "paglioni";
+					break;
+			}
 		%>
 			<title>eArrow - <%=category %></title>
 		
@@ -37,7 +58,7 @@
 	
 
 		<form class="orderForm" action="./ProductsListServlet">
-			<input type="hidden" name="category" value="<%=category%>">
+			<input type="hidden" name="category" value="<%=categoryParam%>">
 			<div class="ordinamento">
 				<label class="titleSelect">Ordina per: &nbsp&nbsp&nbsp</label> 
 				<select	class="custom-select" name="ordinamento" onchange="this.form.submit()">
@@ -95,11 +116,11 @@
 	<div class="card-body">
 		<div class="row">
 			<aside class="col-md-3" id="imageContainer">
-				<a href="#" class="img-wrap img-fluid"><img class="image" src="${pageContext.request.contextPath}<%=uriImage%>"></a>
+				<a href="${pageContext.request.contextPath}/ProductDetailServlet?codice=<%=p.getCodice()%>" class="img-wrap img-fluid"><img class="image" src="${pageContext.request.contextPath}<%=uriImage%>"></a>
 			</aside>
 			<!-- col.// -->
 			<article class="col-md-6">
-				<a href="#" class="title mt-2 h5">
+				<a href="${pageContext.request.contextPath}/ProductDetailServlet?codice=<%=p.getCodice()%>" class="title mt-2 h5">
 					<%=p.getNome() %>
 				</a>
 				
@@ -134,8 +155,19 @@
 				<% } %>
 				
 				<p class="buttonAdd">
-					<p class="quantity">Quantità: <%=p.getQuantita()%></p>
-					<a href="#" class="btn btn-primary">Aggiungi al carrello</a> 
+					<p class="quantity">In stock: <%=p.getQuantita()%></p>
+					
+					<%
+						if(p.isDisponibilita()){
+					%>
+				
+							<a href="${pageContext.request.contextPath}/AddToShoppingBagServlet?codiceProdotto=<%=p.getCodice()%>&quantity=1" class="btn btn-primary">Aggiungi al carrello</a>	
+							
+					<% } else { %>
+				
+							<a class="btn btn-primary" id="disabled-add-button">Aggiungi al carrello</a>
+					
+					<% } %>	 
 				</p>
 				<a href="${pageContext.request.contextPath}/ProductDetailServlet?codice=<%=p.getCodice()%>" class="small link">
 					Scopri di più >

@@ -8,23 +8,20 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import model.dao.ProdottoDAO;
-
-import org.json.JSONArray;
-
+import model.bean.ProdottoBean;
+import util.ShoppingCart;
 
 /**
- * Servlet implementation class SuggestionListServlet
+ * Servlet implementation class ShoppingBagServlet
  */
-@WebServlet("/SuggestionListServlet")
-public class SuggestionListServlet extends HttpServlet {
+@WebServlet("/ShoppingBagServlet")
+public class ShoppingBagServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public SuggestionListServlet() {
+    public ShoppingBagServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -40,27 +37,10 @@ public class SuggestionListServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String input = request.getParameter("inputJ");
+		ShoppingCart cart = (ShoppingCart) request.getSession().getAttribute("carrello");
 		
-		ArrayList<String> paroleOutput = new ArrayList<String>();
 		
-		paroleOutput = (ArrayList<String>) ProdottoDAO.doRetrievebySubstring(input);
-		
-		response.setContentType("application/json");
-		JSONArray array = new JSONArray();
-
-		if(!paroleOutput.isEmpty()) {
-			
-			array.put(true);
-			array.put(paroleOutput);
-			
-		}else
-			array.put(false);
-		
-		//response.encodeURL(((HttpServletRequest)request).getRequestURL().toString());
-
-		response.getWriter().append(array.toString());
-		
+		request.getRequestDispatcher("view/ShoppingBag.jsp").forward(request, response);
 	}
 
 }

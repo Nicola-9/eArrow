@@ -29,7 +29,7 @@
 					<div class="card-header">
 						<h3>Registrazione</h3>
 						<div class="d-flex justify-content-end icon">
-							<span><i class="fab"><img src = '..//image/eArrow.png' width="70" height="70"></i></span>
+							<span><i class="fab"><img src = '${pageContext.request.contextPath}/image/eArrow.png' width="70" height="70"></i></span>
 							
 						</div>
 					</div>
@@ -62,11 +62,31 @@
 							</div>
 							
 							<div class="input-group form-group">
-								<input name="address" type="text" class="form-control" id="address" placeholder="Indirizzo - Città, via, civico, cap">
+								<input name="city" type="text" class="form-control city" id="city" placeholder="Città">
+								<input name="via" type="text" class="form-control via" id="via" placeholder="Via">
 							</div>
 							
-							<div class="error">
-								<small id="errorAddress" class="form-text text-danger">We'll never share your email..</small>
+							<div class="errCityVia">
+								<span class="errCityHide">
+										<small id="errorCity" class="form-text text-danger">We'll never share your email..</small>
+								</span>
+								<span class="error error-second errViaHide">
+										<small id="errorVia" class="form-text text-danger">We'll never share your email..</small>
+								</span>
+							</div>
+							
+							<div class="input-group form-group">
+								<input name="civico" type="text" class="form-control civico" id="civico" placeholder="Civico">
+								<input name="cap" type="text" class="form-control cap" id="cap" placeholder="CAP">
+							</div>
+							
+							<div class="errCivicoCap">
+								<span class="errCivicoHide">
+										<small id="errorCivico" class="form-text text-danger">We'll never share your email..</small>
+								</span>
+								<span class="error error-second errCapHide">
+										<small id="errorCap" class="form-text text-danger">We'll never share your email..</small>
+								</span>
 							</div>
 							
 							<div class="input-group form-group">
@@ -99,6 +119,12 @@
 			<jsp:include page="Footer.jsp"/>
 		</div>
 		
-		<script src='${pageContext.request.contextPath}/javascript/SignUpCheck.js'></script>
+		<script src="${pageContext.request.contextPath}/javascript/SignUpCheck.js"></script>
+		
+		<!-- Bootstrap Script -->
+		<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>	
+	
 	</body>
 </html>
