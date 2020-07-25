@@ -111,6 +111,14 @@ a.small.link{
 	min-height: 100vh;
 }
 
+#disabled-add-button{
+	color: #fff;
+	background-color: #007bff;
+	border-color: #007bff;
+	opacity: .65;
+	cursor: default;
+}
+
 .eArrowFooter{
 	margin-bottom: 0;
 	bottom: 0;

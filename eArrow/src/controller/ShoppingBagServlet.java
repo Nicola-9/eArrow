@@ -39,16 +39,8 @@ public class ShoppingBagServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		ShoppingCart cart = (ShoppingCart) request.getSession().getAttribute("carrello");
 		
-		String quantityString = (String) request.getParameter("quantity");
-		int quantity = Integer.parseInt(quantityString);
 		
-		ProdottoBean product = (ProdottoBean) request.getAttribute("product");
-		
-		if(cart != null && product != null) {
-			ArrayList<ProdottoBean> products = new ArrayList<ProdottoBean>();
-			
-			
-		}
+		request.getRequestDispatcher("view/ShoppingBag.jsp").forward(request, response);
 	}
 
 }

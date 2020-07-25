@@ -16,6 +16,7 @@ import model.dao.UtenteDao;
 import util.HexString;
 import util.PasswordSha256;
 import util.SessionArrow;
+import util.ShoppingCart;
 
 /**
  * Servlet implementation class LoginServlet
@@ -44,11 +45,16 @@ public class LoginServlet extends HttpServlet {
 	 */
 	
 protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+			boolean logJsp = Boolean.parseBoolean(request.getParameter("launch"));
+			
+			ShoppingCart cart = (ShoppingCart) request.getSession().getAttribute("carrello");
 		
 			SessionArrow sessione = new SessionArrow(request, response);
 			UtenteBean utenteSessione = sessione.getSessionUser();
-			boolean logJsp = Boolean.parseBoolean(request.getParameter("launch"));
 			
+			if(cart != null)
+				request.getSession().setAttribute("carrello", cart);
+				
 			if(logJsp == true) {
 				url = response.encodeURL("/view/Login.jsp");
 				request.getRequestDispatcher(url).forward(request, response);

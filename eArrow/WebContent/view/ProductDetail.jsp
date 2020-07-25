@@ -62,6 +62,7 @@
 		%>
 
 		<div class="content">
+			<input type="hidden" class="hidden-code" name="codiceProdotto" value="<%=prodotto.getCodice() %>">
 		
 		<h5 class="doc-title-sm">DETTAGLI</h5>
 		
@@ -75,33 +76,6 @@
 	   				<a href="#"><img class="image" src="${pageContext.request.contextPath}<%=uriImage%>"></a>
 				</div>
 				
-				<%
-					ArrayList<ImmagineBean> imgs = new ArrayList<ImmagineBean>();
-					imgs = (ArrayList<ImmagineBean>) ImmagineDAO.doRetrieveImagesByCode(prodotto.getCodice());
-					
-					int upLimit = 0;
-					
-					if(imgs.size() > 3)
-						upLimit = 3;
-					else
-						upLimit = imgs.size();
-				%>
-					
-					<% if(imgs.size() == 1 || imgs == null){%>
-						<div class="img-small-wrap" style="display: none">
-					<% }
-					else{%>
-				<div class="img-small-wrap" style="display: flex">
-				<% 
-					
-				for(int n = 0; n < upLimit; n++){
-					System.out.println(imgs.toString());
-				%>
-				
-	 				<div  class="item-small"><a href="#"> <img class="image" src="${pageContext.request.contextPath}<%=imgs.get(n).getUri()%>"> </a> </div>
-	 				
-	 				<%}} %>
-				</div>
 			</aside>
 			
 	</div>		
@@ -156,6 +130,16 @@
 						<select	class="custom-select quantitySelect" name="quantita">
 						
 						<%
+							if(quantita == 0){
+						%>
+						
+								<option value="0" selected>0</option>
+								
+						<%
+							}
+						%>
+						
+						<%
 							for(int i = 1; i <= quantita; i++){
 						
 								if(i == 1){
@@ -181,7 +165,6 @@
 						<%
 							if(prodotto.isDisponibilita()){
 						%>
-							<input type="hidden" class="hidden-code" name="codiceProdotto" value="<%=prodotto.getCodice() %>">
 							<button type ="submit" class="btn btn-primary addCart-btn">Aggiungi al Carrello</button>
 							
 						<%	} else{ %>
