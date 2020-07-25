@@ -20,7 +20,7 @@
 	<jsp:include page="NavbareArrow.jsp"/>
 	
 	<%
-		ShoppingCart productsS = (ShoppingCart) request.getAttribute("productsCart");
+		ShoppingCart productsS = (ShoppingCart) request.getSession().getAttribute("carrello");
  		HashMap<ProdottoBean, Integer> products = productsS.getProductsList();
 		ProdottoBean product = (ProdottoBean) request.getAttribute("product");
 		int quantity = (int) request.getAttribute("quantity");
@@ -48,7 +48,10 @@
 						<tbody>
 						
 						<%
-							for(ProdottoBean p : products.keySet()){
+						
+							for(HashMap.Entry<ProdottoBean, Integer> pair : products.entrySet()){
+								
+								ProdottoBean p = (ProdottoBean) pair.getKey();
 								
 								ImmagineBean image = ImmagineDAO.doRetrieveImageByProductCode(p.getCodice());
 								
@@ -76,63 +79,11 @@
 								
 								String prezzoS = String.format("%.2f", prezzo);
 								
-								if(!p.getNome().equals(product.getNome())){
-									
-									totalPrice += prezzo;
-						%>
-							<tr>
-								<td class="product">
-									<figure class="itemside align-items-center">
-										<div class="aside">
-											<img src="${pageContext.request.contextPath}<%=image.getUri() %>"
-												class="img-sm image">
-										</div>
-										<figcaption class="info">
-											<a href="#" class="title mt-2 h5"><%=p.getNome() %></a>
-											<p class="text-muted small">
-												<%=categoria %><br><%=p.getTipologia() %>
-											</p>
-										</figcaption>
-									</figure>
-								</td>
-								<td class="quantity">
-									<div class="form-group">
-										<select class="custom-select">		
-								<%
-										for(int i = 1; i <= p.getQuantita(); i++){
-											
-											if(i == products.get(p)){
-								%>
-											<option value="<%=i %>" selected><%=i %></option>
-								<%
-											} else{
-								%>
-											<option value="<%=i %>"><%=i %></option>
-								<%
-											}
-										}
-								%>
-										</select>
-									</div>
-								</td>
-								<td class="price">
-									<div class="price-wrap">
-										<span class="priceField">€ <%=prezzoS %></span>
-										<small class="text-muted price-each">€ <%=prezzoS %></small>
-									</div> <!-- price-wrap .// -->
-								</td>
-								<td class="text-right d-none d-md-block"> 
-									<a href="" class="btn btn-light removeButton">Rimuovi</a></td>
-							</tr>
-							
-						<%
-							} else{
-								
-								prezzo *= quantity;
+								prezzo *= pair.getValue();
 								
 								totalPrice += prezzo;
 								
-								prezzoS = String.format("%.2f", prezzo);
+								String prezzoTotal = String.format("%.2f", prezzo);
 						%>
 							<tr>
 								<td class="product">
@@ -150,28 +101,32 @@
 									</figure>
 								</td>
 								<td class="quantity">
-									<div class="form-group">
-										<select class="custom-select">		
-								<%
-										for(int i = 1; i <= p.getQuantita(); i++){
-											
-											if(i == quantity){
-								%>
-											<option value="<%=i %>" selected><%=i %></option>
-								<%
-											} else{
-								%>
-											<option value="<%=i %>"><%=i %></option>
-								<%
+									<form class="quantity-add" action="./AddToShoppingBagServlet">
+									<input type="hidden" name="codiceProdotto" value="<%=p.getCodice() %>">
+										<div class="form-group">
+											<select class="custom-select" name="quantity" onchange="this.form.submit()">		
+									<%
+									
+											for(int i = 1; i <= p.getQuantita(); i++){
+												
+												if(i == (int) pair.getValue()){
+									%>
+												<option value="<%=i %>" selected><%=i %></option>
+									<%
+												} else{
+									%>
+												<option value="<%=i %>"><%=i %></option>
+									<%
+												}
 											}
-										}
-								%>
-										</select>
-									</div>
+									%>
+											</select>
+										</div>
+									</form>
 								</td>
 								<td class="price">
 									<div class="price-wrap">
-										<span class="priceField">€ <%=prezzoS %></span>
+										<span class="priceField">€ <%=prezzoTotal %></span>
 										<small class="text-muted price-each">€ <%=prezzoS %></small>
 									</div> <!-- price-wrap .// -->
 								</td>
@@ -181,7 +136,6 @@
 						<%
 							}
 						}
-		}
 						%>
 						</tbody>
 					</table>
@@ -244,7 +198,7 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>	
 	
-	<script src="${pageContext.request.contextPath}/javascript/ShoppingBagJS.js"></script>
+	
 	
 	<script type="text/javascript">
 	$(document).ready(function(){
