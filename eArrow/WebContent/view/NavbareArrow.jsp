@@ -103,7 +103,7 @@
 				%>
 
 				<li class="nav-earrow-item nav-earrow-item-hidden">
-					<a href="${pageContext.request.contextPath}/view/ShoppingBag.jsp" class="nav-earrow-link nav-earrow-link-bag"></a>
+					<a href="${pageContext.request.contextPath}/ShoppingBagServlet" class="nav-earrow-link nav-earrow-link-bag"></a>
 				</li>
 			</ul>
 

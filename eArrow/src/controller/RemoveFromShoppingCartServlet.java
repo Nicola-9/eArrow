@@ -52,7 +52,11 @@ public class RemoveFromShoppingCartServlet extends HttpServlet {
 				}
 			}
 			
-			request.getSession().setAttribute("carrello", cart);
+			if(cart.getProductsList().size() == 0) {
+				request.getSession().setAttribute("carrello", null);
+			} else {
+				request.getSession().setAttribute("carrello", cart);
+			}
 		}
 		
 		request.getRequestDispatcher("view/ShoppingBag.jsp").forward(request, response);

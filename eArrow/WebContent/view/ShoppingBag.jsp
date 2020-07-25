@@ -21,9 +21,27 @@
 	
 	<%
 		ShoppingCart productsS = (ShoppingCart) request.getSession().getAttribute("carrello");
+ 		
+ 		if(productsS == null){
+ 		
+ 	%>
+ 		<div class="content content-empty-cart">
+	 		<div class="empty-cart">
+	 			<div class="titleAndImage">
+	 				<img src="${pageContext.request.contextPath}/image/empty-shopping-cart.png" class="img image empty-cart-image">
+	 				<p class="empty-cart-title">Il tuo carrello &#232 vuoto!</p>
+	 			</div>
+	 		</div>
+	 	</div>
+ 		<%
+ 		
+ 		} else{
+ 		
+ 		%>
+ 	<%
  		HashMap<ProdottoBean, Integer> products = productsS.getProductsList();
 		
-		double totalPrice = 0;
+ 		double totalPrice = 0;
 	
 		if(products != null){
 	%>
@@ -99,7 +117,7 @@
 									</figure>
 								</td>
 								<td class="quantity">
-									<form class="quantity-add" action="./AddToShoppingBagServlet">
+									<form class="quantity-add" action="${pageContext.request.contextPath}/AddToShoppingBagServlet">
 									<input type="hidden" name="codiceProdotto" value="<%=p.getCodice() %>">
 										<div class="form-group">
 											<select class="custom-select" name="quantity" onchange="this.form.submit()">		
@@ -175,7 +193,7 @@
 							height="26">
 					</p>
 					<a href="#" class="btn btn-primary btn-block"> Acquista ora </a> <a
-						href="#" class="btn btn-light btn-block continueButton">Continua lo Shopping</a>
+						href="${pageContext.request.contextPath}/HomePageServlet" class="btn btn-light btn-block continueButton">Continua lo Shopping</a>
 				</div>
 				<!-- card-body.// -->
 			</div>
@@ -184,6 +202,10 @@
 		</aside>
 		<!-- col.// -->
 	</div>
+	
+	<%
+ 		}
+	%>
 	
 	</div>
 	
