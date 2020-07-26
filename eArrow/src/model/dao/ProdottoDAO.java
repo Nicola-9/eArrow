@@ -249,95 +249,53 @@ public class ProdottoDAO {
 		return productsName;
 	}
 	
-	public static boolean updateProductStock(ProdottoBean prodotto,  int n){
-		PreparedStatement ps;
-		
-		String userSQL = "UPDATE prodotto SET quantita = ? WHERE codice = ?";
-		
-		try{
-			Connection connessione=null;
-			try {
-				connessione = ConnessioneDB.getConnection();
-				
-				ps = connessione.prepareStatement(userSQL);
 
-				ps.setInt(1, n);
-				ps.setInt(2, prodotto.getCodice());
-			
-				
-				ps.executeUpdate();
-				connessione.commit();
-				
-				return true;
-			}
-			finally {
-				ConnessioneDB.releaseConnection(connessione);	
-			}
-		}catch(SQLException e) {
-			e.printStackTrace();
-		}
-		
-		return false;
-	}
-	
-	
-	public static boolean updateDisponibilita(){
-		ProdottoBean product = new ProdottoBean();
-		ArrayList<Integer> codList = new ArrayList<Integer>();
+	public static List<ProdottoBean> doRetrievebySubstringObject(String sub){
+		List<ProdottoBean> productsName = new ArrayList<ProdottoBean>();
 		PreparedStatement ps;
 		ResultSet rs;
+		ProdottoBean prodotto;
 		
-		String productSQL = "SELECT p.codice FROM prodotto AS p WHERE p.quantita = 0";
+		sub = '%' + sub + '%';
+		
+		String productSQL = "SELECT p.codice, p.nome, p.categoria, p.tipologia, p.prezzo, p.disponibilita, "
+							+ "p.quantita, p.descrizione FROM prodotto AS p WHERE p.nome like ?;";
+
 		
 		try(Connection connection = ConnessioneDB.getConnection()){
 			
 			ps = connection.prepareStatement(productSQL);
+
+			ps.setString(1, sub);
 			rs = ps.executeQuery();
 			
 			while(rs.next()) {
-			
-				codList.add(rs.getInt("codice"));
+				ProdottoBean suggestedProd = new ProdottoBean();
+				
+				suggestedProd.setCodice(rs.getInt("codice"));
+				suggestedProd.setNome(rs.getString("nome"));
+				suggestedProd.setCategoria(rs.getString("categoria"));
+				suggestedProd.setTipologia(rs.getString("tipologia"));
+				suggestedProd.setPrezzo(rs.getDouble("prezzo"));
+				
+				if(rs.getInt("disponibilita") == 1) {
+					suggestedProd.setDisponibilita(true);
+				} else {
+					suggestedProd.setDisponibilita(false);
+				}
+				
+				suggestedProd.setQuantita(rs.getInt("quantita"));
+				suggestedProd.setDescrizione(rs.getString("descrizione"));
+				
+				productsName.add(suggestedProd);
 			}
 			
-			updateDisp(codList);
-	
 		} catch(SQLException e) {
 			e.printStackTrace();
 		}
-		return true;
-	}
-	
-	
-	public static boolean updateDisp(ArrayList<Integer> codList){
-		PreparedStatement ps; 
 		
-		String productSQLUpdate = "UPDATE prodotto SET disponibilita = 0 WHERE codice = ?";
-		
-		try{
-			Connection connessione=null;
-			try {
-				connessione = ConnessioneDB.getConnection();
-				
-				for(int x : codList) {
-				ps = connessione.prepareStatement(productSQLUpdate);
+		return productsName;
 
-				ps.setInt(1, x);
-
-				ps.executeUpdate();
-				
-				}
-				
-				connessione.commit();
-				return true;
-			}
-			finally {
-				ConnessioneDB.releaseConnection(connessione);	
-			}
-		}catch(SQLException e) {
-			e.printStackTrace();
-		}
-		
-		return false;
 	}
 	
 	
