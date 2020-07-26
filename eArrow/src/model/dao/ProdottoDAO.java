@@ -299,6 +299,98 @@ public class ProdottoDAO {
 	}
 	
 	
+	public static boolean updateProductStock(ProdottoBean prodotto,  int n){
+		PreparedStatement ps;
+		
+		String userSQL = "UPDATE prodotto SET quantita = ? WHERE codice = ?";
+		
+		try{
+			Connection connessione=null;
+			try {
+				connessione = ConnessioneDB.getConnection();
+				
+				ps = connessione.prepareStatement(userSQL);
+
+				ps.setInt(1, n);
+				ps.setInt(2, prodotto.getCodice());
+			
+				
+				ps.executeUpdate();
+				connessione.commit();
+				
+				return true;
+			}
+			finally {
+				ConnessioneDB.releaseConnection(connessione);	
+			}
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return false;
+	}
+	
+	
+	public static boolean updateDisponibilita(){
+		ProdottoBean product = new ProdottoBean();
+		ArrayList<Integer> codList = new ArrayList<Integer>();
+		PreparedStatement ps;
+		ResultSet rs;
+		
+		String productSQL = "SELECT p.codice FROM prodotto AS p WHERE p.quantita = 0";
+		
+		try(Connection connection = ConnessioneDB.getConnection()){
+			
+			ps = connection.prepareStatement(productSQL);
+			rs = ps.executeQuery();
+			
+			while(rs.next()) {
+			
+				codList.add(rs.getInt("codice"));
+			}
+			
+			updateDisp(codList);
+	
+		} catch(SQLException e) {
+			e.printStackTrace();
+		}
+		return true;
+	}
+	
+	
+	public static boolean updateDisp(ArrayList<Integer> codList){
+		PreparedStatement ps; 
+		
+		String productSQLUpdate = "UPDATE prodotto SET disponibilita = 0 WHERE codice = ?";
+		
+		try{
+			Connection connessione=null;
+			try {
+				connessione = ConnessioneDB.getConnection();
+				
+				for(int x : codList) {
+				ps = connessione.prepareStatement(productSQLUpdate);
+
+				ps.setInt(1, x);
+
+				ps.executeUpdate();
+				
+				}
+				
+				connessione.commit();
+				return true;
+			}
+			finally {
+				ConnessioneDB.releaseConnection(connessione);	
+			}
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return false;
+	}
+	
+	
 	public static final int ORDINA_NOME = 0;
 	public static final int ORDINA_PREZZOC = 1;
 	public static final int ORDINA_PREZZOD = 2;
