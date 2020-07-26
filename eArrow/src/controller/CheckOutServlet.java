@@ -24,6 +24,7 @@ import model.dao.CartaDiCreditoDAO;
 import model.dao.ComposizioneOrdineDAO;
 import model.dao.OrdinaDAO;
 import model.dao.PagamentoDAO;
+import model.dao.ProdottoDAO;
 import model.dao.StoricoOrdiniDAO;
 import util.SessionArrow;
 import util.ShoppingCart;
@@ -81,6 +82,10 @@ public class CheckOutServlet extends HttpServlet {
 				request.setAttribute("user", utenteSessione);
 			}
 			
+			if(request.getSession().getAttribute("carrello") == null) {
+				//pagina di errore carrello vuoto
+			}
+			
 			url = response.encodeURL("/view/CheckOut.jsp");
 			request.getRequestDispatcher(url).forward(request, response);
 			}
@@ -122,32 +127,52 @@ public class CheckOutServlet extends HttpServlet {
 			
 			//passaggio alla servlet del riepilogo ordine 
 			//salvataggio dei dati relativi all'ordine
+			ShoppingCart productsS = (ShoppingCart) request.getSession().getAttribute("carrello");
+	 		HashMap<ProdottoBean, Integer> products = productsS.getProductsList();
 			
 			DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd");
 			LocalDate localDate = LocalDate.now();
 
 			java.sql.Date sqlDate = java.sql.Date.valueOf(localDate);
-			Double d = (double) 3000;//importo
+
+			double totalPrice = 0;
+			for(HashMap.Entry<ProdottoBean, Integer> pair : products.entrySet()){
+	 			ProdottoBean p = (ProdottoBean) pair.getKey();
+	 			
+	 			double prezzo = p.getPrezzo();	
+				prezzo *= pair.getValue();
+	 			totalPrice += prezzo;
+	 		}
 			
-			System.out.println(sqlDate);
-			
-			int id = PagamentoDAO.addPagamento(carta.getCodicePAN(), "carta di credito", sqlDate, d);
+			int id = PagamentoDAO.addPagamento(carta.getCodicePAN(), "carta di credito", sqlDate, totalPrice);
 			PagamentoBean pag = PagamentoDAO.doRetrievebyUserId(id);
 			
 			int idOrdine = OrdinaDAO.addOrder(carta.getIdUtente(), pag.getId(), sqlDate, "confermato", pag.getTipologia());
-			
-			ShoppingCart productsS = (ShoppingCart) request.getSession().getAttribute("carrello");
-	 		HashMap<ProdottoBean, Integer> products = productsS.getProductsList();
 	 		
 	 		for(HashMap.Entry<ProdottoBean, Integer> pair : products.entrySet()){
 	 			ProdottoBean p = (ProdottoBean) pair.getKey();
 	 			
 	 			ComposizioneOrdineDAO.addProductOrder(idOrdine, p.getCodice(), products.get(p));
+	 			
+	 			//aggiurno la quantità dei prodotti rimasti in stock e se è uguale a zero li setta a non disponibili
+	 			int num = p.getQuantita() - pair.getValue();
+	 			ProdottoDAO.updateProductStock(p, num);
+	 			boolean t = ProdottoDAO.updateDisponibilita();
+	 			System.out.println(""+t);
 	 		}
-
-	 		System.out.println("va va va"+ComposizioneOrdineDAO.doRetrievebyUserOrderId(idOrdine).toString());
 	 		
 	 		StoricoOrdiniDAO.addProduct(idOrdine);
+	 		
+	 		request.getSession().setAttribute("idOrdine", idOrdine);
+	 		
+	 		
+	 		ShoppingCart prod = (ShoppingCart) request.getSession().getAttribute("carrello");;
+	 		
+	 		request.getSession().removeAttribute("carrello");
+	 		
+	 		request.getSession().setAttribute("mapOrderProduct", prod);
+	 		
+			request.getRequestDispatcher("/OrderSummaryServlet").forward(request, response);
 		}
 		}
 	}

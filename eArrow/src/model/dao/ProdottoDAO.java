@@ -249,6 +249,7 @@ public class ProdottoDAO {
 		return productsName;
 	}
 	
+
 	public static List<ProdottoBean> doRetrievebySubstringObject(String sub){
 		List<ProdottoBean> productsName = new ArrayList<ProdottoBean>();
 		PreparedStatement ps;
@@ -259,10 +260,12 @@ public class ProdottoDAO {
 		
 		String productSQL = "SELECT p.codice, p.nome, p.categoria, p.tipologia, p.prezzo, p.disponibilita, "
 							+ "p.quantita, p.descrizione FROM prodotto AS p WHERE p.nome like ?;";
+
 		
 		try(Connection connection = ConnessioneDB.getConnection()){
 			
 			ps = connection.prepareStatement(productSQL);
+
 			ps.setString(1, sub);
 			rs = ps.executeQuery();
 			
@@ -292,6 +295,7 @@ public class ProdottoDAO {
 		}
 		
 		return productsName;
+
 	}
 	
 	
