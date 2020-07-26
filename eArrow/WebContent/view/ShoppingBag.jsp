@@ -192,7 +192,7 @@
 						<img src="${pageContext.request.contextPath}/image/pagamenti.png"
 							height="26">
 					</p>
-					<a href="#" class="btn btn-primary btn-block"> Acquista ora </a> <a
+					<a href="${pageContext.request.contextPath}/CheckOutServlet?checkout=true" class="btn btn-primary btn-block"> Acquista ora </a> <a
 						href="${pageContext.request.contextPath}/HomePageServlet" class="btn btn-light btn-block continueButton">Continua lo Shopping</a>
 				</div>
 				<!-- card-body.// -->
