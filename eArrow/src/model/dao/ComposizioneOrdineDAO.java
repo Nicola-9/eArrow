@@ -15,48 +15,6 @@ import util.ShoppingCart;
 
 public class ComposizioneOrdineDAO {
 	
-	/*public static boolean addProductOrder(ShoppingCart prodotti){
-		
-		HashMap<ProdottoBean, Integer> products = prodotti.getProductsList();
-		
-		boolean aggiunta = false;
-		
-		PreparedStatement ps;
-		ResultSet rs;
-		ProdottoBean prodotto;
-		
-		String productSQL = "INSERT INTO earrow.composizione_ordine (idOrdine, codiceP, quantita) values(?, ?, ?);";
-		
-		try(Connection connection = ConnessioneDB.getConnection()){
-			
-			
-			for(HashMap.Entry<ProdottoBean, Integer> pair : products.entrySet()){
-				
-				ProdottoBean p = (ProdottoBean) pair.getKey();
-			
-			ps = connection.prepareStatement(productSQL);
-			ps.setInt(1, 1);
-			ps.setInt(2, p.getCodice());
-			ps.setInt(3, pair.getValue());
-			
-			rs = ps.executeQuery();
-			
-			if(ps.executeUpdate() > 0) 
-				aggiunta = true;
-			else
-				aggiunta = false;
-			}
-			
-			connection.commit();
-			
-			ConnessioneDB.releaseConnection(connection);
-			
-		} catch(SQLException e) {
-			e.printStackTrace();
-		}
-		return aggiunta;
-	}*/
-	
 public static boolean addProductOrder(int idOrd, int codice, int quant){
 		
 		boolean aggiunta = false;
@@ -90,14 +48,15 @@ public static boolean addProductOrder(int idOrd, int codice, int quant){
 		return aggiunta;
 	}
 
-public static ArrayList<OrdineBean> doRetrievebyUserOrderId(int id){
-	OrdineBean ordine = new OrdineBean();
-	ArrayList<OrdineBean> ordineL = new ArrayList<OrdineBean>();
+/*
+ public static ArrayList<Integer> doRetrieveIdbyUserOrderId(int id){
+	
+	ArrayList<Integer> ordini = new ArrayList<Integer>();
 	
 	PreparedStatement ps;
 	ResultSet rs;
 	
-	String cartaSQL = "SELECT * FROM earrow.ordine AS o WHERE o.id = ?;";
+	String cartaSQL = "SELECT * FROM earrow.composizione_ordine AS o WHERE o.idOrdine = ?;";
 	
 	try(Connection connection = ConnessioneDB.getConnection()){
 		
@@ -107,24 +66,49 @@ public static ArrayList<OrdineBean> doRetrievebyUserOrderId(int id){
 		rs = ps.executeQuery();
 		
 		while(rs.next()) {
-
-			ordine.setId(id);
-			ordine.setIdUtente(rs.getInt("idUtente"));
-			ordine.setIdPagamento(rs.getInt("idPag"));
-			ordine.setData(rs.getDate("dataO"));
-			ordine.setStato(rs.getString("stato"));
-			ordine.setTipologia(rs.getString("tipologia"));
-		
-			ordineL.add(ordine);
+			ordini.add(rs.getInt("codiceP"));
 		}
 
 		
 	} catch(SQLException e) {
 		e.printStackTrace();
 	}
-	return ordineL;
+	return ordini;
 }
+*/
 
+public static HashMap<Integer, Integer> doRetrieveIdbyUserOrderId(int id){
+	
+	HashMap<Integer, Integer> idList = new HashMap<Integer, Integer>();
+	
+	int codice;
+	int quantita;
+	
+	PreparedStatement ps;
+	ResultSet rs;
+	
+	String cartaSQL = "SELECT * FROM earrow.composizione_ordine AS o WHERE o.idOrdine = ?;";
+	
+	try(Connection connection = ConnessioneDB.getConnection()){
+		
+		ps = connection.prepareStatement(cartaSQL);
+		ps.setInt(1, id);
+		
+		rs = ps.executeQuery();
+		
+		while(rs.next()) {
+			codice = rs.getInt("codiceP");
+			quantita = rs.getInt("quantita");
+			
+			idList.put(codice, quantita);
+		}
+
+		
+	} catch(SQLException e) {
+		e.printStackTrace();
+	}
+	return idList;
+}
 	
 
 

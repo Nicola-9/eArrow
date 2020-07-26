@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-<%@page import="model.bean.*, model.dao.*, java.util.ArrayList"%>
+<%@page import="java.util.*, model.bean.*, model.dao.*, util.*"%>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -20,8 +20,15 @@
 	<jsp:include page="NavbareArrow.jsp"/>
 	
 	<% 
-	ProdottoBean carrello = (ProdottoBean) request.getAttribute("carrello");
-	ImmagineBean img = (ImmagineBean) request.getAttribute("img");
+	
+	ShoppingCart productsS = (ShoppingCart) request.getSession().getAttribute("mapOrderProduct");
+	System.out.println("va va va va va va va av"+ productsS.toString());
+	
+			HashMap<ProdottoBean, Integer> products = productsS.getProductsList();
+			
+	 		double totalPrice = 0;
+		
+			if(products != null){
 	%>
 	
 	<div class="content">
@@ -29,31 +36,54 @@
 			<div class="ordinamento">
 				<label class="titleSelect">Riepilogo ordine</label> 
 			</div>
+			
+			<%
+						
+			for(HashMap.Entry<ProdottoBean, Integer> pair : products.entrySet()){
+								
+				ProdottoBean p = (ProdottoBean) pair.getKey();
+								
+				ImmagineBean image = ImmagineDAO.doRetrieveImageByProductCode(p.getCodice());
+								
+				String categoria = p.getCategoria();
+
+								
+					double prezzo = p.getPrezzo();
+								
+					String prezzoS = String.format("%.2f", prezzo);
+								
+					prezzo *= pair.getValue();
+								
+					totalPrice += prezzo;
+								
+					String prezzoTotal = String.format("%.2f", prezzo);
+						%>
 
 	<div class="card-body">
 		<div class="row">
 			<aside class="col-md-3" id="imageContainer">
-				<a href="#" class="img-wrap img-fluid"><img class="image" src="${pageContext.request.contextPath}<%=img.getUri()%>"></a>
+				<a href="#" class="img-wrap img-fluid"><img class="image" src="${pageContext.request.contextPath}<%=image.getUri()%>"></a>
 			</aside>
 			<!-- col.// -->
 			<article class="col-md-6">
-				<a href="#" class="title mt-2 h5"><%=carrello.getNome()%></a>
+				<a href="#" class="title mt-2 h5"><%=p.getNome()%></a>
 				
 				<!-- rating-wrap.// -->
-				<p class="description"><%=carrello.getDescrizione()%></p>
+				<p class="description"><%=p.getDescrizione()%></p>
 
 			</article>
 			<!-- col.// -->
 			<aside class="col-md-3 order">
 			<div class="cent">
 				<div class="price-wrap mt-2">
-					<span class="price h5">&#8364 <%=carrello.getPrezzo()%></span>
+					<span class="price h5">&#8364 <%=p.getPrezzo()%></span>
 				</div>
 				<!-- info-price-detail // -->
 
 				
 				<p class="buttonAdd">
-					<p class="quantity">Quantita: <%=carrello.getQuantita()%></p>
+					<p class="quantity">Quantita: <%=pair.getValue()%></p>
+					<p class="quantity">Totale prodotto: <%=prezzo%> &#8364</p>
 				</p>
 			</div>
 			</aside>
@@ -61,13 +91,17 @@
 		</div>
 		<!-- row.// -->
 	</div>
+	
+	<%
+		} } 
+	%>
 		
 		<div class="tot-prezzo">
-			<label class="titleSelect">Totale ordine: <strong>&#8364 $$$$$$$</strong> </label> 
+			<label class="titleSelect">Totale ordine: <strong>&#8364 <%=totalPrice %></strong> </label> 
 		</div>
-		
+
 		<div class="bottone-cont">
-			<a href="#" class="btn btn-primary "> Continua lo Shopping</a> 
+			<a href="${pageContext.request.contextPath}/HomePageServlet" class="btn btn-primary "> Continua lo Shopping</a> 
 		</div>
 
 	</div>
