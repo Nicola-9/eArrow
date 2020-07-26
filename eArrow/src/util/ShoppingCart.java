@@ -50,7 +50,17 @@ public class ShoppingCart {
 			return false;
 	}
 	
+	
+	
  
+	@Override
+	public String toString() {
+		return "ShoppingCart [productsList=" + productsList + ", sessionID=" + sessionID + "]";
+	}
+
+
+
+
 	private HashMap<ProdottoBean, Integer> productsList;
 	private String sessionID;
 }
