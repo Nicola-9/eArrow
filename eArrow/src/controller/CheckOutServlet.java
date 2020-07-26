@@ -1,17 +1,32 @@
 package controller;
 
 import java.io.IOException;
+import java.sql.Date;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.HashMap;
+
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.swing.text.DateFormatter;
 
 import model.bean.CartaDiCreditoBean;
+import model.bean.PagamentoBean;
+import model.bean.ProdottoBean;
 import model.bean.UtenteBean;
 import model.dao.CartaDiCreditoDAO;
+import model.dao.ComposizioneOrdineDAO;
+import model.dao.OrdinaDAO;
+import model.dao.PagamentoDAO;
+import model.dao.StoricoOrdiniDAO;
 import util.SessionArrow;
+import util.ShoppingCart;
 
 /**
  * Servlet implementation class CheckOutServlet
@@ -70,7 +85,7 @@ public class CheckOutServlet extends HttpServlet {
 			request.getRequestDispatcher(url).forward(request, response);
 			}
 		
-		//elaboro le informazioni derivate dal fom
+		//elaboro le informazioni derivate dal form
 		
 		if(Boolean.parseBoolean(request.getParameter("formRequest")) == true) {
 			
@@ -97,16 +112,42 @@ public class CheckOutServlet extends HttpServlet {
 				operazioneRiuscita = CartaDiCreditoDAO.addCard(carta);
 				
 				if(operazioneRiuscita == false) {
-					System.out.println("errore carta");
-					request.setAttribute("erroreSalvataggioCarta", true);
-					url = response.encodeURL("/view/CheckOut.jsp");
-					request.getRequestDispatcher(url).forward(request, response);
-				}else {
-					//passaggio alla servlet del riepilogo ordine 
-					System.out.println("fattooooooooooooooooooooooooooooooooooooooooooooo");
+					
+					//pagine di errore del mancato pagamento
+					System.out.println("noooooooooooooooooooooooooooooooooooooooo");
+					
 				}
 				
 			}
+			
+			//passaggio alla servlet del riepilogo ordine 
+			//salvataggio dei dati relativi all'ordine
+			
+			DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd");
+			LocalDate localDate = LocalDate.now();
+
+			java.sql.Date sqlDate = java.sql.Date.valueOf(localDate);
+			Double d = (double) 3000;//importo
+			
+			System.out.println(sqlDate);
+			
+			int id = PagamentoDAO.addPagamento(carta.getCodicePAN(), "carta di credito", sqlDate, d);
+			PagamentoBean pag = PagamentoDAO.doRetrievebyUserId(id);
+			
+			int idOrdine = OrdinaDAO.addOrder(carta.getIdUtente(), pag.getId(), sqlDate, "confermato", pag.getTipologia());
+			
+			ShoppingCart productsS = (ShoppingCart) request.getSession().getAttribute("carrello");
+	 		HashMap<ProdottoBean, Integer> products = productsS.getProductsList();
+	 		
+	 		for(HashMap.Entry<ProdottoBean, Integer> pair : products.entrySet()){
+	 			ProdottoBean p = (ProdottoBean) pair.getKey();
+	 			
+	 			ComposizioneOrdineDAO.addProductOrder(idOrdine, p.getCodice(), products.get(p));
+	 		}
+
+	 		System.out.println("va va va"+ComposizioneOrdineDAO.doRetrievebyUserOrderId(idOrdine).toString());
+	 		
+	 		StoricoOrdiniDAO.addProduct(idOrdine);
 		}
 		}
 	}
