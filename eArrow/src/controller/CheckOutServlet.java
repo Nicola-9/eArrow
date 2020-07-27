@@ -66,6 +66,8 @@ public class CheckOutServlet extends HttpServlet {
 			//pagina di errore
 			/*url = response.encodeURL("");
 			request.getRequestDispatcher(url).forward(request, response);*/
+			request.getRequestDispatcher("/LoginServlet?vaiAlCarrello=true").forward(request, response);
+			
 		}
 		
 		boolean check = Boolean.parseBoolean(request.getParameter("checkout"));
@@ -73,6 +75,10 @@ public class CheckOutServlet extends HttpServlet {
 		//Passo il controllo alla JSP corrispondente
 		if(check == true) {
 			
+			String ruoloUtente = (String) request.getSession().getAttribute("role");
+			
+			if(ruoloUtente != null) {
+
 			//verifico se esiste una carta associata all'utente per mostrarla di default
 			carta = CartaDiCreditoDAO.doRetrievebyUserId(utenteSessione.getId());
 
@@ -88,6 +94,12 @@ public class CheckOutServlet extends HttpServlet {
 			
 			url = response.encodeURL("/view/CheckOut.jsp");
 			request.getRequestDispatcher(url).forward(request, response);
+			}
+			
+			else {
+				request.getRequestDispatcher("/LoginServlet?vaiAlCarrello=true").forward(request, response);
+			}
+			
 			}
 		
 		//elaboro le informazioni derivate dal form
