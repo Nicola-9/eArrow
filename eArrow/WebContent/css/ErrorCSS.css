@@ -20,7 +20,6 @@ body{
 }
 
 .content{	
-	background-image: url('..//image/errore_arrow.jpg');
 	background-size: cover;
 	background-repeat: no-repeat;
 	height: calc(100vh - 5rem);
@@ -30,11 +29,12 @@ body{
 }
 
 .erroe-text{
-	font-size: 2rem;
+	font-size: 3rem;
 	text-align: center;
+	color: #a2a2a2;
 }
 
 .col{
-	font-size:48px;
-	color:#000000;/*#a2a2a2*/
+	font-size: 100px;
+	color:#a2a2a2;/*#a2a2a2*/
 }

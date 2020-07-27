@@ -45,12 +45,18 @@ public class HomePageServlet extends HttpServlet {
 		SessionArrow sessione = new SessionArrow(request, response);
 		
 		List<EvidenzaBean> evidenza = EvidenzaDAO.doRetrieveAll();
-
-		String user = sessione.getSessionRole();
-    
-		request.setAttribute("evidenzaList", evidenza);
 		
-		request.getRequestDispatcher("view/HomePage.jsp").forward(request, response);
+		if(evidenza.size() > 0) {
+
+			String user = sessione.getSessionRole();
+	    
+			request.setAttribute("evidenzaList", evidenza);
+			
+			request.getRequestDispatcher("view/HomePage.jsp").forward(request, response);
+		} else {
+			request.setAttribute("isHome", true);
+			request.getRequestDispatcher("/ErroreArrowServlet?testoErrore=Ops... Qualcosa non e' andato nel verso giusto").forward(request, response);
+		}
 	}
 
 }

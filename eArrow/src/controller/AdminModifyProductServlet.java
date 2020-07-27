@@ -49,6 +49,10 @@ public class AdminModifyProductServlet extends HttpServlet {
 		
 		boolean modify = Boolean.parseBoolean(modifyString);
 		
+		if(request.getSession().getAttribute("role") == null || ((String) request.getSession().getAttribute("role")).equals("utente")) {
+			request.getRequestDispatcher("/ErroreArrowServlet?testoErrore=Non sei autorizzato ad accedere a questa risorsa!").forward(request, response);
+		}
+		
 		if(!modify) {
 			String productCodeS = (String) request.getParameter("productCode");
 			

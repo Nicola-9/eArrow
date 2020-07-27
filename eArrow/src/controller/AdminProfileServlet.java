@@ -32,6 +32,10 @@ public class AdminProfileServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		if(request.getSession().getAttribute("role") == null || ((String) request.getSession().getAttribute("role")).equals("utente")) {
+			request.getRequestDispatcher("/ErroreArrowServlet?testoErrore=Non sei autorizzato ad accedere a questa risorsa!").forward(request, response);
+		}
+		
 		request.getRequestDispatcher("view/AdminProfile.jsp").forward(request, response);
 	}
 
