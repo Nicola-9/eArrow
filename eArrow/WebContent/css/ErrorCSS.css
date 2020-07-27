@@ -19,10 +19,11 @@ body{
 	flex-direction: column;
 }
 
-.content{
-	min-height: 100vh;
-	margin-left: 10%;
-	margin-right: 10%;
+.content{	
+	background-image: url('..//image/errore_arrow.jpg');
+	background-size: cover;
+	background-repeat: no-repeat;
+	height: calc(100vh - 5rem);
 	display: grid;
 	align-items: center;
 	justify-content: center;
@@ -33,3 +34,7 @@ body{
 	text-align: center;
 }
 
+.col{
+	font-size:48px;
+	color:#000000;/*#a2a2a2*/
+}
