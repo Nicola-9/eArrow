@@ -45,6 +45,10 @@ public class OrderListServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		if(request.getSession().getAttribute("role") == null || ((String) request.getSession().getAttribute("role")).equals("utente")) {
+			request.getRequestDispatcher("/ErroreArrowServlet?testoErrore=Non sei autorizzato ad accedere a questa risorsa!").forward(request, response);
+		}
+		
 		SessionArrow sessione = new SessionArrow(request, response);
 		UtenteBean utenteSessione = sessione.getSessionUser();
 		
