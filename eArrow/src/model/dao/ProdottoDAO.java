@@ -103,6 +103,51 @@ public class ProdottoDAO {
 		return products;
 	}
 	
+	public static List<ProdottoBean> doRetrieveAllbyCategoryOrdered(int ordinamento){
+		List<ProdottoBean> products = new ArrayList<ProdottoBean>();
+		PreparedStatement ps;
+		ResultSet rs;
+		ProdottoBean prodotto;
+		
+		String productSQL = "SELECT p.codice, p.nome, p.categoria, p.tipologia, p.prezzo, p.disponibilita,"
+							+ "p.quantita, p.descrizione FROM"
+							+ " prodotto AS p"
+							+ ORDINAMENTI[ordinamento];
+		
+		try(Connection connection = ConnessioneDB.getConnection()){
+			
+			ps = connection.prepareStatement(productSQL);
+			
+			rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				prodotto = new ProdottoBean();
+				
+				prodotto.setCodice(rs.getInt("codice"));
+				prodotto.setNome(rs.getString("nome"));
+				prodotto.setCategoria(rs.getString("categoria"));
+				prodotto.setTipologia(rs.getString("tipologia"));
+				prodotto.setPrezzo(rs.getDouble("prezzo"));
+				
+				if(rs.getInt("disponibilita") == 1) {
+					prodotto.setDisponibilita(true);
+				} else {
+					prodotto.setDisponibilita(false);
+				}
+				
+				prodotto.setQuantita(rs.getInt("quantita"));
+				prodotto.setDescrizione(rs.getString("descrizione"));
+				
+				products.add(prodotto);
+			}
+			
+		} catch(SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return products;
+	}
+	
 	public static ProdottoBean doRetrievebyKey(int codice){
 		ProdottoBean product = new ProdottoBean();
 		PreparedStatement ps;
@@ -388,6 +433,122 @@ public class ProdottoDAO {
 		}
 		
 		return false;
+	}
+	
+	public static boolean insertProduct(ProdottoBean p) {
+		boolean registerOk = false;
+		PreparedStatement ps;
+		
+		String insertSQL = "INSERT INTO prodotto(codice, nome, categoria, tipologia, prezzo, disponibilita, quantita, descrizione)"
+				+ " VALUES(?, ?, ?, ?, ?, ?, ?, ?)";
+		
+		try {
+			Connection connection = null;
+			
+			try {
+				connection = ConnessioneDB.getConnection();
+				
+				ps = connection.prepareStatement(insertSQL);
+				
+				ps.setInt(1, p.getCodice());
+				ps.setString(2, p.getNome());
+				ps.setString(3, p.getCategoria());
+				ps.setString(4, p.getTipologia());
+				ps.setDouble(5, p.getPrezzo());
+				
+				if(p.isDisponibilita())
+					ps.setInt(6, 1);
+				else
+					ps.setInt(6, 0);
+				
+				ps.setInt(7, p.getQuantita());
+				ps.setString(8, p.getDescrizione());
+				
+				int righe = ps.executeUpdate();
+				
+				connection.commit();
+				
+				if(righe > 0)
+					registerOk = true;
+				
+			}finally {
+				ConnessioneDB.releaseConnection(connection);
+			}
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return registerOk;
+	}
+	
+	public static boolean updateProductByCode(ProdottoBean p, int codice) {
+		boolean updateOk = false;
+		PreparedStatement ps;
+		
+		String insertSQL = "UPDATE prodotto SET nome = ?, categoria = ?, tipologia = ?, prezzo = ?,"
+						+ " disponibilita = ?, quantita = ?, descrizione = ? WHERE codice = ?";
+		
+		try {
+			Connection connection = null;
+			
+			try {
+				connection = ConnessioneDB.getConnection();
+				
+				ps = connection.prepareStatement(insertSQL);
+				
+				ps.setString(1, p.getNome());
+				ps.setString(2, p.getCategoria());
+				ps.setString(3, p.getTipologia());
+				ps.setDouble(4, p.getPrezzo());
+				
+				if(p.isDisponibilita())
+					ps.setInt(5, 1);
+				else
+					ps.setInt(5, 0);
+				
+				ps.setInt(6, p.getQuantita());
+				ps.setString(7, p.getDescrizione());
+				ps.setInt(8, codice);
+				
+				
+				ps.executeUpdate();
+				
+				connection.commit();
+				connection.close();
+				
+			}finally {
+				ConnessioneDB.releaseConnection(connection);
+			}
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return updateOk;
+	}
+	
+	public static int getMaxId() {
+		PreparedStatement ps;
+		ResultSet rs;
+		int id = 0;
+		
+		String idSQL = "SELECT MAX(codice) FROM prodotto";
+		
+		try(Connection connection = ConnessioneDB.getConnection()){
+			
+			ps = connection.prepareStatement(idSQL);
+			
+			rs = ps.executeQuery();
+			
+			if(rs.next()) {
+				id = rs.getInt(1);
+				System.out.println(id);
+			}
+			
+		} catch(SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return id;
 	}
 	
 	

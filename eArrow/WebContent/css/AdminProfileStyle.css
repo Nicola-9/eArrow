@@ -1,0 +1,59 @@
+@charset "UTF-8";
+
+*,
+*::before,
+*::after{
+	margin: 0;
+	padding: 0;
+}
+
+html{
+	font-size: 10px;
+	font-family: 'SF Pro Display', sans-serif;
+}
+
+body{
+	margin-top: 10%;
+	background-color: #f8f9fa;	
+	display: flex;
+	flex-direction: column;
+}
+
+.content{
+	min-height: 100vh;
+	margin-left: 10%;
+	margin-right: 10%;
+	display: table-cell;
+	align-items: center;
+	justify-content: center;
+}
+
+.card{
+	margin-top: 3%;
+}
+
+.doc-title-sm {
+	margin-left: 1%;
+	margin-bottom: .5%;
+	font-size: 1.75rem;
+	font-weight: 500;
+	color: #adb5bd;
+	text-transform: uppercase;
+}
+
+.button-container{
+	font-size: 1.5rem;
+}
+
+.btn{
+	font-size: 2rem;
+	width: 100%;
+	margin-bottom: 5%;
+}
+
+.button-container:nth-child(1){
+	margin-top: 3%;
+}
+
+
+
