@@ -13,7 +13,7 @@ html{
 }
 
 body{
-	margin-top: 5%;
+	margin-top: 10%;
 	background-color: #f8f9fa;	
 	display: flex;
 	flex-direction: column;
@@ -23,9 +23,22 @@ body{
 	min-height: 100vh;
 	margin-left: 10%;
 	margin-right: 10%;
-	display: grid;
+	display: table-cell;
 	align-items: center;
 	justify-content: center;
+}
+
+.card{
+	margin-top: 3%;
+}
+
+.doc-title-sm {
+	margin-left: 1%;
+	margin-bottom: .5%;
+	font-size: 1.75rem;
+	font-weight: 500;
+	color: #adb5bd;
+	text-transform: uppercase;
 }
 
 .button-container{
@@ -34,5 +47,13 @@ body{
 
 .btn{
 	font-size: 2rem;
+	width: 100%;
+	margin-bottom: 5%;
 }
+
+.button-container:nth-child(1){
+	margin-top: 3%;
+}
+
+
 
