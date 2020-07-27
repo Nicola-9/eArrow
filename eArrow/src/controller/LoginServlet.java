@@ -121,6 +121,7 @@ protected void doPost(HttpServletRequest request, HttpServletResponse response) 
 							if(email.equals("admin@admin.it")) {
 								sessione.setSessionUser(UtenteDao.doRetrievebyEmailAndPassword(email, passwordformat));
 								SessionArrow.setSessionRole("admin");
+								request.getRequestDispatcher("/AdminProfileServlet").forward(request, response);
 							} else {
 								sessione.setSessionUser(UtenteDao.doRetrievebyEmailAndPassword(email, passwordformat));
 								SessionArrow.setSessionRole("utente");

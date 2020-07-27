@@ -115,7 +115,7 @@
 							<div class="arrow-up"></div>
 							<div class="dropdown-item">
 								<p class="title-drop title-drop-signedin">Ciao, Amministratore</p>
-								<a class="btn btn-primary btn-drop btn-drop-visualizeProfile" href="${pageContext.request.contextPath}/view/AdminProfile.jsp">Gestisci eArrow</a> 
+								<a class="btn btn-primary btn-drop btn-drop-visualizeProfile" href="${pageContext.request.contextPath}/AdminProfileServlet">Gestisci eArrow</a> 
 							</div> 
 							<div class="dropdown-divider"></div>
 							<div class="dropdown-item">
