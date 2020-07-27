@@ -67,7 +67,7 @@ body{
 .errPriceHide,
 .errDisponibilityHide,
 .errQuantityHide,
-.errDescriptionHide,
+.errDescriptionHide
 {
 	width: 50%;
 	display: inline-block;
