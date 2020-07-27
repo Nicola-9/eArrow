@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import model.ConnessioneDB;
+import model.bean.OrdineBean;
 import model.bean.PagamentoBean;
 import model.bean.ProdottoBean;
 import model.bean.StoricoOrdiniBean;
@@ -139,6 +140,35 @@ public static ArrayList<StoricoOrdiniBean> doRetrievebyAll(int id){
 		e.printStackTrace();
 	}
 	return storicoL;
+}
+
+public static ArrayList<StoricoOrdiniBean> doRetrieveAll(){
+	ArrayList<StoricoOrdiniBean> listaO = new ArrayList<StoricoOrdiniBean>();
+	
+	PreparedStatement ps;
+	ResultSet rs;
+	
+	String cartaSQL = "SELECT * FROM earrow.storico_ordini;";
+	
+	try(Connection connection = ConnessioneDB.getConnection()){
+		
+		ps = connection.prepareStatement(cartaSQL);
+		
+		rs = ps.executeQuery();
+		
+		while(rs.next()) {
+
+			StoricoOrdiniBean storicoOrdine = new StoricoOrdiniBean();
+			storicoOrdine.setId(rs.getInt("id"));
+			storicoOrdine.setIdOrdine(rs.getInt("idOrdine"));
+			
+			listaO.add(storicoOrdine);
+		}
+		
+	} catch(SQLException e) {
+		e.printStackTrace();
+	}
+	return listaO;
 }
 
 }
