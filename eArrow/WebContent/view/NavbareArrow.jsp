@@ -47,19 +47,19 @@
 				<li class="nav-earrow-item nav-earrow-item-hidden"><a
 					href="${pageContext.request.contextPath}/HomePageServlet" class="nav-earrow-link nav-link-earrow"></a></li>
 
-				<li class="nav-earrow-item"><a href="${pageContext.request.contextPath}/ProductsListServlet?category=Archi"
+				<li class="nav-earrow-item"><a href="${pageContext.request.contextPath}/ProductsListServlet?category=archi"
 					class="nav-earrow-link">Archi</a></li>
 
-				<li class="nav-earrow-item"><a href="${pageContext.request.contextPath}/ProductsListServlet?category=AccessoriArco"
+				<li class="nav-earrow-item"><a href="${pageContext.request.contextPath}/ProductsListServlet?category=accessori-arco"
 					class="nav-earrow-link">Accessori Arco</a></li>
 
-				<li class="nav-earrow-item"><a href="${pageContext.request.contextPath}/ProductsListServlet?category=AccessoriArciere"
+				<li class="nav-earrow-item"><a href="${pageContext.request.contextPath}/ProductsListServlet?category=accessori-arciere"
 					class="nav-earrow-link">Accessori Arciere</a></li>
 
-				<li class="nav-earrow-item"><a href="${pageContext.request.contextPath}/ProductsListServlet?category=Frecce"
+				<li class="nav-earrow-item"><a href="${pageContext.request.contextPath}/ProductsListServlet?category=frecce"
 					class="nav-earrow-link">Frecce e Componenti</a></li>
 
-				<li class="nav-earrow-item"><a href="${pageContext.request.contextPath}/ProductsListServlet?category=Paglioni"
+				<li class="nav-earrow-item"><a href="${pageContext.request.contextPath}/ProductsListServlet?category=paglioni"
 					class="nav-earrow-link">Paglioni e Bersagli</a></li>
 
 				<li class="nav-earrow-item search-item"><a href="#"
