@@ -92,7 +92,7 @@
 					
 			<div class="carousel-item h-100">
 				<a class="textResp" href="${pageContext.request.contextPath}/ProductDetailServlet?codice=6">
-					<div class="responseText">
+					<div class="responseText" style="display: none">
 						
 						<p class="productDescription"><strong class="title"><%=name %></strong><br><%=descrizione %></p>
 					</div>
