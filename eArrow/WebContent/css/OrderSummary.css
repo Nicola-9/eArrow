@@ -26,6 +26,15 @@ body{
 	transition: transform .1s;
 }
 
+.doc-title-sm {
+	margin-left: 1%;
+	margin-bottom: 1%;
+	font-size: 1.5rem;
+	font-weight: 500;
+	color: #adb5bd;
+	text-transform: uppercase;
+}
+
 .image:hover{
 	transform: scale(1.1);
 }
