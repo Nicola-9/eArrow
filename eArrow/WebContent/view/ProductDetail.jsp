@@ -196,22 +196,22 @@
 	
 	int limit =  0;
 	
-	for(int i=0; i < prodottiConsigliati.size(); i++){
+	for(int i=0; i < prodottiConsigliati.size() - 1; i++){
 		if(prodottiConsigliati.get(i).getNome().equals(nome))
 			prodottiConsigliati.remove(i);
 		if(prodottiConsigliati.get(i).getNome().equals("Smartriser Nero"))
 			prodottiConsigliati.remove(i);
 	}
 	
-	if(prodottiConsigliati.size() > 4){
+	if(prodottiConsigliati.size() >= 4){
 		limit = 4;
 	} else{
 		limit = prodottiConsigliati.size();
 	}
 	
-	for(int i = 0; i < limit; i++){ 
+	for(int j = 0; j < limit; j++){ 
 		
-		ImmagineBean imgCons = ImmagineDAO.doRetrieveImageByProductCode(prodottiConsigliati.get(i).getCodice());
+		ImmagineBean imgCons = ImmagineDAO.doRetrieveImageByProductCode(prodottiConsigliati.get(j).getCodice());
 	%>
 		<div class="row-product-c">
 			<figure class="itemside mb-2">
@@ -221,10 +221,10 @@
 					</a>
 				</div>
 				<figcaption class="info align-self-center">
-					<a href="#" class="title mt-2"><%=prodottiConsigliati.get(i).getNome()%></a>
+					<a href="#" class="title mt-2"><%=prodottiConsigliati.get(j).getNome()%></a>
 					
 					<%
-						String price = String.format("%.2f", prodottiConsigliati.get(i).getPrezzo());
+						String price = String.format("%.2f", prodottiConsigliati.get(j).getPrezzo());
 					%>
 					<strong class="price2"><%=price%></strong>
 				</figcaption>
