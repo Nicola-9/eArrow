@@ -5,6 +5,7 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.HashMap;
 
 import model.ConnessioneDB;
@@ -112,6 +113,39 @@ public static OrdineBean doRetrievebyUserId(int id){
 		e.printStackTrace();
 	}
 	return ordine;
+}
+
+public static ArrayList<OrdineBean> doRetrieveAll(){
+	OrdineBean ordine = new OrdineBean();
+	ArrayList<OrdineBean> listaO = new ArrayList<OrdineBean>();
+	
+	PreparedStatement ps;
+	ResultSet rs;
+	
+	String cartaSQL = "SELECT * FROM earrow.ordine AS o WHERE o.id >= 1;";
+	
+	try(Connection connection = ConnessioneDB.getConnection()){
+		
+		ps = connection.prepareStatement(cartaSQL);
+		
+		rs = ps.executeQuery();
+		
+		while(rs.next()) {
+
+			ordine.setId(rs.getInt("id"));
+			ordine.setIdUtente(rs.getInt("idUtente"));
+			ordine.setIdPagamento(rs.getInt("idPag"));
+			ordine.setData(rs.getDate("dataO"));
+			ordine.setStato(rs.getString("stato"));
+			ordine.setTipologia(rs.getString("tipologia"));
+			
+			listaO.add(ordine);
+		}
+		
+	} catch(SQLException e) {
+		e.printStackTrace();
+	}
+	return listaO;
 }
 
 

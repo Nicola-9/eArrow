@@ -81,9 +81,6 @@ public static HashMap<Integer, Integer> doRetrieveIdbyUserOrderId(int id){
 	
 	HashMap<Integer, Integer> idList = new HashMap<Integer, Integer>();
 	
-	int codice;
-	int quantita;
-	
 	PreparedStatement ps;
 	ResultSet rs;
 	
@@ -97,8 +94,8 @@ public static HashMap<Integer, Integer> doRetrieveIdbyUserOrderId(int id){
 		rs = ps.executeQuery();
 		
 		while(rs.next()) {
-			codice = rs.getInt("codiceP");
-			quantita = rs.getInt("quantita");
+			int codice = rs.getInt("codiceP");
+			int quantita = rs.getInt("quantita");
 			
 			idList.put(codice, quantita);
 		}
@@ -109,7 +106,6 @@ public static HashMap<Integer, Integer> doRetrieveIdbyUserOrderId(int id){
 	}
 	return idList;
 }
-	
 
 
 }

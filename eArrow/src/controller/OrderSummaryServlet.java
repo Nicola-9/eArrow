@@ -44,10 +44,10 @@ public class OrderSummaryServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		/*SessionArrow sessione = new SessionArrow(request, response);
+		SessionArrow sessione = new SessionArrow(request, response);
 		UtenteBean utenteSessione = sessione.getSessionUser();
 		
-		int idO = (int) request.getSession().getAttribute("idOrdine");
+		/*int idO = (int) request.getSession().getAttribute("idOrdine");
 		
 		HashMap<ProdottoBean, Integer> map = new HashMap<ProdottoBean, Integer>();
 		
