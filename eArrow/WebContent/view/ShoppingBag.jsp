@@ -109,7 +109,7 @@
 												class="img-sm image">
 										</div>
 										<figcaption class="info">
-											<a href="#" class="title mt-2 h5"><%=p.getNome() %></a>
+											<a href="${pageContext.request.contextPath}/ProductDetailServlet?codice=<%=p.getCodice() %>" class="title mt-2 h5"><%=p.getNome() %></a>
 											<p class="text-muted small">
 												<%=categoria %><br><%=p.getTipologia() %>
 											</p>
