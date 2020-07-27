@@ -54,7 +54,7 @@ public class ProductsListServlet extends HttpServlet{
 						request.getRequestDispatcher("view/ProductList.jsp").forward(request, response);
 						break;
 	
-					case "accessoriarco":
+					case "accessori-arco":
 						products = this.retrieveProductsList("accessori-arco", ProdottoDAO.ORDINA_NOME);
 	
 						request.setAttribute("prodottiList", products);
@@ -64,7 +64,7 @@ public class ProductsListServlet extends HttpServlet{
 						request.getRequestDispatcher("view/ProductList.jsp").forward(request, response);
 						break;
 	
-					case "accessoriarciere":
+					case "accessori-arciere":
 						products = this.retrieveProductsList("accessori-arciere", ProdottoDAO.ORDINA_NOME);
 	
 						request.setAttribute("prodottiList", products);
@@ -111,7 +111,7 @@ public class ProductsListServlet extends HttpServlet{
 							request.getRequestDispatcher("view/ProductList.jsp").forward(request, response);
 							break;
 		
-						case "accessoriarco":
+						case "accessori-arco":
 							products = this.retrieveProductsList("accessori-arco", ProdottoDAO.ORDINA_PREZZOC);
 		
 							request.setAttribute("prodottiList", products);
@@ -121,7 +121,7 @@ public class ProductsListServlet extends HttpServlet{
 							request.getRequestDispatcher("view/ProductList.jsp").forward(request, response);
 							break;
 		
-						case "accessoriarciere":
+						case "accessori-arciere":
 							products = this.retrieveProductsList("accessori-arciere", ProdottoDAO.ORDINA_PREZZOC);
 		
 							request.setAttribute("prodottiList", products);
@@ -168,7 +168,7 @@ public class ProductsListServlet extends HttpServlet{
 								request.getRequestDispatcher("view/ProductList.jsp").forward(request, response);
 								break;
 			
-							case "accessoriarco":
+							case "accessori-arco":
 								products = this.retrieveProductsList("accessori-arco", ProdottoDAO.ORDINA_PREZZOD);
 			
 								request.setAttribute("prodottiList", products);
@@ -178,7 +178,7 @@ public class ProductsListServlet extends HttpServlet{
 								request.getRequestDispatcher("view/ProductList.jsp").forward(request, response);
 								break;
 			
-							case "accessoriarciere":
+							case "accessori-arciere":
 								products = this.retrieveProductsList("accessori-arciere", ProdottoDAO.ORDINA_PREZZOD);
 			
 								request.setAttribute("prodottiList", products);
@@ -220,7 +220,7 @@ public class ProductsListServlet extends HttpServlet{
 					request.getRequestDispatcher("view/ProductList.jsp").forward(request, response);
 					break;
 	
-				case "accessoriarco":
+				case "accessori-arco":
 					products = this.retrieveProductsList("accessori-arco", ProdottoDAO.ORDINA_NOME);
 	
 					request.setAttribute("prodottiList", products);
@@ -229,7 +229,7 @@ public class ProductsListServlet extends HttpServlet{
 					request.getRequestDispatcher("view/ProductList.jsp").forward(request, response);
 					break;
 	
-				case "accessoriarciere":
+				case "accessori-arciere":
 					products = this.retrieveProductsList("accessori-arciere", ProdottoDAO.ORDINA_NOME);
 	
 					request.setAttribute("prodottiList", products);
