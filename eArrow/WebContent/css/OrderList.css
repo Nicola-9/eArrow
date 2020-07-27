@@ -116,7 +116,8 @@ span.price.h5{
 
 .cent{
 	display: table-cell;
-	vertical-align: middle;
+	text-align: center;
+	text-align: center;
 }
 
 a.small.link{
@@ -142,6 +143,8 @@ a.small.link{
 
 .tot-prezzo{
 	margin-top: 1%;
+	margin-left: 10%;
+	margin-right: 10%;
 	display: table;
 	vertical-align: middle;
 	padding: 0;
@@ -154,6 +157,78 @@ a.small.link{
 	text-align: center;
 }
 
+.row{
+	display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    width: 100%;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap; 
+	align-items: center;
+	justify-content: left;
+    white-space: nowrap;
+}
+
+.row-product-c{
+    -webkit-box-flex: 0;
+    -ms-flex: 0 0 25%;
+    max-width: 100%;
+   /* margin: auto;*/
+    margin-right: 2%;
+    overflow: hidden;
+
+}
+
+.itemside {
+    position: relative;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    width: 100%;
+}
+
+figure {
+    margin-bottom: 0;
+}
+
+.itemside .aside {
+    position: relative;
+    -ms-flex-negative: 0;
+    flex-shrink: 0;
+}
+
+.img-sm{
+    max-height: 150px;
+    max-width: 150px;
+}
+
+.image{
+	max-height: 80px;
+    max-width: 80px;
+}
+
+.info{
+	margin-left: 1%;
+}
+
+a.small.link{
+	margin-top: -50%;
+}
+
+.text-none{
+	color: black;
+}
+.text-none:visited {
+  color: bloak;
+}
+
+.text-none:hover {
+  color: none;
+}
+
+.text-none:active {
+  color: bloak;
+}
 
 .eArrowFooter{
 	margin-bottom: 0;
@@ -184,5 +259,30 @@ a.small.link{
 	body{
 		margin-top: 13%;
 	}
+}
+
+@media (max-width: 754px){
+	.image:hover{
+		transform: scale(1.05);
+	}
+	
+	.row{
+	align-items: center;
+	justify-content: center;
+    margin: auto;
+    display: block;
+}
+.col-md-6{
+	border-bottom: 1px solid #d1d1d1;
+	border-top: 1px solid #d1d1d1;
+} 
+.itemside {
+    align-items: center;
+	justify-content: center;
+}
+.info{
+	align-items: center;
+	justify-content: center;
+	text-align: center;
 }
 }

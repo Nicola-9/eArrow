@@ -5,9 +5,11 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import model.ConnessioneDB;
 import model.bean.CartaDiCreditoBean;
+import model.bean.OrdineBean;
 import model.bean.PagamentoBean;
 import model.bean.ProdottoBean;
 
@@ -110,6 +112,39 @@ public static PagamentoBean doRetrievebyUserId(int id){
 		e.printStackTrace();
 	}
 	return pagamento;
+}
+
+
+public static ArrayList<PagamentoBean> doRetrieveAll(){
+	PagamentoBean pagamento = new PagamentoBean();
+	ArrayList<PagamentoBean> listaP = new ArrayList<PagamentoBean>();
+	
+	PreparedStatement ps;
+	ResultSet rs;
+	
+	String cartaSQL = "SELECT * FROM earrow.pagamento AS o WHERE o.id >= 1;";
+	
+	try(Connection connection = ConnessioneDB.getConnection()){
+		
+		ps = connection.prepareStatement(cartaSQL);
+		
+		rs = ps.executeQuery();
+		
+		while(rs.next()) {
+
+			pagamento.setId(rs.getInt("id"));
+			pagamento.setCodicePAN(rs.getString("codicePAN"));
+			pagamento.setTipologia(rs.getString("tipologia"));
+			pagamento.setData(rs.getDate("dataP"));
+			pagamento.setImporto(rs.getDouble("importo"));
+			
+			listaP.add(pagamento);
+		}
+		
+	} catch(SQLException e) {
+		e.printStackTrace();
+	}
+	return listaP;
 }
 
 }
