@@ -191,8 +191,10 @@
             };
             
             $(document).ready(function(){
-            	var user = document.querySelector('#userHide');
-            	var role = document.querySelector('#roleHide');
+            	var user = document.querySelector('#userHide').textContent;
+            	var role = document.querySelector('#roleHide').textContent;
+            	
+            	console.log(user + " " + role);
             	
             	if($(window).innerWidth() > 998){
                    searchView();
@@ -208,8 +210,8 @@
             			$('.search-form input').addClass('mobile');
             			$('.search-form').addClass('mobile').appendTo('.search-item');
             			
-            			if(user != null){
-            				if(role != "utente"){
+            			if(user != "null"){
+            				if(role == "admin"){
             					$('.dropdown').prop("disabled", true);
                 				$('a.nav-earrow-link-account').attr("href", "http://localhost:8080/eArrow/AdminProfileServlet");
                              } else{
@@ -236,8 +238,8 @@
             			$('.search-form').addClass('mobile').appendTo('.search-item');
             	
             			
-            			if(user != null){
-            				if(role != "utente"){
+            			if(user != "null"){
+            				if(role == "admin"){
             					$('.dropdown').prop("disabled", true);
                 				$('a.nav-earrow-link-account').attr("href", "http://localhost:8080/eArrow/AdminProfileServlet");
                              } else{

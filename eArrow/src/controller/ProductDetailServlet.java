@@ -36,7 +36,8 @@ public class ProductDetailServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		int codiceP = Integer.valueOf(request.getParameter("codice"));
+		String codeS = (String) request.getParameter("codice");
+		int codiceP = Integer.valueOf(codeS);
 		
 		ProdottoBean prodotto = new ProdottoBean();
 		prodotto = ProdottoDAO.doRetrievebyCodeOrdered(codiceP);
