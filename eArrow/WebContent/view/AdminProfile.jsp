@@ -31,7 +31,7 @@
 					<div class="button-container">
 							<a href="${pageContext.request.contextPath}/InsertProductAdminServlet?launch=true" class="btn btn-primary">Inserisci nuovo prodotto</a>
 							<a href="${pageContext.request.contextPath}/AdminVisualizeProductServlet" class="btn btn-primary">Visualizza e modifica prodotti in stock</a>
-							<a href="" class="btn btn-primary">Visualizza storico ordini</a>
+							<a href="${pageContext.request.contextPath}/OrderListServlet" class="btn btn-primary">Visualizza storico ordini</a>
 					</div>
 				</div>
 			</div>
