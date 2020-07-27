@@ -66,11 +66,10 @@
 				String descrizione = ProdottoDAO.doRetrievebyKey(e.getCodiceProdotto()).getDescrizione();
 				
 				if(i == 0){
-					
 				
 		%>
 			<div class="carousel-item h-100 active">
-				<img class="d-block w-100 h-100" src="${pageContext.request.contextPath}<%=uriImage %>" alt="Offerta">
+				<a href="${pageContext.request.contextPath}/ProductDetailServlet?codice=4"><img class="d-block w-100 h-100" src="${pageContext.request.contextPath}<%=uriImage %>" alt="Offerta"></a>
 				<div class="carousel-caption d-none d-md-block">
 					<h5 class="productName"><%=name %></h5>
 					<p class="productDescription"><%=descrizione %></p>
@@ -81,10 +80,11 @@
 				i++;
 		
 				} else {
+					if(e.getCodiceProdotto() == 6){
 		%>
-		
+					
 			<div class="carousel-item h-100">
-				<img class="d-block w-100 h-100" src="${pageContext.request.contextPath}<%=uriImage%>" alt="Offerta">
+				<a href="${pageContext.request.contextPath}/ProductDetailServlet?codice=6"><img class="d-block w-100 h-100" src="${pageContext.request.contextPath}<%=uriImage%>" alt="Offerta"></a>
 				<div class="carousel-caption d-none d-md-block">
 					<h5 class="productName"><%=name %></h5>
 					<p class="productDescription"><%=descrizione %></p>
@@ -92,11 +92,25 @@
 			</div>
 		
 		<%
-			i++;
-				}
 			
+				} else{
+		%>
+			
+			<div class="carousel-item h-100">
+				<a href="${pageContext.request.contextPath}/ProductDetailServlet?codice=7"><img class="d-block w-100 h-100" src="${pageContext.request.contextPath}<%=uriImage %>" alt="Offerta"></a>
+				<div class="carousel-caption d-none d-md-block">
+					<h5 class="productName"><%=name %></h5>
+					<p class="productDescription"><%=descrizione %></p>
+				</div>
+			</div>
+			
+		<%
+				}
+					i++;
+				}
 			}
 		%>
+		
 		
 		</div>
 		

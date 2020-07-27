@@ -20,6 +20,10 @@ footer{
     overflow: hidden;
 }
 
+.left-information{
+	text-align: left;
+}
+
 #information{
 	text-align: center;
 }

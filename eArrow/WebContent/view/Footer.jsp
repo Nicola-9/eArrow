@@ -14,7 +14,7 @@
 						<dt>PER CONOSCERCI MEGLIO</dt>
 					</label>
 
-					<p>
+					<p class="left-information">
 						eArrow è un sito web e-commerce di arcieria.
 						eArrow possiede in magazzino i prodotti dei più grandi marchi e punta ad essere il tuo 
 						negozio di fiducia.
@@ -31,12 +31,9 @@
 				<div id="contacts">
 					<label for="exampleFormControlInput1"><dt>INFO SU eArrow.it</dt></label>
 					<ul>
-						<li>ciao</li>
-						<li>ciao</li>
-						<li>ciao</li>
-						<li>ciao</li>
-						<li>ciao</li>
-						<li>ciao</li>
+						<li>Semplice da usare</li>
+						<li>Sicuro</li>
+						<li>Le migliori marche</li>
 					</ul>
 				</div>
 
