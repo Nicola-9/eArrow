@@ -34,8 +34,10 @@
 	<div class="content">
 
 			<div class="ordinamento">
-				<label class="titleSelect">Riepilogo ordine</label> 
+				
 			</div>
+			
+			<h5 class="doc-title-sm">RIEPILOGO ORDINE</h5>
 			
 			<%
 						
