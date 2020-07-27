@@ -80,7 +80,7 @@
 			<figure class="itemside mb-2">
 				<figcaption class="info align-self-center">
 					<a href="${pageContext.request.contextPath}/ProductDetailServlet?codice=<%=prod.getCodice()%>" class="mt-2"><%=prod.getNome() %></a><br>
-					<label class="titleSelect">Codice del prodotto: <%=prod.getCodice()%></label>
+					<label class="titleSe">Codice del prodotto: <%=prod.getCodice()%></label>
 					<strong class="price2">&#8364 <%=prod.getPrezzo()%></strong>
 				</figcaption>
 			</figure>
@@ -102,9 +102,13 @@
 		<div class="tot-prezzo">
 			<label class="titleSelect">Totale prodotti acquistati: <strong> <%=totProdotti %></strong> </label> <br>
 		</div>
+		
+		<%
+			String str = String.format("%.2f", price);
+ 		%>
 				
 		<div class="tot-prezzo">
-			<label class="titleSelect">Totale ordine: <strong>&#8364 <%=price %></strong> </label> <br>
+			<label class="titleSelect">Totale ordine: <strong>&#8364 <%=str %></strong> </label> <br>
 		</div>
 			</div>
 			</aside>

@@ -99,7 +99,10 @@
 	%>
 		
 		<div class="tot-prezzo">
-			<label class="titleSelect">Totale ordine: <strong>&#8364 <%=totalPrice %></strong> </label> 
+		<%
+			String str = String.format("%.2f", totalPrice);
+ 		%>
+			<label class="titleSelect">Totale ordine: <strong>&#8364 <%=str %></strong> </label> 
 		</div>
 
 		<div class="bottone-cont">
