@@ -77,6 +77,10 @@
 				<% 
 					} else {
 						request.setAttribute("update", false);
+						
+						String role = (String) request.getSession().getAttribute("role");
+						
+						if(role.equals("utente")){
 				%>
 				
 				<li class="nav-earrow-item">
@@ -99,7 +103,31 @@
 				</li>
 					
 				<% 
+					} else{
+				%>
+				
+				<li class="nav-earrow-item">
+					<div class="dropdown">
+						<a href="#"
+							class="nav-earrow-link nav-earrow-link-account dropdown" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></a>
+						
+						<div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+							<div class="arrow-up"></div>
+							<div class="dropdown-item">
+								<p class="title-drop title-drop-signedin">Ciao, Amministratore</p>
+								<a class="btn btn-primary btn-drop btn-drop-visualizeProfile" href="${pageContext.request.contextPath}/view/AdminProfile.jsp">Gestisci eArrow</a> 
+							</div> 
+							<div class="dropdown-divider"></div>
+							<div class="dropdown-item">
+								<a class="btn btn-drop btn-drop-logout" href="${pageContext.request.contextPath}/LogoutServlet">Logout</a> 
+							</div> 
+						</div>
+					</div>	
+				</li>
+				
+				<%
 					}
+				}
 				%>
 
 				<li class="nav-earrow-item nav-earrow-item-hidden">

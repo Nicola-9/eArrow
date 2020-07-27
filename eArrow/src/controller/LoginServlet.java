@@ -117,9 +117,14 @@ protected void doPost(HttpServletRequest request, HttpServletResponse response) 
 								request.getRequestDispatcher(url).forward(request, response);
 								
 							}
-						
-							sessione.setSessionUser(UtenteDao.doRetrievebyEmailAndPassword(email, passwordformat));
-							SessionArrow.setSessionRole("utente");
+							
+							if(email.equals("admin@admin.it")) {
+								sessione.setSessionUser(UtenteDao.doRetrievebyEmailAndPassword(email, passwordformat));
+								SessionArrow.setSessionRole("admin");
+							} else {
+								sessione.setSessionUser(UtenteDao.doRetrievebyEmailAndPassword(email, passwordformat));
+								SessionArrow.setSessionRole("utente");
+							}
 							
 							if(request.getParameter("vaiAlCarrello") != null) {
 								request.getRequestDispatcher("/ShoppingBagServlet").forward(request, response);
