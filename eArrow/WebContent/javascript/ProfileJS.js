@@ -150,11 +150,9 @@ const update = () => {
 					}
 		        }else 
 		        	if (ajaxCall.status == 400) {
-		        	
-		        		// Bad request
-		              
+		        		document.location.href = '${pageContext.request.contextPath}/ErroreArrowServlet?testoErrore=Ops.. Qualcosa non è andato per il meglio!';
 		        	}else{
-		               alert('something else other than 200 was returned');
+		        		document.location.href = '${pageContext.request.contextPath}/ErroreArrowServlet?testoErrore=Ops.. Qualcosa non è andato per il meglio!';
 		           }
 			}
 		}

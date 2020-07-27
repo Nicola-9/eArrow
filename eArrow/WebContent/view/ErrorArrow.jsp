@@ -41,8 +41,7 @@
 		} else{
 	%>
 	
-		<p id="testo">E' stato riscontrato un problema,<br> Verrai reindirizzato alla
-		Home page.</p>
+		<p id="testo"><%=s %></p>
 		
 	<% 
 		}
