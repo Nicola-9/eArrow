@@ -52,7 +52,7 @@
 		<div class="row">
 		
 		<aside class="col-md-3" id="imageContainer">
-			<a href="#" class="img-wrap img-fluid text-none">
+			<a class="img-wrap img-fluid text-none">
 				<label class="titleSelect"><strong><%=utente.getNome()%> <%=utente.getCognome()%></strong> </label> <br>
 				
 				<label class="titleSelect"><%=utente.getEmail()%></label> <br>
