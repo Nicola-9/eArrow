@@ -35,13 +35,14 @@
 	
 		if(s.equals(null)){
 	%>
-			<p id="testo"><%=s%>.</p>
+			<p id="testo"><%=s%>,<br> Verrai reindirizzato alla
+		Home page.</p>
 	<% 
 		} else{
 	%>
 	
 		<p id="testo">E' stato riscontrato un problema,<br> Verrai reindirizzato alla
-		pagina di Login.</p>
+		Home page.</p>
 		
 	<% 
 		}
