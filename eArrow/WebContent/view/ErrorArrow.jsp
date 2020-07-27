@@ -27,15 +27,15 @@
 <div class="content">
 	
 	<div class="erroe-text">
-	<i class='fas fa-exclamation-triangle' style='font-size:48px;color:#a2a2a2'></i><br><br>
+	<i class='fas fa-exclamation-triangle col'></i><br><br>
 	
 	
 	<%
 		String s = request.getParameter("testoErrore"); 
 	
-		if(s != null){
+		if(s.equals(null)){
 	%>
-			<p id="testo"><%=s %>>.</p>
+			<p id="testo"><%=s%>.</p>
 	<% 
 		} else{
 	%>
