@@ -66,8 +66,8 @@ public class CheckOutServlet extends HttpServlet {
 			//pagina di errore
 			/*url = response.encodeURL("");
 			request.getRequestDispatcher(url).forward(request, response);*/
-			request.getRequestDispatcher("/ErroreArrowServlet?testoErrore=E' stato riscontrato un problema relativo alla sessione").forward(request, response);
-			//request.getRequestDispatcher("/LoginServlet?vaiAlCarrello=true").forward(request, response);
+			//request.getRequestDispatcher("/ErroreArrowServlet?testoErrore=E' stato riscontrato un problema relativo alla sessione").forward(request, response);
+			request.getRequestDispatcher("/LoginServlet?vaiAlCarrello=true").forward(request, response);
 			
 		}
 		
