@@ -1,7 +1,5 @@
 @charset "UTF-8";
 
-@charset "UTF-8";
-
 *,
 *::before,
 *::after{
@@ -49,17 +47,6 @@ body{
 	margin-top: .5%;
 }
 
-.addressHeader{
-	margin-top: 2%;
-}
-
-.modify-btn{
-	float: right;
-	margin-top: 0 !important;
-	text-align: center;
-	color: white;
-}
-
 .custom-select{
 	height: 65%;
 }
@@ -75,15 +62,13 @@ body{
 }
 
 .errNameHide,
-.errSurnameHide,
-.errEmailHide,
-.errTelHide,
-.errPassHide,
-.errConfPassHide,
-.errCityHide,
-.errViaHide,
-.errCivicoHide,
-.errCapHide{
+.errCategoryHide,
+.errTipologyHide,
+.errPriceHide,
+.errDisponibilityHide,
+.errQuantityHide,
+.errDescriptionHide,
+{
 	width: 50%;
 	display: inline-block;
 	visibility: hidden;
@@ -93,23 +78,42 @@ body{
 	width: 49.5%;
 }
 
-.errRowNameSurname,
-.errRowEmailTel,
-.errRowPassConfirmPass,
-.errRowCityVia,
-.errRowCivicoCap,
-.errRowTipologia{
+.errRowNameCategory,
+.errRowTipologyPrice,
+.errRowDisponibilityQuantity,
+.errRowDescription{
 	margin-bottom: .5%;
 	display: none;
 }
 
-.nameSurnameRow,
-.emailTelRow,
-.passConfPassRow,
-.cittaViaRow,
-.civicoCapRow,
-.tipologiaRow{
+.nameCategoryRow,
+.tipologyPriceRow,
+.diponibilityQuantityRow,
+.descriptionRow,
+.imageUploadRow{
 	margin-bottom: 1.5%;
+}
+
+.custom-file{
+	height: 65% !important;
+	cursor: pointer !important;
+}
+
+.custom-file-input{
+	height: 100% !important;
+}
+
+.custom-file-label{
+	height: 100% !important;
+	font-size: 1.5rem !important;
+	cursor: pointer !important;
+	line-height: 3rem;
+}
+
+.custom-file-label::after{
+	height: 100% !important;
+	cursor: pointer !important;
+	line-height: 3rem;
 }
 
 .form-control{
