@@ -151,8 +151,9 @@ a.small.link{
 
 .tot-prezzo{
 	margin-top: 1%;
-	display: table;
-	vertical-align: middle;
+	margin-left: 2%;
+	display: flex;
+	
 	padding: 0;
 }
 
