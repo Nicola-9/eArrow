@@ -70,7 +70,7 @@ protected void doPost(HttpServletRequest request, HttpServletResponse response) 
 							request.getRequestDispatcher(url).forward(request, response);
 							return;	
 						} else {			
-							response.sendRedirect("----PAGINA AMMINISTRATORE----");
+							request.getRequestDispatcher("/AdminProfileServlet").forward(request, response);
 							return;	
 						}
 					}
@@ -83,7 +83,7 @@ protected void doPost(HttpServletRequest request, HttpServletResponse response) 
 						url = response.encodeURL("/view/Login.jsp");
 						request.getRequestDispatcher(url).forward(request, response);
 					}
-					else 
+					else { 
 					if (email == null || email.equals("")) {	
 						request.setAttribute("emailErrata", true);
 						url = response.encodeURL("/view/Login.jsp");
@@ -144,7 +144,7 @@ protected void doPost(HttpServletRequest request, HttpServletResponse response) 
 					
 				}
 	}
-
+				}
 	}
 	
 	
