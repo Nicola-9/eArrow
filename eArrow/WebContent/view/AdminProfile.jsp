@@ -24,12 +24,13 @@
 		<jsp:include page="NavbareArrow.jsp"/>
 		
 		<div class="content">
+		
+			<h5 class="doc-title-sm">GESTIONE E-ARROW</h5>
 			<div class="card">
 				<div class="card-body">
 					<div class="button-container">
-						
-							<a href="" class="btn btn-primary">Inserisci nuovo prodotto</a>
-							<a href="" class="btn btn-primary">Visualizza e modifica prodotti in stock</a>
+							<a href="${pageContext.request.contextPath}/InsertProductAdminServlet?launch=true" class="btn btn-primary">Inserisci nuovo prodotto</a>
+							<a href="${pageContext.request.contextPath}/AdminVisualizeProductServlet" class="btn btn-primary">Visualizza e modifica prodotti in stock</a>
 							<a href="" class="btn btn-primary">Visualizza storico ordini</a>
 					</div>
 				</div>

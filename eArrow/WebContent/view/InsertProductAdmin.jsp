@@ -31,7 +31,7 @@
 			<h5 class="doc-title-sm">INSERISCI NUOVO PRODOTTO</h5>
 			<div class="card">
 				<div class="card-body">
-					<form id="ajaxForm" method="post" action="${pageContext.request.contextPath}/InsertProductAdminServlet" onsubmit="this.form.submit();" enctype="multipart/form-data" accept-charset="utf-8">
+					<form id="ajaxForm" method="post" action="${pageContext.request.contextPath}/InsertProductAdminServlet?launch=false" onsubmit="this.form.submit();" enctype="multipart/form-data" accept-charset="utf-8">
 						<input type="hidden" class="idUser" name="idUser" value="">
 						<input type="hidden" class="idAddress" name="idAddress" value="">
 						
@@ -70,7 +70,7 @@
 							</div>
 							
 							<div class="col form-group">
-								<label>Prezzo</label> <input type="number" name="price" min="1" class="form-control price"
+								<label>Prezzo</label> <input type="text" name="price" class="form-control price"
 									value="">
 							</div>
 							<!-- form-group end.// -->

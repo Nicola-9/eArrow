@@ -48,67 +48,77 @@ public class InsertProductAdminServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String name = (String) request.getParameter("name");
-		String category = (String) request.getParameter("category");
-		String tipology = (String) request.getParameter("tipology");
-		String priceString = (String) request.getParameter("price");
-		String disponibilityString = (String) request.getParameter("disponibility");
-		String quantityString = (String) request.getParameter("quantity");
-		String description = (String) request.getParameter("description");
 		
-		double price = Double.parseDouble(priceString);
-		boolean disponibility = Boolean.parseBoolean(disponibilityString);
-		int quantity = Integer.parseInt(quantityString);
+		String launch = (String) request.getParameter("launch");
 		
-		ProdottoBean p = new ProdottoBean();
+		boolean launchB = Boolean.parseBoolean(launch);
+		
+		if(launchB) {
+			request.getRequestDispatcher("view/InsertProductAdmin.jsp").forward(request, response);
+		} else {
+		
+			String name = (String) request.getParameter("name");
+			String category = (String) request.getParameter("category");
+			String tipology = (String) request.getParameter("tipology");
+			String priceString = (String) request.getParameter("price");
+			String disponibilityString = (String) request.getParameter("disponibility");
+			String quantityString = (String) request.getParameter("quantity");
+			String description = (String) request.getParameter("description");
+			
+			double price = Double.parseDouble(priceString);
+			boolean disponibility = Boolean.parseBoolean(disponibilityString);
+			int quantity = Integer.parseInt(quantityString);
+			
+			ProdottoBean p = new ProdottoBean();
+		
+			int codice = ProdottoDAO.getMaxId() + 1;
+			
+			p.setCodice(codice);
+			p.setNome(name);
+			p.setCategoria(category);
+			p.setTipologia(tipology);
+			p.setPrezzo(price);
+			p.setDisponibilita(disponibility);
+			p.setQuantita(quantity);
+			p.setDescrizione(description);
 	
-		int codice = ProdottoDAO.getMaxId() + 1;
-		
-		p.setCodice(codice);
-		p.setNome(name);
-		p.setCategoria(category);
-		p.setTipologia(tipology);
-		p.setPrezzo(price);
-		p.setDisponibilita(disponibility);
-		p.setQuantita(quantity);
-		p.setDescrizione(description);
-
-		ProdottoDAO.insertProduct(p);
-		
-		
-		Part filePart = request.getPart("file");
-		InputStream fileContent = filePart.getInputStream();
-		String fileName = name.toLowerCase();
-		
-		if(fileName.contains(" "))
-			fileName.replace(" ", "-");
-		
-		fileName += ".jpg";
-		
-		ImmagineBean i = new ImmagineBean();
-		i.setCodiceProdotto(codice);
-		
-		String uri = "/image/productImage/" + fileName;
-		i.setUri(uri);
-		
-		ImmagineDAO.insertImage(i);
-		
-		String path = this.getServletContext().getRealPath("image//productImage");;
-		
-		System.out.print(path);
-		
-		
-		OutputStream out = new FileOutputStream(new File(path + File.separator + fileName));
-		
-		int read = 0;
-        final byte[] bytes = new byte[1024];
-
-        while ((read = fileContent.read(bytes)) != -1) {
-            out.write(bytes, 0, read);
-        }
-        
-        out.close();
-        fileContent.close();
+			ProdottoDAO.insertProduct(p);
+			
+			
+			Part filePart = request.getPart("file");
+			InputStream fileContent = filePart.getInputStream();
+			String fileName = name.toLowerCase();
+			
+			if(fileName.contains(" "))
+				fileName.replace(" ", "-");
+			
+			fileName += ".jpg";
+			
+			ImmagineBean i = new ImmagineBean();
+			i.setCodiceProdotto(codice);
+			
+			String uri = "/image/productImage/" + fileName;
+			i.setUri(uri);
+			
+			ImmagineDAO.insertImage(i);
+			
+			String path = this.getServletContext().getRealPath("image//productImage");;
+			
+			System.out.print(path);
+			
+			
+			OutputStream out = new FileOutputStream(new File(path + File.separator + fileName));
+			
+			int read = 0;
+	        final byte[] bytes = new byte[1024];
+	
+	        while ((read = fileContent.read(bytes)) != -1) {
+	            out.write(bytes, 0, read);
+	        }
+	        
+	        out.close();
+	        fileContent.close();
+		}
 	}
 
 }
