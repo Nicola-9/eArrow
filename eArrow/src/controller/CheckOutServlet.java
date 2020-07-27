@@ -66,7 +66,7 @@ public class CheckOutServlet extends HttpServlet {
 			//pagina di errore
 			/*url = response.encodeURL("");
 			request.getRequestDispatcher(url).forward(request, response);*/
-			request.getRequestDispatcher("/ErroreArrowServlet?testoErrore=").forward(request, response);
+			request.getRequestDispatcher("/ErroreArrowServlet?testoErrore=E' stato riscontrato un problema relativo alla sessione").forward(request, response);
 			//request.getRequestDispatcher("/LoginServlet?vaiAlCarrello=true").forward(request, response);
 			
 		}
@@ -90,7 +90,7 @@ public class CheckOutServlet extends HttpServlet {
 			}
 			
 			if(request.getSession().getAttribute("carrello") == null) {
-				//pagina di errore carrello vuoto
+				request.getRequestDispatcher("/ErroreArrowServlet?testoErrore=E' stato riscontrato un problema relativo al carrello").forward(request, response);
 			}
 			
 			url = response.encodeURL("/view/CheckOut.jsp");
@@ -130,10 +130,7 @@ public class CheckOutServlet extends HttpServlet {
 				operazioneRiuscita = CartaDiCreditoDAO.addCard(carta);
 				
 				if(operazioneRiuscita == false) {
-					
-					//pagine di errore del mancato pagamento
-					System.out.println("noooooooooooooooooooooooooooooooooooooooo");
-					
+					request.getRequestDispatcher("/ErroreArrowServlet?testoErrore=E' stato riscontrato un problema relativo al pagamento").forward(request, response);
 				}
 				
 			}
