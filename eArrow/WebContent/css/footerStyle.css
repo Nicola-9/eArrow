@@ -15,7 +15,7 @@ footer{
 .footer-content{
 	margin: 0 1%;
     display: grid;
-    grid-template-columns: 30% 30% 30%;
+    grid-template-columns: 33% 33% 33%;
   	grid-gap: 3%;
     overflow: hidden;
 }
@@ -37,8 +37,18 @@ footer{
 	padding: 0;
 }
 
+form{
+	width: 100%;
+}
+
+.form-control{
+	font-size: 1.5rem;
+}
+
 #contact-us{
 	text-align: center;
+	display: grid;
+	justify-content: center;
 }
 
  h4 {
