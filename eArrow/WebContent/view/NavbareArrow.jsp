@@ -5,7 +5,25 @@
 
 <header>
 	<div class="earrow-container">
+	
+	<%
+		String roleJS = null;
+		
+		String roleJSAtt = (String) request.getSession().getAttribute("role");
+		
+		if(roleJSAtt != null)
+			roleJS = roleJSAtt.toString();
+	
+		UtenteBean user = (UtenteBean) request.getSession().getAttribute("user");
+		String userJS = null;
+		
+		if(user != null)
+			userJS = user.getNome().toString();
+	%>
 
+		<span id="roleHide" style="display: none;"><%=roleJS %></span>
+		<span id="userHide" style="display: none;"><%=userJS %></span>
+		
 		<nav class="earrow-nav">
 			<ul class="nav-earrow-list nav-earrow-list-mobile">
 
@@ -47,8 +65,7 @@
 				<li class="nav-earrow-item search-item"><a href="#"
 					class="nav-earrow-link nav-earrow-link-search" id="search"></a></li>
 
-				<% 
-					UtenteBean user = (UtenteBean) request.getSession().getAttribute("user"); 
+				<%
 					
 					System.out.println(user);
 					
@@ -174,11 +191,12 @@
             };
             
             $(document).ready(function(){
-            	var user = <%=user%>;
+            	var user = document.querySelector('#userHide');
+            	var role = document.querySelector('#roleHide');
             	
             	if($(window).innerWidth() > 998){
                    searchView();
-                   
+                           
                    $('.dropdown').prop("disabled", false);
    				   $('a.nav-earrow-link-account').attr("href", "#");
             	} else
@@ -190,10 +208,15 @@
             			$('.search-form input').addClass('mobile');
             			$('.search-form').addClass('mobile').appendTo('.search-item');
             			
-            			
             			if(user != null){
-            				$('.dropdown').prop("disabled", true);
-            				$('a.nav-earrow-link-account').attr("href", "http://localhost:8080/eArrow/ProfileServlet");
+            				if(role != "utente"){
+            					$('.dropdown').prop("disabled", true);
+                				$('a.nav-earrow-link-account').attr("href", "http://localhost:8080/eArrow/AdminProfileServlet");
+                             } else{
+
+                 				$('.dropdown').prop("disabled", true);
+                 				$('a.nav-earrow-link-account').attr("href", "http://localhost:8080/eArrow/ProfileServlet"); 
+                             }
             			
             			} else{
             				console.log("It's null");
@@ -214,8 +237,14 @@
             	
             			
             			if(user != null){
-            				$('a.nav-earrow-link-account').attr("href", "http://localhost:8080/eArrow/ProfileServlet");
-            				$('.dropdown').prop("disabled", true);
+            				if(role != "utente"){
+            					$('.dropdown').prop("disabled", true);
+                				$('a.nav-earrow-link-account').attr("href", "http://localhost:8080/eArrow/AdminProfileServlet");
+                             } else{
+
+                 				$('.dropdown').prop("disabled", true);
+                 				$('a.nav-earrow-link-account').attr("href", "http://localhost:8080/eArrow/ProfileServlet"); 
+                             }
             			
             			} else{
             				console.log("It's null");
