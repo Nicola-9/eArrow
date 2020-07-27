@@ -40,12 +40,12 @@
 				<div id="contact-us">
 
 					<form>
-						<div class="form-group">
+						<div class="form-group" style="width: 100%;">
 							<label for="exampleFormControlInput1"><dt>HAI BISOGNO D'AIUTO?</dt></label> <input type="email" class="form-control"
 								id="exampleFormControlInput1" placeholder="nome@esempio.com">
 						</div>
 
-						<div class="form-group">
+						<div class="form-group" style="width: 100%;">
 							<textarea class="form-control" id="exampleFormControlTextarea1"
 								rows="3" placeholder="Scrivi il tuo messaggio"></textarea>
 						</div>
