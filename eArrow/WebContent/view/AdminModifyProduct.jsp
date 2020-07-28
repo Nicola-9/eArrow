@@ -145,10 +145,10 @@
 							</span>
 						</div>
 						
-						<div class="form-row diponibilityQuantityRow">
+						<div class="form-row disponibilityQuantityRow">
 							<div class="col form-group">
 								<label class="titleSelect">Disponibilità</label> 
-									<select	class="custom-select" name="disponibility">
+									<select	class="custom-select dispSelect" name="disponibility">
 									
 									<%
 										if(p.isDisponibilita()){
