@@ -85,7 +85,7 @@
 				
 				<p class="buttonAdd">
 					<p class="quantity">Quantita: <%=pair.getValue()%></p>
-					<p class="quantity">Totale prodotto: <%=prezzo%> &#8364</p>
+					<p class="quantity">Totale prodotto: <%=prezzoTotal%> &#8364</p>
 				</p>
 			</div>
 			</aside>

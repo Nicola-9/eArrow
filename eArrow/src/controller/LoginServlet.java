@@ -131,8 +131,10 @@ protected void doPost(HttpServletRequest request, HttpServletResponse response) 
 								request.getRequestDispatcher("/ShoppingBagServlet").forward(request, response);
 							}
 							
+							
 							url = response.encodeURL("/HomePageServlet");
 							request.getRequestDispatcher(url).forward(request, response);
+							
 							
 						}
 					
