@@ -23,7 +23,7 @@ circSelect = document.querySelector('#selC');
 
 const validateForm = () => {
 	
-	let nameRegex = /^[A-Z]{0,1}[a-z]{1,}$/;
+	let nameRegex = /^[A-Za-z]+[ ]*[A-Za-z]*/;//^[A-Z]{0,1}[a-z]{1,}$
 	let panRegex = /(^[0-9]{4}\s[0-9]{4}\s[0-9]{4}\s[0-9]{4}$)/;
 	let cvvRegex = /^[0-9]{3}$/;
 	
