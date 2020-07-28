@@ -184,4 +184,39 @@ public static ArrayList<OrdineBean> doRetrieveAll(){
 }
 
 
+public static ArrayList<OrdineBean> doRetrieveAllOrderByUserId(int id){
+	OrdineBean ordine;
+	ArrayList<OrdineBean> listaOrdine = new ArrayList<OrdineBean>();
+	PreparedStatement ps;
+	ResultSet rs;
+	
+	String cartaSQL = "SELECT * FROM earrow.ordine AS o WHERE o.idUtente = ?;";
+	
+	try(Connection connection = ConnessioneDB.getConnection()){
+		
+		ps = connection.prepareStatement(cartaSQL);
+		ps.setInt(1, id);
+		
+		rs = ps.executeQuery();
+		
+		while(rs.next()) {
+			ordine = new OrdineBean();
+			
+			ordine.setId(rs.getInt("id"));
+			ordine.setIdUtente(rs.getInt("idUtente"));
+			ordine.setIdPagamento(rs.getInt("idPag"));
+			ordine.setData(rs.getDate("dataO"));
+			ordine.setStato(rs.getString("stato"));
+			ordine.setTipologia(rs.getString("tipologia"));
+		
+			listaOrdine.add(ordine);
+		}
+		
+	} catch(SQLException e) {
+		e.printStackTrace();
+	}
+	return listaOrdine;
+}
+
+
 }

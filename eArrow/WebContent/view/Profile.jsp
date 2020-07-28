@@ -49,7 +49,7 @@
 						
 						<div class="intestation">
 							<h5 class="headerInformation d-inline-block">INFORMAZIONI PERSONALI</h5>
-							<button type="button" class="btn btn-primary modify-btn"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>Modifica</button>
+							<button type="button" class="btn btn-primary modify-btn"><i class="fa fa-pencil-square-o faPAd" aria-hidden="true"></i>Modifica</button>
 						</div>
 						<div class="form-row nameSurnameRow">
 							<div class="col form-group">
