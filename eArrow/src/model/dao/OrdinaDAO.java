@@ -115,6 +115,41 @@ public static OrdineBean doRetrievebyUserId(int id){
 	return ordine;
 }
 
+public static ArrayList<OrdineBean> doRetrieveOrderByUserId(int id){
+	ArrayList<OrdineBean> list = new ArrayList<OrdineBean>();
+	
+	PreparedStatement ps;
+	ResultSet rs;
+	
+	String orderSQL = "SELECT * FROM ordine AS o WHERE o.idUtente = ?;";
+	
+	try(Connection connection = ConnessioneDB.getConnection()){
+		
+		ps = connection.prepareStatement(orderSQL);
+		ps.setInt(1, id);
+		
+		rs = ps.executeQuery();
+		
+		while(rs.next()) {
+			
+			OrdineBean ordine = new OrdineBean();
+			
+			ordine.setId(rs.getInt("id"));
+			ordine.setIdUtente(rs.getInt("idUtente"));
+			ordine.setIdPagamento(rs.getInt("idPag"));
+			ordine.setData(rs.getDate("dataO"));
+			ordine.setStato(rs.getString("stato"));
+			ordine.setTipologia(rs.getString("tipologia"));
+			
+			list.add(ordine);
+		}
+		
+	} catch(SQLException e) {
+		e.printStackTrace();
+	}
+	return list;
+}
+
 public static ArrayList<OrdineBean> doRetrieveAll(){
 	OrdineBean ordine = new OrdineBean();
 	ArrayList<OrdineBean> listaO = new ArrayList<OrdineBean>();
