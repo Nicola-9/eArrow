@@ -111,6 +111,9 @@
 								<p class="title-drop title-drop-signedin">Ciao, <%=user.getNome() %></p>
 								<a class="btn btn-primary btn-drop btn-drop-visualizeProfile" href="${pageContext.request.contextPath}/ProfileServlet">Visualizza profilo</a> 
 							</div> 
+							<div class="dropdown-item center-btn">
+								<a class="btn btn-primary btn-drop btn-drop-visualizeProfile" href="${pageContext.request.contextPath}/HistoryOrderUserServlet">Storico Ordini</a>							
+							</div>
 							<div class="dropdown-divider"></div>
 							<div class="dropdown-item">
 								<a class="btn btn-drop btn-drop-logout" href="${pageContext.request.contextPath}/LogoutServlet">Logout</a> 
