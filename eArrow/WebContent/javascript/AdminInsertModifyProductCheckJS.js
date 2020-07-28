@@ -15,7 +15,7 @@ let nameRegex = /^[a-zA-Z0-9-,_ ]+$/;
 let tipologyRegex = /^[a-zA-Z0-9-,_ ]+$/;
 let quantityRegex = /^[0-9]+$/;
 let priceRegex = /^[0-9]*[.]{0,1}[0-9]+$/;
-let descriptionRegex = /^[a-zA-Z0-9-,_ ]+$/;
+let descriptionRegex = /\s*([\s\S]*?)/;
 
 let valid = false;
 
