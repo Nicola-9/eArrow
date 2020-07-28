@@ -111,6 +111,14 @@ div.aside{
 	transition: transform .1s;
 }
 
+.empty-cart-image{
+	height: 80px;
+	max-width: 100%;
+	min-height: 30%;
+	margin-left: 3%;
+	transition: transform .1s;
+}
+
 td.product{
 	width: 35%;
 }
@@ -120,6 +128,11 @@ td.product{
 }
 
 .image:hover{
+	transform: scale(1.1);
+	cursor: pointer;
+}
+
+.empty-cart-image:hover{
 	transform: scale(1.1);
 	cursor: pointer;
 }

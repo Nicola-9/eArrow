@@ -32,12 +32,16 @@ civicoField = document.querySelector('input.civico');
 capField = document.querySelector('input.cap');
 formUrl = document.querySelector('#ajaxForm');
 
+footerInp = document.querySelector('input#exampleFormControlInput1');
+
 document.addEventListener('DOMContentLoaded', () => {
 	const passField = document.querySelector('.pass');
 		
 	inputField.forEach((inp) => {
 		inp.disabled = true;
 	});
+	
+	footerInp.disabled = false;
 				
 	modifyBtn.addEventListener('click', () => {
 		inputField.forEach((inp) => {
@@ -140,6 +144,8 @@ const update = () => {
 						inputField.forEach((inp) => {
 							inp.disabled = true;
 						});
+						
+						footerInp.disabled = false;
 						
 						saveBtn.style.display = "none";
 						

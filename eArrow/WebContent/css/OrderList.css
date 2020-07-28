@@ -19,11 +19,56 @@ body{
 	flex-direction: column;
 }
 
+.titleAndImage{
+	margin-top: 50%;
+	margin-bottom: 50%;
+}
+
+.empty-cart{
+	display: grid;
+	align-items: center;
+	justify-content: center;
+  	text-align: center;
+}
+
+p.empty-cart-title{
+	font-size: 2.5rem;
+	color: #a2a2a2;
+}
+
+.empty-cart-image{
+	height: 80px;
+	max-width: 100%;
+	min-height: 30%;
+	margin-left: 3%;
+	transition: transform .1s;
+}
+
+.empty-cart-image:hover{
+	transform: scale(1.1);
+	cursor: pointer;
+}
+
+.content{
+	min-height: 100vh;
+	margin-left: 10%;
+	margin-right: 10%;
+}
+
 .image{
 	height: 150px;
 	max-width: 100%;
 	min-height: 30%;
 	transition: transform .1s;
+}
+
+.doc-title-sm {
+	margin-left: 1%;
+	margin-bottom: 1%;
+	font-size: 1.5rem;
+	font-weight: 500;
+	color: #adb5bd;
+	text-transform: uppercase;
 }
 
 .image:hover{
@@ -37,8 +82,6 @@ a.title{
 .card-body{
 	position: relative;
 	margin-top: 1%;
-	margin-right: 10%;
-	margin-left: 10%;
 	padding: 1%;
 	border: 1px solid #d1d1d1;
 	border-radius: 5px;
@@ -122,10 +165,6 @@ span.price.h5{
 
 a.small.link{
 	margin-top: -50%;
-}
-
-.content{
-	min-height: 100vh;
 }
 
 .description{
