@@ -55,5 +55,13 @@ body{
 	margin-top: 3%;
 }
 
-
+@media (max-width: 655px){
+	body{
+		margin-top: 25%;
+	}
+	
+	.btn{
+		font-size: 1.75rem;
+	}
+}
 
