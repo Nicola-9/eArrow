@@ -61,15 +61,22 @@ const validateForm = () =>{
 							document.querySelector('.errQuantityHide').style.visibility = 'visible';
 							document.querySelector('.disponibilityQuantityRow').classList.add('hidden');
 					} else
-						if(descriptionField.value == null || !descriptionRegex.test(descriptionField.value)){
-							descriptionField.style.border = '1px solid #FF0000';
-							document.querySelector('#errorDescription').innerHTML = "Campo descrizione non valido. Lunghezza massima di 500 caratteri e minima di 10 caratteri.";
-							document.querySelector('.errRowDescription').style.display = 'block';
-							document.querySelector('.errDescriptionHide').style.visibility = 'visible';
-							document.querySelector('.descriptionRow').classList.add('hidden');
-						} else{
-							valid = true;
-						}
+						if(disponibility.options[disponibility.selectedIndex].value == "false" && quantityField.value >= 0){
+							quantityField.style.border = '1px solid #FF0000';
+							document.querySelector('#errorQuantity').innerHTML = "Campo quantita' non valido. Prodotti non disponibili non possono avere una quantità maggiore di 0.";
+							document.querySelector('.errRowDisponibilityQuantity').style.display = 'block';
+							document.querySelector('.errQuantityHide').style.visibility = 'visible';
+							document.querySelector('.disponibilityQuantityRow').classList.add('hidden');
+						} else
+							if(descriptionField.value == null || !descriptionRegex.test(descriptionField.value)){
+								descriptionField.style.border = '1px solid #FF0000';
+								document.querySelector('#errorDescription').innerHTML = "Campo descrizione non valido. Lunghezza massima di 500 caratteri e minima di 10 caratteri.";
+								document.querySelector('.errRowDescription').style.display = 'block';
+								document.querySelector('.errDescriptionHide').style.visibility = 'visible';
+								document.querySelector('.descriptionRow').classList.add('hidden');
+							} else{
+								valid = true;
+							}
 	
 	if(!valid){
 		event.preventDefault();

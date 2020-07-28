@@ -112,7 +112,7 @@ public class CheckOutServlet extends HttpServlet {
 		//Aggiungo una nuova carta al database		
 		if(pan != null) {
 
-			//verifico se la carta è già associata all'utente
+			//verifico se la carta ï¿½ giï¿½ associata all'utente
 			//carta = CartaDiCreditoDAO.doRetrievebyPan(pan);
 			carta = CartaDiCreditoDAO.doRetrievebyUserId(utenteSessione.getId());
 			if(carta != null) {
@@ -129,7 +129,7 @@ public class CheckOutServlet extends HttpServlet {
 				CartaDiCreditoBean panEs = (CartaDiCreditoBean) CartaDiCreditoDAO.doRetrievebyPan(pan);
 				
 				if(panEs != null) {
-					request.getRequestDispatcher("/ErroreArrowServlet?testoErrore=Carta di credito utilizzata già da un diverso utente").forward(request, response);
+					request.getRequestDispatcher("/ErroreArrowServlet?testoErrore=Carta di credito utilizzata gia' da un diverso utente").forward(request, response);
 				}
 				
 				
@@ -170,7 +170,7 @@ public class CheckOutServlet extends HttpServlet {
 	 			
 	 			ComposizioneOrdineDAO.addProductOrder(idOrdine, p.getCodice(), products.get(p));
 	 			
-	 			//aggiurno la quantità dei prodotti rimasti in stock e se è uguale a zero li setta a non disponibili
+	 			//aggiurno la quantitï¿½ dei prodotti rimasti in stock e se ï¿½ uguale a zero li setta a non disponibili
 	 			int num = p.getQuantita() - pair.getValue();
 	 			ProdottoDAO.updateProductStock(p, num);
 	 			boolean t = ProdottoDAO.updateDisponibilita();
