@@ -218,6 +218,13 @@
 		limit = prodottiConsigliati.size();
 	}
 	
+	if(categoria.equals("Frecce e Componenti") || categoria.equals("Accessori Arco")){
+		if(prodottiConsigliati.size() > 3)
+			limit = 3;
+		else
+			limit = 2;
+	}
+	
 	for(int j = 0; j < limit; j++){ 
 		
 		ImmagineBean imgCons = ImmagineDAO.doRetrieveImageByProductCode(prodottiConsigliati.get(j).getCodice());
