@@ -5,7 +5,25 @@
 
 <header>
 	<div class="earrow-container">
+	
+	<%
+		String roleJS = null;
+		
+		String roleJSAtt = (String) request.getSession().getAttribute("role");
+		
+		if(roleJSAtt != null)
+			roleJS = roleJSAtt.toString();
+	
+		UtenteBean user = (UtenteBean) request.getSession().getAttribute("user");
+		String userJS = null;
+		
+		if(user != null)
+			userJS = user.getNome().toString();
+	%>
 
+		<span id="roleHide" style="display: none;"><%=roleJS %></span>
+		<span id="userHide" style="display: none;"><%=userJS %></span>
+		
 		<nav class="earrow-nav">
 			<ul class="nav-earrow-list nav-earrow-list-mobile">
 
@@ -29,26 +47,25 @@
 				<li class="nav-earrow-item nav-earrow-item-hidden"><a
 					href="${pageContext.request.contextPath}/HomePageServlet" class="nav-earrow-link nav-link-earrow"></a></li>
 
-				<li class="nav-earrow-item"><a href="${pageContext.request.contextPath}/ProductsListServlet?category=Archi"
+				<li class="nav-earrow-item"><a href="${pageContext.request.contextPath}/ProductsListServlet?category=archi"
 					class="nav-earrow-link">Archi</a></li>
 
-				<li class="nav-earrow-item"><a href="${pageContext.request.contextPath}/ProductsListServlet?category=AccessoriArco"
+				<li class="nav-earrow-item"><a href="${pageContext.request.contextPath}/ProductsListServlet?category=accessori-arco"
 					class="nav-earrow-link">Accessori Arco</a></li>
 
-				<li class="nav-earrow-item"><a href="${pageContext.request.contextPath}/ProductsListServlet?category=AccessoriArciere"
+				<li class="nav-earrow-item"><a href="${pageContext.request.contextPath}/ProductsListServlet?category=accessori-arciere"
 					class="nav-earrow-link">Accessori Arciere</a></li>
 
-				<li class="nav-earrow-item"><a href="${pageContext.request.contextPath}/ProductsListServlet?category=Frecce"
+				<li class="nav-earrow-item"><a href="${pageContext.request.contextPath}/ProductsListServlet?category=frecce"
 					class="nav-earrow-link">Frecce e Componenti</a></li>
 
-				<li class="nav-earrow-item"><a href="${pageContext.request.contextPath}/ProductsListServlet?category=Paglioni"
+				<li class="nav-earrow-item"><a href="${pageContext.request.contextPath}/ProductsListServlet?category=paglioni"
 					class="nav-earrow-link">Paglioni e Bersagli</a></li>
 
 				<li class="nav-earrow-item search-item"><a href="#"
 					class="nav-earrow-link nav-earrow-link-search" id="search"></a></li>
 
-				<% 
-					UtenteBean user = (UtenteBean) request.getSession().getAttribute("user"); 
+				<%
 					
 					System.out.println(user);
 					
@@ -77,6 +94,10 @@
 				<% 
 					} else {
 						request.setAttribute("update", false);
+						
+						String role = (String) request.getSession().getAttribute("role");
+						
+						if(role.equals("utente")){
 				%>
 				
 				<li class="nav-earrow-item">
@@ -99,7 +120,31 @@
 				</li>
 					
 				<% 
+					} else{
+				%>
+				
+				<li class="nav-earrow-item">
+					<div class="dropdown">
+						<a href="#"
+							class="nav-earrow-link nav-earrow-link-account dropdown" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></a>
+						
+						<div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+							<div class="arrow-up"></div>
+							<div class="dropdown-item">
+								<p class="title-drop title-drop-signedin">Ciao, Amministratore</p>
+								<a class="btn btn-primary btn-drop btn-drop-visualizeProfile" href="${pageContext.request.contextPath}/AdminProfileServlet">Gestisci eArrow</a> 
+							</div> 
+							<div class="dropdown-divider"></div>
+							<div class="dropdown-item">
+								<a class="btn btn-drop btn-drop-logout" href="${pageContext.request.contextPath}/LogoutServlet">Logout</a> 
+							</div> 
+						</div>
+					</div>	
+				</li>
+				
+				<%
 					}
+				}
 				%>
 
 				<li class="nav-earrow-item nav-earrow-item-hidden">
@@ -108,8 +153,8 @@
 			</ul>
 
 			<div class="search-form">
-				<form class="inputSearch">
-					<input class="inputSearchInput" type="text" name=""
+				<form class="inputSearch" action="./SearchServlet" onsubmit="this.form.submit()">
+					<input class="inputSearchInput" type="text" name="suggestion"
 						placeholder="eArrow.it" list="dbSearch">
 						<datalist id="dbSearch">
 						  
@@ -146,11 +191,14 @@
             };
             
             $(document).ready(function(){
-            	var user = <%=user%>;
+            	var user = document.querySelector('#userHide').textContent;
+            	var role = document.querySelector('#roleHide').textContent;
+            	
+            	console.log(user + " " + role);
             	
             	if($(window).innerWidth() > 998){
                    searchView();
-                   
+                           
                    $('.dropdown').prop("disabled", false);
    				   $('a.nav-earrow-link-account').attr("href", "#");
             	} else
@@ -162,10 +210,15 @@
             			$('.search-form input').addClass('mobile');
             			$('.search-form').addClass('mobile').appendTo('.search-item');
             			
-            			
-            			if(user != null){
-            				$('.dropdown').prop("disabled", true);
-            				$('a.nav-earrow-link-account').attr("href", "http://localhost:8080/eArrow/ProfileServlet");
+            			if(user != "null"){
+            				if(role == "admin"){
+            					$('.dropdown').prop("disabled", true);
+                				$('a.nav-earrow-link-account').attr("href", "http://localhost:8080/eArrow/AdminProfileServlet");
+                             } else{
+
+                 				$('.dropdown').prop("disabled", true);
+                 				$('a.nav-earrow-link-account').attr("href", "http://localhost:8080/eArrow/ProfileServlet"); 
+                             }
             			
             			} else{
             				console.log("It's null");
@@ -185,9 +238,15 @@
             			$('.search-form').addClass('mobile').appendTo('.search-item');
             	
             			
-            			if(user != null){
-            				$('a.nav-earrow-link-account').attr("href", "http://localhost:8080/eArrow/ProfileServlet");
-            				$('.dropdown').prop("disabled", true);
+            			if(user != "null"){
+            				if(role == "admin"){
+            					$('.dropdown').prop("disabled", true);
+                				$('a.nav-earrow-link-account').attr("href", "http://localhost:8080/eArrow/AdminProfileServlet");
+                             } else{
+
+                 				$('.dropdown').prop("disabled", true);
+                 				$('a.nav-earrow-link-account').attr("href", "http://localhost:8080/eArrow/ProfileServlet"); 
+                             }
             			
             			} else{
             				console.log("It's null");

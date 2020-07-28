@@ -35,6 +35,15 @@ public class StoricoOrdiniBean {
 	public void setFattura(String fattura) {
 		this.fattura = fattura;
 	}
+	
+	
+
+	@Override
+	public String toString() {
+		return "StoricoOrdiniBean [id=" + id + ", idOrdine=" + idOrdine + ", fattura=" + fattura + "]";
+	}
+
+
 
 	private int id;
 	private int idOrdine;

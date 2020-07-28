@@ -8,6 +8,7 @@ import java.util.ArrayList;
 
 import model.ConnessioneDB;
 import model.bean.ImmagineBean;
+import model.bean.ProdottoBean;
 
 public class ImmagineDAO {
 
@@ -102,5 +103,73 @@ public class ImmagineDAO {
 		else {
 			return null;
 		}
+	}
+	
+	public static boolean insertImage(ImmagineBean i) {
+		boolean registerOk = false;
+		PreparedStatement ps;
+		
+		String insertSQL = "INSERT INTO immagine(uri, codiceP)"
+				+ " VALUES(?, ?)";
+		
+		try {
+			Connection connection = null;
+			
+			try {
+				connection = ConnessioneDB.getConnection();
+				
+				ps = connection.prepareStatement(insertSQL);
+				ps.setString(1, i.getUri());
+				ps.setInt(2, i.getCodiceProdotto());
+				
+				int righe = ps.executeUpdate();
+				
+				connection.commit();
+				
+				if(righe > 0)
+					registerOk = true;
+				
+			}finally {
+				ConnessioneDB.releaseConnection(connection);
+			}
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return registerOk;
+	}
+	
+	public static boolean updateImage(ImmagineBean i) {
+		boolean registerOk = false;
+		PreparedStatement ps;
+		
+		String insertSQL = "UPDATE immagine SET uri = ?, codiceP = ? WHERE codiceP = ?";
+		
+		try {
+			Connection connection = null;
+			
+			try {
+				connection = ConnessioneDB.getConnection();
+				
+				ps = connection.prepareStatement(insertSQL);
+				ps.setString(1, i.getUri());
+				ps.setInt(2, i.getCodiceProdotto());
+				ps.setInt(3, i.getCodiceProdotto());
+				
+				int righe = ps.executeUpdate();
+				
+				connection.commit();
+				
+				if(righe > 0)
+					registerOk = true;
+				
+			}finally {
+				ConnessioneDB.releaseConnection(connection);
+			}
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return registerOk;
 	}
 }

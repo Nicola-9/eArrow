@@ -70,13 +70,20 @@ protected void doPost(HttpServletRequest request, HttpServletResponse response) 
 							request.getRequestDispatcher(url).forward(request, response);
 							return;	
 						} else {			
-							response.sendRedirect("----PAGINA AMMINISTRATORE----");
+							request.getRequestDispatcher("/AdminProfileServlet").forward(request, response);
 							return;	
 						}
 					}
 				else {		
 					email = request.getParameter("Email");
 					password = request.getParameter("Password");
+					
+					
+					if(request.getParameter("vaiAlCarrello") != null) {
+						url = response.encodeURL("/view/Login.jsp");
+						request.getRequestDispatcher(url).forward(request, response);
+					}
+					else { 
 					if (email == null || email.equals("")) {	
 						request.setAttribute("emailErrata", true);
 						url = response.encodeURL("/view/Login.jsp");
@@ -110,9 +117,20 @@ protected void doPost(HttpServletRequest request, HttpServletResponse response) 
 								request.getRequestDispatcher(url).forward(request, response);
 								
 							}
-						
-							sessione.setSessionUser(UtenteDao.doRetrievebyEmailAndPassword(email, passwordformat));
-							SessionArrow.setSessionRole("utente");
+							
+							if(email.equals("admin@admin.it")) {
+								sessione.setSessionUser(UtenteDao.doRetrievebyEmailAndPassword(email, passwordformat));
+								SessionArrow.setSessionRole("admin");
+								request.getRequestDispatcher("/AdminProfileServlet").forward(request, response);
+							} else {
+								sessione.setSessionUser(UtenteDao.doRetrievebyEmailAndPassword(email, passwordformat));
+								SessionArrow.setSessionRole("utente");
+							}
+							
+							if(request.getParameter("vaiAlCarrello") != null) {
+								request.getRequestDispatcher("/ShoppingBagServlet").forward(request, response);
+							}
+							
 							url = response.encodeURL("/HomePageServlet");
 							request.getRequestDispatcher(url).forward(request, response);
 							
@@ -126,7 +144,7 @@ protected void doPost(HttpServletRequest request, HttpServletResponse response) 
 					
 				}
 	}
-
+				}
 	}
 	
 	

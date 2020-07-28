@@ -8,39 +8,7 @@
 	<head>
 		<meta charset="UTF-8">
 		
-		<%  
-			Object categoryObj = request.getAttribute("category");
-			String category = (String) categoryObj;
-			
-			boolean search = false;
-			
-			String categoryParam = "";
-			
-			switch(category){
-				case "Archi":
-					categoryParam = "Archi";
-					break;
-				case "Frecce e Componenti":
-					categoryParam = "Frecce";
-					break;
-				case "Accessori Arco":
-					categoryParam = "accessori-arco";
-					break;
-				case "Accessori Arciere":
-					categoryParam = "accessori-arciere";
-					break;
-				case "Paglioni e Bersagli":
-					categoryParam = "paglioni";
-					break;
-			}
-			
-			if(category.equals("search")){
-				
-				category = "Ricerca";
-				search = true;
-			}
-		%>
-			<title>eArrow - <%=category %></title>
+		<title>Prodotti in stock</title>
 		
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		
@@ -58,116 +26,14 @@
 	<jsp:include page="NavbareArrow.jsp"/>
 	
 	<div class="content">
-	
-	<%
-		if(search){
-			
-			Object suggestedProdObj = request.getAttribute("prodottiList");
-			
-			if(suggestedProdObj != null){
-				ArrayList<ProdottoBean> suggestedProd = (ArrayList<ProdottoBean>) request.getAttribute("prodottiList");
-		
-		
-		for(ProdottoBean p : suggestedProd){
-			double price = p.getPrezzo();
-			
-			String priceD = String.format("%.2f", price);
-			
-			ImmagineBean image = ImmagineDAO.doRetrieveImageByProductCode(p.getCodice());
-			
-			String uriImage = image.getUri();
-			
-			String categoria = p.getCategoria().substring(0, 1).toUpperCase() + p.getCategoria().substring(1);
-	%>
-	<div class="card-body">
-		<div class="row">
-			<aside class="col-md-3" id="imageContainer">
-				<a href="${pageContext.request.contextPath}/ProductDetailServlet?codice=<%=p.getCodice()%>" class="img-wrap img-fluid"><img class="image" src="${pageContext.request.contextPath}<%=uriImage%>"></a>
-			</aside>
-			<!-- col.// -->
-			<article class="col-md-6">
-				<a href="${pageContext.request.contextPath}/ProductDetailServlet?codice=<%=p.getCodice()%>" class="title mt-2 h5">
-					<%=p.getNome() %>
-				</a>
-				
-				<div class="rating-wrap mb-3">
-					<small class="label-rating text-success category"> 
-						<%=categoria %> - <%=p.getTipologia() %>
-					</small>
-				</div>
-				<!-- rating-wrap.// -->
-				<p class="description">
-					<%=p.getDescrizione() %>
-				</p>
-
-			</article>
-			<!-- col.// -->
-			<aside class="col-md-3 order">
-				<div class="price-wrap mt-2">
-					<span class="price h5">€ <%=priceD %> </span>
-				</div>
-				<!-- info-price-detail // -->
-
-				<%
-					if(p.isDisponibilita()){
-				%>
-				
-					<p class="small text-success">Disponibile</p>
-					
-				<% } else { %>
-				
-					<p class="small text-danger">Non disponibile</p>
-					
-				<% } %>
-				
-				<p class="buttonAdd">
-					<p class="quantity">In stock: <%=p.getQuantita()%></p>
-					
-					<%
-						if(p.isDisponibilita()){
-					%>
-				
-							<a href="${pageContext.request.contextPath}/AddToShoppingBagServlet?codiceProdotto=<%=p.getCodice()%>&quantity=1" class="btn btn-primary">Aggiungi al carrello</a>	
-							
-					<% } else { %>
-				
-							<a class="btn btn-primary" id="disabled-add-button">Aggiungi al carrello</a>
-					
-					<% } %>	 
-				</p>
-				<a href="${pageContext.request.contextPath}/ProductDetailServlet?codice=<%=p.getCodice()%>" class="small link">
-					Scopri di più >
-				</a>
-			</aside>
-			<!-- col.// -->
-		</div>
-		<!-- row.// -->
-	</div>
-	
-	<% 		
-				}	
-			} else{
-	%>
-	
-		<div class="content content-empty-list">
-	 		<div class="empty-list">
-	 			<div class="titleAndImage">
-	 				<img src="${pageContext.request.contextPath}/image/no-result.png" class="img image empty-list-image">
-	 				<p class="empty-list-title">La tua ricerca non ha prodotto risultati!</p>
-	 			</div>
-	 		</div>
-	 	</div>
 	 	
 	 	<%
-			}
-		} else{
 			Object ordinamentoObj = request.getAttribute("ordinamento");
 			String ordinamento = (String) ordinamentoObj;
 		%>
 	
 
-		<form class="orderForm" action="./ProductsListServlet">
-			<input type="hidden" name="category" value="<%=categoryParam%>">
+		<form class="orderForm" action="./AdminVisualizeProductServlet">
 			<div class="ordinamento">
 				<label class="titleSelect">Ordina per: &nbsp&nbsp&nbsp</label> 
 				<select	class="custom-select" name="ordinamento" onchange="this.form.submit()">
@@ -266,21 +132,10 @@
 				<p class="buttonAdd">
 					<p class="quantity">In stock: <%=p.getQuantita()%></p>
 					
-					<%
-						if(p.isDisponibilita()){
-					%>
 				
-							<a href="${pageContext.request.contextPath}/AddToShoppingBagServlet?codiceProdotto=<%=p.getCodice()%>&quantity=1" class="btn btn-primary">Aggiungi al carrello</a>	
+					<a href="${pageContext.request.contextPath}/AdminModifyProductServlet?modify=false&productCode=<%=p.getCodice() %>" class="btn btn-primary">Modifica prodotto</a>	
 							
-					<% } else { %>
-				
-							<a class="btn btn-primary" id="disabled-add-button">Aggiungi al carrello</a>
-					
-					<% } %>	 
 				</p>
-				<a href="${pageContext.request.contextPath}/ProductDetailServlet?codice=<%=p.getCodice()%>" class="small link">
-					Scopri di più >
-				</a>
 			</aside>
 			<!-- col.// -->
 		</div>
@@ -289,7 +144,6 @@
 	
 	<% 	
 		}
-	}
 	%>
 	
 	</div>
@@ -306,14 +160,14 @@
 	<script type="text/javascript">
 	$(document).ready(function(){
     	if($(window).innerWidth() < 837 && $(window).innerWidth() > 767){
-           $('a.btn.btn-primary').html('Aggiungi<br/>al carrello');
+           $('a.btn.btn-primary').html('Modifica<br/>prodotto');
     	}
     	
     	$(window).resize(function(){
     		if($(window).innerWidth() < 837 && $(window).innerWidth() > 767){
-    			$('a.btn.btn-primary').html('Aggiungi<br/>al carrello');
+    			$('a.btn.btn-primary').html('Modifica<br/>prodotto');
     		} else{
-    			$('a.btn.btn-primary').html('Aggiungi al carrello');
+    			$('a.btn.btn-primary').html('Modifica<br/>prodotto');
     		}
     	});
 	});

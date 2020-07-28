@@ -14,7 +14,7 @@
 						<dt>PER CONOSCERCI MEGLIO</dt>
 					</label>
 
-					<p>
+					<p class="left-information">
 						eArrow è un sito web e-commerce di arcieria.
 						eArrow possiede in magazzino i prodotti dei più grandi marchi e punta ad essere il tuo 
 						negozio di fiducia.
@@ -31,25 +31,22 @@
 				<div id="contacts">
 					<label for="exampleFormControlInput1"><dt>INFO SU eArrow.it</dt></label>
 					<ul>
-						<li>ciao</li>
-						<li>ciao</li>
-						<li>ciao</li>
-						<li>ciao</li>
-						<li>ciao</li>
-						<li>ciao</li>
+						<li>Semplice da usare</li>
+						<li>Sicuro</li>
+						<li>Le migliori marche</li>
 					</ul>
 				</div>
 
 				<div id="contact-us">
 
 					<form>
-						<div class="form-group">
-							<label for="exampleFormControlInput1"><dt>HAI BISOGNO D'AIUTO?</dt></label> <input type="email" class="form-control"
+						<div class="form-group form-footer-st" style="width: 100%;">
+							<label for="exampleFormControlInput1"><dt>HAI BISOGNO D'AIUTO?</dt></label> <input type="email" class="form-control form-footer-st"
 								id="exampleFormControlInput1" placeholder="nome@esempio.com">
 						</div>
 
-						<div class="form-group">
-							<textarea class="form-control" id="exampleFormControlTextarea1"
+						<div class="form-group form-footer-st" style="width: 100%;">
+							<textarea class="form-control form-footer-st" id="exampleFormControlTextarea1"
 								rows="3" placeholder="Scrivi il tuo messaggio"></textarea>
 						</div>
 					</form>

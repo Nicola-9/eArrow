@@ -7,20 +7,17 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import model.bean.ProdottoBean;
-import model.dao.ProdottoDAO;
-
 /**
- * Servlet implementation class ProductDetailServlet
+ * Servlet implementation class ErroreArrowServlet
  */
-@WebServlet("/ProductDetailServlet")
-public class ProductDetailServlet extends HttpServlet {
+@WebServlet("/ErroreArrowServlet")
+public class ErroreArrowServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ProductDetailServlet() {
+    public ErroreArrowServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -36,21 +33,10 @@ public class ProductDetailServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String codeS = (String) request.getParameter("codice");
-		int codiceP = Integer.valueOf(codeS);
 		
-		ProdottoBean prodotto = new ProdottoBean();
-		prodotto = ProdottoDAO.doRetrievebyCodeOrdered(codiceP);
+		String s = request.getParameter("testoErrore");
 		
-		if(prodotto == null) {
-			System.out.println("errore");//inserire pagina di errore 
-		}
-		else if(prodotto != null) {
-			request.setAttribute("prodotto", prodotto);
-			
-			request.getRequestDispatcher("view/ProductDetail.jsp").forward(request, response);
-		}
-		
+		request.getRequestDispatcher("view/ErrorArrow.jsp?testoErrore="+s).forward(request, response);
 	}
 
 }

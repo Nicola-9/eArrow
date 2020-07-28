@@ -1,0 +1,202 @@
+@charset "UTF-8";
+
+*,
+*::before,
+*::after{
+	margin: 0;
+	padding: 0;
+}
+
+html{
+	font-size: 10px;
+	font-family: 'SF Pro Display', sans-serif;
+}
+
+body{
+	margin-top: 5%;
+	background-color: #f8f9fa;	
+	display: flex;
+	flex-direction: column;
+}
+
+.content{
+	min-height: 100vh;
+	margin-left: 10%;
+	margin-right: 10%;
+}
+
+.doc-title-sm {
+	margin-left: 1%;
+	margin-bottom: 1%;
+	font-size: 1.5rem;
+	font-weight: 500;
+	color: #adb5bd;
+	text-transform: uppercase;
+}
+
+.card{
+	font-size: 1.5rem;
+}
+
+.headerInformation{
+	font-size: 1.25rem;
+	font-weight: 500;
+	color: #adb5bd;
+	text-transform: uppercase;
+	margin-bottom: 1.25%;
+	margin-top: .5%;
+}
+
+.custom-select{
+	height: 65%;
+}
+
+.fa{
+	padding: 0;
+	padding-right: 2.5rem;
+	color: white;
+}
+
+.fa:hover{
+	opacity: 1;
+}
+
+.errNameHide,
+.errCategoryHide,
+.errTipologyHide,
+.errPriceHide,
+.errDisponibilityHide,
+.errQuantityHide,
+.errDescriptionHide
+{
+	width: 50%;
+	display: inline-block;
+	visibility: hidden;
+}
+
+.error-second{
+	width: 49.5%;
+}
+
+.errRowNameCategory,
+.errRowTipologyPrice,
+.errRowDisponibilityQuantity,
+.errRowDescription{
+	margin-bottom: .5%;
+	display: none;
+}
+
+.nameCategoryRow,
+.tipologyPriceRow,
+.diponibilityQuantityRow,
+.descriptionRow,
+.imageUploadRow{
+	margin-bottom: 1.5%;
+}
+
+.custom-file{
+	height: 65% !important;
+	cursor: pointer !important;
+}
+
+.custom-file-input{
+	height: 100% !important;
+}
+
+.custom-file-label{
+	height: 100% !important;
+	font-size: 1.5rem !important;
+	cursor: pointer !important;
+	line-height: 3rem;
+}
+
+.custom-file-label::after{
+	height: 100% !important;
+	cursor: pointer !important;
+	line-height: 3rem;
+}
+
+.form-control{
+	font-size: 1.5rem;
+	height: 65%;
+}
+
+.btn{
+	margin-top: 3%;
+	font-size: 1.5rem;
+}
+
+.btn-block{
+	padding: .5%;
+}
+
+.eArrowFooter{
+	margin-bottom: 0;
+	bottom: 0;
+	position: relative;
+	flex: 0;
+}
+
+@media (max-width: 1250px){
+	.intestation{
+		margin-bottom: .5%;
+	}
+	
+	body{
+		margin-top: 7%;
+	}
+}
+
+@media (max-width: 910px){
+	.intestation{
+		margin-bottom: 1%;
+	}
+}
+
+@media (max-width: 717px){
+	.intestation{
+		margin-bottom: 1.5%;
+	}
+}
+
+@media (max-width: 591px){
+	.intestation{
+		margin-bottom: 2%;
+	}
+}
+
+@media (max-width: 507px){
+	.intestation{
+		margin-bottom: 3%;
+	}
+}
+
+@media (max-width: 975px){
+	body{
+		margin-top: 9%;
+	}
+}
+
+@media (max-width: 760px){
+	body{
+		margin-top: 11%;
+	}
+}
+
+@media (max-width: 626px){
+	body{
+		margin-top: 13%;
+	}
+}
+
+@media (max-width: 519px){
+	body{
+		margin-top: 15%;
+	}
+}
+
+@media (max-width: 450px){
+	body{
+		margin-top: 17%;
+	}
+}

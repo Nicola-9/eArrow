@@ -1,0 +1,40 @@
+@charset "UTF-8";
+
+*,
+*::before,
+*::after{
+	margin: 0;
+	padding: 0;
+}
+
+html{
+	font-size: 10px;
+	font-family: 'SF Pro Display', sans-serif;
+}
+
+body{
+	margin-top: 5%;
+	background-color: #f8f9fa;	
+	display: flex;
+	flex-direction: column;
+}
+
+.content{	
+	background-size: cover;
+	background-repeat: no-repeat;
+	height: calc(100vh - 5rem);
+	display: grid;
+	align-items: center;
+	justify-content: center;
+}
+
+.erroe-text{
+	font-size: 3rem;
+	text-align: center;
+	color: #a2a2a2;
+}
+
+.col{
+	font-size: 100px;
+	color:#a2a2a2;/*#a2a2a2*/
+}

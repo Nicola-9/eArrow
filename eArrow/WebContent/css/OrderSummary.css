@@ -26,6 +26,15 @@ body{
 	transition: transform .1s;
 }
 
+.doc-title-sm {
+	margin-left: 1%;
+	margin-bottom: 1%;
+	font-size: 1.5rem;
+	font-weight: 500;
+	color: #adb5bd;
+	text-transform: uppercase;
+}
+
 .image:hover{
 	transform: scale(1.1);
 }
@@ -52,23 +61,6 @@ a.title{
 	display: table;
 	vertical-align: middle;
 	padding: 0;
-}
-
-.titleAndImage{
-	margin-top: 50%;
-	margin-bottom: 50%;
-}
-
-.empty-list{
-	display: grid;
-	align-items: center;
-	justify-content: center;
-  	text-align: center;
-}
-
-p.empty-list-title{
-	font-size: 2.5rem;
-	color: #a2a2a2;
 }
 
 .titleSelect{
@@ -106,6 +98,14 @@ p.empty-list-title{
 	font-size: 2rem;
 }
 
+.one-line{
+	display: flex;
+}
+
+.rating-wrap{
+	margin-bottom: 0%;
+}
+
 a.btn.btn-primary{
 	font-size: 1.5rem;
 }
@@ -115,9 +115,17 @@ span.price.h5{
 }
 
 .order{
+	display: grid;
 	font-size: 1.5rem;
 	text-align: center;
 	margin: 0 -.5%;
+	align-items: center;
+	justify-content: center;
+}
+
+.cent{
+	display: table-cell;
+	vertical-align: middle;
 }
 
 a.small.link{
@@ -128,13 +136,34 @@ a.small.link{
 	min-height: 100vh;
 }
 
-#disabled-add-button{
-	color: #fff;
-	background-color: #007bff;
-	border-color: #007bff;
-	opacity: .65;
-	cursor: default;
+.description{
+	margin-top: auto;
+	margin-bottom: auto;
 }
+
+.acquistaForm{
+	font-size: 1.5rem;
+}
+
+.btn{
+	font-size: 1.5rem;
+}
+
+.tot-prezzo{
+	margin-top: 1%;
+	margin-left: 2%;
+	display: flex;
+	
+	padding: 0;
+}
+
+.bottone-cont{
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 4%;
+	text-align: center;
+}
+
 
 .eArrowFooter{
 	margin-bottom: 0;
@@ -166,9 +195,4 @@ a.small.link{
 		margin-top: 13%;
 	}
 }
-
-@media (max-width: 754px){
-	.image:hover{
-		transform: scale(1.05);
-	}
 }

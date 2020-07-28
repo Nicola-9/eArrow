@@ -196,35 +196,44 @@
 	
 	int limit =  0;
 	
-	for(int i=0; i < prodottiConsigliati.size(); i++){
-		if(prodottiConsigliati.get(i).getNome().equals(nome))
+	System.out.println(prodottiConsigliati.size());
+	
+	int size = prodottiConsigliati.size();
+	
+	for(int i=0; i < size; i++){
+		if(prodottiConsigliati.get(i).getNome().equals(nome)){
 			prodottiConsigliati.remove(i);
-		if(prodottiConsigliati.get(i).getNome().equals("Smartriser Nero"))
+			--size;
+			break;
+		}
+		if(prodottiConsigliati.get(i).getNome().equals("Smartriser Nero")){
 			prodottiConsigliati.remove(i);
+			--size;
+		}
 	}
 	
-	if(prodottiConsigliati.size() > 4){
+	if(prodottiConsigliati.size() >= 4){
 		limit = 4;
 	} else{
 		limit = prodottiConsigliati.size();
 	}
 	
-	for(int i = 0; i < limit; i++){ 
+	for(int j = 0; j < limit; j++){ 
 		
-		ImmagineBean imgCons = ImmagineDAO.doRetrieveImageByProductCode(prodottiConsigliati.get(i).getCodice());
+		ImmagineBean imgCons = ImmagineDAO.doRetrieveImageByProductCode(prodottiConsigliati.get(j).getCodice());
 	%>
 		<div class="row-product-c">
 			<figure class="itemside mb-2">
 				<div class="aside" id="container-image-reccomended">
-					<a href="#">
+					<a href="${pageContext.request.contextPath}/ProductDetailServlet?codice=<%=prodottiConsigliati.get(j).getCodice() %>">
 						<img src="${pageContext.request.contextPath}<%=imgCons.getUri()%>" class="img-sm img-responsive img-rec">
 					</a>
 				</div>
 				<figcaption class="info align-self-center">
-					<a href="#" class="title mt-2"><%=prodottiConsigliati.get(i).getNome()%></a>
+					<a href="${pageContext.request.contextPath}/ProductDetailServlet?codice=<%=prodottiConsigliati.get(j).getCodice() %>" class="title mt-2"><%=prodottiConsigliati.get(j).getNome()%></a>
 					
 					<%
-						String price = String.format("%.2f", prodottiConsigliati.get(i).getPrezzo());
+						String price = String.format("%.2f", prodottiConsigliati.get(j).getPrezzo());
 					%>
 					<strong class="price2"><%=price%></strong>
 				</figcaption>

@@ -174,6 +174,8 @@
 			  target.selectionEnd = position += ((target.value.charAt(position - 1) === ' ' && target.value.charAt(length - 1) === ' ' && length !== target.value.length) ? 1 : 0);
 			});
 		});
+		
+		
 
 		$(document).ready(function() {
 			<% if(carta != null) {%>
@@ -186,6 +188,7 @@
 			document.querySelector('#number').value = t;
 			<% } %>
 		});
+
 
 		</script>	
 		

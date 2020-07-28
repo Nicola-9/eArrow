@@ -33,3 +33,49 @@ h5.productName{
 p.productDescription{
 	font-size: 1.5rem;
 }
+
+.responseText{
+	display: none !important;
+}
+
+.carousel-item{
+	background-color: #000;
+}
+
+@media (max-width: 760px){
+	
+	.imageSlider{
+		display: none !important;
+	}
+	
+	.responseText{
+		width: 100%;
+		height: 100%;
+		display: grid !important;
+		text-align: center;
+		align-items: center;
+		justify-content: center;
+		color: #fff; 
+	}
+	
+	.productDescription{
+		margin-left: 10%;
+		margin-right: 10%;
+	}
+	
+	.textResp:hover{
+		text-decoration: none;
+	}
+	
+	.productDescription:hover{
+		color: #d1d1d1;
+	}
+	
+	.title{
+		font-size: 2.5rem;
+	}
+
+	.carousel-item{
+		background-color: #000;
+	}
+}

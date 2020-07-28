@@ -1,29 +1,30 @@
 package controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
-import model.bean.UtenteBean;
-import model.dao.UtenteDao;
+import model.bean.ProdottoBean;
+import model.dao.ProdottoDAO;
 
 /**
- * Servlet implementation class TestCheckout
+ * Servlet implementation class SearchServlet
  */
-@WebServlet("/TestCheckout")
-public class TestCheckout extends HttpServlet {
+@WebServlet("/SearchServlet")
+public class SearchServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public TestCheckout() {
+    public SearchServlet() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
 	/**
@@ -37,13 +38,22 @@ public class TestCheckout extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		HttpSession session = request.getSession(true);
-		UtenteBean user = UtenteDao.doRetrievebyId(3);
-		session.setAttribute("user", user);
+		String products = (String) request.getParameter("suggestion");
 		
+		List<ProdottoBean> suggestedProd = ProdottoDAO.doRetrievebySubstringObject(products);
 		
-		request.getRequestDispatcher("/CheckOutServlet?checkout=true").forward(request, response);
-		
+		if(suggestedProd.size() >= 1) {
+			request.setAttribute("prodottiList", suggestedProd);
+			
+			request.setAttribute("category", "search");
+			
+			request.getRequestDispatcher("view/ProductList.jsp").forward(request, response);
+		} else {
+			request.setAttribute("prodottiList", null);
+			
+			request.setAttribute("category", "search");
+			
+			request.getRequestDispatcher("view/ProductList.jsp").forward(request, response);
+		}
 	}
-
 }

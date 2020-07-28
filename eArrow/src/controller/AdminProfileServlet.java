@@ -7,22 +7,18 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import model.bean.ProdottoBean;
-import model.dao.ProdottoDAO;
-
 /**
- * Servlet implementation class ProductDetailServlet
+ * Servlet implementation class AdminProfileServlet
  */
-@WebServlet("/ProductDetailServlet")
-public class ProductDetailServlet extends HttpServlet {
+@WebServlet("/AdminProfileServlet")
+public class AdminProfileServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ProductDetailServlet() {
+    public AdminProfileServlet() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
 	/**
@@ -36,21 +32,11 @@ public class ProductDetailServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String codeS = (String) request.getParameter("codice");
-		int codiceP = Integer.valueOf(codeS);
-		
-		ProdottoBean prodotto = new ProdottoBean();
-		prodotto = ProdottoDAO.doRetrievebyCodeOrdered(codiceP);
-		
-		if(prodotto == null) {
-			System.out.println("errore");//inserire pagina di errore 
-		}
-		else if(prodotto != null) {
-			request.setAttribute("prodotto", prodotto);
-			
-			request.getRequestDispatcher("view/ProductDetail.jsp").forward(request, response);
+		if(request.getSession().getAttribute("role") == null || ((String) request.getSession().getAttribute("role")).equals("utente")) {
+			request.getRequestDispatcher("/ErroreArrowServlet?testoErrore=Non sei autorizzato ad accedere a questa risorsa!").forward(request, response);
 		}
 		
+		request.getRequestDispatcher("view/AdminProfile.jsp").forward(request, response);
 	}
 
 }

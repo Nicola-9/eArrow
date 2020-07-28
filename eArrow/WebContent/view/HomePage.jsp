@@ -66,11 +66,16 @@
 				String descrizione = ProdottoDAO.doRetrievebyKey(e.getCodiceProdotto()).getDescrizione();
 				
 				if(i == 0){
-					
 				
 		%>
 			<div class="carousel-item h-100 active">
-				<img class="d-block w-100 h-100" src="${pageContext.request.contextPath}<%=uriImage %>" alt="Offerta">
+				<a class="textResp" href="${pageContext.request.contextPath}/ProductDetailServlet?codice=4">
+					<div class="responseText">
+						
+						<p class="productDescription"><strong class="title"><%=name %></strong><br><%=descrizione %></p>
+					</div>
+					<img class="d-block w-100 h-100 imageSlider" src="${pageContext.request.contextPath}<%=uriImage %>" alt="Offerta">
+				</a>
 				<div class="carousel-caption d-none d-md-block">
 					<h5 class="productName"><%=name %></h5>
 					<p class="productDescription"><%=descrizione %></p>
@@ -81,10 +86,18 @@
 				i++;
 		
 				} else {
+					System.out.println(e.getCodiceProdotto());
+					if(e.getCodiceProdotto() == 6){
 		%>
-		
+					
 			<div class="carousel-item h-100">
-				<img class="d-block w-100 h-100" src="${pageContext.request.contextPath}<%=uriImage%>" alt="Offerta">
+				<a class="textResp" href="${pageContext.request.contextPath}/ProductDetailServlet?codice=6">
+					<div class="responseText" style="display: none">
+						
+						<p class="productDescription"><strong class="title"><%=name %></strong><br><%=descrizione %></p>
+					</div>
+					<img class="d-block w-100 h-100 imageSlider" src="${pageContext.request.contextPath}<%=uriImage%>" alt="Offerta">
+				</a>
 				<div class="carousel-caption d-none d-md-block">
 					<h5 class="productName"><%=name %></h5>
 					<p class="productDescription"><%=descrizione %></p>
@@ -92,11 +105,34 @@
 			</div>
 		
 		<%
-			i++;
-				}
 			
+				} else
+					if(e.getCodiceProdotto() == 7){
+						
+						System.out.println("ci sono");
+		%>
+			
+			<div class="carousel-item h-100">
+				<a class="textResp" href="${pageContext.request.contextPath}/ProductDetailServlet?codice=7">
+					<div class="responseText">
+						
+						<p class="productDescription"><strong class="title"><%=name %></strong><br><%=descrizione %></p>
+					</div>
+					<img class="d-block w-100 h-100 imageSlider" src="${pageContext.request.contextPath}<%=uriImage %>" alt="Offerta">
+				</a>
+				<div class="carousel-caption d-none d-md-block">
+					<h5 class="productName"><%=name %></h5>
+					<p class="productDescription"><%=descrizione %></p>
+				</div>
+			</div>
+			
+		<%
+				}
+					i++;
+				}
 			}
 		%>
+		
 		
 		</div>
 		

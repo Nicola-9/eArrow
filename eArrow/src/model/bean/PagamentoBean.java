@@ -55,6 +55,16 @@ public class PagamentoBean {
 	public void setImporto(double importo) {
 		this.importo = importo;
 	}
+	
+	
+
+	@Override
+	public String toString() {
+		return "PagamentoBean [id=" + id + ", codicePAN=" + codicePAN + ", tipologia=" + tipologia + ", data=" + data
+				+ ", importo=" + importo + "]";
+	}
+
+
 
 	private int id;
 	private String codicePAN;

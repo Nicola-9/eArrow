@@ -41,6 +41,8 @@ public class RemoveFromShoppingCartServlet extends HttpServlet {
 		
 		ShoppingCart cart = (ShoppingCart) request.getSession().getAttribute("carrello");
 		
+		ProdottoBean toDelete = null;
+		
 		if(productCodeString != null) {
 			int productCode = Integer.parseInt(productCodeString);
 			
@@ -48,9 +50,11 @@ public class RemoveFromShoppingCartServlet extends HttpServlet {
 			
 			for(ProdottoBean p : products.keySet()) {
 				if(p.getCodice() == productCode) {
-					cart.deleteProduct(p);
+					toDelete = p;
 				}
 			}
+			
+			cart.deleteProduct(toDelete);
 			
 			if(cart.getProductsList().size() == 0) {
 				request.getSession().setAttribute("carrello", null);
