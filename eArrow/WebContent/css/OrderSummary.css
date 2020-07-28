@@ -19,6 +19,12 @@ body{
 	flex-direction: column;
 }
 
+.content{
+	min-height: 100vh;
+	margin-right: 10%;
+	margin-left: 10%;
+}
+
 .image{
 	height: 150px;
 	max-width: 100%;
@@ -46,8 +52,6 @@ a.title{
 .card-body{
 	position: relative;
 	margin-top: 1%;
-	margin-right: 10%;
-	margin-left: 10%;
 	padding: 1%;
 	border: 1px solid #d1d1d1;
 	border-radius: 5px;
@@ -132,10 +136,6 @@ a.small.link{
 	margin-top: -50%;
 }
 
-.content{
-	min-height: 100vh;
-}
-
 .description{
 	margin-top: auto;
 	margin-bottom: auto;
@@ -194,5 +194,4 @@ a.small.link{
 	body{
 		margin-top: 13%;
 	}
-}
 }
