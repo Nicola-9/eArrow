@@ -126,12 +126,18 @@ public class CheckOutServlet extends HttpServlet {
 				carta.setCodicePAN(pan.replaceAll("\\s+",""));
 				carta.setCircuito(request.getParameter("circuito"));
 				
+				CartaDiCreditoBean panEs = (CartaDiCreditoBean) CartaDiCreditoDAO.doRetrievebyPan(pan);
+				
+				if(panEs != null) {
+					request.getRequestDispatcher("/ErroreArrowServlet?testoErrore=Carta di credito utilizzata già da un diverso utente").forward(request, response);
+				}
+				
 				
 				operazioneRiuscita = CartaDiCreditoDAO.addCard(carta);
 				
-				if(operazioneRiuscita == false) {
+				/*if(operazioneRiuscita == false) {
 					request.getRequestDispatcher("/ErroreArrowServlet?testoErrore=E' stato riscontrato un problema relativo al pagamento").forward(request, response);
-				}
+				}*/
 				
 			}
 			
