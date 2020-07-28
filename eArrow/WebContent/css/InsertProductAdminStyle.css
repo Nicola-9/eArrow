@@ -88,10 +88,18 @@ body{
 
 .nameCategoryRow,
 .tipologyPriceRow,
-.diponibilityQuantityRow,
+.disponibilityQuantityRow,
 .descriptionRow,
 .imageUploadRow{
 	margin-bottom: 1.5%;
+}
+
+.nameCategoryRow.hidden,
+.tipologyPriceRow.hidden,
+.disponibilityQuantityRow.hidden,
+.descriptionRow.hidden,
+.imageUploadRow.hidden{
+	margin-bottom: 0%;
 }
 
 .custom-file{

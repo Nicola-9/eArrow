@@ -55,7 +55,7 @@ public class HomePageServlet extends HttpServlet {
 			request.getRequestDispatcher("view/HomePage.jsp").forward(request, response);
 		} else {
 			request.setAttribute("isHome", true);
-			request.getRequestDispatcher("/ErroreArrowServlet?testoErrore=Ops... Qualcosa non e' andato nel verso giusto").forward(request, response);
+			request.getRequestDispatcher("/ErroreArrowServlet?testoErrore=Ops... Qualcosa non e' andato per il verso giusto").forward(request, response);
 		}
 	}
 
