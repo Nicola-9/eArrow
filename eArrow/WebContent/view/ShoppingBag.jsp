@@ -28,7 +28,7 @@
  		<div class="content content-empty-cart">
 	 		<div class="empty-cart">
 	 			<div class="titleAndImage">
-	 				<img src="${pageContext.request.contextPath}/image/empty-shopping-cart.png" class="img image empty-cart-image">
+	 				<img src="${pageContext.request.contextPath}/image/empty-shopping-cart.png" class="img empty-cart-image">
 	 				<p class="empty-cart-title">Il tuo carrello &#232 vuoto!</p>
 	 			</div>
 	 		</div>

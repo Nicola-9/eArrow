@@ -62,7 +62,7 @@ const validateForm = () => {
 				if(numTelField.value == null || !numTelRegex.test(numTelField.value)){
 					numTelField.style.border = '1px solid #FF0000';
 					document.querySelector('#errorNumTel').innerHTML = "Campo telefono deve contenere solo numeri e la lunghezza"
-																			+ " massima è 10";
+																			+ " consentita è esattamente 10";
 					document.querySelector('#errorNumTel').style.visibility = 'visible';
 					document.querySelector('#errorNumTel').style.color = '#FF0000';
 				} else
@@ -96,8 +96,8 @@ const validateForm = () => {
 								} else
 									if(passwordField.value == null || !passwordRegex.test(passwordField.value)){
 										passwordField.style.border = '1px solid #FF0000';
-										document.querySelector('#errorPass').innerHTML = "Campo password deve contenere minimo 7 simboli alfabetici"
-																							+ " ed un numero";
+										document.querySelector('#errorPass').innerHTML = "Campo password deve contenere minimo 7 caratteri con "
+																							+ "almeno un numero";
 										document.querySelector('#errorPass').style.visibility = 'visible';
 										document.querySelector('#errorPass').style.color = '#FF0000';
 									} else
