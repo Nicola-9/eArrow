@@ -21,12 +21,30 @@
 	<jsp:include page="NavbareArrow.jsp"/>
 	
 	<div class="content">
-
-	<h5 class="doc-title-sm">STORICO ORDINI</h5>
 			
 	<%
-	ArrayList<StoricoOrdiniBean> listaOrdini = StoricoOrdiniDAO.doRetrieveAll();
+		ArrayList<StoricoOrdiniBean> listaOrdini = StoricoOrdiniDAO.doRetrieveAll();
 	
+		if(listaOrdini.size() <= 0){
+			
+	%>
+	
+		<div class="content content-empty-cart">
+		 	<div class="empty-cart">
+		 		<div class="titleAndImage">
+		 			<img src="${pageContext.request.contextPath}/image/empty-shopping-cart.png" class="img empty-cart-image">
+		 			<p class="empty-cart-title">Non &#232 stato effettuato nessun ordine!</p>
+		 		</div>
+		 	</div>
+		 </div>
+	
+	<%
+		} else{
+	%>
+	
+	<h5 class="doc-title-sm">STORICO ORDINI</h5>
+	
+	<%
 		int totProdotti = 0;
 		
 		for(int i = 0; i < listaOrdini.size(); i++) {
@@ -84,7 +102,7 @@
 			</figure>
 		</div> 
 	<%
-		}	
+			}	
 	%>
 		
 
@@ -114,7 +132,8 @@
 	</div>
 	
 		<%
-		} 
+			} 
+		}
 	%>
 
 	</div>
