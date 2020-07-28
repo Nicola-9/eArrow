@@ -84,7 +84,6 @@ public class InsertProductAdminServlet extends HttpServlet {
 	
 			ProdottoDAO.insertProduct(p);
 			
-			
 			Part filePart = request.getPart("file");
 			InputStream fileContent = filePart.getInputStream();
 			String fileName = name.toLowerCase();
@@ -118,6 +117,8 @@ public class InsertProductAdminServlet extends HttpServlet {
 	        
 	        out.close();
 	        fileContent.close();
+	        
+	        request.getRequestDispatcher("/AdminVisualizeProductServlet").forward(request, response);
 		}
 	}
 
