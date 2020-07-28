@@ -101,7 +101,7 @@ const validateForm = () => {
 										document.querySelector('#errorPass').style.visibility = 'visible';
 										document.querySelector('#errorPass').style.color = '#FF0000';
 									} else
-										if(confirmPassField.value == null || !confirmPassRegex.test(confirmPassField.value)){
+										if(confirmPassField.value == null || !confirmPassRegex.test(confirmPassField.value) || (confirmPassField.value != passwordField.value)){
 											confirmPassField.style.border = '1px solid #FF0000';
 											document.querySelector('#errorConfirmPass').innerHTML = "Campo conferma password deve corrispondere al"
 																									+ " campo password";
