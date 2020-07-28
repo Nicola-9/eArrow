@@ -62,8 +62,11 @@ body{
 	display: none;
 }
 
-.fa{
+.faPAd{
 	padding: 0;
+}
+
+.fa{
 	padding-right: 2.5rem;
 	color: white;
 }
