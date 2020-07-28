@@ -15,7 +15,7 @@ let nameRegex = /^[a-zA-Z0-9-,_ ]+$/;
 let tipologyRegex = /^[a-zA-Z0-9-,_ ]+$/;
 let quantityRegex = /^[0-9]+$/;
 let priceRegex = /^[0-9]*[.]{0,1}[0-9]+$/;
-let descriptionRegex = /^[a-zA-Z0-9-,_ ]{10, 500}$/;
+let descriptionRegex = /^[a-zA-Z0-9-,_ ]+$/;
 
 let valid = false;
 
@@ -24,7 +24,6 @@ document.addEventListener('DOMContentLoaded', () =>{
 });
 
 const validateForm = () =>{
-	console.log
 	if(nameField.value == null || !nameRegex.test(nameField.value)){
 		nameField.style.border = '1px solid #FF0000';
 		document.querySelector('#errorName').innerHTML = "Campo nome non valido. Lunghezza massima consentita di 40 caratteri.";
@@ -55,14 +54,12 @@ const validateForm = () =>{
 					document.querySelector('.disponibilityQuantityRow').classList.add('hidden');
 					
 				} else
-					if(disponibility.options[disponibility.selectedIndex].value == "true"){
-						if(quantityField.value <= 0){
+					if(disponibility.options[disponibility.selectedIndex].value == "true" && quantityField.value <= 0){
 							quantityField.style.border = '1px solid #FF0000';
 							document.querySelector('#errorQuantity').innerHTML = "Campo quantita' non valido. Prodotti disponibili non possono avere una quantità pari a 0.";
 							document.querySelector('.errRowDisponibilityQuantity').style.display = 'block';
 							document.querySelector('.errQuantityHide').style.visibility = 'visible';
 							document.querySelector('.disponibilityQuantityRow').classList.add('hidden');
-						}	
 					} else
 						if(descriptionField.value == null || !descriptionRegex.test(descriptionField.value)){
 							descriptionField.style.border = '1px solid #FF0000';

@@ -6,7 +6,7 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title>Lista riepilogo ordini</title>
+		<title>Storico Ordini</title>
 		
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">		
 		
@@ -22,9 +22,7 @@
 	
 	<div class="content">
 
-			<div class="ordinamento">
-				<label class="titleSelect">Storico ordini</label> 
-			</div>
+	<h5 class="doc-title-sm">STORICO ORDINI</h5>
 			
 	<%
 	ArrayList<StoricoOrdiniBean> listaOrdini = StoricoOrdiniDAO.doRetrieveAll();
